@@ -134,5 +134,9 @@ export const RATING_LABELS = {
 } as const;
 
 export const SITE_NAME = 'Stufy Work Hub';
-export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : 'https://example.com');
 export const PER_PAGE = 12;

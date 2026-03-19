@@ -16,9 +16,16 @@ import JsonLd from '@/components/seo/JsonLd';
 import { generateWebSiteJsonLd, generateOrganizationJsonLd } from '@/lib/seo/jsonld';
 import Card from '@/components/ui/Card';
 import Badge from '@/components/ui/Badge';
-import { ARTICLE_CATEGORIES } from '@/lib/utils/constants';
+import { ARTICLE_CATEGORIES, SITE_URL } from '@/lib/utils/constants';
 import { formatDate } from '@/lib/utils/format';
 import Image from 'next/image';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: SITE_URL,
+  },
+};
 
 export const revalidate = 3600;
 
