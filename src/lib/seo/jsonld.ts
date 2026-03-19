@@ -86,16 +86,29 @@ export function generateSchoolJsonLd(
   school: School,
   aggregateRating?: { average: number; count: number }
 ) {
+  const address: Record<string, string> = {
+    '@type': 'PostalAddress',
+    addressLocality: school.city,
+  };
+  if (school.country?.nameEn) address.addressCountry = school.country.nameEn;
+  if (school.address) address.streetAddress = school.address;
+
   const jsonLd: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'EducationalOrganization',
     name: school.name,
-    address: {
-      '@type': 'PostalAddress',
-      addressLocality: school.city,
-      addressCountry: school.country?.nameEn,
-    },
+    address,
     ...(school.website && { url: school.website }),
+    ...(school.email && { email: school.email }),
+    ...(school.phone && { telephone: school.phone }),
+    ...(school.foundedYear && { foundingDate: String(school.foundedYear) }),
+    ...(school.latitude && school.longitude && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: school.latitude,
+        longitude: school.longitude,
+      },
+    }),
   };
 
   if (aggregateRating && aggregateRating.count > 0) {

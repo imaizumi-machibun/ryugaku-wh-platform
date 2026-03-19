@@ -163,7 +163,7 @@ async function main(): Promise<void> {
     regionCounts.set(c.region, (regionCounts.get(c.region) || 0) + 1);
   }
   console.log('Region summary:');
-  for (const [region, count] of regionCounts) {
+  for (const [region, count] of Array.from(regionCounts)) {
     console.log(`  ${region}: ${count}`);
   }
   console.log();

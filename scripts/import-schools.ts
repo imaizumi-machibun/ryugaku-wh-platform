@@ -288,7 +288,7 @@ async function main(): Promise<void> {
 
   // CSV内の国名を収集して検証
   const csvCountries = new Set(records.map((r) => r.country));
-  const missingCountries = [...csvCountries].filter((c) => !countryMap.has(c));
+  const missingCountries = Array.from(csvCountries).filter((c) => !countryMap.has(c));
   if (missingCountries.length > 0) {
     console.error('\n❌ Missing countries in microCMS:');
     for (const c of missingCountries) {

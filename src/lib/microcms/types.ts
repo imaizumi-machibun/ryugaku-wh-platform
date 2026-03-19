@@ -87,6 +87,10 @@ export type SchoolFeature =
   | 'certificate'
   | 'activities'
   | 'accommodation';
+export type SchoolLanguage = 'english' | 'french' | 'spanish' | 'german' | 'korean' | 'chinese' | 'italian' | 'portuguese' | 'arabic';
+export type Accreditation = 'british-council' | 'cambridge-english' | 'ialc' | 'eaquals' | 'neas' | 'languages-canada' | 'celta' | 'acels' | 'nzqa' | 'other';
+export type Facility = 'wifi' | 'study-room' | 'cafe' | 'library' | 'computer-lab' | 'lounge' | 'kitchen' | 'garden' | 'gym' | 'prayer-room';
+export type AccommodationType = 'homestay' | 'student-residence' | 'shared-apartment' | 'studio' | 'hotel' | 'hostel';
 
 export type School = MicroCMSBase & {
   name: string;
@@ -103,6 +107,27 @@ export type School = MicroCMSBase & {
   website?: string;
   address?: string;
   isFeatured?: boolean;
+  // 基本情報
+  foundedYear?: number;
+  totalStudents?: number;
+  averageClassSize?: number;
+  japaneseRatio?: number;
+  nationalityCount?: number;
+  minimumAge?: number;
+  classroomCount?: number;
+  // 連絡先
+  email?: string;
+  phone?: string;
+  nearestStation?: string;
+  latitude?: number;
+  longitude?: number;
+  // 学習環境
+  languages?: SchoolLanguage[];
+  accreditations?: Accreditation[];
+  facilities?: Facility[];
+  accommodationTypes?: AccommodationType[];
+  airportPickup?: boolean;
+  minimumWeeks?: number;
 };
 
 // ============================================================

@@ -1,4 +1,4 @@
-import type { Region, CostLevel, CostRange, ArticleCategory, CourseType, SchoolFeature, Gender, LanguageLevel, ProgramStatus } from '../microcms/types';
+import type { Region, CostLevel, CostRange, ArticleCategory, CourseType, SchoolFeature, SchoolLanguage, Accreditation, Facility, AccommodationType, Gender, LanguageLevel, ProgramStatus } from '../microcms/types';
 
 export const REGIONS: { value: Region; label: string }[] = [
   { value: 'オセアニア', label: 'オセアニア' },
@@ -56,6 +56,53 @@ export const SCHOOL_FEATURES: { value: SchoolFeature; label: string }[] = [
   { value: 'certificate', label: '資格取得' },
   { value: 'activities', label: 'アクティビティ' },
   { value: 'accommodation', label: '宿泊手配' },
+];
+
+export const SCHOOL_LANGUAGES: { value: SchoolLanguage; label: string }[] = [
+  { value: 'english', label: '英語' },
+  { value: 'french', label: 'フランス語' },
+  { value: 'spanish', label: 'スペイン語' },
+  { value: 'german', label: 'ドイツ語' },
+  { value: 'korean', label: '韓国語' },
+  { value: 'chinese', label: '中国語' },
+  { value: 'italian', label: 'イタリア語' },
+  { value: 'portuguese', label: 'ポルトガル語' },
+  { value: 'arabic', label: 'アラビア語' },
+];
+
+export const ACCREDITATIONS: { value: Accreditation; label: string }[] = [
+  { value: 'british-council', label: 'British Council' },
+  { value: 'cambridge-english', label: 'Cambridge English' },
+  { value: 'ialc', label: 'IALC' },
+  { value: 'eaquals', label: 'Eaquals' },
+  { value: 'neas', label: 'NEAS' },
+  { value: 'languages-canada', label: 'Languages Canada' },
+  { value: 'celta', label: 'CELTA' },
+  { value: 'acels', label: 'ACELS' },
+  { value: 'nzqa', label: 'NZQA' },
+  { value: 'other', label: 'その他' },
+];
+
+export const FACILITIES: { value: Facility; label: string }[] = [
+  { value: 'wifi', label: 'Wi-Fi' },
+  { value: 'study-room', label: '自習室' },
+  { value: 'cafe', label: 'カフェ' },
+  { value: 'library', label: '図書室' },
+  { value: 'computer-lab', label: 'PC室' },
+  { value: 'lounge', label: 'ラウンジ' },
+  { value: 'kitchen', label: 'キッチン' },
+  { value: 'garden', label: '庭園' },
+  { value: 'gym', label: 'ジム' },
+  { value: 'prayer-room', label: '祈祷室' },
+];
+
+export const ACCOMMODATION_TYPES: { value: AccommodationType; label: string }[] = [
+  { value: 'homestay', label: 'ホームステイ' },
+  { value: 'student-residence', label: '学生寮' },
+  { value: 'shared-apartment', label: 'シェアアパート' },
+  { value: 'studio', label: 'スタジオ' },
+  { value: 'hotel', label: 'ホテル' },
+  { value: 'hostel', label: 'ホステル' },
 ];
 
 export const GENDERS: { value: Gender; label: string }[] = [

@@ -4,16 +4,7 @@ import { useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useCallback } from 'react';
 import type { Country } from '@/lib/microcms/types';
-import { COST_RANGES } from '@/lib/utils/constants';
-
-const LANGUAGE_OPTIONS = [
-  { value: 'english', label: '英語' },
-  { value: 'french', label: 'フランス語' },
-  { value: 'spanish', label: 'スペイン語' },
-  { value: 'german', label: 'ドイツ語' },
-  { value: 'korean', label: '韓国語' },
-  { value: 'chinese', label: '中国語' },
-];
+import { COST_RANGES, SCHOOL_LANGUAGES } from '@/lib/utils/constants';
 import BottomSheet from '@/components/ui/BottomSheet';
 
 type Props = {
@@ -70,7 +61,7 @@ export default function SchoolFilterPanel({ countries }: Props) {
           className="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:ring-primary-500 focus:border-primary-500 min-h-[44px]"
         >
           <option value="">すべての言語</option>
-          {LANGUAGE_OPTIONS.map((l) => (
+          {SCHOOL_LANGUAGES.map((l) => (
             <option key={l.value} value={l.value}>
               {l.label}
             </option>
@@ -135,7 +126,7 @@ export default function SchoolFilterPanel({ countries }: Props) {
               className="w-full rounded-lg border-gray-300 border px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500"
             >
               <option value="">すべての言語</option>
-              {LANGUAGE_OPTIONS.map((l) => (
+              {SCHOOL_LANGUAGES.map((l) => (
                 <option key={l.value} value={l.value}>
                   {l.label}
                 </option>
