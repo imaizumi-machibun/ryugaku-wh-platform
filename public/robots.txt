@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+Disallow: /submit/
+Disallow: /api/
+Disallow: /compare
+
+Sitemap: https://example.com/sitemap.xml

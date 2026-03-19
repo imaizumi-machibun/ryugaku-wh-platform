@@ -1,101 +1,159 @@
-import Image from "next/image";
+import Link from 'next/link';
+import { getCountries } from '@/lib/microcms/countries';
+import { getExperiences } from '@/lib/microcms/experiences';
+import { getSchools } from '@/lib/microcms/schools';
+import { getReviews } from '@/lib/microcms/reviews';
+import { getArticles } from '@/lib/microcms/articles';
+import HeroSection from '@/components/home/HeroSection';
+import FeaturedCountries from '@/components/home/FeaturedCountries';
+import LatestExperiences from '@/components/home/LatestExperiences';
+import StatsOverview from '@/components/home/StatsOverview';
+import DiscoveryPathways from '@/components/home/DiscoveryPathways';
+import TrustBanner from '@/components/home/TrustBanner';
+import BeginnerGuide from '@/components/home/BeginnerGuide';
+import SchoolCard from '@/components/school/SchoolCard';
+import JsonLd from '@/components/seo/JsonLd';
+import { generateWebSiteJsonLd, generateOrganizationJsonLd } from '@/lib/seo/jsonld';
+import Card from '@/components/ui/Card';
+import Badge from '@/components/ui/Badge';
+import { ARTICLE_CATEGORIES } from '@/lib/utils/constants';
+import { formatDate } from '@/lib/utils/format';
+import Image from 'next/image';
 
-export default function Home() {
+export const revalidate = 3600;
+
+export default async function HomePage() {
+  const [countriesData, experiencesData, schoolsData, reviewsData, articlesData] =
+    await Promise.all([
+      getCountries({ limit: 100 }),
+      getExperiences({ limit: 6 }),
+      getSchools({ limit: 100 }),
+      getReviews({ limit: 100 }),
+      getArticles({ limit: 4, filters: 'isFeatured[equals]true' }).catch(() =>
+        getArticles({ limit: 4 })
+      ),
+    ]);
+
+  const featuredCountries = countriesData.contents.slice(0, 8);
+
+  const featuredSchools = schoolsData.contents.filter((s) => s.isFeatured).slice(0, 4);
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <>
+      <JsonLd data={generateWebSiteJsonLd()} />
+      <JsonLd data={generateOrganizationJsonLd()} />
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Hero */}
+      <HeroSection />
+
+      {/* Trust Banner */}
+      <TrustBanner countryCount={countriesData.totalCount} />
+
+      {/* Stats */}
+      <StatsOverview
+        countryCount={countriesData.totalCount}
+        schoolCount={schoolsData.totalCount}
+        experienceCount={experiencesData.totalCount}
+        reviewCount={reviewsData.totalCount}
+      />
+
+      {/* Discovery Pathways */}
+      <DiscoveryPathways />
+
+      {/* Featured Countries */}
+      <FeaturedCountries countries={featuredCountries} />
+
+      {/* Latest Experiences */}
+      <LatestExperiences experiences={experiencesData.contents} />
+
+      {/* Featured Schools */}
+      {featuredSchools.length > 0 && (
+        <section className="py-12">
+          <div className="container-custom">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold">おすすめの学校</h2>
+              <Link href="/schools" className="text-primary-600 hover:underline text-sm">
+                すべて見る →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {featuredSchools.map((school) => (
+                <SchoolCard key={school.id} school={school} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Featured Articles */}
+      {articlesData.contents.length > 0 && (
+        <section className="py-12 bg-gray-50">
+          <div className="container-custom">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-2xl font-bold">お役立ち記事</h2>
+              <Link href="/articles" className="text-primary-600 hover:underline text-sm">
+                すべて見る →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {articlesData.contents.map((article) => {
+                const catLabel = ARTICLE_CATEGORIES.find((c) => c.value === article.category)?.label;
+                return (
+                  <Link key={article.id} href={`/articles/${article.id}`}>
+                    <Card hover className="h-full">
+                      {article.heroImage && (
+                        <div className="relative h-36 w-full">
+                          <Image
+                            src={article.heroImage.url}
+                            alt={article.title}
+                            fill
+                            className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 25vw"
+                          />
+                        </div>
+                      )}
+                      <div className="p-3">
+                        {catLabel && <Badge variant="primary" className="mb-1">{catLabel}</Badge>}
+                        <h3 className="font-bold text-sm line-clamp-2">{article.title}</h3>
+                        <p className="text-xs text-gray-400 mt-1">
+                          {formatDate(article.publishedAt || article.createdAt)}
+                        </p>
+                      </div>
+                    </Card>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Beginner Guide */}
+      <BeginnerGuide />
+
+      {/* CTA */}
+      <section className="py-16">
+        <div className="container-custom text-center">
+          <h2 className="text-2xl font-bold mb-4">あなたの体験をシェアしませんか？</h2>
+          <p className="text-gray-600 mb-6">
+            留学・ワーホリ経験者の声がこれから行く人の道しるべになります
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Link
+              href="/submit/experience"
+              className="bg-accent-500 text-white font-semibold px-8 py-3 rounded-lg hover:bg-accent-600 transition-colors shadow-lg"
+            >
+              体験談を投稿する
+            </Link>
+            <Link
+              href="/submit/review"
+              className="border-2 border-accent-500 text-accent-600 font-semibold px-8 py-3 rounded-lg hover:bg-accent-50 transition-colors"
+            >
+              口コミを投稿する
+            </Link>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+    </>
   );
 }
