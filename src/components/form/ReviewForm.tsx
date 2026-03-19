@@ -1,16 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import type { School, Country } from '@/lib/microcms/types';
+import type { School } from '@/lib/microcms/types';
 import StarRatingInput from '@/components/ui/StarRatingInput';
 
 type Props = {
   schools: School[];
-  countries: Country[];
   defaultSchoolId?: string;
 };
 
-export default function ReviewForm({ schools, countries, defaultSchoolId }: Props) {
+export default function ReviewForm({ schools, defaultSchoolId }: Props) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);

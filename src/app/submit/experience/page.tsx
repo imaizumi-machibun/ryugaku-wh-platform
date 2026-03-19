@@ -15,7 +15,7 @@ export const metadata: Metadata = generatePageMetadata({
 export default async function SubmitExperiencePage() {
   const [countriesData, schoolsData] = await Promise.all([
     getCountries({ limit: 100 }),
-    getSchools({ limit: 200 }),
+    getSchools({ limit: 100 }),
   ]);
 
   return (

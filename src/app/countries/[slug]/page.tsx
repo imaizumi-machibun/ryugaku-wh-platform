@@ -16,7 +16,6 @@ import { generatePageMetadata } from '@/lib/seo/metadata';
 import { generateCountryJsonLd, generateFAQJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
 import { generateCountryFAQs } from '@/lib/seo/faq-generator';
 import { aggregateExperienceRatings } from '@/lib/utils/aggregation';
-import { RATING_LABELS } from '@/lib/utils/constants';
 
 export const revalidate = 1800;
 

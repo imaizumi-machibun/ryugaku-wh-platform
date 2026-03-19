@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { getSchools } from '@/lib/microcms/schools';
-import { getCountries } from '@/lib/microcms/countries';
 import ReviewForm from '@/components/form/ReviewForm';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import { generatePageMetadata } from '@/lib/seo/metadata';
@@ -17,10 +16,7 @@ type Props = {
 };
 
 export default async function SubmitReviewPage({ searchParams }: Props) {
-  const [schoolsData, countriesData] = await Promise.all([
-    getSchools({ limit: 200 }),
-    getCountries({ limit: 100 }),
-  ]);
+  const schoolsData = await getSchools({ limit: 100 });
 
   return (
     <div className="container-custom py-8">
@@ -35,7 +31,6 @@ export default async function SubmitReviewPage({ searchParams }: Props) {
 
       <ReviewForm
         schools={schoolsData.contents}
-        countries={countriesData.contents}
         defaultSchoolId={searchParams.school}
       />
     </div>

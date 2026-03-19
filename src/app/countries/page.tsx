@@ -4,7 +4,6 @@ import CountryCard from '@/components/country/CountryCard';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { REGIONS, COST_LEVELS } from '@/lib/utils/constants';
-import type { Region, CostLevel } from '@/lib/microcms/types';
 
 export const revalidate = 3600;
 
