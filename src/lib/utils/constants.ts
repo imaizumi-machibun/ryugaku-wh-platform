@@ -86,6 +86,6 @@ export const RATING_LABELS = {
   ratingCostPerf: 'コスパ',
 } as const;
 
-export const SITE_NAME = '留学・ワーホリDB';
+export const SITE_NAME = 'Stufy Work Hub';
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://example.com';
 export const PER_PAGE = 12;
