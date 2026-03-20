@@ -7,6 +7,14 @@ export function formatJPY(amount: number | undefined | null): string {
 }
 
 /**
+ * 数値をUSドルフォーマット（$1,234）
+ */
+export function formatUSD(amount: number | undefined | null): string {
+  if (amount == null) return '—';
+  return `$${amount.toLocaleString('en-US')}`;
+}
+
+/**
  * 数値を「約XX万円」形式に
  */
 export function formatManYen(amount: number | undefined | null): string {
