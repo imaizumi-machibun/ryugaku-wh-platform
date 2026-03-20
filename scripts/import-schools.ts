@@ -490,18 +490,29 @@ async function sync(): Promise<void> {
     process.exit(1);
   }
 
-  // 4. データ変換・分類
+  // 3.5. microCMSの既存slug一覧を取得
+  console.log('[3.5/6] Fetching existing school slugs from microCMS...');
+  const existingSchools = await fetchAllSchools(readClient);
+  const existingSlugs = new Set(existingSchools.map((s) => s.id));
+  console.log(`  Found ${existingSlugs.size} existing schools`);
+
+  // 4. データ変換・分類（CSVのslug列で既存判定）
   console.log('[4/6] Transforming and classifying data...');
   const updates: { slug: string; content: SchoolContent; rowIndex: number }[] = [];
   const creates: { slug: string; content: SchoolContent; rowIndex: number }[] = [];
-  const usedSlugs = new Set<string>(Object.values(registry));
 
   const validationErrors: { rowIndex: number; key: string; errors: string[] }[] = [];
 
   for (let i = 0; i < records.length; i++) {
     const r = records[i];
+    const csvSlug = r.slug;
     const key = registryKey(r.name, r.city);
     const rowIndex = i + 2; // 1-indexed + header
+
+    if (!csvSlug || csvSlug.trim() === '') {
+      validationErrors.push({ rowIndex, key, errors: ['slug column is empty'] });
+      continue;
+    }
 
     const content = transformRecord(r, countryMap);
 
@@ -515,13 +526,12 @@ async function sync(): Promise<void> {
       continue;
     }
 
-    if (registry[key]) {
-      // レジストリにある → UPDATE
-      updates.push({ slug: registry[key], content, rowIndex });
+    if (existingSlugs.has(csvSlug)) {
+      // CSVのslugがmicroCMSに存在 → UPDATE
+      updates.push({ slug: csvSlug, content, rowIndex });
     } else {
-      // レジストリにない → CREATE（新規学校）
-      const slug = deduplicateSlug(toSlug(r.name, r.city), usedSlugs);
-      creates.push({ slug, content, rowIndex });
+      // CSVのslugがmicroCMSに存在しない → CREATE
+      creates.push({ slug: csvSlug, content, rowIndex });
     }
   }
 
