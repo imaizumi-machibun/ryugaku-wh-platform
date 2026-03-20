@@ -48,6 +48,8 @@ export default async function HomePage() {
     'united-kingdom',
     'china',
     'philippines',
+    'taiwan',
+    'spain',
   ];
   const featuredCountries = featuredCountryIds
     .map((id) => countriesData.contents.find((c) => c.id === id))
