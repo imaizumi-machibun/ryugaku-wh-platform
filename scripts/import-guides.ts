@@ -145,7 +145,7 @@ async function upsertGuide(entry: GuideEntry, retries = MAX_RETRIES): Promise<vo
         });
         return;
       }
-      if (err.response?.status === 429 && attempt < retries) {
+      if (errStatus === 429 && attempt < retries) {
         console.log(`   ⏳ Rate limited. Waiting 5s...`);
         await sleep(5000);
         continue;
