@@ -104,12 +104,23 @@ async function upsertGuide(entry: GuideEntry, retries = MAX_RETRIES): Promise<vo
     estimatedMinutes: entry.estimatedMinutes,
   };
 
-  // 繰り返しカスタムフィールド（microCMS側で定義済みの場合のみ送信）
-  const SEND_CUSTOM_FIELDS = !process.env.SKIP_CUSTOM_FIELDS;
-  if (SEND_CUSTOM_FIELDS) {
-    if (entry.keyPoints) payload.keyPoints = entry.keyPoints;
-    if (entry.checklist) payload.checklist = entry.checklist;
-    if (entry.tips) payload.tips = entry.tips;
+  // 繰り返しカスタムフィールド
+  // microCMS の fieldId に合わせて変換して送信
+  if (entry.keyPoints) {
+    payload.keyPoints = entry.keyPoints.map((kp) => ({
+      fieldId: 'keyPoints',  // microCMS側の fieldId は複数形
+      text: kp.text,
+    }));
+  }
+  if (entry.checklist) {
+    payload.checklist = entry.checklist;  // fieldId: 'checklistItem' はそのまま
+  }
+  if (entry.tips) {
+    payload.tips = entry.tips.map((t) => ({
+      fieldId: 'tipItem',
+      type: [t.type],  // selectフィールドは配列で送る
+      text: t.text,
+    }));
   }
 
   for (let attempt = 1; attempt <= retries; attempt++) {
@@ -121,8 +132,11 @@ async function upsertGuide(entry: GuideEntry, retries = MAX_RETRIES): Promise<vo
       });
       return;
     } catch (error: unknown) {
-      const err = error as { response?: { status?: number } };
-      if (err.response?.status === 409) {
+      const errMsg = error instanceof Error ? error.message : String(error);
+      const errStatus = (error as { response?: { status?: number } }).response?.status;
+      const isAlreadyExists = errStatus === 409 ||
+        errMsg.includes('already exists');
+      if (isAlreadyExists) {
         // Already exists, try update
         await writeClient.update({
           endpoint: ENDPOINT,
