@@ -87,7 +87,7 @@ export type SchoolFeature =
   | 'certificate'
   | 'activities'
   | 'accommodation';
-export type SchoolLanguage = 'english' | 'french' | 'spanish' | 'german' | 'korean' | 'chinese' | 'italian' | 'portuguese' | 'arabic';
+export type SchoolLanguage = 'english' | 'french' | 'spanish' | 'german' | 'korean' | 'chinese' | 'italian' | 'portuguese' | 'arabic' | 'japanese' | 'thai' | 'vietnamese' | 'dutch' | 'czech' | 'greek';
 export type Accreditation = 'british-council' | 'cambridge-english' | 'ialc' | 'eaquals' | 'neas' | 'languages-canada' | 'celta' | 'acels' | 'nzqa' | 'other';
 export type Facility = 'wifi' | 'study-room' | 'cafe' | 'library' | 'computer-lab' | 'lounge' | 'kitchen' | 'garden' | 'gym' | 'prayer-room';
 export type AccommodationType = 'homestay' | 'student-residence' | 'shared-apartment' | 'studio' | 'hotel' | 'hostel';

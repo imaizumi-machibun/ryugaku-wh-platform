@@ -66,6 +66,7 @@ const COUNTRIES: CountryEntry[] = [
   { id: 'poland', nameJp: 'ポーランド', nameEn: 'Poland', flagEmoji: '🇵🇱', region: 'ヨーロッパ', programStatus: 'open' },
   { id: 'czech-republic', nameJp: 'チェコ', nameEn: 'Czech Republic', flagEmoji: '🇨🇿', region: 'ヨーロッパ', programStatus: 'open' },
   { id: 'greece', nameJp: 'ギリシャ', nameEn: 'Greece', flagEmoji: '🇬🇷', region: 'ヨーロッパ', programStatus: 'open' },
+  { id: 'hungary', nameJp: 'ハンガリー', nameEn: 'Hungary', flagEmoji: '🇭🇺', region: 'ヨーロッパ', programStatus: 'open' },
   { id: 'malta', nameJp: 'マルタ', nameEn: 'Malta', flagEmoji: '🇲🇹', region: 'ヨーロッパ', programStatus: 'open' },
   { id: 'russia', nameJp: 'ロシア', nameEn: 'Russia', flagEmoji: '🇷🇺', region: 'ヨーロッパ', programStatus: 'open' },
 
@@ -85,6 +86,7 @@ const COUNTRIES: CountryEntry[] = [
   { id: 'malaysia', nameJp: 'マレーシア', nameEn: 'Malaysia', flagEmoji: '🇲🇾', region: 'アジア', programStatus: 'open' },
   { id: 'singapore', nameJp: 'シンガポール', nameEn: 'Singapore', flagEmoji: '🇸🇬', region: 'アジア', programStatus: 'open' },
   { id: 'india', nameJp: 'インド', nameEn: 'India', flagEmoji: '🇮🇳', region: 'アジア', programStatus: 'open' },
+  { id: 'hong-kong', nameJp: '香港', nameEn: 'Hong Kong', flagEmoji: '🇭🇰', region: 'アジア', programStatus: 'open' },
 
   // 南米・中米・カリブ
   { id: 'brazil', nameJp: 'ブラジル', nameEn: 'Brazil', flagEmoji: '🇧🇷', region: '南米', programStatus: 'open' },
@@ -101,6 +103,7 @@ const COUNTRIES: CountryEntry[] = [
   { id: 'honduras', nameJp: 'ホンジュラス', nameEn: 'Honduras', flagEmoji: '🇭🇳', region: '南米', programStatus: 'open' },
   { id: 'cuba', nameJp: 'キューバ', nameEn: 'Cuba', flagEmoji: '🇨🇺', region: '南米', programStatus: 'open' },
   { id: 'dominican-republic', nameJp: 'ドミニカ共和国', nameEn: 'Dominican Republic', flagEmoji: '🇩🇴', region: '南米', programStatus: 'open' },
+  { id: 'el-salvador', nameJp: 'エルサルバドル', nameEn: 'El Salvador', flagEmoji: '🇸🇻', region: '南米', programStatus: 'open' },
 
   // 中東・アフリカ
   { id: 'uae', nameJp: 'アラブ首長国連邦', nameEn: 'United Arab Emirates', flagEmoji: '🇦🇪', region: '中東', programStatus: 'open' },

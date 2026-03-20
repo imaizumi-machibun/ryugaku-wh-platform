@@ -68,6 +68,12 @@ export const SCHOOL_LANGUAGES: { value: SchoolLanguage; label: string }[] = [
   { value: 'italian', label: 'イタリア語' },
   { value: 'portuguese', label: 'ポルトガル語' },
   { value: 'arabic', label: 'アラビア語' },
+  { value: 'japanese', label: '日本語' },
+  { value: 'thai', label: 'タイ語' },
+  { value: 'vietnamese', label: 'ベトナム語' },
+  { value: 'dutch', label: 'オランダ語' },
+  { value: 'czech', label: 'チェコ語' },
+  { value: 'greek', label: 'ギリシャ語' },
 ];
 
 export const ACCREDITATIONS: { value: Accreditation; label: string }[] = [

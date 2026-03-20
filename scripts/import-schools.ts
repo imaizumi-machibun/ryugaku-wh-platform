@@ -33,7 +33,7 @@ const RESUME = args.includes('--resume');
 // ============================================================
 // 定数
 // ============================================================
-const CSV_PATH = path.resolve(__dirname, '..', 'data', 'schools_data.csv');
+const CSV_PATH = path.resolve(__dirname, '..', 'data', 'schools_data_new.csv');
 const PROGRESS_PATH = path.resolve(__dirname, '.import-progress.json');
 const REQUEST_DELAY_MS = 300;
 const MAX_RETRIES = 3;
@@ -73,6 +73,7 @@ const featureEnum = z.enum([
 ]);
 const languageEnum = z.enum([
   'english', 'french', 'spanish', 'german', 'korean', 'chinese', 'italian', 'portuguese', 'arabic',
+  'japanese', 'thai', 'vietnamese', 'dutch', 'czech', 'greek',
 ]);
 const accreditationEnum = z.enum([
   'british-council', 'cambridge-english', 'ialc', 'eaquals', 'neas',
@@ -135,7 +136,7 @@ function toSlug(name: string, city: string): string {
     .replace(/\s+/g, '-')            // スペースをハイフンに
     .replace(/-+/g, '-')             // 連続ハイフンを1つに
     .replace(/^-|-$/g, '')           // 先頭・末尾のハイフン除去
-    .slice(0, 64);                   // microCMS ID制約: 最大64文字
+    .slice(0, 50);                   // microCMS ID制約: 最大50文字
 }
 
 /** 重複スラッグにサフィックスを付与 */
@@ -417,6 +418,7 @@ async function main(): Promise<void> {
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : String(err);
         if (msg.includes('status: 400')) {
+          console.error(`\n  ⚠ Create failed for Row ${rowIndex} (${slug}): ${msg}`);
           // 既存コンテンツの可能性 → updateで上書き
           try {
             await writeClient.update({
@@ -426,7 +428,7 @@ async function main(): Promise<void> {
             });
             success = true;
           } catch (updateErr: unknown) {
-            console.error(`\n  ✗ Row ${rowIndex} (${slug}): ${updateErr instanceof Error ? updateErr.message : updateErr}`);
+            console.error(`  ✗ Update also failed: ${updateErr instanceof Error ? updateErr.message : updateErr}`);
           }
           break;
         } else if (msg.includes('status: 429')) {
