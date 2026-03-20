@@ -41,7 +41,17 @@ export default async function HomePage() {
       ),
     ]);
 
-  const featuredCountries = countriesData.contents.slice(0, 8);
+  const featuredCountryIds = [
+    'united-states',
+    'canada',
+    'australia',
+    'united-kingdom',
+    'china',
+    'philippines',
+  ];
+  const featuredCountries = featuredCountryIds
+    .map((id) => countriesData.contents.find((c) => c.id === id))
+    .filter((c): c is NonNullable<typeof c> => c != null);
 
   const featuredSchools = schoolsData.contents.filter((s) => s.isFeatured).slice(0, 4);
 
