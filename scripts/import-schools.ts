@@ -1,10 +1,10 @@
 /**
- * CSV学校データをmicroCMSにインポートするスクリプト
+ * CSV学校データをmicroCMSにインポートするスクリプト（レジストリベース）
  *
  * Usage:
- *   npx tsx scripts/import-schools.ts --dry-run   # バリデーションのみ
- *   npx tsx scripts/import-schools.ts              # 本番インポート
- *   npx tsx scripts/import-schools.ts --resume     # 中断再開
+ *   npx tsx scripts/import-schools.ts --init-registry  # レジストリ初期構築
+ *   npx tsx scripts/import-schools.ts --sync            # 同期（更新・新規作成）
+ *   npx tsx scripts/import-schools.ts --sync --dry-run  # プレビュー（API呼び出しなし）
  */
 
 import * as fs from 'fs';
@@ -27,17 +27,46 @@ const MICROCMS_WRITE_API_KEY = process.env.MICROCMS_WRITE_API_KEY;
 // CLI引数
 // ============================================================
 const args = process.argv.slice(2);
+const INIT_REGISTRY = args.includes('--init-registry');
+const SYNC = args.includes('--sync');
 const DRY_RUN = args.includes('--dry-run');
-const RESUME = args.includes('--resume');
+
+if (!INIT_REGISTRY && !SYNC) {
+  console.error('Usage:');
+  console.error('  npx tsx scripts/import-schools.ts --init-registry');
+  console.error('  npx tsx scripts/import-schools.ts --sync [--dry-run]');
+  process.exit(1);
+}
 
 // ============================================================
 // 定数
 // ============================================================
 const CSV_PATH = path.resolve(__dirname, '..', 'data', 'schools_data_new.csv');
+const REGISTRY_PATH = path.resolve(__dirname, '..', 'data', 'school-registry.json');
 const PROGRESS_PATH = path.resolve(__dirname, '.import-progress.json');
 const REQUEST_DELAY_MS = 300;
 const MAX_RETRIES = 3;
 const SAVE_INTERVAL = 10;
+
+// ============================================================
+// レジストリ型定義・読み書き
+// ============================================================
+type Registry = Record<string, string>; // "name|city" → slug
+
+function registryKey(name: string, city: string): string {
+  return `${name}|${city}`;
+}
+
+function loadRegistry(): Registry {
+  if (fs.existsSync(REGISTRY_PATH)) {
+    return JSON.parse(fs.readFileSync(REGISTRY_PATH, 'utf-8'));
+  }
+  return {};
+}
+
+function saveRegistry(registry: Registry): void {
+  fs.writeFileSync(REGISTRY_PATH, JSON.stringify(registry, null, 2) + '\n');
+}
 
 // ============================================================
 // microCMSクライアント
@@ -51,7 +80,7 @@ function createClients() {
     apiKey: MICROCMS_API_KEY,
   });
 
-  if (!DRY_RUN) {
+  if (!DRY_RUN && !INIT_REGISTRY) {
     if (!MICROCMS_WRITE_API_KEY) throw new Error('MICROCMS_WRITE_API_KEY is required');
   }
 
@@ -61,6 +90,33 @@ function createClients() {
   });
 
   return { readClient, writeClient };
+}
+
+// ============================================================
+// microCMS全学校取得（ページネーション付き）
+// ============================================================
+async function fetchAllSchools(
+  readClient: ReturnType<typeof createClient>
+): Promise<{ id: string; name: string; city: string }[]> {
+  const schools: { id: string; name: string; city: string }[] = [];
+  const limit = 100;
+  let offset = 0;
+
+  while (true) {
+    const res = await readClient.getList<{ name: string; city: string }>({
+      endpoint: 'schools',
+      queries: { fields: ['id', 'name', 'city'], limit, offset },
+    });
+    for (const s of res.contents) {
+      schools.push({ id: s.id, name: s.name, city: s.city });
+    }
+    console.log(`  Fetched ${schools.length}/${res.totalCount} schools...`);
+    if (offset + limit >= res.totalCount) break;
+    offset += limit;
+    await sleep(REQUEST_DELAY_MS);
+  }
+
+  return schools;
 }
 
 // ============================================================
@@ -248,29 +304,23 @@ function printProgress(current: number, total: number, label: string): void {
 }
 
 // ============================================================
-// メイン処理
+// CSV読み込み
 // ============================================================
-async function main(): Promise<void> {
-  console.log('=== School Data Import ===');
-  console.log(`Mode: ${DRY_RUN ? 'DRY RUN (validation only)' : 'LIVE IMPORT'}`);
-  if (RESUME) console.log('Resume: enabled');
-  console.log();
-
-  // 1. CSV読み込み
-  console.log('[1/6] Reading CSV...');
+function readCsv(): Record<string, string>[] {
   const csvContent = fs.readFileSync(CSV_PATH, 'utf-8');
-  const records: Record<string, string>[] = parse(csvContent, {
+  return parse(csvContent, {
     columns: true,
     skip_empty_lines: true,
     trim: true,
   });
-  console.log(`  Found ${records.length} records`);
+}
 
-  // 2. microCMSクライアント作成 & 国マッピング
-  console.log('[2/6] Fetching countries from microCMS...');
-  const { readClient, writeClient } = createClients();
-
-  // 国マスタ全件取得（100件ずつページネーション）
+// ============================================================
+// 国マッピング取得
+// ============================================================
+async function fetchCountryMap(
+  readClient: ReturnType<typeof createClient>
+): Promise<Map<string, string>> {
   const countryMap = new Map<string, string>(); // nameJp → id
   let offset = 0;
   const limit = 100;
@@ -285,141 +335,282 @@ async function main(): Promise<void> {
     if (offset + limit >= res.totalCount) break;
     offset += limit;
   }
-  console.log(`  Found ${countryMap.size} countries in microCMS`);
+  return countryMap;
+}
 
-  // CSV内の国名を収集して検証
+// ============================================================
+// CSVレコードをSchoolContentに変換
+// ============================================================
+function transformRecord(
+  r: Record<string, string>,
+  countryMap: Map<string, string>
+): SchoolContent {
+  return omitUndefined({
+    name: r.name,
+    country: countryMap.get(r.country)!,
+    city: r.city,
+    description: r.description || undefined,
+    courseTypes: splitCsv(r.courseTypes) as SchoolContent['courseTypes'],
+    costRange: (r.costRange || undefined) as SchoolContent['costRange'],
+    weeklyFeeLow: toInt(r.weeklyFeeLow),
+    weeklyFeeHigh: toInt(r.weeklyFeeHigh),
+    features: splitCsv(r.features) as SchoolContent['features'],
+    website: r.website || undefined,
+    address: r.address || undefined,
+    isFeatured: toBool(r.isFeatured),
+    foundedYear: toInt(r.foundedYear),
+    totalStudents: toInt(r.totalStudents),
+    averageClassSize: toInt(r.averageClassSize),
+    japaneseRatio: toNum(r.japaneseRatio),
+    nationalityCount: toInt(r.nationalityCount),
+    minimumAge: toInt(r.minimumAge),
+    classroomCount: toInt(r.classroomCount),
+    email: toEmail(r.email),
+    phone: r.phone || undefined,
+    nearestStation: r.nearestStation || undefined,
+    latitude: toNum(r.latitude),
+    longitude: toNum(r.longitude),
+    languages: splitCsv(r.languages) as SchoolContent['languages'],
+    accreditations: splitCsv(r.accreditations) as SchoolContent['accreditations'],
+    facilities: splitCsv(r.facilities) as SchoolContent['facilities'],
+    accommodationTypes: splitCsv(r.accommodationTypes) as SchoolContent['accommodationTypes'],
+    airportPickup: toBool(r.airportPickup),
+    minimumWeeks: toInt(r.minimumWeeks),
+  }) as SchoolContent;
+}
+
+// ============================================================
+// --init-registry モード
+// ============================================================
+async function initRegistry(): Promise<void> {
+  console.log('=== Init Registry ===\n');
+
+  // 1. CSV読み込み
+  console.log('[1/4] Reading CSV...');
+  const records = readCsv();
+  console.log(`  Found ${records.length} records`);
+
+  // 2. microCMSから全学校取得
+  console.log('[2/4] Fetching all schools from microCMS...');
+  const { readClient } = createClients();
+  const existingSchools = await fetchAllSchools(readClient);
+  console.log(`  Found ${existingSchools.length} schools in microCMS`);
+
+  // microCMSの学校を slug → {name, city} のマップに
+  const cmsSlugMap = new Map<string, { name: string; city: string }>();
+  for (const s of existingSchools) {
+    cmsSlugMap.set(s.id, { name: s.name, city: s.city });
+  }
+
+  // 既存slugの集合（重複排除用）
+  const existingSlugs = new Set(existingSchools.map((s) => s.id));
+
+  // 3. CSVとmicroCMSのマッチング
+  console.log('[3/4] Matching CSV rows to microCMS entries...');
+  const registry: Registry = {};
+  const usedSlugs = new Set<string>();
+  let matchCount = 0;
+  let unmatchedCount = 0;
+
+  for (const r of records) {
+    const key = registryKey(r.name, r.city);
+    const slug = deduplicateSlug(toSlug(r.name, r.city), usedSlugs);
+
+    if (existingSlugs.has(slug)) {
+      // slug がmicroCMSに存在 → マッチ
+      registry[key] = slug;
+      matchCount++;
+    } else {
+      // slugが見つからない場合、name+cityでmicroCMS側を検索
+      let found = false;
+      const cmsEntries = Array.from(cmsSlugMap.entries());
+      for (const [cmsSlug, cms] of cmsEntries) {
+        if (cms.name === r.name && cms.city === r.city && !Object.values(registry).includes(cmsSlug)) {
+          registry[key] = cmsSlug;
+          matchCount++;
+          found = true;
+          break;
+        }
+      }
+      if (!found) {
+        // マッチなし → 生成したslugをレジストリに登録
+        registry[key] = slug;
+        unmatchedCount++;
+      }
+    }
+  }
+
+  // 4. レジストリ保存
+  console.log('[4/4] Saving registry...');
+  saveRegistry(registry);
+
+  console.log(`\n  Matched:   ${matchCount}`);
+  console.log(`  Unmatched: ${unmatchedCount}`);
+  console.log(`  Total:     ${Object.keys(registry).length}`);
+  console.log(`\n  Registry saved to ${REGISTRY_PATH}`);
+}
+
+// ============================================================
+// --sync モード
+// ============================================================
+async function sync(): Promise<void> {
+  console.log('=== School Data Sync ===');
+  console.log(`Mode: ${DRY_RUN ? 'DRY RUN (preview only)' : 'LIVE SYNC'}`);
+  console.log();
+
+  // 1. レジストリ読み込み
+  console.log('[1/6] Loading registry...');
+  const registry = loadRegistry();
+  const registrySize = Object.keys(registry).length;
+  if (registrySize === 0) {
+    console.error('  Registry is empty. Run --init-registry first.');
+    process.exit(1);
+  }
+  console.log(`  Loaded ${registrySize} entries`);
+
+  // 2. CSV読み込み
+  console.log('[2/6] Reading CSV...');
+  const records = readCsv();
+  console.log(`  Found ${records.length} records`);
+
+  // 3. 国マッピング取得
+  console.log('[3/6] Fetching countries from microCMS...');
+  const { readClient, writeClient } = createClients();
+  const countryMap = await fetchCountryMap(readClient);
+  console.log(`  Found ${countryMap.size} countries`);
+
+  // CSV内の国名を検証
   const csvCountries = new Set(records.map((r) => r.country));
   const missingCountries = Array.from(csvCountries).filter((c) => !countryMap.has(c));
   if (missingCountries.length > 0) {
-    console.error('\n❌ Missing countries in microCMS:');
+    console.error('\n  Missing countries in microCMS:');
     for (const c of missingCountries) {
-      console.error(`  - ${c}`);
+      console.error(`    - ${c}`);
     }
     process.exit(1);
   }
-  console.log(`  All ${csvCountries.size} countries found in microCMS ✓`);
 
-  // 3. データ変換
-  console.log('[3/6] Transforming data...');
-  const usedSlugs = new Set<string>();
-  const transformedRecords: { slug: string; content: SchoolContent; rowIndex: number }[] = [];
+  // 4. データ変換・分類
+  console.log('[4/6] Transforming and classifying data...');
+  const updates: { slug: string; content: SchoolContent; rowIndex: number }[] = [];
+  const creates: { slug: string; content: SchoolContent; rowIndex: number }[] = [];
+  const usedSlugs = new Set<string>(Object.values(registry));
+
+  const validationErrors: { rowIndex: number; key: string; errors: string[] }[] = [];
 
   for (let i = 0; i < records.length; i++) {
     const r = records[i];
-    const slug = deduplicateSlug(toSlug(r.name, r.city), usedSlugs);
+    const key = registryKey(r.name, r.city);
+    const rowIndex = i + 2; // 1-indexed + header
 
-    const content: SchoolContent = omitUndefined({
-      name: r.name,
-      country: countryMap.get(r.country)!,
-      city: r.city,
-      description: r.description || undefined,
-      courseTypes: splitCsv(r.courseTypes) as SchoolContent['courseTypes'],
-      costRange: (r.costRange || undefined) as SchoolContent['costRange'],
-      weeklyFeeLow: toInt(r.weeklyFeeLow),
-      weeklyFeeHigh: toInt(r.weeklyFeeHigh),
-      features: splitCsv(r.features) as SchoolContent['features'],
-      website: r.website || undefined,
-      address: r.address || undefined,
-      isFeatured: toBool(r.isFeatured),
-      foundedYear: toInt(r.foundedYear),
-      totalStudents: toInt(r.totalStudents),
-      averageClassSize: toInt(r.averageClassSize),
-      japaneseRatio: toNum(r.japaneseRatio),
-      nationalityCount: toInt(r.nationalityCount),
-      minimumAge: toInt(r.minimumAge),
-      classroomCount: toInt(r.classroomCount),
-      email: toEmail(r.email),
-      phone: r.phone || undefined,
-      nearestStation: r.nearestStation || undefined,
-      latitude: toNum(r.latitude),
-      longitude: toNum(r.longitude),
-      languages: splitCsv(r.languages) as SchoolContent['languages'],
-      accreditations: splitCsv(r.accreditations) as SchoolContent['accreditations'],
-      facilities: splitCsv(r.facilities) as SchoolContent['facilities'],
-      accommodationTypes: splitCsv(r.accommodationTypes) as SchoolContent['accommodationTypes'],
-      airportPickup: toBool(r.airportPickup),
-      minimumWeeks: toInt(r.minimumWeeks),
-    }) as SchoolContent;
+    const content = transformRecord(r, countryMap);
 
-    transformedRecords.push({ slug, content, rowIndex: i + 2 }); // +2 for 1-indexed + header
-  }
-  console.log(`  Transformed ${transformedRecords.length} records`);
-
-  // 4. Zodバリデーション
-  console.log('[4/6] Validating data...');
-  const validationErrors: { rowIndex: number; slug: string; errors: string[] }[] = [];
-
-  for (const { slug, content, rowIndex } of transformedRecords) {
+    // バリデーション
     const result = schoolContentSchema.safeParse(content);
     if (!result.success) {
       const errors = result.error.issues.map(
         (issue) => `${issue.path.join('.')}: ${issue.message}`
       );
-      validationErrors.push({ rowIndex, slug, errors });
+      validationErrors.push({ rowIndex, key, errors });
+      continue;
+    }
+
+    if (registry[key]) {
+      // レジストリにある → UPDATE
+      updates.push({ slug: registry[key], content, rowIndex });
+    } else {
+      // レジストリにない → CREATE（新規学校）
+      const slug = deduplicateSlug(toSlug(r.name, r.city), usedSlugs);
+      creates.push({ slug, content, rowIndex });
     }
   }
 
   if (validationErrors.length > 0) {
-    console.error(`\n❌ Validation failed for ${validationErrors.length} records:`);
-    for (const { rowIndex, slug, errors } of validationErrors) {
-      console.error(`\n  Row ${rowIndex} (${slug}):`);
+    console.error(`\n  Validation failed for ${validationErrors.length} records:`);
+    for (const { rowIndex, key, errors } of validationErrors) {
+      console.error(`\n  Row ${rowIndex} (${key}):`);
       for (const err of errors) {
         console.error(`    - ${err}`);
       }
     }
     process.exit(1);
   }
-  console.log(`  All ${transformedRecords.length} records valid ✓`);
+  console.log(`  All ${records.length} records valid`);
+  console.log(`  Updates: ${updates.length}, Creates: ${creates.length}`);
 
-  // 5. ドライランならここで終了
+  // 5. DRY RUNならプレビューして終了
   if (DRY_RUN) {
-    console.log('\n[5/6] Dry run — skipping API calls');
-    console.log('[6/6] Done');
-    console.log(`\n✅ Dry run complete. ${transformedRecords.length} records ready to import.`);
+    console.log('\n[5/6] Dry run - skipping API calls');
+    console.log('[6/6] Done\n');
+    console.log('[DRY RUN] Result:');
+    console.log(`  Updates: ${updates.length}`);
+    console.log(`  Creates: ${creates.length}`);
 
-    // サンプル出力
-    console.log('\nSample record (first):');
-    const sample = transformedRecords[0];
-    console.log(`  Slug: ${sample.slug}`);
-    console.log(`  Content: ${JSON.stringify(sample.content, null, 2).split('\n').join('\n  ')}`);
+    if (creates.length > 0) {
+      console.log('\n  New schools:');
+      for (const { slug, content } of creates) {
+        console.log(`    + ${slug} (${content.name}, ${content.city})`);
+      }
+    }
+    if (updates.length > 0 && updates.length <= 20) {
+      console.log('\n  Updates:');
+      for (const { slug, content } of updates) {
+        console.log(`    ~ ${slug} (${content.name}, ${content.city})`);
+      }
+    }
     return;
   }
 
   // 6. microCMS書き込み
-  console.log('[5/6] Importing to microCMS...');
-  const progress = RESUME ? loadProgress() : { completedSlugs: [], failedRows: [] };
+  console.log('[5/6] Syncing to microCMS...');
+  const allRecords = [
+    ...creates.map((c) => ({ ...c, action: 'create' as const })),
+    ...updates.map((u) => ({ ...u, action: 'update' as const })),
+  ];
+  const progress = loadProgress();
   const completedSet = new Set(progress.completedSlugs);
-  let successCount = completedSet.size;
+  let successCount = 0;
   let failCount = 0;
   let skipCount = 0;
 
-  for (let i = 0; i < transformedRecords.length; i++) {
-    const { slug, content, rowIndex } = transformedRecords[i];
+  for (let i = 0; i < allRecords.length; i++) {
+    const { slug, content, rowIndex, action } = allRecords[i];
 
     // 既に完了済みならスキップ
     if (completedSet.has(slug)) {
       skipCount++;
-      printProgress(i + 1, transformedRecords.length, `Skipped: ${slug}`);
+      printProgress(i + 1, allRecords.length, `Skipped: ${slug}`);
       continue;
     }
 
-    // リトライ付きAPI呼び出し（create → 既存なら update にフォールバック）
     let success = false;
     const apiContent = wrapSelectFields(content as unknown as Record<string, unknown>);
+
     for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
       try {
-        await writeClient.create({
-          endpoint: 'schools',
-          contentId: slug,
-          content: apiContent,
-        });
+        if (action === 'create') {
+          await writeClient.create({
+            endpoint: 'schools',
+            contentId: slug,
+            content: apiContent,
+          });
+        } else {
+          await writeClient.update({
+            endpoint: 'schools',
+            contentId: slug,
+            content: apiContent,
+          });
+        }
         success = true;
         break;
       } catch (err: unknown) {
         const msg = err instanceof Error ? err.message : String(err);
-        if (msg.includes('status: 400')) {
-          console.error(`\n  ⚠ Create failed for Row ${rowIndex} (${slug}): ${msg}`);
-          // 既存コンテンツの可能性 → updateで上書き
+        if (msg.includes('status: 429')) {
+          const backoff = Math.pow(2, attempt) * 1000;
+          console.log(`\n  Rate limited on row ${rowIndex}, retrying in ${backoff}ms...`);
+          await sleep(backoff);
+        } else if (action === 'create' && msg.includes('status: 400')) {
+          // 既に存在する場合 → updateにフォールバック
           try {
             await writeClient.update({
               endpoint: 'schools',
@@ -428,15 +619,11 @@ async function main(): Promise<void> {
             });
             success = true;
           } catch (updateErr: unknown) {
-            console.error(`  ✗ Update also failed: ${updateErr instanceof Error ? updateErr.message : updateErr}`);
+            console.error(`\n  Update fallback failed for ${slug}: ${updateErr instanceof Error ? updateErr.message : updateErr}`);
           }
           break;
-        } else if (msg.includes('status: 429')) {
-          const backoff = Math.pow(2, attempt) * 1000;
-          console.log(`\n  ⚠ Rate limited on row ${rowIndex}, retrying in ${backoff}ms...`);
-          await sleep(backoff);
         } else {
-          console.error(`\n  ✗ Row ${rowIndex} (${slug}): ${msg}`);
+          console.error(`\n  Row ${rowIndex} (${slug}): ${msg}`);
           break;
         }
       }
@@ -451,37 +638,52 @@ async function main(): Promise<void> {
       progress.failedRows.push(rowIndex);
     }
 
-    printProgress(i + 1, transformedRecords.length, success ? `✓ ${slug}` : `✗ ${slug}`);
+    printProgress(i + 1, allRecords.length, success ? `${action === 'create' ? '+' : '~'} ${slug}` : `x ${slug}`);
 
-    // 進捗を定期保存
     if ((i + 1) % SAVE_INTERVAL === 0) {
       saveProgress(progress);
     }
 
-    // レート制限対策
     await sleep(REQUEST_DELAY_MS);
   }
 
   // 最終進捗保存
   saveProgress(progress);
 
-  // 7. 結果サマリー
-  console.log('\n[6/6] Import complete');
-  console.log(`\n  ✓ Success: ${successCount}`);
-  if (skipCount > 0) console.log(`  ⏭ Skipped: ${skipCount}`);
+  // 7. レジストリ更新（新規作成分を追加）
+  console.log('\n[6/6] Updating registry...');
+  for (const { slug, content } of creates) {
+    const key = registryKey(content.name, content.city);
+    registry[key] = slug;
+  }
+  saveRegistry(registry);
+
+  // 結果サマリー
+  console.log('\n  Result:');
+  console.log(`    Success: ${successCount}`);
+  if (skipCount > 0) console.log(`    Skipped: ${skipCount}`);
   if (failCount > 0) {
-    console.log(`  ✗ Failed:  ${failCount}`);
-    console.log(`  Failed rows: ${progress.failedRows.join(', ')}`);
-    console.log(`\n  Run with --resume to retry failed records.`);
+    console.log(`    Failed:  ${failCount}`);
+    console.log(`    Failed rows: ${progress.failedRows.join(', ')}`);
   }
 
   // 全件成功したら進捗ファイルを削除
   if (failCount === 0) {
     if (fs.existsSync(PROGRESS_PATH)) {
       fs.unlinkSync(PROGRESS_PATH);
-      console.log('  Cleaned up progress file.');
     }
-    console.log(`\n✅ All ${successCount} schools imported successfully!`);
+    console.log(`\n  All ${successCount} schools synced successfully!`);
+  }
+}
+
+// ============================================================
+// メイン
+// ============================================================
+async function main(): Promise<void> {
+  if (INIT_REGISTRY) {
+    await initRegistry();
+  } else if (SYNC) {
+    await sync();
   }
 }
 

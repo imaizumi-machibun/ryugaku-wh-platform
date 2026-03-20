@@ -9,8 +9,9 @@
     "lint": "next lint",
     "import:countries": "tsx scripts/import-countries.ts",
     "import:countries:dry": "tsx scripts/import-countries.ts --dry-run",
-    "import:schools": "tsx scripts/import-schools.ts",
-    "import:schools:dry": "tsx scripts/import-schools.ts --dry-run",
+    "import:schools:init": "tsx scripts/import-schools.ts --init-registry",
+    "import:schools:sync": "tsx scripts/import-schools.ts --sync",
+    "import:schools:dry": "tsx scripts/import-schools.ts --sync --dry-run",
     "import:guides": "tsx scripts/import-guides.ts",
     "import:guides:dry": "tsx scripts/import-guides.ts --dry-run"
   },

@@ -29,11 +29,23 @@ export async function getSchoolBySlug(slug: string): Promise<School> {
 }
 
 export async function getSchoolSlugs(): Promise<string[]> {
-  const data = await client.getList<School>({
-    endpoint: ENDPOINT,
-    queries: { limit: 100, fields: ['id'] },
-  });
-  return data.contents.map((s) => s.id);
+  const slugs: string[] = [];
+  const limit = 100;
+  let offset = 0;
+
+  while (true) {
+    const data = await client.getList<School>({
+      endpoint: ENDPOINT,
+      queries: { limit, offset, fields: ['id'] },
+    });
+    for (const s of data.contents) {
+      slugs.push(s.id);
+    }
+    if (offset + limit >= data.totalCount) break;
+    offset += limit;
+  }
+
+  return slugs;
 }
 
 export function buildSchoolFilters(params: {
