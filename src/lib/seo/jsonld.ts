@@ -1,5 +1,5 @@
 import { SITE_NAME, SITE_URL } from '../utils/constants';
-import type { Country, School, Experience, Article } from '../microcms/types';
+import type { Country, School, Experience, Article, Guide } from '../microcms/types';
 
 export function generateWebSiteJsonLd() {
   return {
@@ -161,6 +161,29 @@ export function generateArticleJsonLd(article: Article) {
     },
     ...(article.heroImage && {
       image: article.heroImage.url,
+    }),
+  };
+}
+
+export function generateGuideJsonLd(guide: Guide) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: guide.title,
+    description: guide.description,
+    datePublished: guide.publishedAt,
+    dateModified: guide.updatedAt,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+    },
+    isPartOf: {
+      '@type': 'CreativeWorkSeries',
+      name: 'ワーホリ完全ガイド',
+      url: `${SITE_URL}/guide`,
+    },
+    ...(guide.heroImage && {
+      image: guide.heroImage.url,
     }),
   };
 }

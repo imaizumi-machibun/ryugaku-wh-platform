@@ -1,0 +1,100 @@
+[
+  {
+    "id": "first-accommodation",
+    "title": "到着直後の滞在先の確保方法",
+    "description": "ワーホリで現地到着後の滞在先の選び方を徹底解説。ホステル・Airbnb・バックパッカーズの比較、予約のコツ、長期滞在先への移行方法まで具体的に紹介します。",
+    "phase": "arrival",
+    "orderInPhase": 1,
+    "body": "<h2 id=\"short-term-options\">到着直後の短期滞在先の選択肢</h2><p>ワーホリで現地に到着したばかりの時期は、まず1〜2週間の短期滞在先を確保することが最優先です。いきなり長期契約の物件を探すのはリスクが高いため、まずは以下の短期滞在オプションを活用しましょう。</p><h3 id=\"hostel\">ホステル・バックパッカーズ</h3><p>最もポピュラーな選択肢がホステルやバックパッカーズです。1泊あたりの相場は国によって異なりますが、オーストラリアで$25〜45/泊、カナダでCAD$30〜50/泊、イギリスで£15〜35/泊が目安です。ドミトリー（相部屋）なら費用を抑えられ、他のワーホリメーカーとの情報交換の場にもなります。</p><p>予約は<strong>Hostelworld</strong>や<strong>Booking.com</strong>で事前に行いましょう。到着日から3〜5泊分を日本から予約しておくと安心です。空港到着が夜遅い場合は特に事前予約が必須です。</p><h3 id=\"airbnb\">Airbnb・短期レンタル</h3><p>プライベート空間を確保したい場合はAirbnbが便利です。個室タイプなら1泊$50〜100程度で、キッチン付きの物件を選べば自炊で食費も節約できます。1週間以上の滞在で割引が適用される物件も多いので、到着後1〜2週間の滞在先として最適です。</p><h3 id=\"homestay\">ホームステイ</h3><p>語学学校に通う予定がある場合、学校が手配するホームステイも選択肢の一つです。食事付きのプランなら到着初日から生活基盤が整い、現地の生活習慣にもスムーズに慣れることができます。相場は週$250〜350程度（食事付き）です。</p><h2 id=\"booking-tips\">予約時のポイントと注意事項</h2><p>短期滞在先を予約する際は、以下のポイントを押さえましょう。</p><p><strong>立地の優先度</strong>：到着直後は土地勘がないため、市内中心部や主要駅の近くを選びましょう。銀行・携帯ショップ・スーパーマーケットへのアクセスが良い場所が理想的です。オーストラリアならシドニーCBDやメルボルンCBD周辺、カナダならダウンタウンエリアが便利です。</p><p><strong>Wi-Fi環境</strong>：到着後は各種手続きのオンライン作業が多いため、安定したWi-Fi環境は必須条件です。レビューでWi-Fi速度に関するコメントを確認しましょう。</p><p><strong>荷物保管</strong>：大きなスーツケースを持ち込めるか、荷物保管スペースがあるかを事前に確認してください。ホステルのドミトリーではロッカーのサイズが限られている場合があります。</p><h2 id=\"long-term-transition\">長期滞在先への移行方法</h2><p>短期滞在先に落ち着いたら、到着1〜2週間以内に長期滞在先を探し始めましょう。主な探し方は以下の通りです。</p><h3 id=\"sharehouse\">シェアハウスの探し方</h3><p>ワーホリの長期滞在先として最も一般的なのがシェアハウスです。国別の主要サイトは以下の通りです。</p><p><strong>オーストラリア</strong>：Flatmates.com.au、Gumtree、Facebook Marketplace<br/><strong>カナダ</strong>：Craigslist、Kijiji、PadMapper<br/><strong>イギリス</strong>：SpareRoom、OpenRent、Rightmove<br/><strong>ニュージーランド</strong>：Trade Me、Flatmates NZ</p><p>内見は必ず実際に行い、契約前にボンド（敷金）の金額、退去時の条件、最低入居期間を確認してください。日本人コミュニティの掲示板やFacebookグループでも物件情報が共有されています。</p><h3 id=\"contract-tips\">契約時の注意点</h3><p>海外の賃貸契約は日本と異なる点が多いです。ボンド（敷金）は通常2〜4週間分の家賃相当額で、退去時に部屋の状態が良ければ返金されます。入居時にはチェックインレポート（Condition Report）を作成し、既存の傷や汚れを写真に記録しておきましょう。これがボンド返金時のトラブル防止になります。</p>",
+    "estimatedMinutes": 7,
+    "keyPoints": [
+      {"fieldId": "keyPoint", "text": "到着直後は1〜2週間分の短期滞在先を事前予約しておく"},
+      {"fieldId": "keyPoint", "text": "ホステル・Airbnb・ホームステイから予算と目的に合わせて選択"},
+      {"fieldId": "keyPoint", "text": "短期滞在中に現地のシェアハウスを探し、長期滞在先に移行する"}
+    ],
+    "tips": [
+      {"fieldId": "tipItem", "type": "tip", "text": "ホステルのドミトリーは他のワーホリメーカーとの情報交換の場になります。仕事や物件の口コミ情報が得られることも多いです。"},
+      {"fieldId": "tipItem", "type": "warning", "text": "到着直後に長期契約を結ぶのは避けましょう。エリアの雰囲気や通勤・通学の利便性は、実際に住んでみないとわかりません。"},
+      {"fieldId": "tipItem", "type": "important", "text": "ボンド（敷金）は必ず受領書をもらい、入居時の部屋の状態は写真と動画で記録しておきましょう。"}
+    ]
+  },
+  {
+    "id": "bank-account-tax-number",
+    "title": "現地銀行口座・納税者番号の取得手順",
+    "description": "ワーホリで必須の現地銀行口座開設と納税者番号（TFN・SIN・NINo等）の取得方法を国別に解説。必要書類・手続きの流れ・所要日数まで具体的に紹介します。",
+    "phase": "arrival",
+    "orderInPhase": 2,
+    "body": "<h2 id=\"why-bank-tax\">銀行口座と納税者番号が必要な理由</h2><p>ワーホリで現地で働くためには、<strong>現地の銀行口座</strong>と<strong>納税者番号</strong>の2つが必須です。銀行口座は給与の受け取りに使われ、納税者番号は雇用主が適切に税金を処理するために必要です。納税者番号がないと最高税率（オーストラリアの場合45%）が適用されるケースもあるため、到着後できるだけ早く取得しましょう。</p><h2 id=\"australia-bank\">オーストラリアの銀行口座開設</h2><h3 id=\"au-bank-options\">おすすめの銀行</h3><p>ワーホリに人気の銀行は<strong>Commonwealth Bank</strong>、<strong>ANZ</strong>、<strong>NAB</strong>、<strong>Westpac</strong>の4大銀行です。中でもCommonwealth Bankは支店・ATMの数が最も多く、アプリも使いやすいため最も人気があります。</p><h3 id=\"au-bank-process\">開設手順</h3><p>オーストラリアでは入国後6週間以内であればパスポートのみで口座開設が可能です（100ポイントIDルールの特例）。6週間を過ぎると追加の身分証明書が必要になるため、到着後すぐに手続きしましょう。</p><p>手順は以下の通りです。①銀行の公式サイトまたはアプリから事前申請（日本出発前でも可能）→ ②到着後に最寄りの支店でID確認（パスポート持参）→ ③デビットカードが1週間前後で届く → ④アプリで口座を有効化。Commonwealth Bankなら渡航前にアプリから口座開設を始められ、到着後の支店訪問がスムーズになります。</p><h3 id=\"au-tfn\">TFN（Tax File Number）の取得</h3><p>オーストラリアで働くにはTFN（Tax File Number）が必要です。<strong>ATO（Australian Taxation Office）の公式サイト</strong>からオンラインで申請でき、申請後28日以内に登録住所へ郵送されます。申請にはパスポート番号とオーストラリアの住所が必要です。TFNは就労開始後28日以内に雇用主に提出する必要があります。</p><h2 id=\"canada-bank\">カナダの銀行口座開設</h2><h3 id=\"ca-bank-options\">おすすめの銀行</h3><p>カナダでは<strong>TD Bank</strong>、<strong>RBC</strong>、<strong>CIBC</strong>、<strong>Scotiabank</strong>、<strong>BMO</strong>の5大銀行が一般的です。新規移民・ワーホリ向けの特別プラン（口座維持手数料無料期間など）を提供している銀行もあるため、各行のニューカマー向けプログラムを比較しましょう。</p><h3 id=\"ca-bank-process\">開設手順</h3><p>カナダでは支店に直接行くか、事前にオンライン予約をして口座開設を行います。必要書類はパスポート、ビザ（Work Permit）、カナダの住所です。口座開設当日にデビットカードが発行されることが多いです。</p><h3 id=\"ca-sin\">SIN（Social Insurance Number）の取得</h3><p>カナダで働くにはSIN（Social Insurance Number）が必要です。<strong>Service Canada</strong>のオフィスに直接行くか、オンラインで申請できます。必要書類はパスポートとWork Permit（ワーキングホリデービザ）です。窓口では当日にSINが発行されます。SINは非常に重要な個人番号なので、書類は安全に保管してください。</p><h2 id=\"uk-bank\">イギリスの銀行口座開設</h2><h3 id=\"uk-bank-options\">おすすめの銀行・サービス</h3><p>イギリスの伝統的な銀行（Barclays、HSBC、Lloyds等）は住所証明の提出が求められるため、到着直後は開設が難しいことがあります。そのため、まずは<strong>Monzo</strong>や<strong>Starling Bank</strong>などのデジタルバンクの利用がおすすめです。アプリから簡単に開設でき、住所証明が不要なケースもあります。</p><h3 id=\"uk-nino\">NINo（National Insurance Number）の取得</h3><p>イギリスで働くにはNINo（National Insurance Number）が必要です。gov.ukのサイトからオンラインで申請し、電話インタビューの予約を行います。申請から番号取得まで数週間かかることがありますが、NINOの申請中でも就労は可能です。雇用主にはNINO申請中である旨を伝えましょう。</p><h2 id=\"nz-bank\">ニュージーランドの銀行口座開設</h2><p>ニュージーランドでは<strong>ANZ</strong>、<strong>ASB</strong>、<strong>BNZ</strong>、<strong>Westpac</strong>が主要銀行です。口座開設にはパスポートとニュージーランドの住所が必要です。ANZは日本からオンラインで事前申請が可能です。</p><h3 id=\"nz-ird\">IRD番号の取得</h3><p>ニュージーランドで働くにはIRD番号（Inland Revenue Department Number）が必要です。IRDの公式サイトからオンラインで申請し、NZの銀行口座番号が申請時に必要です。そのため銀行口座を先に開設してからIRD番号を申請する流れになります。通常1〜2週間で届きます。</p>",
+    "estimatedMinutes": 7,
+    "keyPoints": [
+      {"fieldId": "keyPoint", "text": "銀行口座と納税者番号は現地就労の必須条件。到着後すぐに手続きを開始する"},
+      {"fieldId": "keyPoint", "text": "オーストラリアは入国6週間以内ならパスポートのみで口座開設可能"},
+      {"fieldId": "keyPoint", "text": "納税者番号がないと最高税率が適用される場合があるため早めに取得する"}
+    ],
+    "checklist": [
+      {"fieldId": "checklistItem", "text": "パスポートの原本を用意する", "note": "コピーではなく原本が必須"},
+      {"fieldId": "checklistItem", "text": "ビザ（ワーキングホリデービザ）のコピーを印刷しておく"},
+      {"fieldId": "checklistItem", "text": "現地の住所を確定させる（銀行口座・納税者番号の申請に必要）"},
+      {"fieldId": "checklistItem", "text": "銀行口座を開設する（到着後1週間以内が目標）"},
+      {"fieldId": "checklistItem", "text": "納税者番号をオンラインで申請する（口座開設後すぐに）"},
+      {"fieldId": "checklistItem", "text": "デビットカードを受け取り、アプリの設定を完了する"},
+      {"fieldId": "checklistItem", "text": "納税者番号の通知書を受け取り、安全に保管する"}
+    ],
+    "tips": [
+      {"fieldId": "tipItem", "type": "tip", "text": "オーストラリアのCommonwealth Bankは渡航前にアプリから口座開設の事前手続きが可能です。到着後の支店訪問がスムーズになるため事前に始めておきましょう。"},
+      {"fieldId": "tipItem", "type": "warning", "text": "SIN（カナダ）やTFN（オーストラリア）などの納税者番号は非常に重要な個人情報です。書類は安全に保管し、番号を写真に撮ってクラウドにもバックアップしておきましょう。"},
+      {"fieldId": "tipItem", "type": "important", "text": "オーストラリアでは入国から6週間を過ぎると口座開設に追加の身分証明書が必要になります。到着後すぐに銀行へ行きましょう。"}
+    ]
+  },
+  {
+    "id": "local-sim-setup",
+    "title": "現地SIM契約と通信環境のセットアップ",
+    "description": "ワーホリ到着後の現地SIMカード契約方法を国別に解説。プリペイドSIM・月額プランの比較、おすすめキャリア、空港での購入方法、Wi-Fi確保のコツを紹介します。",
+    "phase": "arrival",
+    "orderInPhase": 3,
+    "body": "<h2 id=\"sim-options\">現地SIMの種類と選び方</h2><p>ワーホリで長期滞在する場合、日本のキャリアの国際ローミングは割高なため、現地のSIMカードに切り替えるのが基本です。主に<strong>プリペイドSIM</strong>と<strong>月額契約SIM（ポストペイド）</strong>の2種類がありますが、ワーホリには解約しやすいプリペイドSIMがおすすめです。</p><p>出発前に日本の携帯をSIMフリー（SIMロック解除済み）にしておくことを忘れないでください。大手キャリア（docomo、au、SoftBank）は契約中でもオンラインでSIMロック解除が可能です。</p><h2 id=\"australia-sim\">オーストラリアのSIM事情</h2><h3 id=\"au-carriers\">主要キャリアとおすすめプラン</h3><p>オーストラリアの主要キャリアは<strong>Telstra</strong>、<strong>Optus</strong>、<strong>Vodafone</strong>の3社です。さらに格安ブランドとして<strong>Amaysim</strong>（Optus回線）、<strong>Boost Mobile</strong>（Telstra回線）、<strong>Woolworths Mobile</strong>なども人気です。</p><p>ワーホリにおすすめなのは<strong>Optusのプリペイドプラン</strong>で、28日間$30〜50で大容量データが利用可能です。都市部でのカバレッジが良好で、空港やスーパーマーケットで簡単に購入できます。ファームワーク等で地方に行く予定がある場合は、地方のカバレッジが最も広い<strong>Telstra</strong>（またはTelstra回線を使うBoost Mobile）を選びましょう。</p><h3 id=\"au-purchase\">購入方法</h3><p>シドニー・メルボルン等の主要空港の到着ロビーにはOptusやVodafoneのカウンターがあります。パスポートの提示とID登録が必要です。また、市内の<strong>Woolworths</strong>や<strong>Coles</strong>などの大手スーパー、<strong>7-Eleven</strong>でもSIMカードを購入できます。</p><h2 id=\"canada-sim\">カナダのSIM事情</h2><p>カナダの主要キャリアは<strong>Rogers</strong>、<strong>Bell</strong>、<strong>Telus</strong>ですが、料金がやや高めです。ワーホリには格安キャリアの<strong>Fido</strong>（Rogers系）、<strong>Koodo</strong>（Telus系）、<strong>Public Mobile</strong>がおすすめです。月額$25〜40で十分なデータ量が確保できます。</p><p>SIMカードは空港のキャリアショップや、市内のショッピングモール内の店舗で購入可能です。<strong>Walmart</strong>や<strong>Best Buy</strong>でもプリペイドSIMが販売されています。</p><h2 id=\"uk-sim\">イギリスのSIM事情</h2><p>イギリスは格安SIM市場が非常に充実しています。<strong>giffgaff</strong>は月額£10〜20でデータ使い放題プランがあり、ワーホリに最も人気です。日本にいる間にgiffgaffの公式サイトから無料でSIMカードを取り寄せることも可能です。その他、<strong>Three</strong>、<strong>VOXI</strong>（Vodafone系）、<strong>Lebara</strong>もコスパの良い選択肢です。</p><p>ヒースロー空港の到着ロビーにはWH SmithやCarphone Warehouseがあり、SIMカードを購入できます。コンビニ（Tesco Express等）でもプリペイドSIMが手に入ります。</p><h2 id=\"nz-sim\">ニュージーランドのSIM事情</h2><p>ニュージーランドでは<strong>Spark</strong>、<strong>Vodafone NZ</strong>、<strong>2degrees</strong>の3社が主要キャリアです。ワーホリには<strong>Spark</strong>のプリペイドが人気で、NZ$19〜39/28日間のプランが利用可能です。都市部だけでなく地方のカバレッジも比較的良好です。</p><h2 id=\"esim-option\">eSIMという選択肢</h2><p>iPhone XS以降やPixel 3以降などeSIM対応端末を持っている場合、<strong>eSIM</strong>の利用も便利です。<strong>Airalo</strong>や<strong>Holafly</strong>などのサービスを使えば、日本にいる間にオンラインでeSIMを購入し、到着後すぐにデータ通信が使えます。ただし、eSIMはデータ通信のみで現地の電話番号が付かないプランが多いため、電話番号が必要な場合は現地SIMとの併用を検討しましょう。</p><h2 id=\"wifi-tips\">Wi-Fi環境の確保</h2><p>SIM契約が完了するまでの間は、空港やカフェ（McDonald'sやStarbucks等）の無料Wi-Fiを活用しましょう。また、滞在先を選ぶ際はWi-Fi環境の良さを必ず確認してください。オンラインでの各種手続き（銀行口座、納税者番号の申請等）にはインターネット環境が不可欠です。</p>",
+    "estimatedMinutes": 5,
+    "keyPoints": [
+      {"fieldId": "keyPoint", "text": "ワーホリにはプリペイドSIMが最適。解約が簡単で費用も抑えられる"},
+      {"fieldId": "keyPoint", "text": "渡航前に必ずスマホのSIMロック解除を済ませておく"},
+      {"fieldId": "keyPoint", "text": "地方（ファーム等）に行く予定がある場合はカバレッジの広いキャリアを選ぶ"}
+    ],
+    "tips": [
+      {"fieldId": "tipItem", "type": "important", "text": "日本出発前にスマホのSIMロック解除を必ず済ませてください。海外ではSIMロック解除ができません。"},
+      {"fieldId": "tipItem", "type": "tip", "text": "イギリスのgiffgaffは日本への無料SIM郵送に対応しています。渡航前に申し込んでおけば到着後すぐに使えます。"},
+      {"fieldId": "tipItem", "type": "warning", "text": "空港のSIMカウンターは到着便が集中する時間帯は混雑します。急ぎでない場合は市内のショップで購入する方がスムーズです。"}
+    ]
+  },
+  {
+    "id": "first-week-checklist",
+    "title": "到着1週間でやるべきことチェックリスト",
+    "description": "ワーホリ到着後の最初の1週間で完了すべき手続き・タスクを優先順位付きで解説。銀行口座開設、SIM契約、住所確定、在留届など必須手続きを漏れなく紹介します。",
+    "phase": "arrival",
+    "orderInPhase": 4,
+    "body": "<h2 id=\"day1\">到着初日（Day 1）：最低限の生活基盤を整える</h2><p>長時間のフライトの後で疲れていますが、初日にやるべきことがいくつかあります。まずは予約済みの滞在先に無事チェックインしましょう。空港からの移動手段（電車、バス、シャトル、Uber等）は事前に調べておくとスムーズです。</p><p><strong>空港でやること</strong>：入国審査でワーキングホリデービザの確認を受けます。入国カードの記入が必要な国（オーストラリア等）もあるため、滞在先の住所を控えておきましょう。到着ロビーにSIMカードのカウンターがあれば、ここで購入するのも効率的です。</p><p><strong>滞在先に着いたら</strong>：Wi-Fiに接続し、日本の家族に到着報告をしましょう。近くのスーパーやコンビニの場所を確認し、水と最低限の食料を調達します。時差ボケがある場合は、現地時間に合わせて早めに休みましょう。</p><h2 id=\"day2-3\">到着2〜3日目：重要な手続きを開始</h2><p>体調が落ち着いたら、重要度の高い手続きから順に進めます。</p><h3 id=\"bank-setup\">銀行口座の開設</h3><p>最寄りの銀行支店を訪問し、口座開設の手続きを行います。パスポートとビザの書類を持参してください。オーストラリアのCommonwealth Bankなど事前にアプリで申し込み済みの場合は、支店でのID確認だけで完了します。所要時間は30分〜1時間程度です。</p><h3 id=\"sim-setup\">SIMカードの契約</h3><p>まだSIMカードを入手していない場合は、キャリアショップやスーパーで購入しましょう。現地の電話番号があると、銀行口座や各種サービスの登録に使えて便利です。</p><h3 id=\"tax-number\">納税者番号の申請</h3><p>オーストラリアのTFN、カナダのSIN、イギリスのNINO、ニュージーランドのIRD番号を申請します。オンラインで申請できるものが多いため、銀行口座開設後にすぐ申請しましょう。</p><h2 id=\"day4-5\">到着4〜5日目：生活基盤を固める</h2><h3 id=\"residence-report\">在留届の提出</h3><p>3か月以上海外に滞在する場合、<strong>在留届</strong>の提出が義務付けられています。外務省の<strong>オンライン在留届（ORRnet）</strong>から簡単に提出できます。在留届を提出しておくと、現地で大規模な災害や事件が発生した際に大使館・領事館からの安否確認や支援を受けることができます。</p><h3 id=\"transport-card\">交通カードの入手</h3><p>公共交通機関を利用するための交通ICカードを入手しましょう。主要都市の交通カードは以下の通りです。</p><p><strong>オーストラリア</strong>：Opal Card（シドニー）、Myki（メルボルン）、Go Card（ブリスベン）<br/><strong>カナダ</strong>：Presto（トロント）、Compass Card（バンクーバー）<br/><strong>イギリス</strong>：Oyster Card / Contactless（ロンドン）<br/><strong>ニュージーランド</strong>：AT HOP Card（オークランド）</p><h3 id=\"supermarket\">スーパーマーケットとポイントカード</h3><p>日常の買い物に使う最寄りのスーパーマーケットを把握しましょう。オーストラリアではWoolworthsやColesのポイントカード（Everyday Rewards、Flybuys）を作ると食費の節約になります。カナダではPC Optimum、イギリスではTesco Clubcardなどが便利です。</p><h2 id=\"day6-7\">到着6〜7日目：次のステップの準備</h2><h3 id=\"housing-search\">長期滞在先の本格的な探索</h3><p>短期滞在先のチェックアウト日を見据え、シェアハウスやアパートの内見を進めます。掲示板やFacebookグループで良さそうな物件をリストアップし、内見のアポイントを入れましょう。</p><h3 id=\"job-prep\">仕事探しの準備</h3><p>レジュメ（CV）をオーストラリア・カナダ・イギリス等の現地フォーマットに合わせて作成します。また、求人サイトへの登録やアカウント作成も済ませておきましょう。</p><h3 id=\"explore-city\">街の探索</h3><p>生活圏となるエリアを実際に歩いて回りましょう。図書館の場所（無料Wi-Fiと勉強スペース）、日本食材店、郵便局、病院・クリニックの場所を確認しておくと安心です。公立図書館ではワーホリビザ保有者でも利用カードを作れる場合が多く、無料のWi-Fiや各種サービスが利用できます。</p><h2 id=\"important-notes\">全体を通しての注意点</h2><p>到着後1週間はやるべきことが多く、焦りを感じるかもしれません。しかし、すべてを1日で終わらせる必要はありません。優先順位をつけて1つずつ確実にこなしていきましょう。また、手続きの際には必ずパスポートの原本を持参してください。コピーや写真では受け付けてもらえないケースがほとんどです。</p><p>各種手続きの控え（口座番号、納税者番号、SIMの電話番号等）は、紙のメモとスマホの両方に記録し、クラウド（Google Drive等）にもバックアップしておくと安心です。</p>",
+    "estimatedMinutes": 8,
+    "keyPoints": [
+      {"fieldId": "keyPoint", "text": "到着後1週間の手続きを優先順位付きで計画的に進める"},
+      {"fieldId": "keyPoint", "text": "銀行口座→SIM契約→納税者番号の順で手続きするのが効率的"},
+      {"fieldId": "keyPoint", "text": "在留届の提出は3か月以上の滞在で義務。安全対策としても重要"}
+    ],
+    "checklist": [
+      {"fieldId": "checklistItem", "text": "滞在先にチェックインし、Wi-Fiに接続する", "note": "到着初日"},
+      {"fieldId": "checklistItem", "text": "現地のSIMカードを購入・開通する", "note": "Day 1〜2"},
+      {"fieldId": "checklistItem", "text": "銀行口座を開設する", "note": "Day 2〜3。パスポート原本必須"},
+      {"fieldId": "checklistItem", "text": "納税者番号（TFN/SIN/NINo/IRD）を申請する", "note": "Day 2〜3。銀行口座開設後に"},
+      {"fieldId": "checklistItem", "text": "在留届をORRnetで提出する", "note": "Day 4〜5。3か月以上の滞在で義務"},
+      {"fieldId": "checklistItem", "text": "交通ICカードを入手する", "note": "Day 4〜5"},
+      {"fieldId": "checklistItem", "text": "スーパーのポイントカードを作る", "note": "Day 4〜5。食費節約に効果的"},
+      {"fieldId": "checklistItem", "text": "長期滞在先の候補をリストアップし内見を始める", "note": "Day 6〜7"},
+      {"fieldId": "checklistItem", "text": "レジュメ（CV）を現地フォーマットで作成する", "note": "Day 6〜7"},
+      {"fieldId": "checklistItem", "text": "公立図書館の利用カードを作成する", "note": "Day 6〜7。無料Wi-Fiと各種サービスが利用可能"},
+      {"fieldId": "checklistItem", "text": "各種手続きの控えをクラウドにバックアップする", "note": "随時。口座番号・納税者番号・SIM番号等"}
+    ],
+    "tips": [
+      {"fieldId": "tipItem", "type": "important", "text": "パスポートの原本は到着後1週間は毎日持ち歩くことになります。紛失防止のため、パスポートケースやセキュリティポーチに入れて管理しましょう。"},
+      {"fieldId": "tipItem", "type": "tip", "text": "公立図書館は無料Wi-Fi、PC利用、イベント情報など、ワーホリ生活に役立つ施設です。到着後早めに利用カードを作っておきましょう。"},
+      {"fieldId": "tipItem", "type": "warning", "text": "時差ボケの影響で判断力が低下しがちです。重要な契約（賃貸など）は体調が整ってから行いましょう。到着初日は無理をしないことが大切です。"}
+    ]
+  }
+]

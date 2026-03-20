@@ -1,4 +1,4 @@
-import type { Region, CostLevel, CostRange, ArticleCategory, CourseType, SchoolFeature, SchoolLanguage, Accreditation, Facility, AccommodationType, Gender, LanguageLevel, ProgramStatus } from '../microcms/types';
+import type { Region, CostLevel, CostRange, ArticleCategory, CourseType, SchoolFeature, SchoolLanguage, Accreditation, Facility, AccommodationType, Gender, LanguageLevel, ProgramStatus, GuidePhase, TipType } from '../microcms/types';
 
 export const REGIONS: { value: Region; label: string }[] = [
   { value: 'オセアニア', label: 'オセアニア' },
@@ -132,6 +132,30 @@ export const RATING_LABELS = {
   ratingLocation: '立地',
   ratingCostPerf: 'コスパ',
 } as const;
+
+export const GUIDE_PHASES: {
+  value: GuidePhase;
+  label: string;
+  emoji: string;
+  color: string;
+  description: string;
+}[] = [
+  { value: 'info-gathering', label: '情報収集・意思決定', emoji: '🔍', color: 'bg-blue-100 text-blue-800 border-blue-200', description: 'ワーホリの基礎知識と国選びのポイントを学ぼう' },
+  { value: 'visa-cost', label: 'ビザ・費用計画', emoji: '💰', color: 'bg-green-100 text-green-800 border-green-200', description: 'ビザ申請から資金計画まで具体的に準備しよう' },
+  { value: 'departure-prep', label: '出発準備', emoji: '✈️', color: 'bg-purple-100 text-purple-800 border-purple-200', description: '出発前にやるべき手続き・持ち物を確認しよう' },
+  { value: 'arrival', label: '到着・立ち上げ', emoji: '🏠', color: 'bg-orange-100 text-orange-800 border-orange-200', description: '現地到着後すぐにやるべきことをチェック' },
+  { value: 'work', label: '仕事', emoji: '💼', color: 'bg-red-100 text-red-800 border-red-200', description: '仕事探しからタックスリターンまで完全網羅' },
+  { value: 'housing', label: '住居', emoji: '🏡', color: 'bg-teal-100 text-teal-800 border-teal-200', description: 'シェアハウスの探し方・トラブル回避法を解説' },
+  { value: 'language-life', label: '語学・生活', emoji: '📚', color: 'bg-indigo-100 text-indigo-800 border-indigo-200', description: '語学力アップと現地生活を充実させるコツ' },
+  { value: 'safety-mental', label: '安全・メンタル', emoji: '🛡️', color: 'bg-yellow-100 text-yellow-800 border-yellow-200', description: '安全対策とメンタルヘルスケアの方法' },
+  { value: 'return-career', label: '帰国・キャリア', emoji: '🎯', color: 'bg-pink-100 text-pink-800 border-pink-200', description: '帰国準備からワーホリ経験を活かすキャリア戦略' },
+];
+
+export const TIP_STYLES: Record<TipType, { bg: string; border: string; icon: string; label: string }> = {
+  tip: { bg: 'bg-blue-50', border: 'border-blue-300', icon: '💡', label: 'ヒント' },
+  warning: { bg: 'bg-yellow-50', border: 'border-yellow-300', icon: '⚠️', label: '注意' },
+  important: { bg: 'bg-red-50', border: 'border-red-300', icon: '❗', label: '重要' },
+};
 
 export const SITE_NAME = 'Study Work Hub';
 export const SITE_URL =

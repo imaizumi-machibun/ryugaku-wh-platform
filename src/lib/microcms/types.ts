@@ -191,7 +191,7 @@ export type Review = MicroCMSBase & {
 };
 
 // ============================================================
-// API 5: articles — お役立ち記事
+// API 5: articles — お役立ち記事 & ワーホリ完全ガイド（統合）
 // ============================================================
 export type ArticleCategory =
   | 'visa'
@@ -204,6 +204,36 @@ export type ArticleCategory =
   | 'culture'
   | 'other';
 
+export type GuidePhase =
+  | 'info-gathering'
+  | 'visa-cost'
+  | 'departure-prep'
+  | 'arrival'
+  | 'work'
+  | 'housing'
+  | 'language-life'
+  | 'safety-mental'
+  | 'return-career';
+
+export type KeyPoint = {
+  fieldId: 'keyPoint';
+  text: string;
+};
+
+export type ChecklistItem = {
+  fieldId: 'checklistItem';
+  text: string;
+  note?: string;
+};
+
+export type TipType = 'tip' | 'warning' | 'important';
+
+export type TipItem = {
+  fieldId: 'tipItem';
+  type: TipType;
+  text: string;
+};
+
 export type Article = MicroCMSBase & {
   title: string;
   description?: string;
@@ -213,6 +243,19 @@ export type Article = MicroCMSBase & {
   relatedCountries?: Country[];
   relatedSchools?: School[];
   isFeatured?: boolean;
+  // ガイド用フィールド（ガイド記事のみ使用）
+  phase?: GuidePhase;
+  orderInPhase?: number;
+  estimatedMinutes?: number;
+  keyPoints?: KeyPoint[];
+  checklist?: ChecklistItem[];
+  tips?: TipItem[];
+};
+
+// Guide は Article の派生型（phase, orderInPhase が必須）
+export type Guide = Omit<Article, 'phase' | 'orderInPhase'> & {
+  phase: GuidePhase;
+  orderInPhase: number;
 };
 
 // ============================================================

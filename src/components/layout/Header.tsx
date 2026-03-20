@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 const NAV_ITEMS = [
   { href: '/countries', label: '国から探す', icon: '🌏' },
   { href: '/schools', label: '学校から探す', icon: '🏫' },
+  { href: '/guide', label: 'ワーホリガイド', icon: '📖' },
   { href: '/experiences', label: '体験談', icon: '📝' },
   { href: '/articles', label: 'お役立ち記事', icon: '📰' },
   { href: '/compare', label: '国を比較', icon: '📊' },

@@ -10,7 +10,9 @@
     "import:countries": "tsx scripts/import-countries.ts",
     "import:countries:dry": "tsx scripts/import-countries.ts --dry-run",
     "import:schools": "tsx scripts/import-schools.ts",
-    "import:schools:dry": "tsx scripts/import-schools.ts --dry-run"
+    "import:schools:dry": "tsx scripts/import-schools.ts --dry-run",
+    "import:guides": "tsx scripts/import-guides.ts",
+    "import:guides:dry": "tsx scripts/import-guides.ts --dry-run"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

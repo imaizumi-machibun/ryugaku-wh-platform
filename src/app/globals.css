@@ -23,6 +23,13 @@
     @apply prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline;
     @apply prose-img:rounded-lg;
   }
+
+  .prose-guide {
+    @apply prose prose-gray prose-lg max-w-none;
+    @apply prose-headings:text-gray-900 prose-headings:font-bold prose-headings:scroll-mt-20;
+    @apply prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline;
+    @apply prose-img:rounded-lg prose-p:leading-relaxed prose-li:my-1;
+  }
 }
 
 @layer utilities {
