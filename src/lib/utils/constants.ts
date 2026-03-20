@@ -133,7 +133,7 @@ export const RATING_LABELS = {
   ratingCostPerf: 'コスパ',
 } as const;
 
-export const SITE_NAME = 'Stufy Work Hub';
+export const SITE_NAME = 'Study Work Hub';
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL

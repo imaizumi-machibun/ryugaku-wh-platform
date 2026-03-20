@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="text-white font-bold text-lg">
-              Stufy Work Hub
+              Study Work Hub
             </Link>
             <p className="mt-3 text-sm text-gray-400">
               留学・ワーキングホリデーの体験談・学校口コミを集約したデータベースプラットフォーム
@@ -57,7 +57,7 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-10 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} Stufy Work Hub. All rights reserved.
+          &copy; {new Date().getFullYear()} Study Work Hub. All rights reserved.
         </div>
       </div>
     </footer>

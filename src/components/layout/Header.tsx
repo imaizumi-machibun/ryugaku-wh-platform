@@ -31,7 +31,7 @@ export default function Header() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2 font-bold text-xl text-primary-600">
-            <span>Stufy Work Hub</span>
+            <span>Study Work Hub</span>
           </Link>
 
           {/* Desktop Navigation */}
