@@ -20,10 +20,10 @@ type Props = {
 export default async function CountriesPage({ searchParams }: Props) {
   const filters: string[] = [];
   if (searchParams.region) {
-    filters.push(`region[equals]${searchParams.region}`);
+    filters.push(`region[contains]${searchParams.region}`);
   }
   if (searchParams.cost) {
-    filters.push(`costLevel[equals]${searchParams.cost}`);
+    filters.push(`costLevel[contains]${searchParams.cost}`);
   }
 
   const { contents: countries } = await getCountries({

@@ -49,7 +49,7 @@ export function buildSchoolFilters(params: {
     conditions.push(`languages[contains]${params.language}`);
   }
   if (params.cost) {
-    conditions.push(`costRange[equals]${params.cost}`);
+    conditions.push(`costRange[contains]${params.cost}`);
   }
   return conditions.join('[and]');
 }

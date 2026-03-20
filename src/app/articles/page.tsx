@@ -27,7 +27,7 @@ export default async function ArticlesPage({ searchParams }: Props) {
   const offset = (page - 1) * PER_PAGE;
 
   const filters = searchParams.category
-    ? `category[equals]${searchParams.category}`
+    ? `category[contains]${searchParams.category}`
     : undefined;
 
   const { contents: articles, totalCount } = await getArticles({
