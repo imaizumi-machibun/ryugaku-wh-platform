@@ -4,6 +4,15 @@ import { GUIDE_PHASES } from '../utils/constants';
 
 const ENDPOINT = 'articles';
 
+// microCMS のセレクトフィールドは配列で返されるため正規化する
+function normalizeGuide(guide: Guide): Guide {
+  const phase = guide.phase;
+  return {
+    ...guide,
+    phase: (Array.isArray(phase) ? phase[0] : phase) as GuidePhase,
+  };
+}
+
 export async function getGuides(
   queries?: MicroCMSQueries
 ): Promise<MicroCMSListResponse<Guide>> {
@@ -12,7 +21,7 @@ export async function getGuides(
     ? `${baseFilter}[and]${queries.filters}`
     : baseFilter;
 
-  return client.getList<Guide>({
+  const data = await client.getList<Guide>({
     endpoint: ENDPOINT,
     queries: {
       limit: queries?.limit ?? 100,
@@ -24,6 +33,7 @@ export async function getGuides(
       depth: queries?.depth ?? 2,
     },
   });
+  return { ...data, contents: data.contents.map(normalizeGuide) };
 }
 
 export async function getGuidesByPhase(
@@ -39,18 +49,19 @@ export async function getGuidesByPhase(
         depth: 2,
       },
     });
-    return data.contents;
+    return data.contents.map(normalizeGuide);
   } catch {
     return [];
   }
 }
 
 export async function getGuideBySlug(slug: string): Promise<Guide> {
-  return client.getListDetail<Guide>({
+  const guide = await client.getListDetail<Guide>({
     endpoint: ENDPOINT,
     contentId: slug,
     queries: { depth: 2 },
   });
+  return normalizeGuide(guide);
 }
 
 export async function getGuideSlugs(): Promise<{ id: string; phase: GuidePhase }[]> {
@@ -59,7 +70,10 @@ export async function getGuideSlugs(): Promise<{ id: string; phase: GuidePhase }
       endpoint: ENDPOINT,
       queries: { limit: 100, fields: ['id', 'phase'], filters: 'phase[exists]' },
     });
-    return data.contents.map((g) => ({ id: g.id, phase: g.phase }));
+    return data.contents.map((g) => {
+      const normalized = normalizeGuide(g);
+      return { id: normalized.id, phase: normalized.phase };
+    });
   } catch {
     return [];
   }

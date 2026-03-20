@@ -104,9 +104,13 @@ async function upsertGuide(entry: GuideEntry, retries = MAX_RETRIES): Promise<vo
     estimatedMinutes: entry.estimatedMinutes,
   };
 
-  if (entry.keyPoints) payload.keyPoints = entry.keyPoints;
-  if (entry.checklist) payload.checklist = entry.checklist;
-  if (entry.tips) payload.tips = entry.tips;
+  // 繰り返しカスタムフィールド（microCMS側で定義済みの場合のみ送信）
+  const SEND_CUSTOM_FIELDS = !process.env.SKIP_CUSTOM_FIELDS;
+  if (SEND_CUSTOM_FIELDS) {
+    if (entry.keyPoints) payload.keyPoints = entry.keyPoints;
+    if (entry.checklist) payload.checklist = entry.checklist;
+    if (entry.tips) payload.tips = entry.tips;
+  }
 
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
