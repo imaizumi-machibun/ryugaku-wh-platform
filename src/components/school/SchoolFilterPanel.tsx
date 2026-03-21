@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useCallback } from 'react';
 import type { Country } from '@/lib/microcms/types';
 import { COST_RANGES, SCHOOL_LANGUAGES } from '@/lib/utils/constants';
 import BottomSheet from '@/components/ui/BottomSheet';
@@ -15,12 +14,14 @@ export default function SchoolFilterPanel({ countries }: Props) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [keyword, setKeyword] = useState(searchParams.get('q') || '');
 
   const currentCountry = searchParams.get('country') || '';
   const currentLanguage = searchParams.get('language') || '';
   const currentCost = searchParams.get('cost') || '';
+  const currentQ = searchParams.get('q') || '';
 
-  const hasFilters = currentCountry || currentLanguage || currentCost;
+  const hasFilters = currentCountry || currentLanguage || currentCost || currentQ;
 
   const updateFilter = useCallback(
     (key: string, value: string) => {
@@ -36,8 +37,40 @@ export default function SchoolFilterPanel({ countries }: Props) {
     [router, searchParams]
   );
 
+  const submitKeyword = useCallback(() => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (keyword.trim()) {
+      params.set('q', keyword.trim());
+    } else {
+      params.delete('q');
+    }
+    params.delete('page');
+    router.push(`/schools?${params.toString()}`);
+  }, [router, searchParams, keyword]);
+
   const filterContent = (
     <div className="space-y-4">
+      <div>
+        <label className="block text-sm font-medium text-gray-700 mb-1">フリーワード</label>
+        <form
+          onSubmit={(e) => { e.preventDefault(); submitKeyword(); }}
+          className="flex gap-2"
+        >
+          <input
+            type="text"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            placeholder="学校名・都市名など"
+            className="flex-1 rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:ring-primary-500 focus:border-primary-500 min-h-[44px]"
+          />
+          <button
+            type="submit"
+            className="px-4 py-2.5 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors min-h-[44px]"
+          >
+            検索
+          </button>
+        </form>
+      </div>
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">国</label>
         <select
@@ -86,6 +119,7 @@ export default function SchoolFilterPanel({ countries }: Props) {
       {hasFilters && (
         <button
           onClick={() => {
+            setKeyword('');
             router.push('/schools');
             setIsSheetOpen(false);
           }}
@@ -102,6 +136,24 @@ export default function SchoolFilterPanel({ countries }: Props) {
       {/* Desktop: Inline filters */}
       <div className="hidden sm:block bg-gray-50 rounded-xl p-6">
         <h2 className="font-bold mb-4">絞り込み検索</h2>
+        <form
+          onSubmit={(e) => { e.preventDefault(); submitKeyword(); }}
+          className="flex gap-2 mb-4"
+        >
+          <input
+            type="text"
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            placeholder="学校名・都市名などで検索"
+            className="flex-1 rounded-lg border-gray-300 border px-3 py-2 text-sm focus:ring-primary-500 focus:border-primary-500"
+          />
+          <button
+            type="submit"
+            className="px-4 py-2 bg-primary-600 text-white rounded-lg text-sm font-medium hover:bg-primary-700 transition-colors"
+          >
+            検索
+          </button>
+        </form>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">国</label>
@@ -151,7 +203,7 @@ export default function SchoolFilterPanel({ countries }: Props) {
         </div>
         {hasFilters && (
           <button
-            onClick={() => router.push('/schools')}
+            onClick={() => { setKeyword(''); router.push('/schools'); }}
             className="mt-4 text-sm text-primary-600 hover:underline"
           >
             フィルターをリセット

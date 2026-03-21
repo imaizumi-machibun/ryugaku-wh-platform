@@ -15,11 +15,15 @@ import { PER_PAGE } from '@/lib/utils/constants';
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = generatePageMetadata({
-  title: '学校から探す',
-  description: '語学学校・留学スクールを国・言語・費用帯で比較検索。口コミ・評価付き。',
-  path: '/schools',
-});
+export function generateMetadata({ searchParams }: Props): Metadata {
+  const hasQuery = !!searchParams.q;
+  return generatePageMetadata({
+    title: '学校から探す',
+    description: '語学学校・留学スクールを国・言語・費用帯で比較検索。口コミ・評価付き。',
+    path: hasQuery ? `/schools?q=${encodeURIComponent(searchParams.q!)}` : '/schools',
+    noindex: hasQuery,
+  });
+}
 
 const SORT_OPTIONS = [
   { value: '', label: '新しい順' },
@@ -27,7 +31,7 @@ const SORT_OPTIONS = [
 ];
 
 type Props = {
-  searchParams: { country?: string; language?: string; cost?: string; page?: string; sort?: string };
+  searchParams: { country?: string; language?: string; cost?: string; page?: string; sort?: string; q?: string };
 };
 
 export default async function SchoolsPage({ searchParams }: Props) {
@@ -52,6 +56,7 @@ export default async function SchoolsPage({ searchParams }: Props) {
       offset,
       filters: filters || undefined,
       orders,
+      q: searchParams.q || undefined,
     }),
     getCountries({ limit: 100 }),
     getReviews({ limit: 100 }),
@@ -121,6 +126,7 @@ export default async function SchoolsPage({ searchParams }: Props) {
                 language: searchParams.language,
                 cost: searchParams.cost,
                 sort: searchParams.sort,
+                q: searchParams.q,
               }).filter(([, v]) => v != null) as [string, string][]
             )}
           />
