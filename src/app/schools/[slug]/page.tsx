@@ -64,6 +64,7 @@ export default async function SchoolDetailPage({ params }: Props) {
         data={generateBreadcrumbJsonLd([
           { name: 'ホーム', url: '/' },
           { name: '学校から探す', url: '/schools' },
+          { name: school.country?.nameJp || '', url: `/countries/${school.country?.id}` },
           { name: school.name, url: `/schools/${params.slug}` },
         ])}
       />
@@ -72,6 +73,7 @@ export default async function SchoolDetailPage({ params }: Props) {
         <Breadcrumb
           items={[
             { label: '学校から探す', href: '/schools' },
+            { label: school.country?.nameJp || '', href: `/countries/${school.country?.id}` },
             { label: school.name },
           ]}
         />
