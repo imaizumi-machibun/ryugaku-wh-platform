@@ -56,8 +56,14 @@ export default function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-10 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
-          &copy; {new Date().getFullYear()} Study Work Hub. All rights reserved.
+        <div className="mt-10 pt-6 border-t border-gray-800 flex flex-col items-center gap-3 text-sm text-gray-500">
+          <Link
+            href="/privacy"
+            className="text-gray-400 hover:text-white transition-colors"
+          >
+            プライバシーポリシー
+          </Link>
+          <p>&copy; {new Date().getFullYear()} Study Work Hub. All rights reserved.</p>
         </div>
       </div>
     </footer>
