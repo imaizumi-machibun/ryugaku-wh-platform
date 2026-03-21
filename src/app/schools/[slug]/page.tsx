@@ -13,7 +13,7 @@ import { generatePageMetadata } from '@/lib/seo/metadata';
 import { generateSchoolJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
 import { aggregateReviewRatings } from '@/lib/utils/aggregation';
 import { COST_RANGES, COURSE_TYPES, SCHOOL_FEATURES, SCHOOL_LANGUAGES, ACCREDITATIONS, FACILITIES, ACCOMMODATION_TYPES } from '@/lib/utils/constants';
-import { formatUSD } from '@/lib/utils/format';
+import { formatJPY } from '@/lib/utils/format';
 import ShareButtons from '@/components/ui/ShareButtons';
 
 export const revalidate = 1800;
@@ -188,7 +188,7 @@ export default async function SchoolDetailPage({ params }: Props) {
               <div className="bg-gray-50 rounded-xl p-5 mb-8">
                 <h2 className="font-bold mb-2">費用</h2>
                 <p className="text-lg">
-                  週額：{formatUSD(school.weeklyFeeLow)} 〜 {formatUSD(school.weeklyFeeHigh)}
+                  週額：{formatJPY(school.weeklyFeeLow)} 〜 {formatJPY(school.weeklyFeeHigh)}
                 </p>
               </div>
             )}
