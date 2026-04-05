@@ -104,6 +104,57 @@ export default async function ExperienceDetailPage({ params }: Props) {
             </div>
           </header>
 
+          {/* 基本情報テーブル */}
+          <div className="bg-gray-50 rounded-xl p-6 mb-8">
+            <h2 className="text-lg font-bold mb-4">基本情報</h2>
+            <table className="w-full text-sm">
+              <tbody className="divide-y divide-gray-200">
+                {experience.ageAtDeparture && (
+                  <tr>
+                    <th className="py-2 pr-4 text-left text-gray-500 font-medium w-1/3">出発時の年齢</th>
+                    <td className="py-2">{experience.ageAtDeparture}歳</td>
+                  </tr>
+                )}
+                {genderLabel && (
+                  <tr>
+                    <th className="py-2 pr-4 text-left text-gray-500 font-medium">性別</th>
+                    <td className="py-2">{genderLabel}</td>
+                  </tr>
+                )}
+                <tr>
+                  <th className="py-2 pr-4 text-left text-gray-500 font-medium">渡航先</th>
+                  <td className="py-2">
+                    <Link href={`/countries/${experience.country?.id}`} className="text-primary-600 hover:underline">
+                      {experience.country?.flagEmoji} {experience.country?.nameJp}
+                    </Link>
+                  </td>
+                </tr>
+                {experience.cityPrimary && (
+                  <tr>
+                    <th className="py-2 pr-4 text-left text-gray-500 font-medium">主な滞在都市</th>
+                    <td className="py-2">{experience.cityPrimary}</td>
+                  </tr>
+                )}
+                {experience.school && (
+                  <tr>
+                    <th className="py-2 pr-4 text-left text-gray-500 font-medium">通った学校</th>
+                    <td className="py-2">
+                      <Link href={`/schools/${experience.school.id}`} className="text-primary-600 hover:underline">
+                        {experience.school.name}
+                      </Link>
+                    </td>
+                  </tr>
+                )}
+                {experience.durationMonths && (
+                  <tr>
+                    <th className="py-2 pr-4 text-left text-gray-500 font-medium">滞在期間</th>
+                    <td className="py-2">{formatDuration(experience.durationMonths)}</td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               {/* Body */}

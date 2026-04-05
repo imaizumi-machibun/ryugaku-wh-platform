@@ -1,0 +1,524 @@
+[
+  {
+    "id": "south-korea",
+    "description": "<p>韓国は日本から最も近い留学先のひとつで、フライト時間わずか2時間半というアクセスの良さが大きな魅力です。K-POPや韓国ドラマの影響で韓国語学習者が急増しており、現地での語学留学は実践的な韓国語力を身につける最短ルートといえます。ソウルをはじめとする大都市では最先端のテクノロジーと伝統文化が見事に共存し、刺激的で充実した留学生活を送ることができます。生活費は日本と同程度かやや安く、ワーキングホリデー制度を利用すればアルバイトで生活費を補いながら長期滞在が可能です。美容・IT・エンターテインメントなど多彩な業界でのインターン経験も得られ、将来のキャリアの幅を広げるチャンスにあふれています。</p>",
+    "capital": "ソウル",
+    "officialLanguage": "韓国語",
+    "currency": "韓国ウォン（KRW）",
+    "currencyCode": "KRW",
+    "timeDifferenceJapan": "0時間",
+    "flightTimeHours": 2.5,
+    "bestSeason": "4月〜6月、9月〜11月",
+    "livingCostMonthJpy": 120000,
+    "avgRentMonthlyJpy": 55000,
+    "minimumWageLocal": "時給9,860 KRW（約1,100円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ソウル",
+        "cityDescription": "韓国の首都であり政治・経済・文化の中心地。延世大学や高麗大学など名門大学の語学堂が充実しており、留学生向けのインフラが整っています。江南エリアではIT企業でのインターンも盛んです。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "釜山",
+        "cityDescription": "韓国第二の都市で美しい海岸線が魅力。ソウルに比べて生活費が安く、釜山大学の語学堂は質の高い韓国語教育で定評があります。海鮮料理や温泉文化も楽しめる港町です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "大邱",
+        "cityDescription": "韓国南東部の内陸都市で、ソウルや釜山に比べ生活費がさらに抑えられます。慶北大学をはじめ複数の大学が語学プログラムを提供しており、落ち着いた環境で学習に集中できます。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "同一雇用主のもとで最長6ヶ月まで就労可能。風俗営業等は禁止。",
+    "visaStudyLimit": "滞在期間中、語学学校や大学付属機関での就学が可能。期間制限なし。",
+    "visaRenewable": false,
+    "visaQuota": "10,000人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "パスポート、申請書、証明写真、往復航空券（または購入資金の証明）、残高証明書（30万円以上）、履歴書、活動計画書を準備します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "駐日韓国大使館・領事館での申請",
+        "stepDescription": "管轄の駐日韓国大使館または総領事館の窓口にて、必要書類を提出しビザを申請します。郵送での申請は不可です。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "審査・面接",
+        "stepDescription": "書類審査後、必要に応じて面接が行われます。審査期間は通常2〜4週間程度です。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ発給・渡航",
+        "stepDescription": "審査通過後、パスポートにビザが貼付されます。ビザ発給日から1年以内に韓国に入国する必要があります。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "残存有効期間が滞在予定期間以上あるもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ワーキングホリデービザ申請書",
+        "docNote": "大使館所定の書式に記入（韓国語または英語）"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "3.5cm×4.5cm、背景白、6ヶ月以内に撮影したもの1枚"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "残高証明書",
+        "docNote": "本人名義の銀行口座で30万円以上の残高を証明するもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "往復航空券または購入資金の証明",
+        "docNote": "航空券のeチケット控え、または購入可能な資金を証明する書類"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "活動計画書",
+        "docNote": "韓国での滞在中の活動計画を記載した書面（書式自由）"
+      }
+    ],
+    "applicationUrl": "https://overseas.mofa.go.kr/jp-ja/index.do",
+    "embassyUrl": "https://overseas.mofa.go.kr/jp-ja/index.do"
+  },
+  {
+    "id": "taiwan",
+    "description": "<p>台湾は親日的な国民性と温暖な気候で、日本人留学生にとって非常に過ごしやすい留学先として高い人気を誇ります。中国語（繁体字）を学べる数少ない地域であり、台湾師範大学や台湾大学の語学センターは世界的にも非常に高い評価を受けています。夜市文化やグルメの宝庫としても知られ、留学生活を楽しみながら語学力を伸ばせる環境が整っています。生活費は日本に比べて大幅に安く、特に食費は外食でも一食200〜400円程度と非常にリーズナブルです。ワーキングホリデー制度を利用すれば、日系企業や日本語教育関連のアルバイトも豊富に見つかります。治安の良さも大きな魅力で、初めての海外長期滞在にもおすすめの留学先です。</p>",
+    "capital": "台北",
+    "officialLanguage": "中国語（繁体字）",
+    "currency": "ニュー台湾ドル（TWD）",
+    "currencyCode": "TWD",
+    "timeDifferenceJapan": "-1時間",
+    "flightTimeHours": 3.5,
+    "bestSeason": "3月〜5月、10月〜12月",
+    "livingCostMonthJpy": 90000,
+    "avgRentMonthlyJpy": 40000,
+    "minimumWageLocal": "時給183 TWD（約850円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "台北",
+        "cityDescription": "台湾の首都であり、台湾師範大学や台湾大学など主要な語学学校が集中しています。MRT（地下鉄）が発達しており生活が便利。故宮博物院や士林夜市など文化的な見どころも豊富です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "台中",
+        "cityDescription": "台湾中部の都市で、温暖な気候と落ち着いた雰囲気が魅力。東海大学や逢甲大学の語学プログラムが人気です。台北に比べて家賃が安く、生活費を抑えたい留学生に適しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "高雄",
+        "cityDescription": "台湾南部の港町で、熱帯性の温暖な気候が特徴。中山大学の語学センターが有名で、のんびりした生活環境の中で中国語を学べます。美麗島駅など観光スポットも充実しています。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 8000,
+    "visaWorkLimit": "就労が認められており、同一雇用主のもとで連続3ヶ月を超えない範囲で就労可能。",
+    "visaStudyLimit": "滞在期間のうち最長4ヶ月まで語学学校等での就学が認められています。",
+    "visaRenewable": true,
+    "visaQuota": "10,000人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン申請書の記入",
+        "stepDescription": "台北駐日経済文化代表処のウェブサイトからオンライン申請書を記入・印刷します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "必要書類の準備",
+        "stepDescription": "パスポート、証明写真、残高証明書（20万円以上）、往復航空券、海外旅行保険証書、履歴書、理由書を準備します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "代表処窓口での申請",
+        "stepDescription": "管轄の台北駐日経済文化代表処（東京・大阪・横浜・那覇・福岡・札幌）に出向き、窓口で書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "審査・ビザ発給",
+        "stepDescription": "書類審査は通常約1〜2週間で完了します。審査通過後、パスポートにビザシールが貼付されます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "渡航・現地での届出",
+        "stepDescription": "ビザ発給日から6ヶ月以内に台湾に入国し、到着後15日以内に居留証の申請を行います。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "残存有効期間が滞在予定期間＋6ヶ月以上あるもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ワーキングホリデービザ申請書",
+        "docNote": "オンラインで記入・印刷し、署名したもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "3.5cm×4.5cm、背景白、6ヶ月以内に撮影したもの2枚"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "残高証明書",
+        "docNote": "本人名義の銀行口座で20万円以上の残高を証明するもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "滞在期間をカバーする医療保険に加入していることを証明するもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "往復航空券または購入資金の証明",
+        "docNote": "帰国用の航空券、またはその購入資金を証明する書類"
+      }
+    ],
+    "applicationUrl": "https://www.roc-taiwan.org/jp_ja/index.html",
+    "embassyUrl": "https://www.roc-taiwan.org/jp_ja/index.html"
+  },
+  {
+    "id": "hong-kong",
+    "description": "<p>香港は東洋と西洋の文化が融合した国際都市であり、英語と広東語の両方を実践的に学べるユニークな留学先です。アジアを代表する金融ハブとして世界中からビジネスパーソンが集まり、グローバルなネットワークを構築する絶好の機会に恵まれています。コンパクトな都市の中に摩天楼と伝統的な市場が共存し、毎日が刺激と発見に満ちた日常を送ることができます。飲茶をはじめとする広東料理の本場であり、食文化の探求も留学生活の大きな楽しみのひとつです。ワーキングホリデー制度を活用すれば、日系企業の香港支社や貿易関連企業でのアルバイト経験を積むことも可能です。交通網が非常に発達しており、生活の利便性が高い都市です。</p>",
+    "capital": "香港（特別行政区）",
+    "officialLanguage": "中国語（広東語）・英語",
+    "currency": "香港ドル（HKD）",
+    "currencyCode": "HKD",
+    "timeDifferenceJapan": "-1時間",
+    "flightTimeHours": 4.5,
+    "bestSeason": "10月〜12月、3月〜4月",
+    "livingCostMonthJpy": 180000,
+    "avgRentMonthlyJpy": 100000,
+    "minimumWageLocal": "時給40 HKD（約750円）",
+    "costLevel": "high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "香港島",
+        "cityDescription": "ビクトリアピークやセントラルなど香港の象徴的なエリアが集中。香港大学をはじめとする教育機関があり、金融・ビジネスの中心地としてインターンシップの機会も豊富です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "九龍（カオルーン）",
+        "cityDescription": "尖沙咀や旺角などの繁華街があり、活気あふれる香港の日常を体験できます。香港理工大学や香港城市大学があり、比較的手頃な住居エリアも見つかります。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "新界",
+        "cityDescription": "香港中文大学がある自然豊かなエリア。都心部に比べて家賃が安く、落ち着いた環境で学習に集中できます。MTRで都心へのアクセスも良好です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "同一雇用主のもとで最長6ヶ月まで就労可能。就労期間に制限はあるが、雇用主の変更は可能。",
+    "visaStudyLimit": "滞在期間のうち最長6ヶ月まで就学が認められています。",
+    "visaRenewable": false,
+    "visaQuota": "1,500人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書のダウンロード・記入",
+        "stepDescription": "香港特別行政区入境事務処のウェブサイトから申請書（ID(C)940A）をダウンロードし、記入します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "必要書類の準備",
+        "stepDescription": "パスポート、証明写真、残高証明書（約20万円以上）、往復航空券、海外旅行保険、犯罪経歴証明書を準備します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "香港経済貿易代表部への提出",
+        "stepDescription": "在日本香港経済貿易代表部（東京）に書類を郵送または持参で提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "審査・ビザ発給",
+        "stepDescription": "審査期間は通常6〜8週間です。承認後、入境許可ラベルが郵送で届きます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "渡航・入境手続き",
+        "stepDescription": "入境許可ラベル発行日から3ヶ月以内に香港に入境し、到着後に入境事務処でスマートIDカードを申請します。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "残存有効期間が滞在予定期間＋6ヶ月以上あるもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ワーキングホリデービザ申請書",
+        "docNote": "ID(C)940A書式に記入・署名したもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズ、背景白、最近撮影したもの1枚"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "残高証明書",
+        "docNote": "本人名義の銀行口座で約20万円以上の残高を証明するもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "滞在全期間をカバーする医療・傷害保険への加入証明"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "犯罪経歴証明書",
+        "docNote": "各都道府県の警察本部で取得した無犯罪証明書（発行後6ヶ月以内）"
+      }
+    ],
+    "applicationUrl": "https://www.immd.gov.hk/eng/services/visas/working_holiday_scheme.html",
+    "embassyUrl": "https://www.hketotyo.gov.hk/ja/home/index.html"
+  },
+  {
+    "id": "china",
+    "description": "<p>中国は14億人以上の人口を抱える世界最大の国であり、目覚ましい経済成長を続けるダイナミックな留学先です。標準中国語（普通話・簡体字）を本場で学べるだけでなく、北京大学や清華大学、復旦大学など世界トップクラスの大学で質の高い教育を受けることができます。広大な国土には多様な文化・方言・料理が存在し、留学を通じて中国の奥深い魅力を体感できます。日中間のビジネスは依然として活発で、中国語スキルは就職市場で大きな武器となります。生活費は都市によって差がありますが、総じて日本より安く、特に地方都市では非常にリーズナブルに生活できます。中国政府奨学金をはじめとする留学生向けの支援制度も充実しています。</p>",
+    "capital": "北京",
+    "officialLanguage": "中国語（普通話）",
+    "currency": "人民元（CNY）",
+    "currencyCode": "CNY",
+    "timeDifferenceJapan": "-1時間",
+    "flightTimeHours": 4,
+    "bestSeason": "4月〜6月、9月〜11月",
+    "livingCostMonthJpy": 80000,
+    "avgRentMonthlyJpy": 45000,
+    "minimumWageLocal": "月給2,420 CNY〜（地域により異なる、約50,000円〜）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "北京",
+        "cityDescription": "中国の首都であり政治・文化の中心地。北京大学や清華大学など名門大学が集まり、標準的な普通話を学ぶのに最適な環境です。故宮や万里の長城など歴史的名所も豊富です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "上海",
+        "cityDescription": "中国最大の経済都市で国際色豊か。復旦大学や上海交通大学の語学プログラムが充実しています。日系企業も多く、インターンシップや就職の機会が豊富な都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "深圳",
+        "cityDescription": "中国のシリコンバレーと呼ばれるテクノロジーの街。Huawei、Tencent、DJIなど世界的IT企業の本社があり、テック業界に興味のある留学生に人気です。香港からのアクセスも良好です。"
+      }
+    ]
+  },
+  {
+    "id": "philippines",
+    "description": "<p>フィリピンは日本から約4〜5時間のフライトで到着できる、コストパフォーマンスに優れた英語留学先として日本人に絶大な人気を誇ります。公用語のひとつが英語であるため、日常生活のあらゆる場面で英語に触れる環境が整っています。特にセブ島を中心としたマンツーマンレッスン主体の語学学校は、短期間で効率的に英語力を伸ばせることで定評があります。留学費用は欧米諸国の3分の1〜半額程度と非常にリーズナブルで、授業料に宿泊費・食費が含まれるパッケージ型の学校が主流です。温暖な気候と美しいビーチに囲まれた環境で、勉強とリフレッシュを両立できます。フレンドリーな国民性も、初めての留学先として安心感を与えてくれるポイントです。</p>",
+    "capital": "マニラ",
+    "officialLanguage": "フィリピノ語・英語",
+    "currency": "フィリピンペソ（PHP）",
+    "currencyCode": "PHP",
+    "timeDifferenceJapan": "-1時間",
+    "flightTimeHours": 4.5,
+    "bestSeason": "12月〜5月（乾季）",
+    "livingCostMonthJpy": 60000,
+    "avgRentMonthlyJpy": 25000,
+    "minimumWageLocal": "日給610 PHP〜（地域により異なる、約1,600円〜）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "セブ",
+        "cityDescription": "フィリピン留学の聖地として知られるリゾート都市。マンツーマンレッスン主体の語学学校が100校以上集まり、初心者から上級者まで幅広いレベルに対応。美しいビーチでのアクティビティも魅力です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "マニラ",
+        "cityDescription": "フィリピンの首都でありビジネスの中心地。マカティやBGC（ボニファシオ・グローバル・シティ）など近代的なエリアには語学学校も多く、ビジネス英語を学びたい社会人留学生に人気です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "バギオ",
+        "cityDescription": "ルソン島北部の高原都市で「フィリピンの軽井沢」と呼ばれる涼しい気候が特徴。スパルタ式の語学学校が多く、短期間で集中的に英語力を伸ばしたい方に最適な学習環境です。"
+      }
+    ]
+  },
+  {
+    "id": "thailand",
+    "description": "<p>タイは「微笑みの国」として知られ、温かい国民性と豊かな仏教文化が魅力の留学先です。バンコクを中心にASEAN経済の要として急速に発展しており、日系企業の進出数はASEAN諸国で最多を誇ります。タイ語の習得はもちろん、英語で授業を行う国際プログラムを持つ大学も増えており、多様な学びの選択肢があります。生活費は日本の3分の1〜半額程度と非常に安く、質の高い生活を手頃な費用で実現できます。世界的に有名なタイ料理を日常的に楽しめるのも大きな魅力です。チェンマイの古都の雰囲気やプーケットのリゾート環境など、都市ごとに異なる魅力を持つ国でもあります。近年はデジタルノマドの聖地としても注目を集めています。</p>",
+    "capital": "バンコク",
+    "officialLanguage": "タイ語",
+    "currency": "タイバーツ（THB）",
+    "currencyCode": "THB",
+    "timeDifferenceJapan": "-2時間",
+    "flightTimeHours": 6,
+    "bestSeason": "11月〜2月（乾季・涼季）",
+    "livingCostMonthJpy": 70000,
+    "avgRentMonthlyJpy": 30000,
+    "minimumWageLocal": "日給363 THB（約1,500円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "バンコク",
+        "cityDescription": "タイの首都であり東南アジア有数の大都市。チュラロンコン大学やタマサート大学など名門大学が集まり、語学学校も豊富。日本人コミュニティも大きく、生活面でのサポートが充実しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "チェンマイ",
+        "cityDescription": "タイ北部の古都で「北方のバラ」と呼ばれる美しい街。バンコクに比べて物価が安く、落ち着いた環境でタイ語を学べます。チェンマイ大学の語学プログラムが人気です。デジタルノマドの聖地としても有名です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "プーケット",
+        "cityDescription": "アンダマン海に面した世界的なビーチリゾート。観光業が盛んで英語環境も整っており、リゾート地で語学を学びたい方に適しています。ダイビングやマリンスポーツも楽しめます。"
+      }
+    ]
+  },
+  {
+    "id": "vietnam",
+    "description": "<p>ベトナムは急速な経済成長を遂げる東南アジアの注目国で、若い人口構成と活気あるビジネス環境が魅力の留学先です。日系企業の進出が急増しており、ベトナム語スキルを持つ人材の需要は年々高まっています。ホーチミン市のダイナミックな商業都市としての顔と、ハノイの歴史と伝統を感じさせる落ち着いた雰囲気は対照的で、留学先として異なる体験を提供してくれます。生活費は東南アジアの中でも特に安く、月5〜8万円程度で十分な生活が可能です。フォーやバインミーに代表されるベトナム料理は日本人の口に合うものが多く、食生活での不安も少ないでしょう。フレンドリーな国民性と親日感情も、日本人留学生にとって心強いポイントです。</p>",
+    "capital": "ハノイ",
+    "officialLanguage": "ベトナム語",
+    "currency": "ベトナムドン（VND）",
+    "currencyCode": "VND",
+    "timeDifferenceJapan": "-2時間",
+    "flightTimeHours": 5.5,
+    "bestSeason": "2月〜4月、10月〜12月",
+    "livingCostMonthJpy": 55000,
+    "avgRentMonthlyJpy": 25000,
+    "minimumWageLocal": "月給4,960,000 VND〜（地域により異なる、約30,000円〜）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ホーチミン",
+        "cityDescription": "ベトナム最大の経済都市で「東洋のパリ」とも呼ばれます。日系企業が多く進出しており、ベトナム語を活かしたインターンシップの機会が豊富。活気ある街の雰囲気の中で実践的なベトナム語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ハノイ",
+        "cityDescription": "ベトナムの首都で政治・文化の中心地。ハノイ国家大学をはじめとする教育機関が充実しています。旧市街の歴史的な街並みと湖に囲まれた美しい景観の中で、標準的なベトナム語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ダナン",
+        "cityDescription": "ベトナム中部の港湾都市で近年急速に発展中。美しいビーチと世界遺産のホイアン・フエへのアクセスが魅力。IT産業が成長しており、リーズナブルな生活費で充実した留学生活を送れます。"
+      }
+    ]
+  },
+  {
+    "id": "malaysia",
+    "description": "<p>マレーシアは多民族国家ならではの文化的多様性と、英語が広く通じる環境が魅力の留学先です。マレー系・中華系・インド系の文化が共存し、一つの国にいながら複数の文化に触れることができるユニークな体験ができます。英語は準公用語として広く使われており、英語留学先としてのコストパフォーマンスは世界でもトップクラスです。クアラルンプールには欧米大学の分校（モナシュ大学、ノッティンガム大学など）も多く、欧米留学の3分の1程度の費用で同等の学位を取得できます。生活費は日本の半額以下で、プール付きのコンドミニアムに手頃な価格で住める点も人気の理由です。年間を通じて温暖な気候で、多彩な料理と南国のライフスタイルを楽しめます。</p>",
+    "capital": "クアラルンプール",
+    "officialLanguage": "マレー語",
+    "currency": "マレーシアリンギット（MYR）",
+    "currencyCode": "MYR",
+    "timeDifferenceJapan": "-1時間",
+    "flightTimeHours": 7,
+    "bestSeason": "3月〜10月",
+    "livingCostMonthJpy": 65000,
+    "avgRentMonthlyJpy": 30000,
+    "minimumWageLocal": "月給1,500 MYR（約48,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "クアラルンプール",
+        "cityDescription": "マレーシアの首都でASEAN有数の近代都市。ペトロナスツインタワーがシンボルで、欧米大学の分校や語学学校が多数。日本人コミュニティも大きく、生活面でのサポートが充実しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ペナン",
+        "cityDescription": "「東洋の真珠」と呼ばれる美しい島で、ジョージタウンの歴史地区は世界遺産に登録されています。多文化の食文化が有名で、クアラルンプールに比べてさらに生活費が安い留学先です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "コタキナバル",
+        "cityDescription": "ボルネオ島に位置する自然豊かな都市。キナバル山や熱帯雨林などの大自然に囲まれた環境で学べます。マレーシア・サバ大学（UMS）の語学プログラムがあり、のんびりとした留学生活を送れます。"
+      }
+    ]
+  },
+  {
+    "id": "singapore",
+    "description": "<p>シンガポールはアジアを代表する国際都市国家で、世界トップレベルの教育機関と最先端のビジネス環境を兼ね備えた留学先です。シンガポール国立大学（NUS）や南洋理工大学（NTU）は世界大学ランキングでアジア最高位に位置し、質の高い教育を英語で受けることができます。公用語が英語・中国語・マレー語・タミル語の4言語であり、多言語・多文化環境に身を置くことで国際感覚を養えます。治安は世界最高水準で、清潔な街並みと整備されたインフラは快適な生活を約束してくれます。ただし生活費は世界でもトップクラスに高く、特に住居費は高額です。その分、アジアのビジネスハブとして一流企業でのインターンシップや就職機会は非常に豊富です。</p>",
+    "capital": "シンガポール",
+    "officialLanguage": "英語・中国語・マレー語・タミル語",
+    "currency": "シンガポールドル（SGD）",
+    "currencyCode": "SGD",
+    "timeDifferenceJapan": "-1時間",
+    "flightTimeHours": 7,
+    "bestSeason": "2月〜4月（比較的乾燥した時期）",
+    "livingCostMonthJpy": 250000,
+    "avgRentMonthlyJpy": 150000,
+    "minimumWageLocal": "法定最低賃金なし（清掃業等一部業種のみ月給1,400 SGD〜）",
+    "costLevel": "very-high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "シンガポール中心部（セントラル）",
+        "cityDescription": "オーチャードやマリーナベイなど都市の中枢エリア。シンガポール経営大学（SMU）や多数の語学学校があり、ビジネス街でのインターンシップへのアクセスも抜群です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "シンガポール西部",
+        "cityDescription": "南洋理工大学（NTU）があるエリアで、広大なキャンパスと自然に囲まれた落ち着いた学習環境。ジュロン地区の学生向け住居は中心部に比べてやや手頃です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "シンガポール東部",
+        "cityDescription": "シンガポール国立大学（NUS）のキャンパスに近いエリア。イーストコーストパークの海沿いの環境やカトン地区のプラナカン文化など、独特の魅力があります。"
+      }
+    ]
+  },
+  {
+    "id": "india",
+    "description": "<p>インドは世界第2位の人口を持つ巨大な国であり、IT大国として世界中から注目を集める留学先です。IIT（インド工科大学）やIIM（インド経営大学院）など世界的に評価の高い教育機関があり、特にIT・エンジニアリング・ビジネス分野での教育は高い水準を誇ります。英語が準公用語として広く使われているため、英語力の向上も期待できます。留学費用は世界最安レベルで、月3〜5万円程度で生活が可能です。ヒンディー語をはじめとする現地語の習得は、今後成長が見込まれるインド市場でのキャリアに大きなアドバンテージとなります。ヨガやアーユルヴェーダの本場であり、精神的な成長や健康への関心が高い方にも魅力的な留学先です。多様な宗教・文化・言語が共存する国で、人生観を変える体験ができるでしょう。</p>",
+    "capital": "ニューデリー",
+    "officialLanguage": "ヒンディー語・英語",
+    "currency": "インドルピー（INR）",
+    "currencyCode": "INR",
+    "timeDifferenceJapan": "-3時間30分",
+    "flightTimeHours": 9,
+    "bestSeason": "10月〜3月（冬季・乾季）",
+    "livingCostMonthJpy": 40000,
+    "avgRentMonthlyJpy": 15000,
+    "minimumWageLocal": "日給176〜 INR（州により異なる、約300円〜）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "デリー",
+        "cityDescription": "インドの首都圏で政治・文化の中心地。デリー大学やジャワハルラール・ネルー大学など名門大学が集まります。ムガル帝国時代の歴史的建造物と近代的な都市開発が共存するダイナミックな街です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ムンバイ",
+        "cityDescription": "インド最大の商業都市で「インドの経済首都」。ボリウッド映画産業の中心地でもあり、IITボンベイ校をはじめとする教育機関が充実。金融・IT・エンターテインメント分野でのキャリア機会が豊富です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "バンガロール",
+        "cityDescription": "「インドのシリコンバレー」と呼ばれるIT産業の中心地。Google、Microsoft、Amazonなどグローバル企業のインド拠点が集まり、IT留学やインターンシップに最適。涼しい気候で過ごしやすい都市です。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,167 @@
+[
+  {
+    "id": "canada",
+    "description": "<p>カナダは、英語とフランス語の両方を公用語とする多文化国家で、留学先・ワーキングホリデー先として日本人に絶大な人気を誇ります。バンクーバーやトロントなどの大都市は国際色豊かで、語学学校や専門学校の選択肢も非常に充実しています。治安の良さや自然環境の美しさも大きな魅力で、ロッキー山脈やナイアガラの滝など世界的な観光名所も身近に体験できます。IEC（International Experience Canada）プログラムを通じたワーキングホリデービザでは、最長12ヶ月間の就労が認められ、英語力を実践的に伸ばしながら海外生活を満喫できます。多様な文化背景を持つ人々と交流しながら、グローバルな視野を広げられる理想的な渡航先です。</p>",
+    "capital": "オタワ",
+    "officialLanguage": "英語・フランス語",
+    "currency": "カナダドル（CAD）",
+    "currencyCode": "CAD",
+    "timeDifferenceJapan": "-14時間（バンクーバー）/ -12時間（トロント）",
+    "flightTimeHours": 9,
+    "bestSeason": "6月〜9月（夏）",
+    "livingCostMonthJpy": 150000,
+    "avgRentMonthlyJpy": 85000,
+    "minimumWageLocal": "時給17.40 CAD（約1,900円）",
+    "costLevel": "high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "バンクーバー",
+        "cityDescription": "太平洋沿岸に位置し、温暖な気候と豊かな自然が魅力の国際都市。アジア系コミュニティも大きく、日本人留学生にとって暮らしやすい環境が整っています。語学学校の数も多く、仕事も見つけやすいワーホリの人気都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "トロント",
+        "cityDescription": "カナダ最大の都市で、金融・ビジネスの中心地。世界中から移民が集まる多文化都市で、様々な国の文化に触れながら英語を学べます。飲食業やホスピタリティ業界での求人が豊富です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "モントリオール",
+        "cityDescription": "フランス語圏ケベック州の最大都市で、英語とフランス語のバイリンガル環境が特徴。ヨーロッパの雰囲気が漂う美しい街並みで、他都市に比べて家賃や生活費が抑えられるのも魅力です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 40000,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "最大6ヶ月",
+    "visaRenewable": false,
+    "visaQuota": "6,500人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "IECプロフィール作成",
+        "stepDescription": "IRCC（カナダ移民・難民・市民権省）の公式サイトでGCKeyアカウントを作成し、IEC候補者プールにプロフィールを登録します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "招待状（ITA）の受領",
+        "stepDescription": "抽選により招待状（Invitation to Apply）が届きます。招待状を受け取ったら、20日以内に申請を開始する必要があります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン申請書の提出",
+        "stepDescription": "必要書類をアップロードし、参加費（CAN$172）とワークパーミット発行手数料（CAN$100）をオンラインで支払い、申請書を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "バイオメトリクス（生体認証）の登録",
+        "stepDescription": "東京のカナダビザ申請センター（VAC）で指紋と写真の生体認証情報を登録します。申請後30日以内に完了する必要があります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "許可通知書（POE Letter）の受領・入国",
+        "stepDescription": "審査通過後、許可通知書（Port of Entry Letter）が届きます。カナダ入国時に国境サービス官にこの通知書を提示し、ワークパーミットが発行されます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在期間をカバーする有効期限のある日本国パスポートが必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "デジタル写真",
+        "docNote": "ICAO基準に準拠した証明写真データ（35mm×45mm相当、背景白）をアップロードします。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "履歴書（英文レジュメ）",
+        "docNote": "過去10年間の学歴・職歴を英語で記載したレジュメを準備します。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険の加入証明書",
+        "docNote": "カナダ滞在全期間をカバーする医療保険への加入証明（英文）が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明",
+        "docNote": "最低CAN$2,500相当の資金があることを証明する英文の銀行残高証明書が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "航空券または航空券購入資金の証明",
+        "docNote": "カナダへの片道航空券、または帰国用航空券を購入できる資金の証明が必要です。"
+      }
+    ],
+    "applicationUrl": "https://www.canada.ca/en/immigration-refugees-citizenship/services/work-canada/iec.html",
+    "embassyUrl": "https://www.canadainternational.gc.ca/japan-japon/index.aspx?lang=jpn"
+  },
+  {
+    "id": "united-states",
+    "description": "<p>アメリカ合衆国は、世界最高峰の大学や語学学校が集まる教育大国であり、留学先として圧倒的な存在感を持ちます。ニューヨーク、ロサンゼルス、サンフランシスコなど世界的に有名な都市が多数あり、ビジネス、テクノロジー、エンターテインメントなど幅広い分野で最先端の経験を積むことができます。日本とのワーキングホリデー協定はありませんが、J-1ビザ（交流訪問者ビザ）を活用したインターンシッププログラムなどを通じて就労体験が可能です。多民族国家ならではの多様な文化に触れながら、実践的な英語力とグローバルなキャリアスキルを身につけられます。世界中から優秀な人材が集まる環境で、自分自身を大きく成長させられる留学先です。</p>",
+    "capital": "ワシントンD.C.",
+    "officialLanguage": "英語（事実上）",
+    "currency": "米ドル（USD）",
+    "currencyCode": "USD",
+    "timeDifferenceJapan": "-14時間（ニューヨーク）/ -17時間（ロサンゼルス）",
+    "flightTimeHours": 13,
+    "bestSeason": "4月〜6月（春）・9月〜11月（秋）",
+    "livingCostMonthJpy": 200000,
+    "avgRentMonthlyJpy": 130000,
+    "minimumWageLocal": "時給7.25 USD〜（連邦最低賃金、州により異なる）",
+    "costLevel": "very-high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ニューヨーク",
+        "cityDescription": "世界の経済・文化の中心地。語学学校やビジネススクールが豊富で、アートやファッションなど様々な分野の最前線を体験できます。生活費は高いですが、得られる経験は他に代えがたいものがあります。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ロサンゼルス",
+        "cityDescription": "温暖な気候と広大な街並みが特徴のカリフォルニア最大の都市。ハリウッドやサンタモニカビーチなど観光名所も多く、エンターテインメント業界やIT分野での学びの機会が充実しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンフランシスコ",
+        "cityDescription": "シリコンバレーに隣接するテクノロジーの聖地。IT・スタートアップ関連の留学やインターンシップに最適で、進歩的で開放的な街の雰囲気も魅力です。語学学校も多数あります。"
+      }
+    ]
+  },
+  {
+    "id": "mexico",
+    "description": "<p>メキシコは、スペイン語圏最大の国として、スペイン語留学の人気渡航先のひとつです。日本とのワーキングホリデー協定はありませんが、生活費の安さと温暖な気候が魅力で、長期滞在しやすい環境が整っています。首都メキシコシティはラテンアメリカ有数の大都市で、古代アステカ文明の遺跡や世界遺産の歴史地区など、豊かな文化遺産に触れることができます。語学学校の授業料も欧米諸国と比べて大幅に安く、コストパフォーマンスの高いスペイン語学習が可能です。カンクンやグアダラハラなど多彩な都市があり、カリブ海のリゾートからコロニアル様式の美しい街並みまで、多様な環境で留学生活を楽しめます。親日的な国民性も日本人留学生にとって心強いポイントです。</p>",
+    "capital": "メキシコシティ",
+    "officialLanguage": "スペイン語",
+    "currency": "メキシコペソ（MXN）",
+    "currencyCode": "MXN",
+    "timeDifferenceJapan": "-15時間（メキシコシティ）",
+    "flightTimeHours": 14,
+    "bestSeason": "11月〜4月（乾季）",
+    "livingCostMonthJpy": 70000,
+    "avgRentMonthlyJpy": 35000,
+    "minimumWageLocal": "日給278.80 MXN（約2,400円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "メキシコシティ",
+        "cityDescription": "人口約2,100万人を擁するラテンアメリカ最大級の都市。世界遺産の歴史地区やフリーダ・カーロ美術館など文化施設が充実し、語学学校も多数。大都市ならではの利便性と豊かな文化体験が両立できます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "カンクン",
+        "cityDescription": "カリブ海に面した世界的リゾート地。美しいビーチと温暖な気候の中でスペイン語を学べます。観光業が盛んで、ホスピタリティ分野でのインターンシップの機会もあります。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "グアダラハラ",
+        "cityDescription": "メキシコ第二の都市で、テキーラやマリアッチ発祥の地として知られる文化都市。IT産業も成長しており「メキシコのシリコンバレー」とも呼ばれています。物価が安く、留学生活のコストを抑えられます。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,620 @@
+[
+  {
+    "id": "argentina",
+    "description": "<p>アルゼンチンは南米で最もヨーロッパ的な雰囲気を持つ国で、スペイン語留学先として非常に人気があります。首都ブエノスアイレスは「南米のパリ」と呼ばれ、美しいヨーロッパ風の建築やカフェ文化、タンゴの本場として世界的に知られています。物価が比較的安く、日本とのワーキングホリデー協定も締結されているため、長期滞在しながらスペイン語を学ぶのに最適な環境です。アルゼンチン独特のスペイン語（リオプラテンセ方言）を学べるほか、パタゴニアやイグアスの滝など世界的な観光地へのアクセスも魅力的です。世界的に有名な牛肉料理アサードやマルベックワインなど食文化も非常に豊かで、充実した留学生活を送ることができるでしょう。</p>",
+    "capital": "ブエノスアイレス",
+    "officialLanguage": "スペイン語",
+    "currency": "アルゼンチン・ペソ（ARS）",
+    "currencyCode": "ARS",
+    "timeDifferenceJapan": "-12時間",
+    "flightTimeHours": 24,
+    "bestSeason": "10月〜3月（夏）",
+    "livingCostMonthJpy": 60000,
+    "avgRentMonthlyJpy": 35000,
+    "minimumWageLocal": "月給202,800 ARS（約30,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ブエノスアイレス",
+        "cityDescription": "南米のパリと称される首都。語学学校が豊富で、タンゴやカフェ文化を楽しみながらスペイン語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "メンドーサ",
+        "cityDescription": "アンデス山脈の麓に位置するワインの名産地。落ち着いた環境でスペイン語を集中的に学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "コルドバ",
+        "cityDescription": "アルゼンチン第二の都市で大学都市。学生が多く活気があり、リーズナブルな生活費で留学できます。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "同一雇用主のもとで最長6ヶ月まで就労可能",
+    "visaStudyLimit": "最長6ヶ月まで就学可能",
+    "visaRenewable": false,
+    "visaQuota": "200人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "必要書類の準備",
+        "stepDescription": "パスポート、残高証明書、航空券予約確認書、海外旅行保険証書、健康診断書などの必要書類を準備します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "在日アルゼンチン大使館への申請",
+        "stepDescription": "東京のアルゼンチン大使館に直接出向き、ワーキングホリデービザの申請を行います。事前に予約が必要です。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "面接",
+        "stepDescription": "大使館での面接を受けます。渡航目的や滞在計画について質問されることがあります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ発給",
+        "stepDescription": "審査通過後、約2〜4週間でワーキングホリデービザが発給されます。パスポートにビザシールが貼付されます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "入国・滞在手続き",
+        "stepDescription": "アルゼンチン到着後、移民局（DNM）にて滞在登録を行い、必要に応じて労働許可を取得します。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "残存有効期間がビザ申請時点で1年以上あるもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "残高証明書",
+        "docNote": "滞在初期の生活費として約2,500米ドル相当以上の資金証明"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "往復航空券または購入資金の証明",
+        "docNote": "帰国便の航空券予約確認書、または購入可能な資金の証明"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "滞在期間をカバーする医療・傷害保険への加入証明（英語またはスペイン語）"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "健康診断書",
+        "docNote": "医師による健康診断書（英語またはスペイン語での発行が必要）"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "無犯罪証明書",
+        "docNote": "日本の警察が発行する犯罪経歴証明書（アポスティーユ付き）"
+      }
+    ],
+    "applicationUrl": "https://www.argentina.gob.ar/interior/migraciones/working-holiday",
+    "embassyUrl": "https://ejapn.cancilleria.gob.ar/"
+  },
+  {
+    "id": "chile",
+    "description": "<p>チリは南北に約4,300kmにわたる細長い国土を持ち、アタカマ砂漠からパタゴニアの氷河まで多彩な自然環境が魅力の国です。首都サンティアゴは南米有数の近代都市で、治安が比較的良く留学生にとって安心して生活できる環境が整っています。日本とのワーキングホリデー協定国であり、スペイン語を学びながら働く貴重な経験ができます。チリのスペイン語は独特のアクセントやスラングがあり、実践的な語学力が身につきます。ワイン産地としても世界的に有名で、週末にはバルパライソやビーニャ・デル・マールなど美しい海岸都市への日帰り旅行も楽しめます。南米の中でも経済的に安定しており、安心して充実した留学生活を送ることができるでしょう。</p>",
+    "capital": "サンティアゴ",
+    "officialLanguage": "スペイン語",
+    "currency": "チリ・ペソ（CLP）",
+    "currencyCode": "CLP",
+    "timeDifferenceJapan": "-13時間",
+    "flightTimeHours": 26,
+    "bestSeason": "11月〜3月（夏）",
+    "livingCostMonthJpy": 90000,
+    "avgRentMonthlyJpy": 50000,
+    "minimumWageLocal": "月給460,000 CLP（約70,000円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンティアゴ",
+        "cityDescription": "チリの首都で最大の都市。語学学校や大学が集中し、近代的な生活環境とアンデス山脈の絶景が共存しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "バルパライソ",
+        "cityDescription": "世界遺産に登録されたカラフルな港町。アートや文化が盛んで、独特の雰囲気の中でスペイン語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ビーニャ・デル・マール",
+        "cityDescription": "「庭園都市」と呼ばれる美しいリゾート都市。温暖な気候と治安の良さから、留学生に人気のエリアです。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "同一雇用主のもとで最長6ヶ月まで就労可能",
+    "visaStudyLimit": "最長6ヶ月まで就学可能",
+    "visaRenewable": false,
+    "visaQuota": "200人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "必要書類の準備",
+        "stepDescription": "パスポート、残高証明書、航空券予約確認書、海外旅行保険証書、健康診断書などの必要書類を揃えます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "在日チリ大使館への申請",
+        "stepDescription": "東京の駐日チリ大使館に予約の上、直接訪問してワーキングホリデービザを申請します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "書類審査・面接",
+        "stepDescription": "提出書類の審査が行われ、必要に応じて面接が実施されます。渡航計画を明確に説明できるよう準備しましょう。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ発給",
+        "stepDescription": "審査通過後、約2〜4週間でビザが発給されます。パスポートにビザシールが貼付されます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "入国後の手続き",
+        "stepDescription": "チリ到着後30日以内に、外国人登録局（PDI）にて滞在登録を行います。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "残存有効期間がビザ申請時点で1年6ヶ月以上あるもの"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "残高証明書",
+        "docNote": "滞在初期の生活費として約2,500米ドル相当以上の資金証明"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "往復航空券または購入資金の証明",
+        "docNote": "帰国便の航空券予約確認書、または購入可能な資金の証明"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "滞在全期間をカバーする医療保険の加入証明書（英語またはスペイン語）"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "健康診断書",
+        "docNote": "渡航に支障がないことを証明する医師の診断書"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "無犯罪証明書",
+        "docNote": "日本の警察が発行する犯罪経歴証明書（アポスティーユ付き）"
+      }
+    ],
+    "applicationUrl": "https://www.extranjeria.gob.cl/",
+    "embassyUrl": "https://chile.gob.cl/japon/ja"
+  },
+  {
+    "id": "brazil",
+    "description": "<p>ブラジルは南米最大の国土と人口を誇る活気あふれる国で、南米唯一のポルトガル語圏の留学先として注目されています。サンパウロやリオデジャネイロなどの大都市には世界クラスの大学や語学学校が集まり、質の高いポルトガル語教育を受けることができます。カーニバルやサンバ、ボサノバなど独自の文化は世界中から人を惹きつけ、多民族国家ならではの多様性も大きな魅力です。サルバドールではアフロ・ブラジル文化に触れ、アマゾンでは壮大な大自然を体験できます。約200万人の日系人コミュニティが存在し、日本語が通じる場面もあるなど日本人留学生にとって心強い環境が整っています。物価は比較的手頃で、長期滞在の留学にも非常に適した国です。</p>",
+    "capital": "ブラジリア",
+    "officialLanguage": "ポルトガル語",
+    "currency": "レアル（BRL）",
+    "currencyCode": "BRL",
+    "timeDifferenceJapan": "-12時間",
+    "flightTimeHours": 24,
+    "bestSeason": "4月〜10月（乾季）",
+    "livingCostMonthJpy": 80000,
+    "avgRentMonthlyJpy": 45000,
+    "minimumWageLocal": "月給1,412 BRL（約42,000円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンパウロ",
+        "cityDescription": "南米最大の都市で経済の中心地。語学学校や大学が豊富で、日系人コミュニティも大きく日本人留学生に人気です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "リオデジャネイロ",
+        "cityDescription": "コパカバーナビーチやコルコバードの丘で知られる観光都市。カーニバル文化を体験しながらポルトガル語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "サルバドール",
+        "cityDescription": "アフロ・ブラジル文化の中心地。カラフルな旧市街は世界遺産に登録され、独特の音楽や料理を楽しめます。"
+      }
+    ]
+  },
+  {
+    "id": "colombia",
+    "description": "<p>コロンビアは近年治安が大幅に改善し、スペイン語留学先として世界的に注目を集めている南米の国です。コロンビアのスペイン語は発音が明瞭で聞き取りやすく、スペイン語初心者にとって非常に学びやすいと評判です。首都ボゴタは標高2,600mに位置する高原都市で、年間を通じて過ごしやすい気候が特徴です。第二の都市メデジンは「常春の街」と呼ばれ、近年はデジタルノマドの聖地としても人気があります。カリブ海沿岸のカルタヘナは世界遺産の旧市街が美しく、リゾート気分で語学学習ができます。物価が非常に安く、コーヒーやフルーツなど食文化も豊かで、コストパフォーマンスの高い留学生活が実現できる国として人気が高まっています。</p>",
+    "capital": "ボゴタ",
+    "officialLanguage": "スペイン語",
+    "currency": "コロンビア・ペソ（COP）",
+    "currencyCode": "COP",
+    "timeDifferenceJapan": "-14時間",
+    "flightTimeHours": 22,
+    "bestSeason": "12月〜3月（乾季）",
+    "livingCostMonthJpy": 55000,
+    "avgRentMonthlyJpy": 30000,
+    "minimumWageLocal": "月給1,300,000 COP（約45,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ボゴタ",
+        "cityDescription": "標高2,600mの首都。大学や語学学校が充実し、美術館やカフェ文化も楽しめる知的な雰囲気の都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "メデジン",
+        "cityDescription": "「常春の街」と呼ばれる温暖な気候の都市。近年の発展が目覚ましく、デジタルノマドや留学生に人気です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "カルタヘナ",
+        "cityDescription": "カリブ海沿岸の世界遺産都市。美しいコロニアル建築の旧市街でリゾート気分のスペイン語留学ができます。"
+      }
+    ]
+  },
+  {
+    "id": "peru",
+    "description": "<p>ペルーはインカ帝国の偉大な遺産とスペイン植民地時代の文化が見事に融合した魅力的な国です。マチュピチュやナスカの地上絵など世界遺産が豊富で、歴史や考古学に興味がある留学生にとって最高の環境が揃っています。首都リマは南米有数の美食都市として世界的に知られ、日本料理の影響を受けた「ニッケイ料理」も楽しめます。ペルーのスペイン語は比較的聞き取りやすく、語学学習に適しています。クスコではインカ文化に浸りながらスペイン語を学ぶユニークな体験ができます。物価は南米の中でも特に安く、限られた予算でも充実した留学生活を送ることが可能です。日系人コミュニティも存在し、日本人にとって親しみやすい国です。</p>",
+    "capital": "リマ",
+    "officialLanguage": "スペイン語",
+    "currency": "ソル（PEN）",
+    "currencyCode": "PEN",
+    "timeDifferenceJapan": "-14時間",
+    "flightTimeHours": 23,
+    "bestSeason": "5月〜10月（乾季）",
+    "livingCostMonthJpy": 50000,
+    "avgRentMonthlyJpy": 25000,
+    "minimumWageLocal": "月給1,025 PEN（約38,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "リマ",
+        "cityDescription": "ペルーの首都で南米有数のグルメ都市。語学学校が充実し、日系コミュニティも大きく日本人に馴染みやすい環境です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "クスコ",
+        "cityDescription": "かつてのインカ帝国の首都。世界遺産の街並みの中でスペイン語を学び、マチュピチュへの拠点としても最適です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "アレキパ",
+        "cityDescription": "「白い街」と呼ばれる美しいコロニアル都市。温暖な気候と落ち着いた環境で、集中してスペイン語を学べます。"
+      }
+    ]
+  },
+  {
+    "id": "ecuador",
+    "description": "<p>エクアドルは赤道直下に位置しながら、アンデス高地の首都キトは年間を通じて春のような気候で過ごしやすい国です。通貨が米ドルのため為替変動の心配がなく、留学費用の計画や管理がしやすいのが大きなメリットです。エクアドルのスペイン語は明瞭でゆっくりとした話し方が特徴で、初心者にとって非常に学びやすいと言われています。ガラパゴス諸島やアマゾン熱帯雨林など世界的な自然遺産にアクセスできるのも大きな魅力です。クエンカは美しいコロニアル建築の世界遺産都市で、リタイア後の移住先として世界的に有名なほど住みやすい街です。物価が非常に安く、質の高いスペイン語の語学教育をリーズナブルな費用で受けられます。</p>",
+    "capital": "キト",
+    "officialLanguage": "スペイン語",
+    "currency": "米ドル（USD）",
+    "currencyCode": "USD",
+    "timeDifferenceJapan": "-14時間",
+    "flightTimeHours": 22,
+    "bestSeason": "6月〜9月（乾季）",
+    "livingCostMonthJpy": 50000,
+    "avgRentMonthlyJpy": 25000,
+    "minimumWageLocal": "月給460 USD（約69,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "キト",
+        "cityDescription": "世界遺産に登録された旧市街を持つ首都。標高2,800mの高原で年中春のような気候が特徴です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "グアヤキル",
+        "cityDescription": "エクアドル最大の港湾都市。近代的な街並みと活気ある市場があり、沿岸部の文化を体験できます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "クエンカ",
+        "cityDescription": "世界遺産のコロニアル都市。世界一住みやすい街にも選ばれ、落ち着いた環境でスペイン語留学ができます。"
+      }
+    ]
+  },
+  {
+    "id": "bolivia",
+    "description": "<p>ボリビアは南米で最も物価が安い国の一つで、予算を抑えてスペイン語を学びたい留学生にとって理想的な留学先です。行政上の首都ラパスは標高3,640mに位置する世界最高所の首都で、すり鉢状の地形に広がる独特の景観が圧巻です。ウユニ塩湖やチチカカ湖など世界的に有名な絶景スポットがあり、留学中に壮大な大自然を満喫できます。ボリビアのスペイン語は比較的聞き取りやすく、語学学校の授業料も南米で最も格安な水準です。先住民文化が色濃く残る独特の文化を体験しながら、他の南米諸国では味わえないディープな留学体験ができます。コチャバンバは「常春の街」と呼ばれ、一年中温暖な気候で語学留学に最適な環境が整っています。</p>",
+    "capital": "ラパス（行政首都）/ スクレ（憲法上の首都）",
+    "officialLanguage": "スペイン語",
+    "currency": "ボリビアーノ（BOB）",
+    "currencyCode": "BOB",
+    "timeDifferenceJapan": "-13時間",
+    "flightTimeHours": 25,
+    "bestSeason": "5月〜10月（乾季）",
+    "livingCostMonthJpy": 40000,
+    "avgRentMonthlyJpy": 18000,
+    "minimumWageLocal": "月給2,362 BOB（約50,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ラパス",
+        "cityDescription": "世界最高所の行政首都。すり鉢状の地形に広がる独特の景観と先住民文化が魅力的な都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンタクルス",
+        "cityDescription": "ボリビア最大の都市で経済の中心地。熱帯気候で近代的な街並みがあり、活気ある都市生活を楽しめます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "コチャバンバ",
+        "cityDescription": "「常春の街」と呼ばれる温暖な気候の都市。語学学校が多く、リーズナブルな費用でスペイン語留学ができます。"
+      }
+    ]
+  },
+  {
+    "id": "uruguay",
+    "description": "<p>ウルグアイは南米で最も治安が良く、民主主義が安定した国として広く知られています。首都モンテビデオはラプラタ川沿いに広がる美しい都市で、ゆったりとした雰囲気の中でスペイン語を学ぶことができます。アルゼンチンのスペイン語と似たリオプラテンセ方言が話され、独特のアクセントが特徴的です。教育水準が南米でもトップクラスの高さを誇り、質の高い語学教育を受けられます。プンタ・デル・エステは南米有数のビーチリゾート地で、コロニア・デル・サクラメントにはポルトガル植民地時代の世界遺産の街並みが残ります。マテ茶やアサード（BBQ）などのガウチョ由来の食文化も非常に魅力的で、安全で快適な留学生活を送れる国です。</p>",
+    "capital": "モンテビデオ",
+    "officialLanguage": "スペイン語",
+    "currency": "ウルグアイ・ペソ（UYU）",
+    "currencyCode": "UYU",
+    "timeDifferenceJapan": "-12時間",
+    "flightTimeHours": 25,
+    "bestSeason": "11月〜3月（夏）",
+    "livingCostMonthJpy": 90000,
+    "avgRentMonthlyJpy": 50000,
+    "minimumWageLocal": "月給22,268 UYU（約75,000円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "モンテビデオ",
+        "cityDescription": "ウルグアイの首都。治安が良く、ラプラタ川沿いの美しい街並みでゆったりとスペイン語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "プンタ・デル・エステ",
+        "cityDescription": "南米を代表するビーチリゾート。夏季は特に活気があり、リゾート気分で語学を学べる人気の街です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "コロニア・デル・サクラメント",
+        "cityDescription": "ポルトガル植民地時代の世界遺産の街。石畳の旧市街が美しく、落ち着いた環境で留学生活を楽しめます。"
+      }
+    ]
+  },
+  {
+    "id": "costa-rica",
+    "description": "<p>コスタリカは「中米のスイス」と呼ばれる平和で安定した国で、軍隊を持たないことでも知られています。国土の約25%が自然保護区に指定されており、エコツーリズムの聖地として世界中から観光客が訪れます。スペイン語留学先としても人気が高く、特にアメリカやカナダからの留学生が多いのが特徴です。首都サンホセを拠点に、熱帯雨林やビーチへのアクセスも抜群です。コスタリカのスペイン語は比較的聞き取りやすく、フレンドリーな国民性もあって語学学習に最適な環境です。環境意識が高い国で、サステナブルな暮らしに興味がある留学生にもおすすめです。中米の中では物価がやや高めですが、質の高い教育と安全な環境が魅力です。</p>",
+    "capital": "サンホセ",
+    "officialLanguage": "スペイン語",
+    "currency": "コスタリカ・コロン（CRC）",
+    "currencyCode": "CRC",
+    "timeDifferenceJapan": "-15時間",
+    "flightTimeHours": 20,
+    "bestSeason": "12月〜4月（乾季）",
+    "livingCostMonthJpy": 85000,
+    "avgRentMonthlyJpy": 45000,
+    "minimumWageLocal": "月給369,131 CRC（約100,000円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンホセ",
+        "cityDescription": "コスタリカの首都。語学学校が集中し、国内各地への交通の拠点としても便利な都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "プエルト・ビエホ",
+        "cityDescription": "カリブ海沿岸のリラックスした雰囲気のビーチタウン。サーフィンやダイビングを楽しみながら語学を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "モンテベルデ",
+        "cityDescription": "世界的に有名な熱帯雲霧林の保護区がある地域。エコツーリズムと語学学習を両立できるユニークな留学先です。"
+      }
+    ]
+  },
+  {
+    "id": "panama",
+    "description": "<p>パナマは太平洋と大西洋を結ぶパナマ運河で世界的に知られる中米の国で、国際的なビジネスハブとしても大きく発展しています。通貨に米ドルが使われているため、為替変動を気にせず留学費用を管理できるのが大きな利点です。首都パナマシティは近代的な高層ビル群と歴史的な旧市街（カスコ・ビエホ）が共存するユニークな都市です。パナマのスペイン語はカリブ海沿岸の影響を受けつつも比較的聞き取りやすく、語学留学に適しています。ボカス・デル・トロやボケテなど自然豊かな地方都市でも語学学校があり、のんびりとした環境でスペイン語を学ぶこともできます。中米では比較的物価が高めですが、安全性と利便性のバランスが良い留学先です。</p>",
+    "capital": "パナマシティ",
+    "officialLanguage": "スペイン語",
+    "currency": "バルボア / 米ドル（USD）",
+    "currencyCode": "USD",
+    "timeDifferenceJapan": "-14時間",
+    "flightTimeHours": 20,
+    "bestSeason": "12月〜4月（乾季）",
+    "livingCostMonthJpy": 85000,
+    "avgRentMonthlyJpy": 50000,
+    "minimumWageLocal": "月給624 USD（約94,000円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "パナマシティ",
+        "cityDescription": "近代的な高層ビル群と世界遺産のカスコ・ビエホが共存する首都。パナマ運河も間近で見学できます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ボカス・デル・トロ",
+        "cityDescription": "カリブ海に浮かぶ諸島のリゾートエリア。ダイビングやサーフィンを楽しみながらリラックスした留学生活を送れます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ボケテ",
+        "cityDescription": "高原地帯の小さな町で、コーヒー農園やハイキングが楽しめます。涼しい気候の中で集中してスペイン語を学べます。"
+      }
+    ]
+  },
+  {
+    "id": "guatemala",
+    "description": "<p>グアテマラはマヤ文明の遺跡が数多く残る中米の国で、世界で最もリーズナブルにスペイン語を学べる留学先として非常に有名です。特にアンティグアは世界遺産に登録された美しいコロニアル都市で、マンツーマンのスペイン語レッスンが格安で受けられることから、世界中の語学留学生が集まります。グアテマラのスペイン語は明瞭で聞き取りやすく、初心者にとって理想的な学習環境が整っています。アティトラン湖周辺では先住民文化に触れながら語学を学ぶこともできます。物価は中南米の中でも特に安く、月5万円以下での生活も可能です。ティカル遺跡やセムク・チャンペイなど自然と歴史の見どころも豊富で、充実した留学体験ができます。</p>",
+    "capital": "グアテマラシティ",
+    "officialLanguage": "スペイン語",
+    "currency": "ケツァル（GTQ）",
+    "currencyCode": "GTQ",
+    "timeDifferenceJapan": "-15時間",
+    "flightTimeHours": 19,
+    "bestSeason": "11月〜4月（乾季）",
+    "livingCostMonthJpy": 40000,
+    "avgRentMonthlyJpy": 18000,
+    "minimumWageLocal": "月給3,268 GTQ（約62,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "アンティグア",
+        "cityDescription": "世界遺産のコロニアル都市。格安のマンツーマンスペイン語レッスンで世界的に有名な語学留学の聖地です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "グアテマラシティ",
+        "cityDescription": "グアテマラの首都。近代的な商業施設と歴史的な建造物が混在し、語学学校や大学が集中しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "アティトラン湖",
+        "cityDescription": "「世界で最も美しい湖」と呼ばれる火山湖周辺の村々。マヤ文化に浸りながらスペイン語を学べるユニークな環境です。"
+      }
+    ]
+  },
+  {
+    "id": "honduras",
+    "description": "<p>ホンジュラスはカリブ海と太平洋の両方に面した中米の国で、マヤ文明のコパン遺跡や世界第二の大きさを誇るメソアメリカン・バリアリーフが魅力です。スペイン語留学先としてはまだあまり知られていませんが、その分観光地化されておらず、ローカルな環境で実践的なスペイン語を身につけることができます。物価は中米で最も安い部類に入り、格安でスペイン語を学びたい留学生にとって最適な環境です。カリブ海のロアタン島は世界有数のダイビングスポットで、マリンスポーツと語学留学を組み合わせたユニークな体験ができます。サンペドロスーラは経済の中心地で近代的な商業施設やインフラが整い、留学生活の利便性も高い都市です。</p>",
+    "capital": "テグシガルパ",
+    "officialLanguage": "スペイン語",
+    "currency": "レンピラ（HNL）",
+    "currencyCode": "HNL",
+    "timeDifferenceJapan": "-15時間",
+    "flightTimeHours": 19,
+    "bestSeason": "11月〜4月（乾季）",
+    "livingCostMonthJpy": 35000,
+    "avgRentMonthlyJpy": 15000,
+    "minimumWageLocal": "月給10,922 HNL（約65,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "テグシガルパ",
+        "cityDescription": "ホンジュラスの首都。山に囲まれた盆地にあり、大学や語学学校が集まる教育の中心地です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンペドロスーラ",
+        "cityDescription": "ホンジュラス第二の都市で経済の中心。近代的な施設が整い、ビジネス環境でスペイン語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ロアタン島",
+        "cityDescription": "カリブ海に浮かぶ美しい島。世界有数のダイビングスポットで、マリンスポーツと語学留学を両立できます。"
+      }
+    ]
+  },
+  {
+    "id": "cuba",
+    "description": "<p>キューバはカリブ海最大の島国で、1950年代のクラシックカーやコロニアル建築が残る独特の雰囲気が魅力です。首都ハバナの旧市街は世界遺産に登録されており、サルサ音楽が街中に溢れるラテン文化の真髄を体験できます。キューバのスペイン語はカリブ海特有のリズミカルな発音が特徴で、ラテンアメリカの中でもユニークな語学体験ができます。医療や教育の水準が高く、キューバの大学には世界中から留学生が集まります。物価は非常に安く、独自の社会主義体制のもとで他の国では味わえない貴重な文化体験ができます。トリニダードは保存状態の良いコロニアル都市で、サンティアゴ・デ・クーバはキューバ音楽の発祥地として知られています。</p>",
+    "capital": "ハバナ",
+    "officialLanguage": "スペイン語",
+    "currency": "キューバ・ペソ（CUP）",
+    "currencyCode": "CUP",
+    "timeDifferenceJapan": "-14時間",
+    "flightTimeHours": 20,
+    "bestSeason": "11月〜4月（乾季）",
+    "livingCostMonthJpy": 35000,
+    "avgRentMonthlyJpy": 15000,
+    "minimumWageLocal": "月給2,100 CUP（約10,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ハバナ",
+        "cityDescription": "キューバの首都。世界遺産の旧市街でクラシックカーとサルサ音楽に囲まれながらスペイン語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "トリニダード",
+        "cityDescription": "16世紀の植民地時代の姿がそのまま残る世界遺産の街。タイムスリップしたような環境でスペイン語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンティアゴ・デ・クーバ",
+        "cityDescription": "キューバ第二の都市で音楽の発祥地。カーニバルやソン音楽など、キューバ文化の真髄を体験できます。"
+      }
+    ]
+  },
+  {
+    "id": "dominican-republic",
+    "description": "<p>ドミニカ共和国はカリブ海に浮かぶイスパニョーラ島の東側を占める国で、美しいビーチと温暖な気候が魅力です。首都サントドミンゴはアメリカ大陸最古のヨーロッパ植民都市で、世界遺産に登録されたコロニアル建築群は必見です。ドミニカのスペイン語はカリブ海特有のリラックスした雰囲気で、陽気な国民性のもとで楽しくスペイン語を学ぶことができます。プンタカナは世界有数のビーチリゾートで、観光業が盛んなためホスピタリティ分野での就労体験も可能です。メレンゲやバチャータなどの音楽・ダンス文化も豊かで、語学だけでなく文化体験も充実しています。物価は比較的安く、カリブ海でのリゾート留学を手頃な費用で実現できます。</p>",
+    "capital": "サントドミンゴ",
+    "officialLanguage": "スペイン語",
+    "currency": "ドミニカ・ペソ（DOP）",
+    "currencyCode": "DOP",
+    "timeDifferenceJapan": "-13時間",
+    "flightTimeHours": 20,
+    "bestSeason": "12月〜4月（乾季）",
+    "livingCostMonthJpy": 50000,
+    "avgRentMonthlyJpy": 25000,
+    "minimumWageLocal": "月給21,000 DOP（約55,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "サントドミンゴ",
+        "cityDescription": "アメリカ大陸最古のヨーロッパ植民都市。世界遺産の旧市街と近代的な新市街が共存する魅力的な首都です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "プンタカナ",
+        "cityDescription": "カリブ海を代表するビーチリゾート。観光業が盛んで、ホスピタリティ分野のインターンと語学学習を両立できます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンティアゴ",
+        "cityDescription": "ドミニカ共和国第二の都市。内陸部に位置し、落ち着いた雰囲気の中でリーズナブルにスペイン語を学べます。"
+      }
+    ]
+  },
+  {
+    "id": "el-salvador",
+    "description": "<p>エルサルバドルは中米最小の国ながら、太平洋沿岸のサーフスポットやマヤ遺跡、火山湖など見どころが凝縮された魅力的な国です。近年はビットコインを法定通貨に採用するなど革新的な政策でも注目を集めています。通貨は米ドルが使われているため、為替の心配なく留学費用を管理できます。エルサルバドルのスペイン語は中米の中でも比較的聞き取りやすく、フレンドリーな国民性（サルバドール人は「最もフレンドリーな中米人」と呼ばれます）のもとで楽しく語学を学べます。物価は非常に安く、コロニアル都市サンタアナやサーファーの聖地エル・トゥンコなど、個性豊かな街での留学体験ができます。ププサなど独自の食文化も魅力的です。</p>",
+    "capital": "サンサルバドル",
+    "officialLanguage": "スペイン語",
+    "currency": "米ドル（USD）",
+    "currencyCode": "USD",
+    "timeDifferenceJapan": "-15時間",
+    "flightTimeHours": 19,
+    "bestSeason": "11月〜4月（乾季）",
+    "livingCostMonthJpy": 40000,
+    "avgRentMonthlyJpy": 20000,
+    "minimumWageLocal": "月給365 USD（約55,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンサルバドル",
+        "cityDescription": "エルサルバドルの首都。火山に囲まれた盆地に位置し、語学学校や文化施設が集中する都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンタアナ",
+        "cityDescription": "エルサルバドル第二の都市。コロニアル建築が美しく、落ち着いた環境でリーズナブルにスペイン語を学べます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "エル・トゥンコ",
+        "cityDescription": "太平洋沿岸のサーフタウン。世界中からサーファーが集まるビーチで、サーフィンと語学留学を両立できます。"
+      }
+    ]
+  }
+]

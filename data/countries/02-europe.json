@@ -1,0 +1,1577 @@
+[
+  {
+    "id": "united-kingdom",
+    "description": "<p>イギリスは、歴史と伝統が息づく島国でありながら、最先端の文化・ビジネスが集まるグローバル都市ロンドンを擁する国です。英語発祥の地として、本場のブリティッシュ・イングリッシュを学べる最高の環境が整っています。オックスフォードやケンブリッジなど世界屈指の大学都市もあり、教育水準の高さは世界トップクラス。パブ文化やアフタヌーンティー、サッカー観戦など、日常生活の中で英国文化を体験できます。YMS（Youth Mobility Scheme）ビザでは最長2年間の滞在が可能で、就労制限もないため、しっかり働きながら生活することができます。多民族国家ならではの多様性に触れながら、国際的な視野を広げられる留学先です。</p>",
+    "capital": "ロンドン",
+    "officialLanguage": "英語",
+    "currency": "英ポンド（GBP）",
+    "currencyCode": "GBP",
+    "timeDifferenceJapan": "-9時間（サマータイム時-8時間）",
+    "flightTimeHours": 12.5,
+    "bestSeason": "5月〜9月（夏）",
+    "livingCostMonthJpy": 200000,
+    "avgRentMonthlyJpy": 120000,
+    "minimumWageLocal": "時給11.44 GBP（約2,200円）",
+    "costLevel": "very-high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ロンドン",
+        "cityDescription": "世界有数の国際都市。金融・ファッション・アートの中心地で、仕事の機会も豊富。博物館や美術館の多くが無料で楽しめます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "マンチェスター",
+        "cityDescription": "イングランド北部の活気ある都市。ロンドンより物価が安く、音楽やサッカー文化が盛ん。日本人コミュニティも充実しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "エディンバラ",
+        "cityDescription": "スコットランドの首都。中世の街並みが美しく、毎年8月のフェスティバルは世界最大級。歴史と自然が調和した魅力的な街です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 24,
+    "visaCostJpy": 56000,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "6,000人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "抽選応募（ballot）",
+        "stepDescription": "毎年1月にYMSの抽選に応募します。指定期間内にメールで応募し、当選通知を待ちます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン申請",
+        "stepDescription": "当選後、GOV.UKのウェブサイトからオンラインでビザ申請を行い、申請料£298を支払います。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "IHS（Immigration Health Surcharge）支払い",
+        "stepDescription": "NHS（国民保健サービス）利用のため、IHS料金を支払います。2年間で約£1,552です。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ申請センター訪問",
+        "stepDescription": "東京または大阪のVFS Globalビザ申請センターで生体認証（指紋・写真）を登録します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、パスポートにビザが貼付されて返却されます。通常3週間程度で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在期間をカバーする残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "£2,530以上の資金があることを証明する銀行残高証明書（申請前28日以内発行）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "当選確認メール",
+        "docNote": "YMS抽選で当選した際に届いた確認メールのコピー。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "顔写真",
+        "docNote": "パスポートサイズのカラー写真。背景は白または薄いグレー。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "航空券または旅程表",
+        "docNote": "渡航予定を示す書類（予約確認書でも可）。"
+      }
+    ],
+    "applicationUrl": "https://www.gov.uk/youth-mobility",
+    "embassyUrl": "https://www.gov.uk/world/organisations/british-embassy-tokyo.ja"
+  },
+  {
+    "id": "ireland",
+    "description": "<p>アイルランドは「エメラルドの島」と呼ばれる美しい自然に恵まれた国で、フレンドリーな国民性が世界的に知られています。英語圏でありながらヨーロッパの文化も楽しめるユニークな立地が魅力。Google、Meta、Appleなど世界的IT企業のヨーロッパ本社が集まるダブリンでは、テック業界での就労機会も非常に豊富です。パブでの生演奏やケルト文化など、独自の伝統文化に触れることができます。ワーキングホリデービザは最長12ヶ月で、条件を満たせば12ヶ月の延長も可能。日本人が比較的少ない環境で、英語漬けの生活を送りたい方におすすめの留学先です。文学や音楽の豊かな伝統、そして緑豊かな田園風景も、この国の大きな魅力のひとつです。</p>",
+    "capital": "ダブリン",
+    "officialLanguage": "英語・アイルランド語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-9時間（サマータイム時-8時間）",
+    "flightTimeHours": 13,
+    "bestSeason": "5月〜9月（夏）",
+    "livingCostMonthJpy": 180000,
+    "avgRentMonthlyJpy": 100000,
+    "minimumWageLocal": "時給12.70 EUR（約2,030円）",
+    "costLevel": "high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ダブリン",
+        "cityDescription": "アイルランドの首都。GoogleやMetaなどIT企業のヨーロッパ拠点が集まり、仕事の機会が豊富。テンプルバー地区はパブ文化の中心地です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "コーク",
+        "cityDescription": "アイルランド第二の都市。ダブリンより物価が安く、温暖な気候が特徴。食文化が豊かで「フードキャピタル」とも呼ばれています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ゴールウェイ",
+        "cityDescription": "西海岸の芸術都市。音楽フェスティバルが盛んで、伝統的なアイルランド文化が色濃く残る街。自然も豊かでモハーの断崖へのアクセスも便利です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": true,
+    "visaQuota": "800人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "アイルランド大使館のウェブサイトから申請書をダウンロードし、必要書類を準備します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書の提出",
+        "stepDescription": "指定期間内（通常1月と7月）にアイルランド大使館へ申請書類一式を郵送または持参します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "審査・許可通知",
+        "stepDescription": "書類審査の後、許可レターがメールまたは郵送で届きます。通常4〜8週間程度かかります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "渡航・外国人登録",
+        "stepDescription": "アイルランド到着後、入国管理局（GNIB）で外国人登録を行い、IRPカードを取得します。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在予定期間＋6ヶ月以上の残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "申請書",
+        "docNote": "大使館指定の申請用紙に記入したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "写真2枚",
+        "docNote": "パスポートサイズ（4.5cm×3.5cm）のカラー写真。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "履歴書（英文）",
+        "docNote": "英語で作成した履歴書（CV）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "50万円以上の残高があることを証明する英文の銀行残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "滞在期間をカバーする医療保険の加入証明書。"
+      }
+    ],
+    "applicationUrl": "https://www.dfa.ie/irish-embassy/japan/",
+    "embassyUrl": "https://www.dfa.ie/irish-embassy/japan/"
+  },
+  {
+    "id": "france",
+    "description": "<p>フランスは、芸術・美食・ファッションの国として世界中から愛されるヨーロッパの中心国です。パリのエッフェル塔やルーヴル美術館はもちろん、プロヴァンスのラベンダー畑や南仏コートダジュールのリゾート地、ボルドーやブルゴーニュの歴史あるワイン産地など、地域ごとに異なる魅力があります。フランス語は国連公用語のひとつであり、習得すればアフリカやカナダなど世界中の多くの国で活用できます。ワーキングホリデービザは定員制限がなく比較的取得しやすいのが特徴。カフェ文化やマルシェでの買い物など、日常生活そのものが豊かな文化体験になります。料理・パティスリー・ワインなどの専門分野を学びたい方にも最適な環境です。EU圏内の旅行も気軽に楽しめる立地の良さも大きな魅力です。</p>",
+    "capital": "パリ",
+    "officialLanguage": "フランス語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 12.5,
+    "bestSeason": "4月〜10月（春〜秋）",
+    "livingCostMonthJpy": 170000,
+    "avgRentMonthlyJpy": 90000,
+    "minimumWageLocal": "時給11.65 EUR（約1,860円）",
+    "costLevel": "high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "パリ",
+        "cityDescription": "フランスの首都であり、世界の芸術・ファッション・美食の中心地。語学学校も多く、仕事の機会も豊富ですが家賃は高めです。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "リヨン",
+        "cityDescription": "フランス第二の都市で「美食の街」として有名。パリより物価が安く、生活しやすい環境。歴史地区は世界遺産に登録されています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ニース",
+        "cityDescription": "コートダジュールの中心都市。温暖な地中海性気候で一年を通じて過ごしやすく、観光業での仕事が見つかりやすい街です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日フランス大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "ワーキングホリデービザ申請に必要な書類一式を準備します。動機作文（フランス語または英語）の作成も必要です。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日フランス大使館（東京・広尾）を訪問し、書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領",
+        "stepDescription": "審査後、パスポートにビザシールが貼付されます。通常2〜4週間で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザ申請時に残存有効期間が15ヶ月以上あること。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "長期ビザ申請書",
+        "docNote": "フランス大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "35mm×45mmのカラー写真1枚（背景白）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "動機作文",
+        "docNote": "フランス語または英語で書いたワーキングホリデーの動機・計画書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "残高証明書",
+        "docNote": "3,100EUR以上の資金を証明する銀行残高証明書（英文またはフランス語）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "滞在全期間をカバーするフランスで有効な医療保険の加入証明書。"
+      }
+    ],
+    "applicationUrl": "https://jp.ambafrance.org/article11614",
+    "embassyUrl": "https://jp.ambafrance.org/"
+  },
+  {
+    "id": "germany",
+    "description": "<p>ドイツはヨーロッパ最大の経済大国であり、自動車・機械・IT産業を中心に世界最高水準の技術力を誇る国です。ベルリンの壁崩壊後も進化し続ける首都ベルリンは、アートやスタートアップの街として世界中のクリエイターや起業家を惹きつけています。ドイツ語はEU最多の母語話者数を持ち、ビジネスシーンでの需要も非常に高い言語です。ワーキングホリデービザは定員制限がなく申請しやすいのが特徴。大学の学費が基本無料で教育への投資が手厚く、環境先進国としても世界をリードしています。ビールやソーセージなどのグルメ、冬の風物詩クリスマスマーケット、ブンデスリーガのサッカー文化など、ドイツならではの体験が待っています。EU圏内の交通ハブでもあり、周辺国への旅行も非常に便利です。</p>",
+    "capital": "ベルリン",
+    "officialLanguage": "ドイツ語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 12,
+    "bestSeason": "5月〜9月（夏）",
+    "livingCostMonthJpy": 160000,
+    "avgRentMonthlyJpy": 85000,
+    "minimumWageLocal": "時給12.41 EUR（約1,990円）",
+    "costLevel": "high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ベルリン",
+        "cityDescription": "ドイツの首都でスタートアップとアートの街。家賃は他の大都市に比べて手頃で、多文化的な雰囲気が魅力。英語でも生活しやすい環境です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ミュンヘン",
+        "cityDescription": "バイエルン州の州都でオクトーバーフェストの開催地。BMW本社があり自動車産業が盛ん。治安が良く生活の質が高い街です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "フランクフルト",
+        "cityDescription": "ヨーロッパの金融中心地のひとつ。国際空港があり交通の便が良い。日系企業も多く、日本人にとって働きやすい環境が整っています。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日ドイツ大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要な書類一式を準備します。ドイツ語または英語での書類が求められます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日ドイツ大使館（東京・南麻布）を訪問し、書類を提出・面接を受けます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査後、パスポートにビザが貼付されます。通常1〜2週間で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザ有効期限後3ヶ月以上の残存有効期間と空白ページ2ページ以上。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "ドイツ大使館指定のビザ申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "35mm×45mmのバイオメトリック写真2枚。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "往復航空券予約確認書",
+        "docNote": "または帰国便購入に十分な資金証明。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "滞在に十分な資金（約2,000EUR/月）を証明する残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "ドイツで有効な医療保険（歯科・妊娠もカバー）の加入証明書。"
+      }
+    ],
+    "applicationUrl": "https://japan.diplo.de/ja-ja/service/visa-whp/1010136",
+    "embassyUrl": "https://japan.diplo.de/ja-ja"
+  },
+  {
+    "id": "spain",
+    "description": "<p>スペインは情熱的な文化と温暖な地中海性気候が魅力の南ヨーロッパの国です。フラメンコ、闘牛、ガウディのサグラダ・ファミリアなど独自の芸術文化に加え、バルやタパス文化に代表される豊かな食文化も世界的に有名です。スペイン語は世界で約5億人が使用する主要言語であり、習得すれば中南米を含む幅広い地域でのキャリアに繋がります。ワーキングホリデービザは年間500人の定員があり、12ヶ月間の滞在が可能です。生活費はパリやロンドンに比べてかなり安く、特にバルセロナやマドリード以外の都市では非常に手頃な費用で暮らせます。シエスタのある穏やかなライフスタイルは、心にゆとりをもたらしてくれるでしょう。ラ・リーガのサッカー観戦やビーチリゾートなど、余暇の楽しみも尽きません。</p>",
+    "capital": "マドリード",
+    "officialLanguage": "スペイン語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 14,
+    "bestSeason": "4月〜6月、9月〜10月（春・秋）",
+    "livingCostMonthJpy": 140000,
+    "avgRentMonthlyJpy": 70000,
+    "minimumWageLocal": "時給8.87 EUR（約1,420円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "バルセロナ",
+        "cityDescription": "ガウディのサグラダ・ファミリアで有名なカタルーニャ州の州都。ビーチとアートが融合した街で、語学学校も多く留学先として人気です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "マドリード",
+        "cityDescription": "スペインの首都。プラド美術館やレティーロ公園など見どころ豊富。ビジネスの中心地で就労機会も多い活気ある街です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "バレンシア",
+        "cityDescription": "スペイン第三の都市。パエリア発祥の地で食文化が豊か。バルセロナやマドリードより物価が安く、地中海の温暖な気候が魅力です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "500人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日スペイン大使館のウェブサイトからビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要な書類を準備します。一部の書類はスペイン語への翻訳が必要な場合があります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日スペイン大使館（東京・六本木）を訪問し、書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査後、パスポートにビザが貼付されます。通常1〜2ヶ月で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在予定期間＋3ヶ月以上の残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "スペイン大使館指定の申請書（National Visa Application Form）に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真2枚（背景白、最近撮影のもの）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "最低533.05EUR/月相当の資金を証明する銀行残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "スペインで有効な医療保険の加入証明書（全滞在期間をカバー）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "無犯罪証明書",
+        "docNote": "居住地の警察署で取得した犯罪経歴証明書（アポスティーユ付き）。"
+      }
+    ],
+    "applicationUrl": "https://www.exteriores.gob.es/Consulados/tokio/ja/Paginas/index.aspx",
+    "embassyUrl": "https://www.exteriores.gob.es/Embajadas/tokio/ja/Paginas/index.aspx"
+  },
+  {
+    "id": "italy",
+    "description": "<p>イタリアは世界遺産登録数世界一を誇る歴史と芸術の国です。ローマのコロッセオ、フィレンツェのウフィツィ美術館、ヴェネツィアの水の都、アマルフィ海岸の絶景など、見どころは尽きません。イタリア料理はユネスコ無形文化遺産に登録されており、パスタやピザ、ジェラートの本場で本格的な食文化を学べます。ファッション・デザインの中心地ミラノでは、クリエイティブ分野でのキャリアを追求することも可能です。ワーキングホリデービザは定員制限がなく取得しやすいのが魅力。物価はヨーロッパの中では比較的手頃で、特に南部では生活費を大幅に抑えて暮らせます。陽気で家族を大切にするイタリアの人々との温かい交流は、かけがえのない経験となるでしょう。</p>",
+    "capital": "ローマ",
+    "officialLanguage": "イタリア語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 13,
+    "bestSeason": "4月〜6月、9月〜10月（春・秋）",
+    "livingCostMonthJpy": 140000,
+    "avgRentMonthlyJpy": 70000,
+    "minimumWageLocal": "法定最低賃金なし（業種別協約による）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ローマ",
+        "cityDescription": "イタリアの首都であり「永遠の都」。古代遺跡と現代生活が共存する街。語学学校も多く、イタリア文化を存分に体験できます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ミラノ",
+        "cityDescription": "イタリアの経済・ファッションの中心地。デザインやファッション業界での就労機会が豊富。日系企業も多く進出しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "フィレンツェ",
+        "cityDescription": "ルネサンス発祥の地。芸術・料理・ワインなど伝統文化を学ぶのに最適な街。比較的コンパクトで生活しやすい環境です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日イタリア大使館のウェブサイト（Prenota Online）でビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要な書類を準備します。一部書類のイタリア語翻訳が必要になる場合があります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日イタリア大使館（東京・三田）を訪問し、書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、パスポートにビザが貼付されます。通常2〜4週間程度で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザの有効期限後3ヶ月以上の残存有効期間と空白ページ2ページ以上。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "イタリア大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真1枚。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な資金を証明する銀行残高証明書（英文、直近のもの）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "航空券予約確認書",
+        "docNote": "往復航空券または片道航空券と帰国便購入資金の証明。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "イタリアで有効な医療保険の加入証明書（滞在全期間をカバー）。"
+      }
+    ],
+    "applicationUrl": "https://ambtokyo.esteri.it/ja/",
+    "embassyUrl": "https://ambtokyo.esteri.it/ja/"
+  },
+  {
+    "id": "denmark",
+    "description": "<p>デンマークは「世界一幸福な国」として知られる北欧の王国です。ヒュッゲ（Hygge）と呼ばれる居心地の良さを大切にするデンマーク独自の文化が根付き、ワークライフバランスに優れた社会として世界中から注目されています。首都コペンハーゲンは自転車都市として有名で、環境に優しい持続可能なライフスタイルを体験できます。デザイン大国としてレゴやロイヤルコペンハーゲン、フリッツ・ハンセンなど世界的ブランドを数多く生み出してきました。ワーキングホリデービザは定員制限なしで取得可能。賃金水準が非常に高く、生活費は高いものの収入も多いのが特徴です。英語の通用度が非常に高いため、デンマーク語が話せなくても日常生活に困ることはほとんどありません。</p>",
+    "capital": "コペンハーゲン",
+    "officialLanguage": "デンマーク語",
+    "currency": "デンマーク・クローネ（DKK）",
+    "currencyCode": "DKK",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 11.5,
+    "bestSeason": "5月〜9月（夏）",
+    "livingCostMonthJpy": 210000,
+    "avgRentMonthlyJpy": 110000,
+    "minimumWageLocal": "法定最低賃金なし（労使協約で約130 DKK/時、約2,800円）",
+    "costLevel": "very-high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "コペンハーゲン",
+        "cityDescription": "デンマークの首都。ニューハウンの色鮮やかな街並みやチボリ公園が有名。スタートアップや北欧デザイン企業が集積する国際都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "オーフス",
+        "cityDescription": "デンマーク第二の都市。大学都市として若者が多く活気がある街。アートやカルチャーシーンも盛んで、物価はコペンハーゲンより手頃です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン申請",
+        "stepDescription": "デンマーク移民局（SIRI）のウェブサイトからオンラインでワーキングホリデービザを申請します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備・提出",
+        "stepDescription": "必要書類を準備し、オンラインシステムにアップロードまたはデンマーク大使館に提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "生体認証の登録",
+        "stepDescription": "在日デンマーク大使館またはVFS Globalで生体認証（指紋・写真）を登録します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、居住許可証が発行されます。通常1〜2ヶ月で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在期間＋3ヶ月以上の残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "申請書",
+        "docNote": "デンマーク移民局指定のオンライン申請フォーム。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのバイオメトリック写真。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "約15,000 DKK以上の資金を証明する銀行残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "デンマークで有効な医療保険の加入証明書（滞在全期間をカバー）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "帰国便航空券",
+        "docNote": "帰国便の航空券または帰国便購入に十分な資金の証明。"
+      }
+    ],
+    "applicationUrl": "https://www.nyidanmark.dk/en-GB/You-want-to-apply/Working-Holiday",
+    "embassyUrl": "https://japan.um.dk/ja"
+  },
+  {
+    "id": "portugal",
+    "description": "<p>ポルトガルは温暖な気候と美しい大西洋の海岸線を持つ南ヨーロッパの国です。リスボンの石畳の坂道を走るレトロな路面電車やポルトの歴史あるワインセラーなど、ノスタルジックな街並みが世界中の旅人を魅了しています。近年はデジタルノマドの聖地としても注目を集め、IT・テック系のスタートアップシーンが急成長中です。ポルトガル語はブラジルを含む世界約2.5億人が使用する言語で、習得のメリットは非常に大きいです。ワーキングホリデービザは定員制限なしで取得可能。西ヨーロッパの中では物価が比較的安く、家賃や食費を抑えながらも質の高い生活が送れます。パステル・デ・ナタやバカリャウなどのシーフード料理など、食文化も大きな楽しみです。治安も良く、暮らしやすい国として年々人気が高まっています。</p>",
+    "capital": "リスボン",
+    "officialLanguage": "ポルトガル語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-9時間（サマータイム時-8時間）",
+    "flightTimeHours": 14,
+    "bestSeason": "4月〜10月（春〜秋）",
+    "livingCostMonthJpy": 120000,
+    "avgRentMonthlyJpy": 65000,
+    "minimumWageLocal": "月給820 EUR（時給約5.13 EUR、約820円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "リスボン",
+        "cityDescription": "ポルトガルの首都。7つの丘の上に広がる美しい街並みが特徴。テックスタートアップの拠点として急成長中で、国際的な雰囲気が魅力です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ポルト",
+        "cityDescription": "ポルトワインの産地として有名な北部の古都。リスボンより物価が安く、世界遺産の歴史地区や美しいドウロ川沿いの景色が楽しめます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ファロ",
+        "cityDescription": "南部アルガルヴェ地方の中心都市。美しいビーチリゾートが広がり、観光業での仕事が見つかりやすい。温暖な気候で一年中快適に過ごせます。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日ポルトガル大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要書類を準備します。一部の書類はポルトガル語または英語への翻訳が必要です。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日ポルトガル大使館（東京・麻布台）を訪問し、書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、パスポートにビザが貼付されます。通常2〜4週間で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザの有効期限後3ヶ月以上の残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "ポルトガル大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真2枚。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な滞在資金を証明する銀行残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "ポルトガルで有効な医療保険の加入証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "無犯罪証明書",
+        "docNote": "居住地の警察署で取得した犯罪経歴証明書。"
+      }
+    ],
+    "applicationUrl": "https://toquio.embaixadaportugal.mne.gov.pt/ja/",
+    "embassyUrl": "https://toquio.embaixadaportugal.mne.gov.pt/ja/"
+  },
+  {
+    "id": "netherlands",
+    "description": "<p>オランダは自由と寛容の精神が根付く国で、風車やチューリップ、運河の美しい景観で知られています。世界で最も英語が通じる非英語圏の国のひとつであり、オランダ語を話せなくても日常生活に困ることはほとんどありません。アムステルダムはゴッホ美術館やアンネ・フランクの家など文化施設が充実し、国際的なビジネスハブとしても急速に発展しています。ワーキングホリデービザは年間200人と少数精鋭の枠ですが、自転車王国として知られる環境に優しいライフスタイルを体験できます。ハイネケンやフィリップス、ユニリーバなどグローバル企業の本社が多数あり、国際的なキャリアを築く機会も豊富です。EU圏内の中心に位置し、ベルギーやドイツ、フランスなど周辺国への旅行も非常に便利です。</p>",
+    "capital": "アムステルダム",
+    "officialLanguage": "オランダ語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 11.5,
+    "bestSeason": "4月〜9月（春〜夏）",
+    "livingCostMonthJpy": 180000,
+    "avgRentMonthlyJpy": 100000,
+    "minimumWageLocal": "時給13.27 EUR（約2,120円）",
+    "costLevel": "high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "アムステルダム",
+        "cityDescription": "オランダの首都。運河が張り巡らされた美しい街並みと活気あるナイトライフが魅力。国際企業が多く、英語での仕事も見つかりやすい都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ロッテルダム",
+        "cityDescription": "ヨーロッパ最大の港湾都市。近代建築が立ち並ぶ先進的な街。アムステルダムより家賃が手頃で、物流・貿易関連の仕事が豊富です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ユトレヒト",
+        "cityDescription": "オランダ第四の都市で、美しい中世の運河が残る学生都市。アムステルダムへのアクセスも良く、落ち着いた生活環境が魅力です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "200人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日オランダ大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "ワーキングホリデービザに必要な書類一式を準備します。英語またはオランダ語での書類が求められます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日オランダ大使館（東京・芝公園）を訪問し、書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、MVV（仮長期滞在許可）がパスポートに貼付されます。入国後にIND（移民局）で居住許可に切り替えます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在予定期間＋3ヶ月以上の残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "オランダ大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真2枚。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な滞在資金を証明する銀行残高証明書（英文）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "オランダで有効な医療保険の加入証明書（滞在全期間をカバー）。"
+      }
+    ],
+    "applicationUrl": "https://www.netherlandsandyou.nl/travel-and-residence/visas-for-the-netherlands/working-holiday-visa",
+    "embassyUrl": "https://www.netherlandsandyou.nl/your-country-and-the-netherlands/japan/about-us"
+  },
+  {
+    "id": "austria",
+    "description": "<p>オーストリアはアルプスの雄大な自然と音楽の都ウィーンを擁するヨーロッパの宝石のような国です。モーツァルトやベートーヴェン、シューベルトゆかりの地として、クラシック音楽の本場で世界最高峰の芸術に触れることができます。ウィーンは「世界で最も住みやすい都市」に何度も選ばれており、治安の良さと高い生活水準が大きな魅力です。伝統的なカフェ文化やザッハトルテ、シュニッツェルなどのグルメ文化も有名です。ワーキングホリデービザは年間200人の定員で、12ヶ月間の滞在が可能。ドイツ語圏であるため、ドイツ語を本格的に学びたい方にも最適な環境が整っています。スキーやハイキングなどアウトドアアクティビティも豊富で、四季を通じて充実した生活を送ることができます。</p>",
+    "capital": "ウィーン",
+    "officialLanguage": "ドイツ語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 12,
+    "bestSeason": "5月〜9月（夏）、12月〜3月（冬・スキーシーズン）",
+    "livingCostMonthJpy": 160000,
+    "avgRentMonthlyJpy": 80000,
+    "minimumWageLocal": "法定最低賃金なし（労使協約で約10.96 EUR/時、約1,750円）",
+    "costLevel": "high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ウィーン",
+        "cityDescription": "オーストリアの首都で「音楽の都」。オペラ座やシェーンブルン宮殿など文化施設が充実。世界トップクラスの住みやすさを誇る国際都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ザルツブルク",
+        "cityDescription": "モーツァルトの生誕地であり映画「サウンド・オブ・ミュージック」の舞台。旧市街は世界遺産。コンパクトで歩いて回れる美しい街です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "インスブルック",
+        "cityDescription": "アルプスに囲まれたチロル州の州都。冬季オリンピックの開催地で、スキーリゾートが豊富。アウトドア好きにはたまらない環境です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "200人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日オーストリア大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要書類を準備します。一部書類はドイツ語または英語への翻訳が必要です。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日オーストリア大使館（東京・元麻布）を訪問し、書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、居住許可証が発行されます。通常4〜6週間で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在期間＋3ヶ月以上の残存有効期間と空白ページ2ページ以上。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "オーストリア大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "35mm×45mmのカラー写真2枚（背景白）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な滞在資金を証明する銀行残高証明書（英文またはドイツ語）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "オーストリアで有効な医療保険の加入証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "無犯罪証明書",
+        "docNote": "居住地の警察署で取得した犯罪経歴証明書。"
+      }
+    ],
+    "applicationUrl": "https://www.bmeia.gv.at/en/embassy/tokyo/",
+    "embassyUrl": "https://www.bmeia.gv.at/en/embassy/tokyo/"
+  },
+  {
+    "id": "sweden",
+    "description": "<p>スウェーデンは福祉先進国として知られる北欧の大国で、イノベーションと持続可能性を重視する社会が特徴です。IKEAやSpotify、H&Mなど世界的ブランドを生み出し、スタートアップ大国としても注目されています。首都ストックホルムは14の島からなる「水の都」で、美しい自然と近代的な都市機能が調和しています。ワーキングホリデービザは定員制限がなく取得しやすいのが魅力。賃金水準はヨーロッパ最高水準で、生活費は高いものの充実した福祉サービスが受けられます。英語の通用度が非常に高く、日常生活やビジネスの場面でも英語で問題なくコミュニケーションが取れます。オーロラや白夜など、北欧ならではの自然現象も体験できます。</p>",
+    "capital": "ストックホルム",
+    "officialLanguage": "スウェーデン語",
+    "currency": "スウェーデン・クローナ（SEK）",
+    "currencyCode": "SEK",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 11.5,
+    "bestSeason": "5月〜9月（夏）",
+    "livingCostMonthJpy": 200000,
+    "avgRentMonthlyJpy": 110000,
+    "minimumWageLocal": "法定最低賃金なし（労使協約で約145 SEK/時、約2,100円）",
+    "costLevel": "very-high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ストックホルム",
+        "cityDescription": "スウェーデンの首都。14の島からなる美しい水の都で、ガムラスタン（旧市街）やヴァーサ号博物館が有名。IT企業やスタートアップが集積しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ヨーテボリ",
+        "cityDescription": "スウェーデン第二の都市。ボルボの本社がある港湾都市。ストックホルムより物価が手頃で、フレンドリーな雰囲気が特徴です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "マルメ",
+        "cityDescription": "スウェーデン第三の都市。コペンハーゲンと橋で結ばれた国際都市。多文化的な雰囲気があり、デザインやアートシーンも盛んです。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン申請",
+        "stepDescription": "スウェーデン移民局（Migrationsverket）のウェブサイトからオンラインでワーキングホリデービザを申請します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備・提出",
+        "stepDescription": "必要書類を準備し、オンラインでアップロードします。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館訪問・生体認証",
+        "stepDescription": "在日スウェーデン大使館を訪問し、写真撮影と指紋登録を行います。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "居住許可証受領・渡航",
+        "stepDescription": "審査完了後、居住許可カードが郵送されます。通常2〜4週間で届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在予定期間＋3ヶ月以上の残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "オンライン申請書",
+        "docNote": "移民局のウェブサイトで作成するオンライン申請フォーム。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "最低15,000 SEK/月の資金を証明する銀行残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "スウェーデンで有効な包括的医療保険の加入証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "帰国便航空券",
+        "docNote": "帰国便の航空券予約確認書または帰国便購入資金の証明。"
+      }
+    ],
+    "applicationUrl": "https://www.migrationsverket.se/English/Private-individuals/Working-in-Sweden/Working-holiday.html",
+    "embassyUrl": "https://www.swedenabroad.se/ja/embassies/japan-tokyo/"
+  },
+  {
+    "id": "poland",
+    "description": "<p>ポーランドはヨーロッパの中心に位置し、豊かな歴史と急速な経済成長が魅力の国です。中世の街並みが美しく残るクラクフの旧市街やアウシュビッツ博物館など、歴史を深く学べる場所が多数あります。首都ワルシャワは第二次世界大戦後に市民の手で復興された街で、現在はITハブとして急成長を遂げています。ヨーロッパの中では物価が非常に安く、食費や家賃を大幅に抑えて生活することができます。ワーキングホリデービザは年間500人の定員で12ヶ月間の滞在が可能。ポーランド人は教育水準が高く親日的で、日本人を温かく迎え入れてくれます。ピエロギやジュレック、ビゴスなどの伝統料理も非常に美味しく、食文化の豊かさもこの国の大きな魅力のひとつです。</p>",
+    "capital": "ワルシャワ",
+    "officialLanguage": "ポーランド語",
+    "currency": "ポーランド・ズウォティ（PLN）",
+    "currencyCode": "PLN",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 12,
+    "bestSeason": "5月〜9月（夏）",
+    "livingCostMonthJpy": 80000,
+    "avgRentMonthlyJpy": 45000,
+    "minimumWageLocal": "時給28.10 PLN（約1,050円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ワルシャワ",
+        "cityDescription": "ポーランドの首都。戦後復興した旧市街は世界遺産。IT・スタートアップ企業が集積し、ヨーロッパのシリコンバレーと呼ばれることも。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "クラクフ",
+        "cityDescription": "ポーランドの古都で観光の中心地。美しい旧市街広場やヴァヴェル城が有名。学生が多く活気があり、物価も非常に手頃です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "グダニスク",
+        "cityDescription": "バルト海沿岸の港湾都市。琥珀の産地として有名で、美しい旧市街とビーチの両方を楽しめます。夏のリゾートシーズンには観光業の仕事も豊富です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "500人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日ポーランド大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要書類を準備します。書類は英語またはポーランド語で提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日ポーランド大使館（東京・目黒）を訪問し、書類を提出・面接を受けます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、パスポートにビザが貼付されます。通常2〜3週間で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザの有効期限後3ヶ月以上の残存有効期間と空白ページ2ページ以上。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "ポーランド大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真1枚（35mm×45mm）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な滞在資金を証明する銀行残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "ポーランドで有効な医療保険の加入証明書（滞在全期間をカバー）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "帰国便航空券",
+        "docNote": "帰国便の航空券予約確認書、または購入資金の証明。"
+      }
+    ],
+    "applicationUrl": "https://www.gov.pl/web/japan/visas",
+    "embassyUrl": "https://www.gov.pl/web/japan/"
+  },
+  {
+    "id": "czech-republic",
+    "description": "<p>チェコは「百塔の都」プラハを首都とする中欧の国で、中世の美しい街並みが奇跡的に残っています。ビール消費量世界一の国としても知られ、本場のピルスナーを格安で楽しめます。プラハのカレル橋や旧市街広場、プラハ城など歴史的な建築物は息をのむ美しさです。ワーキングホリデービザは年間400人の定員で12ヶ月の滞在が可能。中欧の中心に位置しているため、ウィーン、ベルリン、ブダペストなど周辺の大都市へのアクセスが非常に便利です。物価が安く生活費を抑えられるのも大きな魅力。チェコ語は難易度が高い言語ですが、若い世代は英語を話す人も多く、生活に困ることはありません。伝統的なボヘミアンガラスや音楽文化も楽しめます。</p>",
+    "capital": "プラハ",
+    "officialLanguage": "チェコ語",
+    "currency": "チェコ・コルナ（CZK）",
+    "currencyCode": "CZK",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 12,
+    "bestSeason": "4月〜10月（春〜秋）",
+    "livingCostMonthJpy": 90000,
+    "avgRentMonthlyJpy": 50000,
+    "minimumWageLocal": "時給118.10 CZK（約800円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "プラハ",
+        "cityDescription": "チェコの首都「百塔の都」。カレル橋やプラハ城など中世の街並みが残る世界遺産都市。観光業が盛んで、英語を使った仕事も見つかりやすいです。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ブルノ",
+        "cityDescription": "チェコ第二の都市でモラヴィア地方の中心地。大学が多い学術都市で、IT産業も成長中。プラハより物価が安く生活しやすい環境です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "チェスキー・クルムロフ",
+        "cityDescription": "世界遺産の小さな中世都市。ヴルタヴァ川に囲まれた美しい旧市街が有名。観光シーズンにはホテルやレストランでの仕事が見つかります。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "400人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日チェコ大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要書類を準備します。書類は英語またはチェコ語での提出が求められます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日チェコ大使館（東京・広尾）を訪問し、書類提出と面接を行います。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、パスポートにビザが貼付されます。通常60日以内に結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザの有効期限後3ヶ月以上の残存有効期間と空白ページ2ページ以上。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "チェコ大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真2枚（35mm×45mm）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な滞在資金を証明する銀行残高証明書（英文）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "チェコで有効な包括的医療保険の加入証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "無犯罪証明書",
+        "docNote": "居住地の警察署で取得した犯罪経歴証明書。"
+      }
+    ],
+    "applicationUrl": "https://www.mzv.cz/tokyo/ja/index.html",
+    "embassyUrl": "https://www.mzv.cz/tokyo/ja/index.html"
+  },
+  {
+    "id": "greece",
+    "description": "<p>ギリシャは西洋文明発祥の地であり、パルテノン神殿やオリンピック発祥地オリンピアなど、世界的に有名な古代遺跡が数多く残る歴史の国です。エーゲ海に浮かぶサントリーニ島の白と青の絶景やミコノス島の美しいビーチは世界中の旅人を魅了し続けています。地中海性気候で年間を通じて温暖で日照時間が長く、オリーブオイルやフェタチーズを使ったヘルシーな地中海料理が日常的に楽しめるのも嬉しいポイントです。ワーキングホリデービザは定員制限がなく取得しやすいのが魅力。ヨーロッパの中では比較的物価が安く、特に食費や交通費は非常に手頃です。観光業が盛んなため、夏のハイシーズンにはホテルやレストランでの就労機会が豊富にあります。</p>",
+    "capital": "アテネ",
+    "officialLanguage": "ギリシャ語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-7時間（サマータイム時-6時間）",
+    "flightTimeHours": 13.5,
+    "bestSeason": "4月〜10月（春〜秋）",
+    "livingCostMonthJpy": 110000,
+    "avgRentMonthlyJpy": 50000,
+    "minimumWageLocal": "月給780 EUR（時給約4.88 EUR、約780円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "アテネ",
+        "cityDescription": "ギリシャの首都で西洋文明発祥の地。パルテノン神殿やアクロポリス博物館など歴史遺産が豊富。近年は再開発が進み、モダンなカフェやギャラリーも増えています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "テッサロニキ",
+        "cityDescription": "ギリシャ第二の都市。ローマ時代の遺跡が残る港湾都市で、大学が多い学生の街。アテネより物価が安く、食文化が特に豊かです。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "クレタ島",
+        "cityDescription": "ギリシャ最大の島。ミノア文明の遺跡やビーチリゾートが人気。観光シーズンにはホテルやツアー関連の仕事が豊富にあります。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日ギリシャ大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要書類を準備します。英語またはギリシャ語での書類が求められます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日ギリシャ大使館（東京・西麻布）を訪問し、書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、パスポートにビザが貼付されます。通常2〜4週間で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザの有効期限後3ヶ月以上の残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "ギリシャ大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真2枚。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な滞在資金を証明する銀行残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "ギリシャで有効な医療保険の加入証明書（滞在全期間をカバー）。"
+      }
+    ],
+    "applicationUrl": "https://www.mfa.gr/missionsabroad/en/japan-en/",
+    "embassyUrl": "https://www.mfa.gr/missionsabroad/en/japan-en/"
+  },
+  {
+    "id": "hungary",
+    "description": "<p>ハンガリーはドナウ川が流れる美しい中欧の国で、「ドナウの真珠」と称される首都ブダペストが最大の魅力です。温泉大国としても世界的に知られ、セーチェーニ温泉やゲッレールト温泉など豪華な温泉施設が街中に点在しており、日本人にも親しみやすい文化があります。物価はヨーロッパの中でも特に安く、少ない費用で豊かな生活を送ることができるのが大きなメリットです。グヤーシュやラーンゴシュ、トカイワインなど独自の食文化も興味深いポイント。ワーキングホリデービザは年間200人の定員で12ヶ月の滞在が可能。プラハやウィーンへも数時間でアクセスでき、中欧周遊の拠点として最適です。クラシック音楽やフォークアートなど独自の文化に触れながら、格安でヨーロッパ生活を体験できます。</p>",
+    "capital": "ブダペスト",
+    "officialLanguage": "ハンガリー語",
+    "currency": "ハンガリー・フォリント（HUF）",
+    "currencyCode": "HUF",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 12.5,
+    "bestSeason": "4月〜10月（春〜秋）",
+    "livingCostMonthJpy": 75000,
+    "avgRentMonthlyJpy": 40000,
+    "minimumWageLocal": "月給266,800 HUF（時給約1,530 HUF、約650円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ブダペスト",
+        "cityDescription": "ハンガリーの首都「ドナウの真珠」。ブダ地区の王宮とペスト地区の国会議事堂が向かい合う壮大な景観。温泉文化が日本人にも親しみやすい都市です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "デブレツェン",
+        "cityDescription": "ハンガリー第二の都市で「東のローマ」と呼ばれる文化都市。大学があり学問の街としても知られています。ブダペストより物価がさらに安い環境です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "200人",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン予約",
+        "stepDescription": "在日ハンガリー大使館のウェブサイトでビザ申請の予約を取ります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "必要書類を準備します。英語またはハンガリー語での書類が求められます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "大使館でのビザ申請",
+        "stepDescription": "予約日に在日ハンガリー大使館（東京・三田）を訪問し、書類を提出します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ受領・渡航",
+        "stepDescription": "審査完了後、パスポートにビザが貼付されます。通常2〜4週間で結果が届きます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザの有効期限後3ヶ月以上の残存有効期間と空白ページ2ページ以上。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "ハンガリー大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真2枚。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な滞在資金を証明する銀行残高証明書（英文）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "ハンガリーで有効な医療保険の加入証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "帰国便航空券",
+        "docNote": "帰国便の航空券予約確認書または購入資金の証明。"
+      }
+    ],
+    "applicationUrl": "https://tokio.mfa.gov.hu/jpn",
+    "embassyUrl": "https://tokio.mfa.gov.hu/jpn"
+  },
+  {
+    "id": "malta",
+    "description": "<p>マルタは地中海に浮かぶ小さな島国ですが、英語が公用語であるため、温暖な気候の中で英語を学べる穴場的な留学先として近年注目を集めています。マルタ騎士団の歴史を持つ世界遺産の首都ヴァレッタは、ハチミツ色の石造りの建物が美しい街です。EUの中では語学学校の費用が比較的安く、ヨーロッパで最もコストパフォーマンスの高い英語留学先のひとつとして人気が急上昇中です。ワーキングホリデービザは定員制限なしで取得可能。島全体がコンパクトで移動が非常に便利で、治安も良好です。夏にはビーチリゾートとして世界中から観光客が訪れ、ホスピタリティ業界での仕事が豊富に見つかります。シチリア島やチュニジアにも近く、週末のプチ旅行も気軽に楽しめます。</p>",
+    "capital": "ヴァレッタ",
+    "officialLanguage": "マルタ語・英語",
+    "currency": "ユーロ（EUR）",
+    "currencyCode": "EUR",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 14,
+    "bestSeason": "4月〜10月（春〜秋）",
+    "livingCostMonthJpy": 120000,
+    "avgRentMonthlyJpy": 65000,
+    "minimumWageLocal": "月給835.16 EUR（時給約4.83 EUR、約770円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ヴァレッタ",
+        "cityDescription": "マルタの首都で世界遺産の要塞都市。ハチミツ色の石造りの建物が美しく、カフェやレストランが充実。コンパクトな街で徒歩で回れます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "セントジュリアンズ",
+        "cityDescription": "マルタ最大の繁華街でナイトライフの中心地。語学学校が多く留学生に人気。ビーチやショッピングエリアも充実しています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "スリーマ",
+        "cityDescription": "海沿いのリゾートタウン。ショッピングモールやレストランが充実し、生活に便利。ヴァレッタ対岸からの眺望が素晴らしい人気の居住エリアです。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 0,
+    "visaWorkLimit": "制限なし",
+    "visaStudyLimit": "制限なし",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請書類の準備",
+        "stepDescription": "マルタのワーキングホリデープログラムに必要な書類一式を準備します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "在日マルタ大使館への申請",
+        "stepDescription": "在日マルタ大使館（東京）にビザ申請書類を提出します。事前予約が必要な場合があります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "審査・ビザ受領",
+        "stepDescription": "書類審査の後、パスポートにビザが貼付されます。通常2〜4週間程度で結果が届きます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "渡航・現地登録",
+        "stepDescription": "マルタ到着後、Identity Malta Agencyで居住許可の手続きを行います。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在期間＋3ヶ月以上の残存有効期間が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "ビザ申請書",
+        "docNote": "マルタ大使館指定の申請書に記入・署名したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのカラー写真2枚。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明書",
+        "docNote": "十分な滞在資金を証明する銀行残高証明書。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "海外旅行保険証書",
+        "docNote": "マルタで有効な医療保険の加入証明書（滞在全期間をカバー）。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "航空券予約確認書",
+        "docNote": "往復航空券の予約確認書または帰国便購入資金の証明。"
+      }
+    ],
+    "applicationUrl": "https://www.identitymalta.com/",
+    "embassyUrl": "https://foreignandeu.gov.mt/en/Embassies/ME_Tokyo/Pages/ME_Tokyo.aspx"
+  },
+  {
+    "id": "switzerland",
+    "description": "<p>スイスはアルプスの壮大な山岳風景と高い生活水準で知られる中欧の永世中立国です。チューリッヒ、ジュネーブ、バーゼルなどの都市は国際機関や多国籍企業の本部が集まるグローバルビジネスの中心地です。4つの公用語（ドイツ語・フランス語・イタリア語・ロマンシュ語）が使われる多言語国家で、語学学習の環境としても独特です。時計やチョコレート、チーズなど精密さとクオリティを追求するスイスの文化は世界的に評価されています。物価は世界でもトップクラスに高いですが、賃金水準も非常に高く、教育や医療の質も最高レベル。マッターホルンやユングフラウなど壮大な自然を日常的に楽しめるのは、スイスならではの贅沢です。治安の良さも魅力のひとつです。</p>",
+    "capital": "ベルン",
+    "officialLanguage": "ドイツ語・フランス語・イタリア語・ロマンシュ語",
+    "currency": "スイス・フラン（CHF）",
+    "currencyCode": "CHF",
+    "timeDifferenceJapan": "-8時間（サマータイム時-7時間）",
+    "flightTimeHours": 12.5,
+    "bestSeason": "5月〜10月（夏）、12月〜3月（スキーシーズン）",
+    "livingCostMonthJpy": 280000,
+    "avgRentMonthlyJpy": 160000,
+    "minimumWageLocal": "州により異なる（ジュネーブ州は時給24 CHF、約4,000円）",
+    "costLevel": "very-high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "チューリッヒ",
+        "cityDescription": "スイス最大の都市で国際金融の中心地。湖と山に囲まれた美しい環境で、世界トップクラスの生活の質を誇ります。多国籍企業の本社が多数あります。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ジュネーブ",
+        "cityDescription": "国連ヨーロッパ本部やWHOなど国際機関が集まる国際都市。フランス語圏に位置し、レマン湖畔の美しい景観が楽しめます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ベルン",
+        "cityDescription": "スイスの首都で世界遺産の旧市街が美しい。アーレ川に囲まれたコンパクトな街で、落ち着いた環境で生活できます。"
+      }
+    ]
+  },
+  {
+    "id": "russia",
+    "description": "<p>ロシアは世界最大の国土を持ち、ヨーロッパとアジアにまたがる壮大なスケールの国です。首都モスクワの赤の広場やクレムリン、サンクトペテルブルクのエルミタージュ美術館など、世界的に有名な文化遺産が数多くあります。バレエ、文学、クラシック音楽の分野では世界最高峰の伝統を持ち、芸術を学びたい方には理想的な環境です。ロシア語は国連公用語のひとつで、旧ソ連諸国を含む広い地域で使われています。物価は西ヨーロッパに比べて非常に安く、特にモスクワやサンクトペテルブルク以外では生活費を大幅に抑えられます。シベリア鉄道や白夜など、ロシアでしか体験できないスケールの大きな冒険が待っています。現在、日本とのワーキングホリデー協定は停止状態にあります。</p>",
+    "capital": "モスクワ",
+    "officialLanguage": "ロシア語",
+    "currency": "ロシア・ルーブル（RUB）",
+    "currencyCode": "RUB",
+    "timeDifferenceJapan": "-6時間（モスクワ標準時）",
+    "flightTimeHours": 10,
+    "bestSeason": "6月〜8月（夏）",
+    "livingCostMonthJpy": 65000,
+    "avgRentMonthlyJpy": 35000,
+    "minimumWageLocal": "月給19,242 RUB（約30,000円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "モスクワ",
+        "cityDescription": "ロシアの首都で政治・経済・文化の中心。赤の広場やクレムリン、ボリショイ劇場など見どころ豊富。地下鉄の美しい駅舎も必見です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "サンクトペテルブルク",
+        "cityDescription": "「北のヴェネツィア」と呼ばれる芸術の都。エルミタージュ美術館やマリインスキー劇場など世界トップクラスの文化施設が集まります。白夜の季節は幻想的です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ウラジオストク",
+        "cityDescription": "極東ロシアの港湾都市。日本から最も近いヨーロッパ文化圏で、飛行機で約2.5時間。シベリア鉄道の起点・終点としても有名です。"
+      }
+    ]
+  }
+]

@@ -1,0 +1,231 @@
+[
+  {
+    "id": "australia",
+    "description": "<p>オーストラリアは、ワーキングホリデー先として日本人に最も人気のある国のひとつです。広大な国土には美しいビーチ、世界遺産のグレートバリアリーフ、多文化が共存する都市など、魅力が満載。英語圏で最低賃金が世界トップクラスに高く、働きながらしっかり稼げる環境が整っています。カフェやレストランでのホスピタリティ系の仕事から、ファームジョブまで求人も豊富。セカンド・サードワーキングホリデービザの制度があり、条件を満たせば最大3年間の滞在が可能です。温暖な気候と親しみやすい国民性も、長期滞在を快適にしてくれるポイントです。語学学校も充実しており、英語力を伸ばしながら異文化体験を楽しめます。</p>",
+    "capital": "キャンベラ",
+    "officialLanguage": "英語",
+    "currency": "オーストラリアドル（AUD）",
+    "currencyCode": "AUD",
+    "timeDifferenceJapan": "+1時間（シドニー）",
+    "flightTimeHours": 9,
+    "bestSeason": "9月〜11月（春）",
+    "livingCostMonthJpy": 180000,
+    "avgRentMonthlyJpy": 100000,
+    "minimumWageLocal": "時給24.10 AUD（約2,400円）",
+    "costLevel": "high",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "シドニー",
+        "cityDescription": "オーストラリア最大の都市で、オペラハウスやハーバーブリッジなど世界的に有名なランドマークが点在。求人数が多く、日本食レストランやカフェでの仕事も見つけやすい。語学学校の選択肢も豊富です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "メルボルン",
+        "cityDescription": "カフェ文化やストリートアートが盛んな芸術の街。世界で最も住みやすい都市にも選ばれており、バリスタとして働くワーホリメーカーも多い。四季がはっきりしていて過ごしやすい気候です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ブリスベン",
+        "cityDescription": "年間を通じて温暖な気候が魅力のクイーンズランド州の州都。ゴールドコーストやサンシャインコーストへのアクセスも良く、リゾート系の仕事も豊富。生活費はシドニーやメルボルンより抑えめです。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 38000,
+    "visaWorkLimit": "同一雇用主のもとで最大6ヶ月",
+    "visaStudyLimit": "最大4ヶ月",
+    "visaRenewable": true,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ImmiAccountの作成",
+        "stepDescription": "オーストラリア移民局の公式サイトでImmiAccountを作成します。メールアドレスとパスワードを設定し、本人確認を行います。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ申請書のオンライン入力",
+        "stepDescription": "ImmiAccountにログインし、Working Holiday Visa（subclass 417）の申請フォームに個人情報、渡航歴、健康状態などを入力します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "申請料金の支払い",
+        "stepDescription": "クレジットカードまたはデビットカードで申請料金（510 AUD）をオンラインで支払います。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "健康診断の受診",
+        "stepDescription": "指定された医療機関（パネルドクター）で健康診断を受けます。日本国内では東京・大阪などの指定病院で受診可能です。結果は医療機関から直接移民局に送られます。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ発給通知の受領",
+        "stepDescription": "審査が完了すると、ImmiAccountとメールでビザ発給通知（Grant Letter）が届きます。通常、申請から数日〜数週間で結果が出ます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "滞在期間をカバーする有効期限が必要。残存期間が十分にあることを確認してください。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明",
+        "docNote": "最低5,000 AUD（約50万円）以上の残高証明書。英文の銀行残高証明書を用意します。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "往復航空券または購入資金の証明",
+        "docNote": "帰国用の航空券、または購入に十分な資金があることを証明する書類。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "健康診断書",
+        "docNote": "指定医療機関（パネルドクター）で受診した健康診断の結果。胸部レントゲンが必要な場合があります。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのデジタル写真。オンライン申請時にアップロードします。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "無犯罪証明書（場合により）",
+        "docNote": "過去に特定の国に長期滞在した場合に求められることがあります。警察署で取得可能です。"
+      }
+    ],
+    "applicationUrl": "https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/work-holiday-417",
+    "embassyUrl": "https://japan.embassy.gov.au/"
+  },
+  {
+    "id": "new-zealand",
+    "description": "<p>ニュージーランドは、豊かな自然と穏やかな暮らしが魅力の国です。映画『ロード・オブ・ザ・リング』のロケ地としても有名な美しい景観が広がり、アウトドアアクティビティが盛ん。人口が少なく治安も良いため、初めての海外長期滞在にも最適です。ワーキングホリデービザの申請費用がほぼ無料で、経済的なハードルが低いのも大きなメリット。農業・観光業を中心に季節労働の求人が多く、フルーツピッキングやホテルスタッフなどの仕事が見つかりやすい環境です。英語はキウイ英語と呼ばれる独特のアクセントがありますが、人々は温かくフレンドリー。ワークライフバランスを重視する文化で、ゆったりとした時間の中で英語力と国際感覚を磨けます。</p>",
+    "capital": "ウェリントン",
+    "officialLanguage": "英語、マオリ語",
+    "currency": "ニュージーランドドル（NZD）",
+    "currencyCode": "NZD",
+    "timeDifferenceJapan": "+3時間（オークランド）",
+    "flightTimeHours": 11,
+    "bestSeason": "10月〜3月（春〜夏）",
+    "livingCostMonthJpy": 150000,
+    "avgRentMonthlyJpy": 85000,
+    "minimumWageLocal": "時給23.15 NZD（約2,100円）",
+    "costLevel": "medium",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "オークランド",
+        "cityDescription": "ニュージーランド最大の都市で、「帆の街」とも呼ばれる港町。求人数が国内で最も多く、日本食レストランやカフェでの仕事も豊富。語学学校も多数あり、生活インフラが整っています。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ウェリントン",
+        "cityDescription": "コンパクトながら文化的に豊かな首都。カフェ文化が発達しており、IT・クリエイティブ産業も盛ん。風が強いことで知られますが、おしゃれな街並みと活気あるナイトライフが魅力です。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "クイーンズタウン",
+        "cityDescription": "南島に位置する世界的なリゾートタウン。バンジージャンプやスキーなどアドベンチャー観光の拠点で、観光業のアルバイトが見つかりやすい。壮大な山と湖の景色は圧巻です。"
+      }
+    ],
+    "visaAgeMin": 18,
+    "visaAgeMax": 30,
+    "visaDurationMonths": 12,
+    "visaCostJpy": 4000,
+    "visaWorkLimit": "特に制限なし",
+    "visaStudyLimit": "最大6ヶ月",
+    "visaRenewable": false,
+    "visaQuota": "制限なし",
+    "applicationSteps": [
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "Immigration NZアカウントの作成",
+        "stepDescription": "ニュージーランド移民局のオンラインシステムでアカウントを作成します。RealMe認証を利用してログインします。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "オンライン申請書の入力",
+        "stepDescription": "Working Holiday Schemeの申請フォームに個人情報、渡航歴、健康状態、犯罪歴の有無などを入力します。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "必要書類のアップロード",
+        "stepDescription": "パスポートのスキャン、証明写真、資金証明書などの必要書類をオンラインでアップロードします。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "健康診断・レントゲン検査（該当者のみ）",
+        "stepDescription": "申請内容に応じて、指定医療機関での健康診断や胸部レントゲン検査が求められる場合があります。"
+      },
+      {
+        "fieldId": "applicationStep",
+        "stepTitle": "ビザ承認通知の受領",
+        "stepDescription": "審査完了後、eVisaとして承認通知がメールで届きます。通常、数日から数週間で結果が通知されます。"
+      }
+    ],
+    "requiredDocuments": [
+      {
+        "fieldId": "requiredDocument",
+        "docName": "有効なパスポート",
+        "docNote": "ビザ申請時に滞在予定期間＋3ヶ月以上の有効期限が必要です。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "資金証明",
+        "docNote": "最低4,200 NZD（約40万円）以上の残高証明書。英文の銀行残高証明書を用意します。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "往復航空券または帰国資金の証明",
+        "docNote": "帰国便の航空券、またはその購入に十分な資金があることを示す書類。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "証明写真",
+        "docNote": "パスポートサイズのデジタル写真。背景は白または薄い色で、最近撮影したもの。"
+      },
+      {
+        "fieldId": "requiredDocument",
+        "docName": "健康診断書（該当者のみ）",
+        "docNote": "過去に結核の発生率が高い国に滞在した経験がある場合、胸部レントゲン検査が必要です。"
+      }
+    ],
+    "applicationUrl": "https://www.immigration.govt.nz/new-zealand-visas/visas/visa/japan-working-holiday-visa",
+    "embassyUrl": "https://www.mfat.govt.nz/en/countries-and-regions/north-asia/japan/new-zealand-embassy-tokyo/"
+  },
+  {
+    "id": "fiji",
+    "description": "<p>フィジーは、南太平洋に浮かぶ330以上の島々からなる楽園の国です。美しいサンゴ礁に囲まれた透き通る海、温かい気候、そして何よりフレンドリーなフィジーの人々が訪れる人を魅了します。公用語が英語のため、リゾート気分を味わいながら英語を学べる留学先として近年人気が高まっています。留学費用や生活費が欧米圏と比べて圧倒的に安く、コストを抑えながら英語環境に浸れるのが最大のメリット。少人数制の語学学校が多く、アットホームな環境でしっかり学べます。日本との時差もわずか3時間で、家族や友人との連絡も取りやすい。南国ならではのゆったりした「フィジータイム」の中で、心身をリフレッシュしながら語学力を磨ける唯一無二の留学先です。</p>",
+    "capital": "スバ",
+    "officialLanguage": "英語、フィジー語、ヒンディー語",
+    "currency": "フィジードル（FJD）",
+    "currencyCode": "FJD",
+    "timeDifferenceJapan": "+3時間",
+    "flightTimeHours": 9,
+    "bestSeason": "5月〜10月（乾季）",
+    "livingCostMonthJpy": 60000,
+    "avgRentMonthlyJpy": 30000,
+    "minimumWageLocal": "時給4.00 FJD（約280円）",
+    "costLevel": "low",
+    "popularCities": [
+      {
+        "fieldId": "popularCity",
+        "cityName": "ナンディ",
+        "cityDescription": "フィジーの玄関口となる国際空港がある観光都市。語学学校が集中しており、留学生の多くがこのエリアに滞在します。リゾートエリアへのアクセスも良く、週末にはビーチやアイランドホッピングを楽しめます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "スバ",
+        "cityDescription": "フィジーの首都で最大の都市。南太平洋大学（USP）のメインキャンパスがあり、学術的な雰囲気があります。マーケットや博物館など現地の文化に触れやすく、ローカルな生活を体験できます。"
+      },
+      {
+        "fieldId": "popularCity",
+        "cityName": "ラウトカ",
+        "cityDescription": "フィジー第二の都市で「砂糖の街」として知られています。ナンディから近く、観光地化されすぎていない落ち着いた雰囲気が魅力。生活費が安く、地元の人々との交流を楽しみながらのんびり過ごせます。"
+      }
+    ]
+  }
+]

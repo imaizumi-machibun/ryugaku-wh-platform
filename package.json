@@ -13,7 +13,11 @@
     "import:schools:sync": "tsx scripts/import-schools.ts --sync",
     "import:schools:dry": "tsx scripts/import-schools.ts --sync --dry-run",
     "import:guides": "tsx scripts/import-guides.ts",
-    "import:guides:dry": "tsx scripts/import-guides.ts --dry-run"
+    "import:guides:dry": "tsx scripts/import-guides.ts --dry-run",
+    "import:experiences": "tsx scripts/import-experiences.ts",
+    "import:experiences:dry": "tsx scripts/import-experiences.ts --dry-run",
+    "populate:countries": "tsx scripts/populate-country-details.ts",
+    "populate:countries:dry": "tsx scripts/populate-country-details.ts --dry-run"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
