@@ -1,21 +1,126 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { REGIONS, COST_LEVELS } from '@/lib/utils/constants';
+import {
+  HOURLY_WAGE_MINIMUMS,
+  MONTHLY_WAGE_MINIMUMS,
+  clearWageFilterParams,
+  parseWageFilter,
+  type WageUnit,
+} from '@/lib/countries/wage-filter';
 import BottomSheet from '@/components/ui/BottomSheet';
+
+type WageFilterControlsProps = {
+  idPrefix: string;
+  selectedUnit: WageUnit;
+  activeMinimum?: number;
+  onUnitChange: (unit: WageUnit) => void;
+  onMinimumChange: (minimum: string) => void;
+};
+
+function formatWageMinimum(unit: WageUnit, minimum: number) {
+  if (unit === 'hourly') {
+    return `${minimum.toLocaleString('ja-JP')}円以上`;
+  }
+
+  return `${(minimum / 10_000).toLocaleString('ja-JP')}万円以上`;
+}
+
+function WageFilterControls({
+  idPrefix,
+  selectedUnit,
+  activeMinimum,
+  onUnitChange,
+  onMinimumChange,
+}: WageFilterControlsProps) {
+  const minimums: readonly number[] =
+    selectedUnit === 'hourly' ? HOURLY_WAGE_MINIMUMS : MONTHLY_WAGE_MINIMUMS;
+  const minimumSelectId = `${idPrefix}-wage-minimum`;
+
+  return (
+    <fieldset>
+      <legend className="block text-sm font-medium text-gray-700 mb-2">
+        稼げる金額（最低賃金ベース）
+      </legend>
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+        <div className="inline-flex w-fit rounded-lg border border-gray-300 bg-white p-1" aria-label="給与の単位">
+          {(['hourly', 'monthly'] as const).map((unit) => (
+            <button
+              key={unit}
+              type="button"
+              onClick={() => onUnitChange(unit)}
+              aria-pressed={selectedUnit === unit}
+              className={`min-h-[36px] rounded-md px-4 py-1.5 text-sm font-medium transition-colors ${
+                selectedUnit === unit
+                  ? 'bg-primary-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
+              }`}
+            >
+              {unit === 'hourly' ? '時給' : '月給'}
+            </button>
+          ))}
+        </div>
+        <div className="min-w-0 sm:w-56">
+          <label htmlFor={minimumSelectId} className="mb-1 block text-xs font-medium text-gray-600">
+            {selectedUnit === 'hourly' ? '最低時給' : '最低月給'}
+          </label>
+          <select
+            id={minimumSelectId}
+            value={activeMinimum === undefined ? '' : String(activeMinimum)}
+            onChange={(event) => onMinimumChange(event.target.value)}
+            className="min-h-[44px] w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500"
+          >
+            <option value="">指定なし</option>
+            {minimums.map((minimum) => (
+              <option key={minimum} value={minimum}>
+                {formatWageMinimum(selectedUnit, minimum)}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <p className="mt-2 text-xs leading-relaxed text-gray-500">
+        税引前の法定最低賃金を日本円に換算した目安です。月給は公表月額、または時給×40時間×52週÷12か月で換算しています。法定最低賃金がない国は対象外です。
+      </p>
+    </fieldset>
+  );
+}
 
 export default function CountryFilterPanel() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const wageFilter = parseWageFilter(searchParams);
   const [isSheetOpen, setIsSheetOpen] = useState(false);
   const [keyword, setKeyword] = useState(searchParams.get('q') || '');
+  const [selectedWageUnit, setSelectedWageUnit] = useState<WageUnit>(
+    wageFilter?.unit ?? 'hourly'
+  );
 
   const currentRegion = searchParams.get('region') || '';
   const currentCost = searchParams.get('cost') || '';
   const currentQ = searchParams.get('q') || '';
+  const activeWageMinimum =
+    wageFilter?.unit === selectedWageUnit ? wageFilter.min : undefined;
 
-  const hasFilters = currentRegion || currentCost || currentQ;
+  // 不正値や片側だけの賃金パラメータはサーバーと同様に「未適用」として扱う。
+  // SEOのnoindex判定は別途、値のある全クエリを対象にする。
+  const hasFilters = Boolean(currentRegion || currentCost || currentQ || wageFilter);
+
+  useEffect(() => {
+    if (wageFilter?.unit) {
+      setSelectedWageUnit(wageFilter.unit);
+    }
+  }, [wageFilter?.unit]);
+
+  const navigateWithParams = useCallback(
+    (params: URLSearchParams) => {
+      const query = params.toString();
+      router.push(query ? `/countries?${query}` : '/countries');
+    },
+    [router]
+  );
 
   const updateFilter = useCallback(
     (key: string, value: string) => {
@@ -25,9 +130,9 @@ export default function CountryFilterPanel() {
       } else {
         params.delete(key);
       }
-      router.push(`/countries?${params.toString()}`);
+      navigateWithParams(params);
     },
-    [router, searchParams]
+    [navigateWithParams, searchParams]
   );
 
   const submitKeyword = useCallback(() => {
@@ -37,8 +142,39 @@ export default function CountryFilterPanel() {
     } else {
       params.delete('q');
     }
-    router.push(`/countries?${params.toString()}`);
-  }, [router, searchParams, keyword]);
+    navigateWithParams(params);
+  }, [navigateWithParams, searchParams, keyword]);
+
+  const changeWageUnit = useCallback(
+    (unit: WageUnit) => {
+      if (unit === selectedWageUnit) return;
+
+      setSelectedWageUnit(unit);
+      const params = clearWageFilterParams(searchParams);
+      navigateWithParams(params);
+    },
+    [navigateWithParams, searchParams, selectedWageUnit]
+  );
+
+  const changeWageMinimum = useCallback(
+    (minimum: string) => {
+      const params = clearWageFilterParams(searchParams);
+
+      if (minimum) {
+        const numericMinimum = Number(minimum);
+        const allowedMinimums: readonly number[] =
+          selectedWageUnit === 'hourly' ? HOURLY_WAGE_MINIMUMS : MONTHLY_WAGE_MINIMUMS;
+
+        if (allowedMinimums.includes(numericMinimum)) {
+          params.set('wageUnit', selectedWageUnit);
+          params.set('wageMin', String(numericMinimum));
+        }
+      }
+
+      navigateWithParams(params);
+    },
+    [navigateWithParams, searchParams, selectedWageUnit]
+  );
 
   const filterContent = (
     <div className="space-y-4">
@@ -111,10 +247,19 @@ export default function CountryFilterPanel() {
           ))}
         </div>
       </div>
+      <WageFilterControls
+        idPrefix="mobile"
+        selectedUnit={selectedWageUnit}
+        activeMinimum={activeWageMinimum}
+        onUnitChange={changeWageUnit}
+        onMinimumChange={changeWageMinimum}
+      />
       {hasFilters && (
         <button
+          type="button"
           onClick={() => {
             setKeyword('');
+            setSelectedWageUnit('hourly');
             router.push('/countries');
             setIsSheetOpen(false);
           }}
@@ -198,10 +343,22 @@ export default function CountryFilterPanel() {
               ))}
             </div>
           </div>
+          <WageFilterControls
+            idPrefix="desktop"
+            selectedUnit={selectedWageUnit}
+            activeMinimum={activeWageMinimum}
+            onUnitChange={changeWageUnit}
+            onMinimumChange={changeWageMinimum}
+          />
         </div>
         {hasFilters && (
           <button
-            onClick={() => { setKeyword(''); router.push('/countries'); }}
+            type="button"
+            onClick={() => {
+              setKeyword('');
+              setSelectedWageUnit('hourly');
+              router.push('/countries');
+            }}
             className="mt-4 text-sm text-primary-600 hover:underline"
           >
             フィルターをリセット
@@ -212,6 +369,7 @@ export default function CountryFilterPanel() {
       {/* Mobile: Bottom sheet trigger */}
       <div className="sm:hidden">
         <button
+          type="button"
           onClick={() => setIsSheetOpen(true)}
           className={`flex items-center gap-2 px-4 py-2.5 rounded-lg border text-sm font-medium min-h-[44px] ${
             hasFilters

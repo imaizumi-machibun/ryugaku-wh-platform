@@ -4,38 +4,47 @@ import { getCountries } from '@/lib/microcms/countries';
 import CountryCard from '@/components/country/CountryCard';
 import CountryFilterPanel from '@/components/country/CountryFilterPanel';
 import Breadcrumb from '@/components/layout/Breadcrumb';
-import { generatePageMetadata } from '@/lib/seo/metadata';
+import { buildCountriesMetadata } from '@/lib/countries/countries-metadata';
+import {
+  filterCountriesByWage,
+  parseWageFilter,
+  type SearchParamValue,
+} from '@/lib/countries/wage-filter';
 
 export const revalidate = 3600;
 
 type Props = {
-  searchParams: { region?: string; cost?: string; q?: string };
+  searchParams: Record<string, SearchParamValue> & {
+    region?: SearchParamValue;
+    cost?: SearchParamValue;
+    q?: SearchParamValue;
+    wageUnit?: SearchParamValue;
+    wageMin?: SearchParamValue;
+  };
 };
 
 export function generateMetadata({ searchParams }: Props): Metadata {
-  const hasQuery = !!searchParams.q;
-  return generatePageMetadata({
-    title: '国から探す',
-    description: '留学・ワーキングホリデーの対象国一覧。地域や費用レベルで絞り込んで、あなたにぴったりの留学先を見つけましょう。',
-    path: hasQuery ? `/countries?q=${encodeURIComponent(searchParams.q!)}` : '/countries',
-    noindex: hasQuery,
-  });
+  return buildCountriesMetadata(searchParams);
 }
 
 export default async function CountriesPage({ searchParams }: Props) {
   const filters: string[] = [];
-  if (searchParams.region) {
+  if (typeof searchParams.region === 'string' && searchParams.region) {
     filters.push(`region[contains]${searchParams.region}`);
   }
-  if (searchParams.cost) {
+  if (typeof searchParams.cost === 'string' && searchParams.cost) {
     filters.push(`costLevel[contains]${searchParams.cost}`);
   }
 
-  const { contents: countries } = await getCountries({
+  const query = typeof searchParams.q === 'string' ? searchParams.q : undefined;
+  const wageFilter = parseWageFilter(searchParams);
+
+  const { contents } = await getCountries({
     filters: filters.length > 0 ? filters.join('[and]') : undefined,
     orders: 'nameJp',
-    q: searchParams.q || undefined,
+    q: query || undefined,
   });
+  const countries = filterCountriesByWage(contents, wageFilter);
 
   return (
     <div className="container-custom py-8">
@@ -54,7 +63,11 @@ export default async function CountriesPage({ searchParams }: Props) {
       {countries.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {countries.map((country) => (
-            <CountryCard key={country.id} country={country} />
+            <CountryCard
+              key={country.id}
+              country={country}
+              activeWageUnit={wageFilter?.unit}
+            />
           ))}
         </div>
       ) : (

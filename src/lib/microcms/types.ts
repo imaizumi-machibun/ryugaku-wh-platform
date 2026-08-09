@@ -64,6 +64,11 @@ export type Country = MicroCMSBase & {
   livingCostMonthJpy?: number;
   avgRentMonthlyJpy?: number;
   minimumWageLocal?: string;
+  /** 一般成人向け法定最低賃金の円換算目安（法定全国額がない国は未設定） */
+  minimumWageHourlyJpy?: number;
+  minWageMonthlyJpy?: number;
+  /** 賃金・為替スナップショットの基準日時（ISO 8601） */
+  minWageReferenceDate?: string;
   costLevel?: CostLevel;
   // 申請情報
   applicationSteps?: ApplicationStep[];

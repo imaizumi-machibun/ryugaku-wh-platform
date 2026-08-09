@@ -1,14 +1,35 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Country } from '@/lib/microcms/types';
+import type { WageUnit } from '@/lib/countries/wage-filter';
 import Badge from '@/components/ui/Badge';
 import { PROGRAM_STATUSES, COST_LEVELS } from '@/lib/utils/constants';
 
-type Props = { country: Country };
+type Props = {
+  country: Country;
+  activeWageUnit?: WageUnit;
+};
 
-export default function CountryCard({ country }: Props) {
+function formatWageEstimate(country: Country, unit?: WageUnit) {
+  if (unit === 'hourly' && typeof country.minimumWageHourlyJpy === 'number') {
+    return `最低時給目安 約${country.minimumWageHourlyJpy.toLocaleString('ja-JP')}円`;
+  }
+
+  if (unit === 'monthly' && typeof country.minWageMonthlyJpy === 'number') {
+    const amountInTenThousands = country.minWageMonthlyJpy / 10_000;
+    const formattedAmount = amountInTenThousands.toLocaleString('ja-JP', {
+      maximumFractionDigits: 1,
+    });
+    return `最低月給目安 約${formattedAmount}万円`;
+  }
+
+  return null;
+}
+
+export default function CountryCard({ country, activeWageUnit }: Props) {
   const status = PROGRAM_STATUSES.find((s) => s.value === country.programStatus);
   const costLabel = COST_LEVELS.find((c) => c.value === country.costLevel)?.label;
+  const wageEstimate = formatWageEstimate(country, activeWageUnit);
 
   return (
     <Link href={`/countries/${country.id}`}>
@@ -49,6 +70,11 @@ export default function CountryCard({ country }: Props) {
             )}
             {costLabel && <Badge>{costLabel}</Badge>}
           </div>
+          {wageEstimate && (
+            <p className="mt-3 rounded-lg bg-emerald-50 px-3 py-2 text-sm font-semibold text-emerald-800">
+              {wageEstimate}
+            </p>
+          )}
         </div>
       </div>
     </Link>
