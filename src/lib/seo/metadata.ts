@@ -17,16 +17,18 @@ export function generatePageMetadata({
   noindex,
 }: MetadataParams): Metadata {
   const url = `${SITE_URL}${path}`;
-  const fullTitle = `${title} | ${SITE_NAME}`;
+  // app/layout.tsx の title.template がブランド名を付与する。
+  // OGP/Twitter には template が適用されないため、そちらだけ明示的に付ける。
+  const socialTitle = `${title} | ${SITE_NAME}`;
 
   return {
-    title: fullTitle,
+    title,
     description,
     alternates: {
       canonical: url,
     },
     openGraph: {
-      title: fullTitle,
+      title: socialTitle,
       description,
       url,
       siteName: SITE_NAME,
@@ -38,7 +40,7 @@ export function generatePageMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: fullTitle,
+      title: socialTitle,
       description,
     },
     ...(noindex && { robots: { index: false, follow: false } }),

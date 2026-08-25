@@ -18,7 +18,8 @@
     "import:experiences:dry": "tsx scripts/import-experiences.ts --dry-run",
     "populate:countries": "tsx scripts/populate-country-details.ts",
     "populate:countries:dry": "tsx scripts/populate-country-details.ts --dry-run",
-    "test:countries": "tsx --test src/lib/countries/*.test.ts"
+    "test:countries": "tsx --test src/lib/countries/*.test.ts",
+    "test:seo": "tsx --test src/lib/seo/*.test.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

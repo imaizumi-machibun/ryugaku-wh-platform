@@ -3,6 +3,6 @@ Allow: /
 
 Disallow: /submit/
 Disallow: /api/
-Disallow: /compare
+Allow: /api/og
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://study-work-hub.com/sitemap.xml

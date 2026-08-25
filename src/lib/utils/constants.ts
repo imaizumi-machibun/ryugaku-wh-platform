@@ -164,9 +164,10 @@ export const TIP_STYLES: Record<TipType, { bg: string; border: string; icon: str
 };
 
 export const SITE_NAME = 'Study Work Hub';
-export const SITE_URL =
+const rawSiteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-    : 'https://example.com');
+    : 'https://study-work-hub.com');
+export const SITE_URL = rawSiteUrl.trim().replace(/\/+$/, '');
 export const PER_PAGE = 12;
