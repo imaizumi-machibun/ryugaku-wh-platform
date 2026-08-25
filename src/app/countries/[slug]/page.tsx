@@ -13,6 +13,7 @@ import JsonLd from '@/components/seo/JsonLd';
 import ExperienceCard from '@/components/experience/ExperienceCard';
 import SchoolCard from '@/components/school/SchoolCard';
 import { generatePageMetadata } from '@/lib/seo/metadata';
+import { getCountryEditorialLinks, getCountrySeoOverride } from '@/lib/seo/country-overrides';
 import { generateCountryJsonLd, generateFAQJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
 import { generateCountryFAQs } from '@/lib/seo/faq-generator';
 import { aggregateExperienceRatings } from '@/lib/utils/aggregation';
@@ -29,9 +30,14 @@ type Props = { params: { slug: string } };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const country = await getCountryBySlug(params.slug);
+    const override = getCountrySeoOverride(params.slug);
     return generatePageMetadata({
-      title: `${country.nameJp}のワーキングホリデー・留学情報【${new Date().getFullYear()}年最新】`,
-      description: `${country.nameJp}（${country.nameEn}）のワーキングホリデー・留学完全ガイド。ビザ情報、費用、体験談、おすすめ学校を紹介。`,
+      title:
+        override?.title ??
+        `${country.nameJp}のワーキングホリデー・留学情報【${new Date().getFullYear()}年最新】`,
+      description:
+        override?.description ??
+        `${country.nameJp}（${country.nameEn}）のワーキングホリデー・留学完全ガイド。ビザ情報、費用、体験談、おすすめ学校を紹介。`,
       path: `/countries/${params.slug}`,
       ogImage: country.heroImage?.url,
     });
@@ -57,6 +63,7 @@ export default async function CountryDetailPage({ params }: Props) {
   const schools = schoolsData.contents;
   const ratings = aggregateExperienceRatings(experiences);
   const faqs = generateCountryFAQs(country);
+  const editorialLinks = getCountryEditorialLinks(params.slug);
 
   const ratingLabels = ['治安', '仕事', 'コスパ', '充実度', '語学上達'];
   const ratingValues = ratings
@@ -102,6 +109,24 @@ export default async function CountryDetailPage({ params }: Props) {
 
         {/* Quick Facts */}
         <QuickFacts country={country} />
+
+        {editorialLinks.length > 0 && (
+          <section className="mt-8 rounded-xl border border-primary-100 bg-primary-50 p-5">
+            <h2 className="text-xl font-bold mb-4">{country.nameJp}の実践ガイド</h2>
+            <div className="grid gap-3 md:grid-cols-2">
+              {editorialLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-lg bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
+                >
+                  <span className="font-semibold text-primary-700">{link.label} →</span>
+                  <span className="mt-1 block text-sm text-gray-600">{link.description}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2">
