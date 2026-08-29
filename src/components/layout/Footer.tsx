@@ -14,6 +14,7 @@ const FOOTER_LINKS = {
     items: [
       { href: '/experiences', label: '体験談' },
       { href: '/articles', label: 'お役立ち記事' },
+      { href: '/services', label: '広告掲載サービス（PR）' },
     ],
   },
   contribute: {

@@ -19,7 +19,9 @@
     "populate:countries": "tsx scripts/populate-country-details.ts",
     "populate:countries:dry": "tsx scripts/populate-country-details.ts --dry-run",
     "test:countries": "tsx --test src/lib/countries/*.test.ts",
-    "test:seo": "tsx --test src/lib/seo/*.test.ts"
+    "test:seo": "tsx --test src/lib/seo/*.test.ts",
+    "check-affiliate-materials": "node --import tsx scripts/check-a8-affiliate-materials.ts",
+    "check-affiliate-measurement": "node --import tsx scripts/check-affiliate-measurement.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",

@@ -44,7 +44,17 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mb-3">4. アクセス解析ツール</h2>
+          <h2 className="text-xl font-bold mb-3">4. アフィリエイト広告</h2>
+          <p>
+            当サイトはA8.net等のアフィリエイトプログラムを利用する場合があります。広告リンクを経由して申込みが成立すると、当サイトが報酬を受け取ることがあります。広告を掲載するページでは「広告」「PR」等を分かりやすい位置に表示します。
+          </p>
+          <p className="mt-2">
+            広告素材には、広告の表示・成果計測のための1ピクセル画像等が含まれる場合があります。広告主・広告配信事業者における情報の取扱いは、各社のプライバシーポリシーをご確認ください。
+          </p>
+        </section>
+
+        <section>
+          <h2 className="text-xl font-bold mb-3">5. アクセス解析ツール</h2>
           <p>
             当サイトでは、Googleアナリティクスを利用してアクセス情報を収集しています。Googleアナリティクスはトラフィックデータの収集のためにCookieを使用しています。このデータは匿名で収集されており、個人を特定するものではありません。
           </p>
@@ -63,28 +73,28 @@ export default function PrivacyPolicyPage() {
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mb-3">5. Cookieの使用</h2>
+          <h2 className="text-xl font-bold mb-3">6. Cookieの使用</h2>
           <p>
             当サイトでは、ユーザー体験の向上およびアクセス解析のためにCookieを使用しています。ブラウザの設定によりCookieを無効にすることが可能ですが、一部の機能が利用できなくなる場合があります。
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mb-3">6. 個人情報の管理</h2>
+          <h2 className="text-xl font-bold mb-3">7. 個人情報の管理</h2>
           <p>
             当サイトは、収集した個人情報の漏洩・滅失・毀損の防止のため、適切なセキュリティ対策を講じます。
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mb-3">7. プライバシーポリシーの変更</h2>
+          <h2 className="text-xl font-bold mb-3">8. プライバシーポリシーの変更</h2>
           <p>
             当サイトは、必要に応じて本ポリシーを変更することがあります。変更後のポリシーは、当ページに掲載した時点から効力を生じるものとします。
           </p>
         </section>
 
         <section>
-          <h2 className="text-xl font-bold mb-3">8. お問い合わせ</h2>
+          <h2 className="text-xl font-bold mb-3">9. お問い合わせ</h2>
           <p>
             本ポリシーに関するお問い合わせは、当サイトのお問い合わせフォームよりご連絡ください。
           </p>
