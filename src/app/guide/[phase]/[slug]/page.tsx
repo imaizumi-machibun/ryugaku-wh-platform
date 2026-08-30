@@ -31,7 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const guide = await getGuideBySlug(params.slug);
     return generateArticleMetadata({
-      title: `${guide.title} | ワーホリ完全ガイド`,
+      // タイトルは microCMS の guide.title をそのまま使う。
+      // 「| ワーホリ完全ガイド」を手動付与すると、layout の title.template
+      // （%s | Study Work Hub）と合わさってブランド名が二重・タイトル過長になり
+      // SERP で重要キーワードが見切れていたため除去（シリーズ情報は JSON-LD の
+      // isPartOf で別途伝えている）。
+      title: guide.title,
       description: guide.description || `${guide.title}について詳しく解説`,
       path: `/guide/${params.phase}/${params.slug}`,
       ogImage: guide.heroImage?.url,
@@ -129,8 +134,9 @@ export default async function GuideArticlePage({ params }: Props) {
               <div className="relative h-52 sm:h-72 md:h-80 rounded-xl overflow-hidden mb-8">
                 <Image
                   src={guide.heroImage.url}
-                  alt={guide.title}
+                  alt={`${guide.title} - ${phaseInfo.label}`}
                   fill
+                  sizes="(max-width: 768px) 100vw, 768px"
                   className="object-cover"
                   priority
                 />

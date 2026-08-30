@@ -140,6 +140,17 @@ export type School = MicroCMSBase & {
 // ============================================================
 export type Gender = 'male' | 'female' | 'other' | 'prefer-not-to-say';
 export type LanguageLevel = 'beginner' | 'elementary' | 'intermediate' | 'upper-intermediate' | 'advanced';
+export type ExperiencePrimaryPurpose = 'working-holiday' | 'study-abroad' | 'other' | 'unknown';
+export type ExperienceStudyType =
+  | 'language'
+  | 'university'
+  | 'graduate'
+  | 'vocational'
+  | 'coop'
+  | 'exchange'
+  | 'high-school'
+  | 'other';
+export type ExperienceClassificationStatus = 'verified' | 'needs-review';
 
 export type ProConItem = {
   fieldId: 'proConItem';
@@ -174,6 +185,14 @@ export type Experience = MicroCMSBase & {
   gender?: Gender;
   languageBefore?: LanguageLevel;
   languageAfter?: LanguageLevel;
+  // 渡航目的の分類。既存データはアプリ側の人手確認レジストリで補完する。
+  primaryPurpose?: ExperiencePrimaryPurpose;
+  secondaryPurposes?: ExperiencePrimaryPurpose[];
+  studyType?: ExperienceStudyType;
+  visaOrPermit?: string;
+  classificationStatus?: ExperienceClassificationStatus;
+  /** 管理画面だけで使用し、公開ページには表示しない分類根拠。 */
+  classificationNote?: string;
 };
 
 // ============================================================
@@ -255,6 +274,39 @@ export type Article = MicroCMSBase & {
   keyPoints?: KeyPoint[];
   checklist?: ChecklistItem[];
   tips?: TipItem[];
+};
+
+// ============================================================
+// API 6: countryPurposeGuides — 国別×目的別の詳細ガイド
+// ============================================================
+export type CountryPurposeGuideStatus = 'draft' | 'review' | 'publishable' | 'stale';
+export type CountryPurposeGuidePurpose = 'working-holiday' | 'study-abroad';
+
+export type GuideSource = {
+  fieldId: 'guideSource';
+  label: string;
+  url: string;
+  supports: string;
+  checkedAt: string;
+  nextCheckAt?: string;
+};
+
+export type CountryPurposeGuide = MicroCMSBase & {
+  country: Country;
+  purpose: CountryPurposeGuidePurpose;
+  title: string;
+  introduction: string;
+  heroImage?: MicroCMSImage;
+  body: string;
+  importantFigures?: string;
+  comparisonTables?: string;
+  faq?: string;
+  sources?: GuideSource[];
+  checkedAt: string;
+  nextCheckAt?: string;
+  status: CountryPurposeGuideStatus;
+  mergedArticleIds?: string[];
+  redirectFrom?: string[];
 };
 
 // Guide は Article の派生型（phase, orderInPhase が必須）

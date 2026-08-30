@@ -9,7 +9,7 @@ export default function VisaInfo({ country }: Props) {
   const status = PROGRAM_STATUSES.find((s) => s.value === country.programStatus);
 
   return (
-    <section className="bg-white rounded-xl border border-gray-200 p-6">
+    <section className="bg-white rounded-2xl border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-4">
         <h2 className="text-xl font-bold">ビザ情報</h2>
         {status && <Badge variant={status.value === 'open' ? 'success' : 'warning'}>{status.label}</Badge>}

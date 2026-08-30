@@ -27,6 +27,7 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.vercel
 
 # vercel
 .vercel
@@ -37,3 +38,7 @@ next-env.d.ts
 
 # import script progress
 scripts/.import-progress.json
+
+# Service account keys (safety net)
+*-sa.json
+*service-account*.json

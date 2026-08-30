@@ -1,14 +1,11 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
 import { getArticles } from '@/lib/microcms/articles';
-import Card from '@/components/ui/Card';
-import Badge from '@/components/ui/Badge';
 import Breadcrumb from '@/components/layout/Breadcrumb';
+import PageHero from '@/components/layout/PageHero';
 import Pagination from '@/components/ui/Pagination';
+import ArticleCard from '@/components/article/ArticleCard';
 import { generatePageMetadata } from '@/lib/seo/metadata';
 import { PER_PAGE, ARTICLE_CATEGORIES } from '@/lib/utils/constants';
-import { formatDate } from '@/lib/utils/format';
 
 export const revalidate = 3600;
 
@@ -37,80 +34,65 @@ export default async function ArticlesPage({ searchParams }: Props) {
   });
 
   return (
-    <div className="container-custom py-8">
-      <Breadcrumb items={[{ label: 'お役立ち記事' }]} />
+    <>
+      <div className="container-custom pt-6">
+        <Breadcrumb items={[{ label: 'お役立ち記事' }]} />
+      </div>
+      <PageHero
+        eyebrow="Articles"
+        title="お役立ち記事"
+        description={`ビザ・費用・準備・仕事まで、留学・ワーホリに役立つ情報をカテゴリ別に。全${totalCount}件。`}
+      />
 
-      <h1 className="text-3xl font-bold mb-2">お役立ち記事</h1>
-      <p className="text-gray-600 mb-6">留学・ワーホリに役立つ情報（{totalCount}件）</p>
-
-      {/* Category Filter */}
-      <div className="flex flex-wrap gap-2 mb-8">
-        <a
-          href="/articles"
-          className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
-            !searchParams.category ? 'bg-primary-600 text-white border-primary-600' : 'border-gray-300 hover:border-primary-400'
-          }`}
-        >
-          すべて
-        </a>
-        {ARTICLE_CATEGORIES.map((cat) => (
+      <div className="container-custom py-12 md:py-16">
+        {/* Category Filter */}
+        <div className="mb-10 flex flex-wrap gap-2">
           <a
-            key={cat.value}
-            href={`/articles?category=${cat.value}`}
-            className={`px-3 py-1.5 text-sm rounded-full border transition-colors ${
-              searchParams.category === cat.value ? 'bg-primary-600 text-white border-primary-600' : 'border-gray-300 hover:border-primary-400'
+            href="/articles"
+            className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+              !searchParams.category
+                ? 'border-primary-600 bg-primary-600 text-white'
+                : 'border-gray-300 text-gray-700 hover:border-primary-400 hover:text-primary-700'
             }`}
           >
-            {cat.label}
+            すべて
           </a>
-        ))}
-      </div>
-
-      {articles.length > 0 ? (
-        <>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.map((article) => {
-              const catLabel = ARTICLE_CATEGORIES.find((c) => c.value === article.category)?.label;
-              return (
-                <Link key={article.id} href={`/articles/${article.id}`}>
-                  <Card hover className="h-full">
-                    {article.heroImage && (
-                      <div className="relative h-44 w-full">
-                        <Image
-                          src={article.heroImage.url}
-                          alt={article.title}
-                          fill
-                          className="object-cover"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                      </div>
-                    )}
-                    <div className="p-4">
-                      {catLabel && <Badge variant="primary" className="mb-2">{catLabel}</Badge>}
-                      <h3 className="font-bold text-base mb-2 line-clamp-2">{article.title}</h3>
-                      {article.description && (
-                        <p className="text-sm text-gray-600 line-clamp-2 mb-3">{article.description}</p>
-                      )}
-                      <p className="text-xs text-gray-400">{formatDate(article.publishedAt || article.createdAt)}</p>
-                    </div>
-                  </Card>
-                </Link>
-              );
-            })}
-          </div>
-          <Pagination
-            totalCount={totalCount}
-            perPage={PER_PAGE}
-            currentPage={page}
-            basePath="/articles"
-            searchParams={searchParams.category ? { category: searchParams.category } : {}}
-          />
-        </>
-      ) : (
-        <div className="text-center py-12 text-gray-500">
-          <p>記事がまだありません。</p>
+          {ARTICLE_CATEGORIES.map((cat) => (
+            <a
+              key={cat.value}
+              href={`/articles?category=${cat.value}`}
+              className={`rounded-full border px-4 py-2 text-sm transition-colors ${
+                searchParams.category === cat.value
+                  ? 'border-primary-600 bg-primary-600 text-white'
+                  : 'border-gray-300 text-gray-700 hover:border-primary-400 hover:text-primary-700'
+              }`}
+            >
+              {cat.label}
+            </a>
+          ))}
         </div>
-      )}
-    </div>
+
+        {articles.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {articles.map((article) => (
+                <ArticleCard key={article.id} article={article} headingLevel="h2" />
+              ))}
+            </div>
+            <Pagination
+              totalCount={totalCount}
+              perPage={PER_PAGE}
+              currentPage={page}
+              basePath="/articles"
+              searchParams={searchParams.category ? { category: searchParams.category } : {}}
+            />
+          </>
+        ) : (
+          <div className="py-12 text-center text-gray-500">
+            <p>記事がまだありません。</p>
+          </div>
+        )}
+      </div>
+    </>
   );
 }

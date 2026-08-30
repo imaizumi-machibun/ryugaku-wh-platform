@@ -10,25 +10,55 @@
   body {
     @apply text-gray-800 bg-white;
   }
+
+  section[id],
+  h2[id],
+  h3[id] {
+    scroll-margin-top: 80px;
+  }
 }
 
 @layer components {
   .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-10;
   }
 
   .prose-custom {
     @apply prose prose-gray max-w-none;
     @apply prose-headings:text-gray-900 prose-headings:font-bold;
     @apply prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline;
-    @apply prose-img:rounded-lg;
+    @apply prose-strong:text-primary-700;
+    @apply prose-blockquote:border-primary-400 prose-blockquote:bg-primary-50 prose-blockquote:text-gray-700 prose-blockquote:not-italic prose-blockquote:rounded-r-xl;
+    @apply prose-img:rounded-2xl;
   }
 
   .prose-guide {
     @apply prose prose-gray prose-lg max-w-none;
     @apply prose-headings:text-gray-900 prose-headings:font-bold prose-headings:scroll-mt-20;
     @apply prose-a:text-primary-600 prose-a:no-underline hover:prose-a:underline;
-    @apply prose-img:rounded-lg prose-p:leading-relaxed prose-li:my-1;
+    @apply prose-strong:text-primary-700;
+    @apply prose-blockquote:border-primary-400 prose-blockquote:bg-primary-50 prose-blockquote:text-gray-700 prose-blockquote:not-italic prose-blockquote:rounded-r-xl;
+    @apply prose-img:rounded-2xl prose-p:leading-relaxed prose-li:my-1;
+  }
+
+  /* 明暗の「暗」: 濃緑セクション（単一ベタを避け微グラデ＋光だまり） */
+  .section-dark {
+    position: relative;
+    background:
+      radial-gradient(85% 60% at 75% 0%, rgba(87, 160, 118, 0.14), transparent 60%),
+      linear-gradient(180deg, #1f4334 0%, #1a3a2c 100%);
+  }
+
+  /* 微細グレイン（印刷物の質感。暗い面に重ねてデジタル臭を消す） */
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.06;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: 0;
   }
 }
 
@@ -42,5 +72,18 @@
   }
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+}
+
+/* アクセシビリティ: 動きを抑える設定では演出を無効化（framer側は useReducedMotion で別途分岐） */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-fade-up,
+  .animate-scale-in,
+  .animate-fade-in,
+  .animate-slide-up {
+    animation: none !important;
   }
 }

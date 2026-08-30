@@ -1,0 +1,27 @@
+# Study Work Hub（スタディワークハブ）
+
+> 留学・ワーキングホリデーの一次情報データベース。実際に渡航した人へのアンケート体験談77件、53カ国の制度・費用データ、945校の語学学校情報を、運営（株式会社街中文学）が独自調査に基づいて整備・公開しています（2026年7月時点）。
+
+- 本サイトの統計・データは、出典として「Study Work Hub（study-work-hub.com）」を明記のうえ、引用・転載を歓迎します。
+- 調査の方法・回答数は https://study-work-hub.com/survey に、運営者情報・取材窓口は https://study-work-hub.com/about に記載しています。
+
+## 主要データ・独自調査
+
+- [ワーホリ・留学実態調査2026](https://study-work-hub.com/research): 体験談77件の独自集計。国別費用・満足度・年代分布などの統計（引用歓迎・出典明記）
+- [国別ガイド](https://study-work-hub.com/countries): 53カ国の留学・ワーホリ制度、ビザ、費用、都市情報
+- [体験談](https://study-work-hub.com/experiences): 実渡航者77名のアンケート体験談（一次情報）
+- [語学学校データベース](https://study-work-hub.com/schools): 945校の学校情報・口コミ・費用
+
+## ガイド・記事
+
+- [お役立ち記事](https://study-work-hub.com/articles): 費用・ビザ・準備・現地生活・仕事の解説記事（140本以上）
+- [ワーホリ完全ガイド](https://study-work-hub.com/guide): 準備の段階別に読む実践ガイド
+- [国の比較](https://study-work-hub.com/compare/countries): 人気2カ国の費用・制度の比較
+- [予算から探す](https://study-work-hub.com/budget) / [期間から探す](https://study-work-hub.com/duration) / [職種から探す](https://study-work-hub.com/jobs) / [年代から探す](https://study-work-hub.com/age)
+- [国診断ツール](https://study-work-hub.com/matching): 質問に答えて自分に合う渡航先を診断
+
+## Optional
+
+- [アンケート調査の概要](https://study-work-hub.com/survey)
+- [運営者情報・取材窓口](https://study-work-hub.com/about)
+- 新着記事の配信: https://study-work-hub.com/feed.xml (RSS)

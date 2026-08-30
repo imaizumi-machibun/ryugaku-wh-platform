@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { getExperiences } from '@/lib/microcms/experiences';
 import ExperienceCard from '@/components/experience/ExperienceCard';
 import Breadcrumb from '@/components/layout/Breadcrumb';
+import PageHero from '@/components/layout/PageHero';
 import Pagination from '@/components/ui/Pagination';
 import SortSelect from '@/components/ui/SortSelect';
 import EmptyState from '@/components/ui/EmptyState';
@@ -48,51 +49,54 @@ export default async function ExperiencesPage({ searchParams }: Props) {
   });
 
   return (
-    <div className="container-custom py-8">
-      <Breadcrumb items={[{ label: '体験談' }]} />
-
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 gap-2">
-        <div>
-          <h1 className="text-3xl font-bold">体験談</h1>
-          <p className="text-gray-600">
-            留学・ワーキングホリデー経験者のリアルな声（{totalCount}件）
-          </p>
-        </div>
-        <Suspense>
-          <SortSelect options={SORT_OPTIONS} basePath="/experiences" />
-        </Suspense>
+    <>
+      <div className="container-custom pt-6">
+        <Breadcrumb items={[{ label: '体験談' }]} />
       </div>
+      <PageHero
+        eyebrow="Experiences"
+        title="体験談"
+        description={`留学・ワーキングホリデー経験者のリアルな声。実際に渡航した人だけが投稿しています。全${totalCount}件。`}
+      />
 
-      {experiences.length > 0 ? (
-        <>
-          <Suspense fallback={<CardGridSkeleton count={PER_PAGE} cols={3} />}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {experiences.map((exp) => (
-                <ExperienceCard key={exp.id} experience={exp} />
-              ))}
-            </div>
+      <div className="container-custom py-12 md:py-16">
+        <div className="mb-6 flex justify-end">
+          <Suspense>
+            <SortSelect options={SORT_OPTIONS} basePath="/experiences" />
           </Suspense>
-          <Pagination
-            totalCount={totalCount}
-            perPage={PER_PAGE}
-            currentPage={page}
-            basePath="/experiences"
-            searchParams={Object.fromEntries(
-              Object.entries({
-                country: searchParams.country,
-                sort: searchParams.sort,
-              }).filter(([, v]) => v != null) as [string, string][]
-            )}
+        </div>
+
+        {experiences.length > 0 ? (
+          <>
+            <Suspense fallback={<CardGridSkeleton count={PER_PAGE} cols={3} />}>
+              <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {experiences.map((exp) => (
+                  <ExperienceCard key={exp.id} experience={exp} />
+                ))}
+              </div>
+            </Suspense>
+            <Pagination
+              totalCount={totalCount}
+              perPage={PER_PAGE}
+              currentPage={page}
+              basePath="/experiences"
+              searchParams={Object.fromEntries(
+                Object.entries({
+                  country: searchParams.country,
+                  sort: searchParams.sort,
+                }).filter(([, v]) => v != null) as [string, string][]
+              )}
+            />
+          </>
+        ) : (
+          <EmptyState
+            title="体験談がまだありません"
+            description="最初の体験談を投稿して、これから留学する人の助けになりましょう"
+            actionLabel="体験談を投稿する"
+            actionHref="/submit/experience"
           />
-        </>
-      ) : (
-        <EmptyState
-          title="体験談がまだありません"
-          description="最初の体験談を投稿して、これから留学する人の助けになりましょう"
-          actionLabel="体験談を投稿する"
-          actionHref="/submit/experience"
-        />
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }

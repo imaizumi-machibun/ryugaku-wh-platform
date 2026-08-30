@@ -1,18 +1,26 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getExperienceBySlug, getExperienceSlugs } from '@/lib/microcms/experiences';
+import { getExperienceBySlug, getExperienceSlugs, getExperiencesByCountry } from '@/lib/microcms/experiences';
 import StarRating from '@/components/ui/StarRating';
 import Badge from '@/components/ui/Badge';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import CostBreakdown from '@/components/experience/CostBreakdown';
 import RadarChart from '@/components/country/RadarChart';
 import JsonLd from '@/components/seo/JsonLd';
-import { generateArticleMetadata } from '@/lib/seo/metadata';
+import { generateExperienceMetadata } from '@/lib/seo/metadata';
 import { generateExperienceJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
+import RelatedLinks from '@/components/seo/RelatedLinks';
+import { buildExperienceRelatedSections } from '@/lib/seo/relations';
 import { formatDuration, formatDate } from '@/lib/utils/format';
 import { LANGUAGE_LEVELS, GENDERS } from '@/lib/utils/constants';
 import ShareButtons from '@/components/ui/ShareButtons';
+import {
+  getPurposePath,
+  PURPOSE_LABELS,
+  STUDY_TYPE_LABELS,
+} from '@/lib/experiences/classification';
+import { buildExperienceBreadcrumb, toVisibleBreadcrumbItems } from '@/lib/seo/breadcrumbs';
 
 export const revalidate = 3600;
 
@@ -26,13 +34,7 @@ type Props = { params: { slug: string } };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const exp = await getExperienceBySlug(params.slug);
-    return generateArticleMetadata({
-      title: exp.title,
-      description: `${exp.country?.nameJp}${exp.cityPrimary ? `・${exp.cityPrimary}` : ''}での留学・ワーホリ体験談。`,
-      path: `/experiences/${params.slug}`,
-      publishedTime: exp.publishedAt,
-      modifiedTime: exp.updatedAt,
-    });
+    return generateExperienceMetadata(exp, `/experiences/${params.slug}`);
   } catch {
     return {};
   }
@@ -45,6 +47,24 @@ export default async function ExperienceDetailPage({ params }: Props) {
   } catch {
     notFound();
   }
+
+  // 関連体験談を取得
+  const sameCountryData = experience.country?.id
+    ? await getExperiencesByCountry(experience.country.id, 8).catch(() => ({
+        contents: [], totalCount: 0, offset: 0, limit: 0,
+      }))
+    : { contents: [], totalCount: 0, offset: 0, limit: 0 };
+  const sameCountry = sameCountryData.contents.filter((e) => e.id !== experience.id);
+  const samePurpose = experience.classificationStatus === 'verified'
+    ? sameCountry.filter((e) => e.classificationStatus === 'verified' && e.primaryPurpose === experience.primaryPurpose)
+    : sameCountry;
+  const sameCity = samePurpose.filter((e) => e.cityPrimary === experience.cityPrimary);
+  const purposePath = getPurposePath(experience);
+  const purposeLabel =
+    experience.primaryPurpose === 'working-holiday' || experience.primaryPurpose === 'study-abroad'
+      ? PURPOSE_LABELS[experience.primaryPurpose]
+      : null;
+  const purposeBreadcrumb = buildExperienceBreadcrumb(experience);
 
   const ratingLabels = ['治安', '仕事', 'コスパ', '充実度', '語学上達'];
   const ratingValues = [
@@ -64,19 +84,12 @@ export default async function ExperienceDetailPage({ params }: Props) {
     <>
       <JsonLd data={generateExperienceJsonLd(experience)} />
       <JsonLd
-        data={generateBreadcrumbJsonLd([
-          { name: 'ホーム', url: '/' },
-          { name: '体験談', url: '/experiences' },
-          { name: experience.title, url: `/experiences/${params.slug}` },
-        ])}
+        data={generateBreadcrumbJsonLd(purposeBreadcrumb)}
       />
 
       <div className="container-custom py-8">
         <Breadcrumb
-          items={[
-            { label: '体験談', href: '/experiences' },
-            { label: experience.title },
-          ]}
+          items={toVisibleBreadcrumbItems(purposeBreadcrumb)}
         />
 
         <article>
@@ -88,6 +101,8 @@ export default async function ExperienceDetailPage({ params }: Props) {
                 </Badge>
               </Link>
               <Badge>{experience.cityPrimary}</Badge>
+              {purposeLabel && <Badge variant="info">{purposeLabel}</Badge>}
+              {experience.studyType && <Badge>{STUDY_TYPE_LABELS[experience.studyType]}</Badge>}
               {experience.durationMonths && (
                 <Badge variant="info">{formatDuration(experience.durationMonths)}</Badge>
               )}
@@ -151,6 +166,26 @@ export default async function ExperienceDetailPage({ params }: Props) {
                     <td className="py-2">{formatDuration(experience.durationMonths)}</td>
                   </tr>
                 )}
+                {purposeLabel && (
+                  <tr>
+                    <th className="py-2 pr-4 text-left text-gray-500 font-medium">主な渡航目的</th>
+                    <td className="py-2">
+                      {purposePath ? <Link href={purposePath} className="text-primary-600 hover:underline">{purposeLabel}</Link> : purposeLabel}
+                    </td>
+                  </tr>
+                )}
+                {experience.studyType && (
+                  <tr>
+                    <th className="py-2 pr-4 text-left text-gray-500 font-medium">留学種別</th>
+                    <td className="py-2">{STUDY_TYPE_LABELS[experience.studyType]}</td>
+                  </tr>
+                )}
+                {experience.visaOrPermit && (
+                  <tr>
+                    <th className="py-2 pr-4 text-left text-gray-500 font-medium">本人記載のビザ・許可</th>
+                    <td className="py-2">{experience.visaOrPermit}</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>
@@ -208,7 +243,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
             <div className="space-y-6">
               {/* Radar Chart */}
               {hasRatings && (
-                <div className="bg-white rounded-xl border border-gray-200 p-5">
+                <div className="bg-white rounded-2xl border border-gray-200 p-5">
                   <h3 className="font-bold mb-3 text-center">6軸評価</h3>
                   <RadarChart labels={ratingLabels} values={ratingValues} />
                 </div>
@@ -261,6 +296,14 @@ export default async function ExperienceDetailPage({ params }: Props) {
               </div>
             </div>
           </div>
+
+          {/* SEO関連リンク（ハブ&スポーク） */}
+          <RelatedLinks
+            sections={buildExperienceRelatedSections(experience, {
+              sameCountry: samePurpose,
+              sameCity,
+            })}
+          />
         </article>
       </div>
     </>

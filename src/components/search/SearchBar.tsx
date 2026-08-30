@@ -22,10 +22,10 @@ const TYPE_LABELS: Record<string, string> = {
 };
 
 const TYPE_COLORS: Record<string, string> = {
-  country: 'bg-green-100 text-green-700',
-  school: 'bg-blue-100 text-blue-700',
-  experience: 'bg-orange-100 text-orange-700',
-  article: 'bg-purple-100 text-purple-700',
+  country: 'bg-primary-100 text-primary-700',
+  school: 'bg-sky-100 text-sky-700',
+  experience: 'bg-accent-100 text-accent-800',
+  article: 'bg-rose-100 text-rose-700',
 };
 
 export default function SearchBar({ variant = 'hero' }: Props) {

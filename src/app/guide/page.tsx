@@ -10,7 +10,8 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'ワーホリ完全ガイド',
-  description: 'ワーキングホリデーの準備から帰国後のキャリアまで、9つのフェーズに分けてステップバイステップで解説する完全ガイド。情報収集、ビザ申請、出発準備、現地生活、仕事、住居、語学、安全対策、帰国後キャリアのすべてをカバー。',
+  description:
+    'ワーキングホリデーの準備から帰国後のキャリアまで、9つのフェーズに分けてステップバイステップで解説する完全ガイド。情報収集、ビザ申請、出発準備、現地生活、仕事、住居、語学、安全対策、帰国後キャリアのすべてをカバー。',
   path: '/guide',
 });
 
@@ -27,30 +28,32 @@ export default async function GuidePage() {
         ])}
       />
 
-      <div className="container-custom py-8">
+      {/* Breadcrumb */}
+      <div className="container-custom pt-6">
         <Breadcrumb items={[{ label: 'ワーホリ完全ガイド' }]} />
+      </div>
 
-        {/* Hero */}
-        <div className="text-center mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold mb-4">
-            ワーホリ完全ガイド
-          </h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto leading-relaxed">
+      {/* Hero（濃緑・エディトリアル） */}
+      <section className="section-dark grain relative mt-6 overflow-hidden text-white">
+        <div className="container-custom relative z-10 py-20 md:py-28">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.25em] text-accent-300">Complete Guide</p>
+          <h1 className="max-w-4xl text-hero font-black text-white">ワーホリ完全ガイド</h1>
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/80">
             情報収集から帰国後のキャリアまで、ワーキングホリデーのすべてを
-            <strong>9つのフェーズ・{totalArticles}記事</strong>で徹底解説。
-            初めての方もステップバイステップで進められます。
+            <strong className="font-bold text-white">9つのフェーズ・{totalArticles}記事</strong>
+            で徹底解説。初めての方も、ステップバイステップで進められます。
           </p>
         </div>
+      </section>
 
-        {/* Phase timeline */}
-        <div className="max-w-3xl mx-auto space-y-8">
+      {/* Phase timeline（番号エディトリアル） */}
+      <div className="container-custom py-20 md:py-28">
+        <div className="space-y-14">
           {grouped.map((group, i) => (
             <GuidePhaseCard
               key={group.phase}
               phase={group.phase}
               label={group.label}
-              emoji={group.emoji}
-              color={group.color}
               description={group.description}
               guides={group.guides}
               phaseIndex={i}

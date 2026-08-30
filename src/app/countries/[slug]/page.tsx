@@ -5,18 +5,16 @@ import { notFound } from 'next/navigation';
 import { getCountryBySlug, getCountrySlugs } from '@/lib/microcms/countries';
 import { getExperiencesByCountry } from '@/lib/microcms/experiences';
 import { getSchools } from '@/lib/microcms/schools';
-import QuickFacts from '@/components/country/QuickFacts';
-import VisaInfo from '@/components/country/VisaInfo';
-import RadarChart from '@/components/country/RadarChart';
+import { resolveCountryPurposeGuide } from '@/lib/microcms/countryPurposeGuides';
+import { evaluateCountryPurposeGate } from '@/lib/country-purpose/gate';
+import { isVerifiedForPurpose } from '@/lib/experiences/classification';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import JsonLd from '@/components/seo/JsonLd';
 import ExperienceCard from '@/components/experience/ExperienceCard';
 import SchoolCard from '@/components/school/SchoolCard';
-import { generatePageMetadata } from '@/lib/seo/metadata';
-import { getCountryEditorialLinks, getCountrySeoOverride } from '@/lib/seo/country-overrides';
-import { generateCountryJsonLd, generateFAQJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
-import { generateCountryFAQs } from '@/lib/seo/faq-generator';
-import { aggregateExperienceRatings } from '@/lib/utils/aggregation';
+import { generateCountryMetadata } from '@/lib/seo/metadata';
+import { generateBreadcrumbJsonLd, generatePlaceJsonLd } from '@/lib/seo/jsonld';
+import { getCitiesByCountry } from '@/lib/data/cities';
 
 export const revalidate = 1800;
 
@@ -28,218 +26,187 @@ export async function generateStaticParams() {
 type Props = { params: { slug: string } };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  try {
-    const country = await getCountryBySlug(params.slug);
-    const override = getCountrySeoOverride(params.slug);
-    return generatePageMetadata({
-      title:
-        override?.title ??
-        `${country.nameJp}のワーキングホリデー・留学情報【${new Date().getFullYear()}年最新】`,
-      description:
-        override?.description ??
-        `${country.nameJp}（${country.nameEn}）のワーキングホリデー・留学完全ガイド。ビザ情報、費用、体験談、おすすめ学校を紹介。`,
-      path: `/countries/${params.slug}`,
-      ogImage: country.heroImage?.url,
-    });
-  } catch {
-    return {};
-  }
+  const country = await getCountryBySlug(params.slug).catch(() => null);
+  return country ? generateCountryMetadata(country, `/countries/${params.slug}`) : {};
+}
+
+function OverviewFacts({ country }: { country: Awaited<ReturnType<typeof getCountryBySlug>> }) {
+  const facts = [
+    ['首都', country.capital],
+    ['公用語・主要言語', country.officialLanguage],
+    ['通貨', country.currency ? `${country.currency}${country.currencyCode ? `（${country.currencyCode}）` : ''}` : undefined],
+    ['日本との時差', country.timeDifferenceJapan],
+    ['フライト時間', country.flightTimeHours ? `約${country.flightTimeHours}時間` : undefined],
+    ['過ごしやすい時期', country.bestSeason],
+  ].filter((fact): fact is [string, string] => Boolean(fact[1]));
+  return (
+    <dl className="grid gap-px overflow-hidden rounded-2xl border border-gray-200 bg-gray-200 sm:grid-cols-2 lg:grid-cols-3">
+      {facts.map(([label, value]) => (
+        <div key={label} className="bg-white p-5">
+          <dt className="text-sm text-gray-500">{label}</dt>
+          <dd className="mt-1 font-semibold text-gray-900">{value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
 }
 
 export default async function CountryDetailPage({ params }: Props) {
-  let country;
-  try {
-    country = await getCountryBySlug(params.slug);
-  } catch {
-    notFound();
-  }
+  const country = await getCountryBySlug(params.slug).catch(() => null);
+  if (!country) notFound();
 
-  const [experiencesData, schoolsData] = await Promise.all([
-    getExperiencesByCountry(params.slug, 6),
-    getSchools({ filters: `country[equals]${params.slug}`, limit: 6 }),
+  const [experiencesData, schoolsData, whGuide, studyGuide] = await Promise.all([
+    getExperiencesByCountry(params.slug, 100).catch(() => ({ contents: [], totalCount: 0, offset: 0, limit: 0 })),
+    getSchools({ filters: `country[equals]${params.slug}`, limit: 6, depth: 2 }).catch(() => ({ contents: [], totalCount: 0, offset: 0, limit: 0 })),
+    resolveCountryPurposeGuide(country, 'working-holiday'),
+    resolveCountryPurposeGuide(country, 'study-abroad'),
   ]);
-
   const experiences = experiencesData.contents;
   const schools = schoolsData.contents;
-  const ratings = aggregateExperienceRatings(experiences);
-  const faqs = generateCountryFAQs(country);
-  const editorialLinks = getCountryEditorialLinks(params.slug);
+  const whExperiences = experiences.filter((experience) => isVerifiedForPurpose(experience, 'working-holiday'));
+  const studyExperiences = experiences.filter((experience) => isVerifiedForPurpose(experience, 'study-abroad'));
+  const whGate = evaluateCountryPurposeGate({ country, purpose: 'working-holiday', guide: whGuide, experiences, schools });
+  const studyGate = evaluateCountryPurposeGate({ country, purpose: 'study-abroad', guide: studyGuide, experiences, schools });
+  const cities = getCitiesByCountry(params.slug);
 
-  const ratingLabels = ['治安', '仕事', 'コスパ', '充実度', '語学上達'];
-  const ratingValues = ratings
-    ? [
-        ratings.ratingSafety || 0,
-        ratings.ratingJob || 0,
-        ratings.ratingCost || 0,
-        ratings.ratingLifestyle || 0,
-        ratings.ratingLanguage || 0,
-      ]
-    : [];
+  const purposeCards = [
+    {
+      purpose: 'working-holiday' as const,
+      label: `${country.nameJp}ワーホリ`,
+      description: '制度、ビザ申請、仕事、賃金、税、年間予算、住居、安全、渡航後手続をワーホリ視点で確認します。',
+      count: whExperiences.length,
+      published: whGate.pass,
+    },
+    {
+      purpose: 'study-abroad' as const,
+      label: `${country.nameJp}留学`,
+      description: '留学種別、入学条件、学校・都市選び、学費、ビザ、住居、奨学金、卒業後を留学視点で確認します。',
+      count: studyExperiences.length,
+      published: studyGate.pass,
+    },
+  ];
 
   return (
     <>
-      <JsonLd data={generateCountryJsonLd(country, ratings ? { average: ratings.ratingOverall || 0, count: ratings.count } : undefined)} />
-      <JsonLd data={generateBreadcrumbJsonLd([{ name: 'ホーム', url: '/' }, { name: '国から探す', url: '/countries' }, { name: country.nameJp, url: `/countries/${params.slug}` }])} />
-      {faqs.length > 0 && <JsonLd data={generateFAQJsonLd(faqs)} />}
+      <JsonLd data={generatePlaceJsonLd({
+        name: country.nameJp,
+        countryName: country.nameEn,
+        description: country.description?.replace(/<[^>]+>/g, '').slice(0, 200),
+      })} />
+      <JsonLd data={generateBreadcrumbJsonLd([
+        { name: 'ホーム', url: '/' },
+        { name: '国一覧', url: '/countries' },
+        { name: country.nameJp, url: `/countries/${params.slug}` },
+      ])} />
 
       <div className="container-custom py-8">
-        <Breadcrumb items={[{ label: '国から探す', href: '/countries' }, { label: country.nameJp }]} />
+        <Breadcrumb items={[{ label: '国一覧', href: '/countries' }, { label: country.nameJp }]} />
 
-        {/* Hero */}
-        <div className="relative rounded-xl overflow-hidden mb-8">
-          {country.heroImage && (
-            <div className="relative h-64 md:h-80">
-              <Image src={country.heroImage.url} alt={country.nameJp} fill className="object-cover" priority />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+        <header className="relative mt-4 overflow-hidden rounded-3xl bg-gray-900">
+          {country.heroImage && <Image src={country.heroImage.url} alt={`${country.nameJp}の風景`} fill priority className="object-cover opacity-60" />}
+          <div className="relative z-10 px-6 py-14 text-white md:px-12 md:py-20">
+            <div className="flex items-center gap-3">
+              {country.flagEmoji && <span className="text-4xl" aria-hidden>{country.flagEmoji}</span>}
+              <div>
+                <p className="text-sm text-white/75">{country.region}</p>
+                <h1 className="text-4xl font-bold md:text-5xl">{country.nameJp}</h1>
+              </div>
             </div>
-          )}
-          <div className={country.heroImage ? 'absolute bottom-0 left-0 p-6 text-white' : 'py-4'}>
-            <div className="flex items-center gap-3 mb-2">
-              {country.flagEmoji && <span className="text-4xl">{country.flagEmoji}</span>}
-              <h1 className="text-3xl md:text-4xl font-bold">{country.nameJp}</h1>
-            </div>
-            <p className={country.heroImage ? 'text-white/80' : 'text-gray-600'}>{country.nameEn} | {country.region}</p>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-white/85">
+              {country.nameEn}の基本情報、気候、通貨、主要都市、生活環境を確認する国別ハブです。
+              ワーホリと留学の制度・費用・体験談は、目的別ページで分けて詳しく解説します。
+            </p>
+            {purposeCards.some((card) => card.published) && (
+              <nav aria-label={`${country.nameJp}の目的別ガイド`} className="mt-7 flex flex-wrap gap-3">
+                {purposeCards.filter((card) => card.published).map((card) => (
+                  <Link
+                    key={card.purpose}
+                    href={`/countries/${params.slug}/${card.purpose}`}
+                    className="rounded-xl bg-white px-5 py-3 text-sm font-bold text-primary-800 shadow-sm transition hover:bg-primary-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                  >
+                    {card.label}完全ガイドへ
+                    <span className="ml-2 font-normal text-primary-600">体験談{card.count}件</span>
+                  </Link>
+                ))}
+              </nav>
+            )}
           </div>
-        </div>
+        </header>
 
-        {/* Description */}
-        {country.description && (
-          <div className="prose-custom mb-8" dangerouslySetInnerHTML={{ __html: country.description }} />
-        )}
+        {country.description && <div className="prose-custom mx-auto my-10 max-w-4xl" dangerouslySetInnerHTML={{ __html: country.description }} />}
+        <OverviewFacts country={country} />
 
-        {/* Quick Facts */}
-        <QuickFacts country={country} />
+        <section className="mt-14">
+          <h2 className="text-2xl font-bold">目的から詳しく見る</h2>
+          <p className="mt-2 text-gray-600">同じ国でも、ワーホリ生活と留学生活では必要な準備や判断軸が異なります。</p>
+          <div className="mt-6 grid gap-6 lg:grid-cols-2">
+            {purposeCards.map((card) => (
+              <article key={card.purpose} className="flex flex-col rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+                <div className="flex items-center justify-between gap-3">
+                  <h3 className="text-2xl font-bold">{card.label}</h3>
+                  <span className={`rounded-full px-3 py-1 text-xs font-semibold ${card.published ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-600'}`}>
+                    {card.published ? '公開中' : '準備中'}
+                  </span>
+                </div>
+                <p className="mt-4 flex-1 text-sm leading-7 text-gray-600">{card.description}</p>
+                <p className="mt-4 text-sm font-semibold text-gray-800">検証済み体験談：{card.count}件</p>
+                {card.published ? (
+                  <Link href={`/countries/${params.slug}/${card.purpose}`} className="mt-5 rounded-xl bg-primary-700 px-5 py-3 text-center font-semibold text-white hover:bg-primary-800">
+                    {card.label}の詳細と体験談を見る
+                  </Link>
+                ) : (
+                  <p className="mt-5 rounded-xl bg-gray-50 px-5 py-3 text-center text-sm text-gray-600">
+                    公式情報・体験談・国固有データが公開基準に達し次第公開します
+                  </p>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
 
-        {editorialLinks.length > 0 && (
-          <section className="mt-8 rounded-xl border border-primary-100 bg-primary-50 p-5">
-            <h2 className="text-xl font-bold mb-4">{country.nameJp}の実践ガイド</h2>
-            <div className="grid gap-3 md:grid-cols-2">
-              {editorialLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="rounded-lg bg-white p-4 shadow-sm transition-shadow hover:shadow-md"
-                >
-                  <span className="font-semibold text-primary-700">{link.label} →</span>
-                  <span className="mt-1 block text-sm text-gray-600">{link.description}</span>
+        {cities.length > 0 && (
+          <section className="mt-14">
+            <h2 className="text-2xl font-bold">{country.nameJp}の主要都市</h2>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {cities.map((city) => (
+                <Link key={city.slug} href={`/countries/${params.slug}/cities/${city.slug}`} className="rounded-xl border border-gray-200 p-5 hover:border-primary-300 hover:bg-primary-50">
+                  <h3 className="font-semibold">{city.nameJp}<span className="ml-2 text-sm font-normal text-gray-500">{city.nameEn}</span></h3>
+                  <p className="mt-2 text-sm text-gray-600">{city.monthlyLivingJpy ? `生活費 月${Math.round(city.monthlyLivingJpy / 10000)}万円目安` : city.highlights?.[0]}</p>
                 </Link>
               ))}
             </div>
           </section>
         )}
 
-        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2">
-            {/* Visa Info */}
-            <VisaInfo country={country} />
-
-            {/* Popular Cities */}
-            {country.popularCities && country.popularCities.length > 0 && (
-              <section className="mt-8">
-                <h2 className="text-xl font-bold mb-4">人気都市</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {country.popularCities.map((city, i) => (
-                    <div key={i} className="bg-gray-50 rounded-lg p-4">
-                      <h3 className="font-semibold">{city.cityName}</h3>
-                      {city.cityDescription && <p className="text-sm text-gray-600 mt-1">{city.cityDescription}</p>}
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
-            {/* FAQs */}
-            {faqs.length > 0 && (
-              <section className="mt-8">
-                <h2 className="text-xl font-bold mb-4">よくある質問</h2>
-                <div className="space-y-4">
-                  {faqs.map((faq, i) => (
-                    <details key={i} className="bg-gray-50 rounded-lg p-4 group">
-                      <summary className="font-medium cursor-pointer list-none flex items-center justify-between">
-                        {faq.question}
-                        <span className="text-gray-400 group-open:rotate-180 transition-transform">&#9660;</span>
-                      </summary>
-                      <p className="mt-3 text-sm text-gray-600">{faq.answer}</p>
-                    </details>
-                  ))}
-                </div>
-              </section>
-            )}
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-6 lg:sticky lg:top-24 lg:self-start">
-            {/* Sticky CTA */}
-            <div className="bg-accent-50 border border-accent-200 rounded-xl p-5">
-              <h3 className="font-bold text-accent-800 mb-2">{country.nameJp}の体験をシェア</h3>
-              <p className="text-sm text-accent-700 mb-4">
-                {country.nameJp}での留学・ワーホリ体験を投稿しませんか？
-              </p>
-              <Link
-                href="/submit/experience"
-                className="block w-full bg-accent-500 text-white text-center py-2.5 rounded-lg hover:bg-accent-600 transition-colors font-semibold text-sm"
-              >
-                体験談を投稿する
-              </Link>
-            </div>
-
-            {/* Radar Chart */}
-            {ratings && ratings.count > 0 && (
-              <div className="bg-white rounded-xl border border-gray-200 p-6 mb-6">
-                <h3 className="font-bold mb-4 text-center">体験者の評価 ({ratings.count}件)</h3>
-                <RadarChart labels={ratingLabels} values={ratingValues} />
+        {(whExperiences.length > 0 || studyExperiences.length > 0) && (
+          <section className="mt-14">
+            <h2 className="text-2xl font-bold">最新の検証済み体験談</h2>
+            {whExperiences.length > 0 && (
+              <div className="mt-7">
+                <div className="flex items-center justify-between"><h3 className="text-lg font-bold">ワーホリ</h3>{whGate.pass && <Link href={`/countries/${params.slug}/working-holiday#experience-list`} className="text-sm text-primary-700 hover:underline">すべて見る</Link>}</div>
+                <div className="mt-4 grid gap-6 md:grid-cols-3">{whExperiences.slice(0, 3).map((experience) => <ExperienceCard key={experience.id} experience={experience} />)}</div>
               </div>
             )}
-
-            {/* Links */}
-            {country.sourceUrls && country.sourceUrls.length > 0 && (
-              <div className="bg-gray-50 rounded-xl p-4">
-                <h3 className="font-semibold mb-3">参考リンク</h3>
-                <ul className="space-y-2">
-                  {country.sourceUrls.map((src, i) => (
-                    <li key={i}>
-                      <a href={src.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary-600 hover:underline">
-                        {src.label} →
-                      </a>
-                    </li>
-                  ))}
-                </ul>
+            {studyExperiences.length > 0 && (
+              <div className="mt-9">
+                <div className="flex items-center justify-between"><h3 className="text-lg font-bold">留学</h3>{studyGate.pass && <Link href={`/countries/${params.slug}/study-abroad#experience-list`} className="text-sm text-primary-700 hover:underline">すべて見る</Link>}</div>
+                <div className="mt-4 grid gap-6 md:grid-cols-3">{studyExperiences.slice(0, 3).map((experience) => <ExperienceCard key={experience.id} experience={experience} />)}</div>
               </div>
             )}
-          </div>
-        </div>
-
-        {/* Related Experiences */}
-        {experiences.length > 0 && (
-          <section className="mt-12">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">{country.nameJp}の体験談</h2>
-              <Link href={`/experiences?country=${params.slug}`} className="text-primary-600 hover:underline text-sm">
-                すべて見る →
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {experiences.map((exp) => (
-                <ExperienceCard key={exp.id} experience={exp} />
-              ))}
-            </div>
           </section>
         )}
 
-        {/* Related Schools */}
         {schools.length > 0 && (
-          <section className="mt-12">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold">{country.nameJp}の学校</h2>
-              <Link href={`/schools?country=${params.slug}`} className="text-primary-600 hover:underline text-sm">
-                すべて見る →
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {schools.map((school) => (
-                <SchoolCard key={school.id} school={school} />
-              ))}
-            </div>
+          <section className="mt-14">
+            <div className="flex items-center justify-between"><h2 className="text-2xl font-bold">{country.nameJp}の学校</h2><Link href={`/schools?country=${params.slug}`} className="text-sm text-primary-700 hover:underline">すべて見る</Link></div>
+            <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">{schools.map((school) => <SchoolCard key={school.id} school={school} />)}</div>
+          </section>
+        )}
+
+        {country.sourceUrls && country.sourceUrls.length > 0 && (
+          <section className="mt-14 border-t border-gray-200 pt-8">
+            <h2 className="text-lg font-bold">国の概要に関する参考リンク</h2>
+            <ul className="mt-4 flex flex-wrap gap-3">{country.sourceUrls.map((source) => <li key={source.url}><a href={source.url} target="_blank" rel="noopener noreferrer" className="text-sm text-primary-700 hover:underline">{source.label} ↗</a></li>)}</ul>
           </section>
         )}
       </div>

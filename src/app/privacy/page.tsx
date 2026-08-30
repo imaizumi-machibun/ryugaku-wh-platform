@@ -67,7 +67,7 @@ export default function PrivacyPolicyPage() {
               href="https://policies.google.com/technologies/partner-sites"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:underline"
+              className="text-sky-600 hover:underline"
             >
               Googleのサービスを使用するサイトやアプリから収集した情報のGoogleによる使用
             </a>

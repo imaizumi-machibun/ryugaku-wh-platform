@@ -4,69 +4,58 @@ import type { Guide, GuidePhase } from '@/lib/microcms/types';
 type Props = {
   phase: GuidePhase;
   label: string;
-  emoji: string;
-  color: string;
   description: string;
   guides: Guide[];
   phaseIndex: number;
 };
 
-export default function GuidePhaseCard({ phase, label, emoji, color, description, guides, phaseIndex }: Props) {
-  return (
-    <div className="relative">
-      {/* Timeline connector */}
-      {phaseIndex > 0 && (
-        <div className="absolute -top-8 left-6 sm:left-8 w-0.5 h-8 bg-gray-200" />
-      )}
+export default function GuidePhaseCard({ phase, label, description, guides, phaseIndex }: Props) {
+  const num = String(phaseIndex + 1).padStart(2, '0');
 
-      <div className="bg-white rounded-2xl border border-gray-200 p-5 sm:p-6 hover:shadow-md transition-shadow">
-        {/* Phase header */}
-        <div className="flex items-start gap-3 mb-4">
-          <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-2xl shrink-0 ${color.split(' ').filter(c => c.startsWith('bg-')).join(' ')}`}>
-            {emoji}
-          </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-gray-400">PHASE {phaseIndex + 1}</span>
-            </div>
-            <h2 className="text-lg font-bold text-gray-900">{label}</h2>
-            <p className="text-sm text-gray-500 mt-0.5">{description}</p>
-          </div>
+  return (
+    <div className="border-t border-gray-200 pt-8">
+      <div className="grid gap-6 md:grid-cols-[16rem_1fr] md:gap-10">
+        {/* 番号＋フェーズ名 */}
+        <div>
+          <span className="block text-5xl font-black leading-none tabular-nums text-gray-200 md:text-6xl">
+            {num}
+          </span>
+          <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.2em] text-primary-600">
+            Phase {num}
+          </p>
+          <h2 className="mt-1 text-xl font-bold text-gray-900">{label}</h2>
+          <p className="mt-1.5 text-sm leading-relaxed text-gray-500">{description}</p>
         </div>
 
-        {/* Article list */}
-        {guides.length > 0 ? (
-          <div className="space-y-1 mb-4">
-            {guides.map((guide) => (
-              <Link
-                key={guide.id}
-                href={`/guide/${phase}/${guide.id}`}
-                className="flex items-center gap-2 py-2 px-3 -mx-1 rounded-lg text-sm text-gray-600 hover:text-primary-600 hover:bg-primary-50/50 transition-colors min-h-[44px]"
-              >
-                <span className="text-xs text-gray-400 w-5 text-right shrink-0">{guide.orderInPhase}.</span>
-                <span>{guide.title}</span>
-                {guide.estimatedMinutes && (
-                  <span className="ml-auto text-xs text-gray-400 shrink-0">{guide.estimatedMinutes}分</span>
-                )}
-              </Link>
-            ))}
-          </div>
-        ) : (
-          <p className="text-sm text-gray-400 mb-4">記事は準備中です</p>
-        )}
-
-        {/* CTA */}
-        {guides.length > 0 && (
-          <Link
-            href={`/guide/${phase}/${guides[0].id}`}
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary-600 hover:text-primary-700 transition-colors"
-          >
-            読み始める
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
-        )}
+        {/* 記事リスト（罫線区切り） */}
+        <div>
+          {guides.length > 0 ? (
+            <ul>
+              {guides.map((guide) => (
+                <li key={guide.id} className="border-b border-gray-100 first:border-t">
+                  <Link
+                    href={`/guide/${phase}/${guide.id}`}
+                    className="group flex items-center gap-4 py-4 transition-colors hover:text-primary-700"
+                  >
+                    <span className="w-6 shrink-0 text-xs tabular-nums text-gray-400">
+                      {String(guide.orderInPhase).padStart(2, '0')}
+                    </span>
+                    <span className="flex-1 text-[15px] font-medium text-gray-800 transition-colors group-hover:text-primary-700">
+                      {guide.title}
+                    </span>
+                    {guide.estimatedMinutes && (
+                      <span className="shrink-0 text-xs tabular-nums text-gray-400">
+                        {guide.estimatedMinutes}分
+                      </span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="py-4 text-sm text-gray-400">記事は準備中です</p>
+          )}
+        </div>
       </div>
     </div>
   );

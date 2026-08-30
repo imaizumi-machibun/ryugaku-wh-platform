@@ -1,0 +1,15 @@
+# ローカル調査・監査用の一時成果物。実行アプリからは参照しない。
+._agg_exp.ts
+.mcp.json
+articles-staging/
+data/backups/
+data/guide-drafts/
+scripts/.tmp/
+scripts/_tmp*
+scripts/cdist.ts
+scripts/dump-exp.ts
+
+# ローカルの検証出力・環境固有ファイル。
+coverage/
+.DS_Store
+*.log

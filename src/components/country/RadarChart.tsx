@@ -27,10 +27,10 @@ export default function RadarChart({ labels, values, label = '評価', maxValue 
       {
         label,
         data: values,
-        backgroundColor: 'rgba(37, 99, 235, 0.2)',
-        borderColor: 'rgba(37, 99, 235, 1)',
+        backgroundColor: 'rgba(47, 107, 79, 0.2)',
+        borderColor: 'rgba(47, 107, 79, 1)',
         borderWidth: 2,
-        pointBackgroundColor: 'rgba(37, 99, 235, 1)',
+        pointBackgroundColor: 'rgba(47, 107, 79, 1)',
         pointRadius: 4,
       },
     ],

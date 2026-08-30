@@ -13,6 +13,7 @@ const FOOTER_LINKS = {
     title: 'コンテンツ',
     items: [
       { href: '/experiences', label: '体験談' },
+      { href: '/research', label: '調査データ' },
       { href: '/articles', label: 'お役立ち記事' },
       { href: '/services', label: '広告掲載サービス（PR）' },
     ],
@@ -47,7 +48,7 @@ export default function Footer() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className="text-sm text-gray-400 hover:text-white transition-colors"
+                      className="text-sm text-gray-400 hover:text-accent-300 transition-colors"
                     >
                       {item.label}
                     </Link>
@@ -58,12 +59,26 @@ export default function Footer() {
           ))}
         </div>
         <div className="mt-10 pt-6 border-t border-gray-800 flex flex-col items-center gap-3 text-sm text-gray-500">
-          <Link
-            href="/privacy"
-            className="text-gray-400 hover:text-white transition-colors"
-          >
-            プライバシーポリシー
-          </Link>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/about"
+              className="text-gray-400 hover:text-accent-300 transition-colors"
+            >
+              運営者情報
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-gray-400 hover:text-accent-300 transition-colors"
+            >
+              プライバシーポリシー
+            </Link>
+            <Link
+              href="/survey"
+              className="text-gray-400 hover:text-accent-300 transition-colors"
+            >
+              アンケート調査について
+            </Link>
+          </div>
           <p>&copy; {new Date().getFullYear()} Study Work Hub. All rights reserved.</p>
         </div>
       </div>

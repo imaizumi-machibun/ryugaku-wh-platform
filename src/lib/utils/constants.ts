@@ -23,10 +23,11 @@ export const COST_RANGES: { value: CostRange; label: string }[] = [
 ];
 
 export const PROGRAM_STATUSES: { value: ProgramStatus; label: string; color: string }[] = [
-  { value: 'open', label: '受付中', color: 'bg-green-100 text-green-800' },
-  { value: 'limited', label: '制限あり', color: 'bg-yellow-100 text-yellow-800' },
-  { value: 'suspended', label: '一時停止', color: 'bg-orange-100 text-orange-800' },
-  { value: 'closed', label: '停止中', color: 'bg-red-100 text-red-800' },
+  { value: 'open', label: '受付中', color: 'bg-primary-100 text-primary-800' },
+  { value: 'limited', label: '制限あり', color: 'bg-accent-100 text-accent-800' },
+  { value: 'suspended', label: '一時停止', color: 'bg-amber-100 text-amber-800' },
+  // 「協定が終了した」ではなく「協定が元々ない」国が大半のため、中立的な表現・配色にする
+  { value: 'closed', label: 'ワーホリ協定なし', color: 'bg-gray-100 text-gray-600' },
 ];
 
 export const ARTICLE_CATEGORIES: { value: ArticleCategory; label: string }[] = [
@@ -146,24 +147,27 @@ export const GUIDE_PHASES: {
   color: string;
   description: string;
 }[] = [
-  { value: 'info-gathering', label: '情報収集・意思決定', emoji: '🔍', color: 'bg-blue-100 text-blue-800 border-blue-200', description: 'ワーホリの基礎知識と国選びのポイントを学ぼう' },
-  { value: 'visa-cost', label: 'ビザ・費用計画', emoji: '💰', color: 'bg-green-100 text-green-800 border-green-200', description: 'ビザ申請から資金計画まで具体的に準備しよう' },
-  { value: 'departure-prep', label: '出発準備', emoji: '✈️', color: 'bg-purple-100 text-purple-800 border-purple-200', description: '出発前にやるべき手続き・持ち物を確認しよう' },
-  { value: 'arrival', label: '到着・立ち上げ', emoji: '🏠', color: 'bg-orange-100 text-orange-800 border-orange-200', description: '現地到着後すぐにやるべきことをチェック' },
-  { value: 'work', label: '仕事', emoji: '💼', color: 'bg-red-100 text-red-800 border-red-200', description: '仕事探しからタックスリターンまで完全網羅' },
-  { value: 'housing', label: '住居', emoji: '🏡', color: 'bg-teal-100 text-teal-800 border-teal-200', description: 'シェアハウスの探し方・トラブル回避法を解説' },
-  { value: 'language-life', label: '語学・生活', emoji: '📚', color: 'bg-indigo-100 text-indigo-800 border-indigo-200', description: '語学力アップと現地生活を充実させるコツ' },
-  { value: 'safety-mental', label: '安全・メンタル', emoji: '🛡️', color: 'bg-yellow-100 text-yellow-800 border-yellow-200', description: '安全対策とメンタルヘルスケアの方法' },
-  { value: 'return-career', label: '帰国・キャリア', emoji: '🎯', color: 'bg-pink-100 text-pink-800 border-pink-200', description: '帰国準備からワーホリ経験を活かすキャリア戦略' },
+  { value: 'info-gathering', label: '情報収集・意思決定', emoji: '🔍', color: 'bg-primary-100 text-primary-800 border-primary-200', description: 'ワーホリの基礎知識と国選びのポイントを学ぼう' },
+  { value: 'visa-cost', label: 'ビザ・費用計画', emoji: '💰', color: 'bg-accent-100 text-accent-800 border-accent-200', description: 'ビザ申請から資金計画まで具体的に準備しよう' },
+  { value: 'departure-prep', label: '出発準備', emoji: '✈️', color: 'bg-sky-100 text-sky-800 border-sky-200', description: '出発前にやるべき手続き・持ち物を確認しよう' },
+  { value: 'arrival', label: '到着・立ち上げ', emoji: '🏠', color: 'bg-amber-100 text-amber-800 border-amber-200', description: '現地到着後すぐにやるべきことをチェック' },
+  { value: 'work', label: '仕事', emoji: '💼', color: 'bg-primary-200 text-primary-900 border-primary-300', description: '仕事探しからタックスリターンまで完全網羅' },
+  { value: 'housing', label: '住居', emoji: '🏡', color: 'bg-emerald-100 text-emerald-800 border-emerald-200', description: 'シェアハウスの探し方・トラブル回避法を解説' },
+  { value: 'language-life', label: '語学・生活', emoji: '📚', color: 'bg-accent-50 text-accent-700 border-accent-200', description: '語学力アップと現地生活を充実させるコツ' },
+  { value: 'safety-mental', label: '安全・メンタル', emoji: '🛡️', color: 'bg-rose-100 text-rose-800 border-rose-200', description: '安全対策とメンタルヘルスケアの方法' },
+  { value: 'return-career', label: '帰国・キャリア', emoji: '🎯', color: 'bg-primary-100 text-primary-900 border-primary-300', description: '帰国準備からワーホリ経験を活かすキャリア戦略' },
 ];
 
 export const TIP_STYLES: Record<TipType, { bg: string; border: string; icon: string; label: string }> = {
-  tip: { bg: 'bg-blue-50', border: 'border-blue-300', icon: '💡', label: 'ヒント' },
-  warning: { bg: 'bg-yellow-50', border: 'border-yellow-300', icon: '⚠️', label: '注意' },
-  important: { bg: 'bg-red-50', border: 'border-red-300', icon: '❗', label: '重要' },
+  tip: { bg: 'bg-primary-50', border: 'border-primary-300', icon: '💡', label: 'ヒント' },
+  warning: { bg: 'bg-accent-50', border: 'border-accent-400', icon: '⚠️', label: '注意' },
+  important: { bg: 'bg-rose-50', border: 'border-rose-300', icon: '❗', label: '重要' },
 };
 
 export const SITE_NAME = 'Study Work Hub';
+
+// 環境変数の末尾に改行や空白が混入していると sitemap.xml の <loc> が壊れるため、
+// 必ず trim() してから利用する。
 const rawSiteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL

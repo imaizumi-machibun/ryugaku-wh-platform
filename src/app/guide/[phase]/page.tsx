@@ -80,7 +80,7 @@ export default async function PhasePage({ params }: Props) {
               <Link
                 key={guide.id}
                 href={`/guide/${params.phase}/${guide.id}`}
-                className="block bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md hover:border-primary-200 transition-all group"
+                className="block bg-white border border-gray-200 rounded-xl p-5 hover:shadow-soft-lg hover:border-primary-200 transition-all group"
               >
                 <div className="flex items-start gap-4">
                   <div className="w-8 h-8 rounded-full bg-primary-100 text-primary-700 flex items-center justify-center font-bold text-sm shrink-0">
@@ -117,7 +117,7 @@ export default async function PhasePage({ params }: Props) {
           {prevPhase ? (
             <Link
               href={`/guide/${prevPhase.value}`}
-              className="flex-1 group p-4 rounded-xl border border-gray-200 hover:border-primary-300 hover:bg-primary-50/50 transition-all"
+              className="flex-1 group p-4 rounded-2xl border border-gray-200 hover:border-primary-400 hover:bg-primary-50/50 transition-all"
             >
               <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
                 <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -136,7 +136,7 @@ export default async function PhasePage({ params }: Props) {
           {nextPhase ? (
             <Link
               href={`/guide/${nextPhase.value}`}
-              className="flex-1 group p-4 rounded-xl border border-gray-200 hover:border-primary-300 hover:bg-primary-50/50 transition-all text-right"
+              className="flex-1 group p-4 rounded-2xl border border-gray-200 hover:border-primary-400 hover:bg-primary-50/50 transition-all text-right"
             >
               <div className="text-xs text-gray-400 mb-1 flex items-center justify-end gap-1">
                 次のフェーズ

@@ -7,8 +7,8 @@ type Props = {
 export default function Card({ children, className = '', hover = false }: Props) {
   return (
     <div
-      className={`bg-white rounded-xl border border-gray-200 overflow-hidden ${
-        hover ? 'hover:shadow-lg hover:-translate-y-1 transition-all duration-200' : ''
+      className={`bg-white rounded-2xl border border-gray-200 shadow-soft overflow-hidden ${
+        hover ? 'hover:shadow-soft-lg hover:-translate-y-0.5 transition-all duration-200 ease-smooth' : ''
       } ${className}`}
     >
       {children}

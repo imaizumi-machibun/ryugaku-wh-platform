@@ -1,8 +1,40 @@
+# Googleの検索クローラーにはAPI・投稿・埋め込み・開発用URLを取得させない。
+User-agent: Googlebot
+Disallow: /api/
+Disallow: /submit/
+Disallow: /embed/
+Disallow: /_vercel/
+Disallow: /_next/webpack-hmr
+Disallow: /__nextjs_
+
+User-agent: Googlebot-Image
+Disallow: /api/
+
+# OGP画像は検索クローラーではなく、SNSのリンク展開だけに許可する。
+User-agent: Twitterbot
+Allow: /api/og
+Disallow: /api/
+
+User-agent: facebookexternalhit
+Allow: /api/og
+Disallow: /api/
+
+User-agent: LinkedInBot
+Allow: /api/og
+Disallow: /api/
+
+User-agent: Slackbot
+Allow: /api/og
+Disallow: /api/
+
 User-agent: *
 Allow: /
-
 Disallow: /submit/
 Disallow: /api/
 Allow: /api/og
+Disallow: /embed/
+Disallow: /_vercel/
+Disallow: /_next/webpack-hmr
+Disallow: /__nextjs_
 
 Sitemap: https://study-work-hub.com/sitemap.xml

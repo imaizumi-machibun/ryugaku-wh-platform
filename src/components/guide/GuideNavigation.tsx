@@ -28,7 +28,7 @@ export default function GuideNavigation({ currentGuide, allGuides }: Props) {
       {prev ? (
         <Link
           href={`/guide/${prev.phase}/${prev.id}`}
-          className="flex-1 group p-4 rounded-xl border border-gray-200 hover:border-primary-300 hover:bg-primary-50/50 transition-all min-h-[44px]"
+          className="flex-1 group p-4 rounded-2xl border border-gray-200 hover:border-primary-400 hover:bg-primary-50/50 transition-all min-h-[44px]"
         >
           <div className="text-xs text-gray-400 mb-1 flex items-center gap-1">
             <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -50,7 +50,7 @@ export default function GuideNavigation({ currentGuide, allGuides }: Props) {
       {next ? (
         <Link
           href={`/guide/${next.phase}/${next.id}`}
-          className="flex-1 group p-4 rounded-xl border border-gray-200 hover:border-primary-300 hover:bg-primary-50/50 transition-all text-right min-h-[44px]"
+          className="flex-1 group p-4 rounded-2xl border border-gray-200 hover:border-primary-400 hover:bg-primary-50/50 transition-all text-right min-h-[44px]"
         >
           <div className="text-xs text-gray-400 mb-1 flex items-center justify-end gap-1">
             次の記事
@@ -68,7 +68,7 @@ export default function GuideNavigation({ currentGuide, allGuides }: Props) {
       ) : (
         <Link
           href="/guide"
-          className="flex-1 group p-4 rounded-xl border border-gray-200 hover:border-primary-300 hover:bg-primary-50/50 transition-all text-right min-h-[44px]"
+          className="flex-1 group p-4 rounded-2xl border border-gray-200 hover:border-primary-400 hover:bg-primary-50/50 transition-all text-right min-h-[44px]"
         >
           <div className="text-xs text-gray-400 mb-1 flex items-center justify-end gap-1">
             ガイドトップへ

@@ -69,7 +69,7 @@ export default function DiscoveryPathways() {
             <Link
               key={item.label}
               href={item.href}
-              className="flex flex-col items-center gap-2 bg-white border border-gray-200 rounded-xl p-4 hover:border-primary-300 hover:shadow-md transition-all min-h-[44px]"
+              className="flex flex-col items-center gap-2 bg-white border border-gray-200 rounded-xl p-4 hover:border-primary-400 hover:shadow-soft-lg transition-all min-h-[44px]"
             >
               {item.emoji && <span className="text-2xl">{item.emoji}</span>}
               <span className="text-sm font-medium text-gray-700 text-center">{item.label}</span>

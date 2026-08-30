@@ -2,15 +2,25 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getSchoolBySlug, getSchoolSlugs } from '@/lib/microcms/schools';
+import { getSchoolBySlug, getSchoolSlugs, getSchoolsByCity, getSchoolFeesByCountry } from '@/lib/microcms/schools';
 import { getReviewsBySchool } from '@/lib/microcms/reviews';
+import { getExperiencesByCountry, getExperiencesByCity } from '@/lib/microcms/experiences';
+import { buildFeeComparison, pickNearbyFeeSchools, rotateByKey } from '@/lib/stats/school-compare';
+import ExperienceCard from '@/components/experience/ExperienceCard';
 import ReviewCard from '@/components/review/ReviewCard';
 import ReviewSummary from '@/components/review/ReviewSummary';
 import Badge from '@/components/ui/Badge';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import JsonLd from '@/components/seo/JsonLd';
-import { generatePageMetadata } from '@/lib/seo/metadata';
-import { generateSchoolJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
+import { generateSchoolMetadata } from '@/lib/seo/metadata';
+import {
+  generateSchoolJsonLd,
+  generateBreadcrumbJsonLd,
+  generateCourseJsonLd,
+  generateReviewJsonLd,
+} from '@/lib/seo/jsonld';
+import RelatedLinks from '@/components/seo/RelatedLinks';
+import { buildSchoolRelatedSections } from '@/lib/seo/relations';
 import { aggregateReviewRatings } from '@/lib/utils/aggregation';
 import { COST_RANGES, COURSE_TYPES, SCHOOL_FEATURES, SCHOOL_LANGUAGES, ACCREDITATIONS, FACILITIES, ACCOMMODATION_TYPES } from '@/lib/utils/constants';
 import { formatJPY } from '@/lib/utils/format';
@@ -28,12 +38,7 @@ type Props = { params: { slug: string } };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   try {
     const school = await getSchoolBySlug(params.slug);
-    return generatePageMetadata({
-      title: `${school.name}の口コミ・評価`,
-      description: `${school.name}（${school.country?.nameJp}・${school.city}）の口コミ・評価・コース情報。`,
-      path: `/schools/${params.slug}`,
-      ogImage: school.heroImage?.url,
-    });
+    return generateSchoolMetadata(school, `/schools/${params.slug}`);
   } catch {
     return {};
   }
@@ -47,8 +52,40 @@ export default async function SchoolDetailPage({ params }: Props) {
     notFound();
   }
 
-  const reviewsData = await getReviewsBySchool(params.slug);
+  const emptyList = { contents: [], totalCount: 0, offset: 0, limit: 0 };
+  const [reviewsData, cityExperiencesData, countryExperiencesData, citySchoolsData] =
+    await Promise.all([
+      getReviewsBySchool(params.slug),
+      school.city ? getExperiencesByCity(school.city, 20) : Promise.resolve(emptyList),
+      school.country?.id
+        ? getExperiencesByCountry(school.country.id, 12)
+        : Promise.resolve(emptyList),
+      school.city && school.country?.id
+        ? getSchoolsByCity(school.country.id, school.city)
+        : Promise.resolve(emptyList),
+    ]);
   const reviews = reviewsData.contents;
+  const citySchools = citySchoolsData.contents;
+
+  // 費用相場の比較母集団: 同都市に費用データが3校未満のときだけ同国全校を追加取得
+  const cityFeeCount = citySchools.filter((s) => s.weeklyFeeLow != null && s.weeklyFeeLow > 0).length;
+  const countryFeeSchools =
+    school.weeklyFeeLow && cityFeeCount < 3 && school.country?.id
+      ? await getSchoolFeesByCountry(school.country.id)
+      : [];
+  const feeComparison = buildFeeComparison(school, citySchools, countryFeeSchools);
+  const feeScopeName =
+    feeComparison?.scope === 'city' ? school.city : school.country?.nameJp ?? '';
+  const nearbySchools = pickNearbyFeeSchools(school, citySchools);
+
+  // 体験談は同都市を優先し、無ければ同国。学校IDのハッシュで表示をずらして
+  // 同都市・同国の全校が同じ体験談を並べる重複を避ける（ビルド間で不変）
+  const cityMatched = cityExperiencesData.contents.length > 0;
+  const relatedExperiences = rotateByKey(
+    cityMatched ? cityExperiencesData.contents : countryExperiencesData.contents,
+    school.id,
+    3
+  );
   const agg = aggregateReviewRatings(reviews);
   const costLabel = COST_RANGES.find((c) => c.value === school.costRange)?.label;
 
@@ -69,6 +106,30 @@ export default async function SchoolDetailPage({ params }: Props) {
         ])}
       />
 
+      {/* コース情報の構造化データ */}
+      {school.courseTypes?.map((ct) => {
+        const courseLabel = COURSE_TYPES.find((c) => c.value === ct)?.label;
+        if (!courseLabel) return null;
+        return (
+          <JsonLd
+            key={ct}
+            data={generateCourseJsonLd({
+              schoolName: school.name,
+              courseName: `${courseLabel} (${school.name})`,
+              description: `${school.name}が提供する${courseLabel}コース`,
+              url: `https://study-work-hub.com/schools/${params.slug}`,
+              weeklyFeeLow: school.weeklyFeeLow,
+              weeklyFeeHigh: school.weeklyFeeHigh,
+            })}
+          />
+        );
+      })}
+
+      {/* 個別Reviewの構造化データ（最大5件） */}
+      {reviews.slice(0, 5).map((review) => (
+        <JsonLd key={review.id} data={generateReviewJsonLd(review)} />
+      ))}
+
       <div className="container-custom py-8">
         <Breadcrumb
           items={[
@@ -83,8 +144,9 @@ export default async function SchoolDetailPage({ params }: Props) {
           <div className="relative h-64 md:h-80 rounded-xl overflow-hidden mb-8">
             <Image
               src={school.heroImage.url}
-              alt={school.name}
+              alt={`${school.name}（${school.country?.nameJp ?? ''} ${school.city ?? ''}）の外観`}
               fill
+              sizes="(max-width: 768px) 100vw, 1024px"
               className="object-cover"
               priority
             />
@@ -195,6 +257,90 @@ export default async function SchoolDetailPage({ params }: Props) {
               </div>
             )}
 
+            {/* 費用の相場比較（同都市・同国の実データ集計） */}
+            {feeComparison && (
+              <section className="mb-8">
+                <h2 className="text-xl font-bold mb-4">
+                  {feeScopeName}の語学学校 週あたり費用の相場と{school.name}
+                </h2>
+                <p className="text-sm text-gray-700 mb-3">
+                  {feeScopeName}の語学学校{feeComparison.count}校の週あたり費用は最安
+                  {formatJPY(feeComparison.min)}〜、平均{formatJPY(feeComparison.average)}。
+                  {school.name}は{formatJPY(feeComparison.self)}。
+                </p>
+                <div className="overflow-x-auto rounded-xl border border-gray-200">
+                  <table className="w-full text-sm">
+                    <thead className="bg-gray-50">
+                      <tr className="text-left">
+                        <th className="px-4 py-3 font-semibold whitespace-nowrap">最安</th>
+                        <th className="px-4 py-3 font-semibold whitespace-nowrap">平均</th>
+                        <th className="px-4 py-3 font-semibold whitespace-nowrap">中央値</th>
+                        <th className="px-4 py-3 font-semibold whitespace-nowrap">当校</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-t border-gray-100">
+                        <td className="px-4 py-3 whitespace-nowrap">{formatJPY(feeComparison.min)}</td>
+                        <td className="px-4 py-3 whitespace-nowrap">{formatJPY(feeComparison.average)}</td>
+                        <td className="px-4 py-3 whitespace-nowrap">{formatJPY(feeComparison.median)}</td>
+                        <td className="px-4 py-3 whitespace-nowrap font-bold text-primary-700">
+                          {formatJPY(feeComparison.self)}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-xs text-gray-500 mt-2">
+                  ※ 当サイト掲載の{feeScopeName}の語学学校{feeComparison.count}
+                  校の週あたり費用（最低額）を集計
+                </p>
+              </section>
+            )}
+
+            {/* 同都市の学校比較ミニ表（費用が近い順・自校除く） */}
+            {nearbySchools && (
+              <section className="mb-8">
+                <h2 className="text-xl font-bold mb-4">
+                  {school.city}で週あたり費用が近い語学学校
+                </h2>
+                <div className="overflow-x-auto rounded-xl border border-gray-200">
+                  <table className="w-full text-sm">
+                    <thead className="bg-gray-50">
+                      <tr className="text-left">
+                        <th className="px-4 py-3 font-semibold">学校名</th>
+                        <th className="px-4 py-3 font-semibold whitespace-nowrap">週あたり費用</th>
+                        <th className="px-4 py-3 font-semibold whitespace-nowrap">主なコース</th>
+                        <th className="px-4 py-3 font-semibold whitespace-nowrap">特徴</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {nearbySchools.map((s) => {
+                        const courseLabel = COURSE_TYPES.find((c) => c.value === s.courseTypes?.[0])?.label;
+                        const featureLabel = SCHOOL_FEATURES.find((f) => f.value === s.features?.[0])?.label;
+                        return (
+                          <tr key={s.id} className="border-t border-gray-100">
+                            <td className="px-4 py-3 font-medium">
+                              <Link
+                                href={`/schools/${s.id}`}
+                                className="text-primary-600 hover:underline"
+                              >
+                                {s.name}
+                              </Link>
+                            </td>
+                            <td className="px-4 py-3 whitespace-nowrap">
+                              {formatJPY(s.weeklyFeeLow)}〜
+                            </td>
+                            <td className="px-4 py-3 whitespace-nowrap">{courseLabel ?? '—'}</td>
+                            <td className="px-4 py-3 whitespace-nowrap">{featureLabel ?? '—'}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
+
             {/* 学習環境・設備 */}
             {(school.languages?.length || school.accreditations?.length || school.facilities?.length || school.accommodationTypes?.length || school.airportPickup != null || school.minimumWeeks) && (
               <section className="mb-8">
@@ -267,7 +413,7 @@ export default async function SchoolDetailPage({ params }: Props) {
                     <div key={i} className="relative aspect-video rounded-lg overflow-hidden">
                       <Image
                         src={img.url}
-                        alt={`${school.name} ${i + 1}`}
+                        alt={`${school.name}の校内施設・授業風景 ${i + 1}`}
                         fill
                         className="object-cover"
                         sizes="(max-width: 768px) 50vw, 33vw"
@@ -301,6 +447,30 @@ export default async function SchoolDetailPage({ params }: Props) {
                 </p>
               )}
             </section>
+
+            {/* Related Experiences（同都市優先・無ければ同国） */}
+            {relatedExperiences.length > 0 && (
+              <section className="mt-8">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-2xl font-bold">
+                    {cityMatched
+                      ? `${school.city}で学んだ人の体験談`
+                      : `${school.country?.nameJp}の体験談`}
+                  </h2>
+                  <Link
+                    href={`/experiences?country=${school.country?.id}`}
+                    className="text-primary-600 hover:underline text-sm"
+                  >
+                    すべて見る →
+                  </Link>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {relatedExperiences.map((exp) => (
+                    <ExperienceCard key={exp.id} experience={exp} />
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -419,6 +589,9 @@ export default async function SchoolDetailPage({ params }: Props) {
             </div>
           </div>
         </div>
+
+        {/* SEO関連リンク（ハブ&スポーク） */}
+        <RelatedLinks sections={buildSchoolRelatedSections(school)} />
       </div>
     </>
   );

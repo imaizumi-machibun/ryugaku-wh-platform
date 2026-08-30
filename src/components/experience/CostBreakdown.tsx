@@ -7,10 +7,10 @@ type Props = {
 
 export default function CostBreakdown({ experience }: Props) {
   const items = [
-    { label: '月間生活費', value: experience.monthlyLivingJpy, color: 'bg-blue-500' },
+    { label: '月間生活費', value: experience.monthlyLivingJpy, color: 'bg-primary-600' },
     { label: '月間家賃', value: experience.monthlyRentJpy, color: 'bg-green-500' },
     { label: '月間食費', value: experience.monthlyFoodJpy, color: 'bg-yellow-500' },
-    { label: '月間収入', value: experience.monthlyIncomeJpy, color: 'bg-purple-500' },
+    { label: '月間収入', value: experience.monthlyIncomeJpy, color: 'bg-primary-600' },
   ].filter((item) => item.value != null);
 
   if (items.length === 0) return null;
