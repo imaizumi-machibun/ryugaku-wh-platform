@@ -51,6 +51,9 @@ export default function PrivacyPolicyPage() {
           <p className="mt-2">
             広告素材には、広告の表示・成果計測のための1ピクセル画像等が含まれる場合があります。広告主・広告配信事業者における情報の取扱いは、各社のプライバシーポリシーをご確認ください。
           </p>
+          <p className="mt-2">
+            当サイトは、もしもアフィリエイトを通じてAmazon.co.jp、楽天市場、Yahoo!ショッピングの商品を紹介し、読者が広告リンクを経由して購入した場合に報酬を得ることがあります。Amazonのアソシエイトとして、Study Work Hubは適格販売により収入を得ています。
+          </p>
         </section>
 
         <section>

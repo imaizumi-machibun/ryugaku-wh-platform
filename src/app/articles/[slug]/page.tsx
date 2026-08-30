@@ -11,6 +11,7 @@ import { generateArticleJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonl
 import { ARTICLE_CATEGORIES } from '@/lib/utils/constants';
 import { formatDate } from '@/lib/utils/format';
 import ShareButtons from '@/components/ui/ShareButtons';
+import MoshimoAffiliateCard from '@/components/affiliate/MoshimoAffiliateCard';
 
 export const revalidate = 3600;
 
@@ -102,6 +103,10 @@ export default async function ArticleDetailPage({ params }: Props) {
             className="prose-custom mb-12"
             dangerouslySetInnerHTML={{ __html: article.body }}
           />
+
+          {params.slug === 'wh-packing-list-2026-complete' && (
+            <MoshimoAffiliateCard />
+          )}
 
           {/* Related Countries & Schools */}
           {((article.relatedCountries && article.relatedCountries.length > 0) ||

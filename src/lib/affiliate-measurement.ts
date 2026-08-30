@@ -9,7 +9,7 @@ export const AFFILIATE_EVENT_NAMES = {
 export type AffiliateEventName =
   (typeof AFFILIATE_EVENT_NAMES)[keyof typeof AFFILIATE_EVENT_NAMES];
 
-export type AffiliateMaterialType = 'banner' | 'text';
+export type AffiliateMaterialType = 'banner' | 'text' | 'product_card';
 
 export interface AffiliateEventInput {
   siteId: string;
