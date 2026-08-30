@@ -27,7 +27,7 @@
     "sync:experience-classifications:apply": "tsx scripts/sync-experience-classifications.ts --apply",
     "audit:country-purpose-publication": "tsx scripts/audit-country-purpose-publication.ts",
     "test:countries": "tsx --test src/lib/countries/*.test.ts",
-    "test:country-purpose": "tsx --test src/lib/experiences/classification.test.ts src/lib/country-purpose/article-reader-content.test.ts src/lib/country-purpose/registry.test.ts src/lib/country-purpose/visuals.test.ts src/lib/seo/breadcrumbs.test.ts src/lib/seo/crawl-control.test.ts src/lib/sitemap/serialize.test.ts src/lib/utils/article-faq.test.ts src/lib/utils/validation.test.ts",
+    "test:country-purpose": "tsx --test src/lib/experiences/classification.test.ts src/lib/country-purpose/article-reader-content.test.ts src/lib/country-purpose/gate.test.ts src/lib/country-purpose/registry.test.ts src/lib/country-purpose/visuals.test.ts src/lib/seo/breadcrumbs.test.ts src/lib/seo/crawl-control.test.ts src/lib/sitemap/serialize.test.ts src/lib/utils/article-faq.test.ts src/lib/utils/validation.test.ts",
     "test:seo": "tsx --test src/lib/seo/*.test.ts",
     "check-affiliate-materials": "node --import tsx scripts/check-a8-affiliate-materials.ts",
     "check-affiliate-measurement": "node --import tsx scripts/check-affiliate-measurement.ts"

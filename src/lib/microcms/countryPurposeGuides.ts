@@ -77,16 +77,17 @@ export async function resolveCountryPurposeGuide(
   const article = await getArticleBySlug(definition.sourceArticleId).catch(() => null);
   if (!article) return null;
   const introduction = article.description || stripHtml(article.body).slice(0, 220);
+  const checkedAt = article.updatedAt || article.publishedAt || '2026-08-27';
   return {
     title: article.title,
     introduction,
     body: article.body,
     heroImage: article.heroImage,
-    checkedAt: article.updatedAt || article.publishedAt || '2026-08-27',
+    checkedAt,
     status: 'publishable',
     sources: definition.officialSources.map((source) => ({
       ...source,
-      checkedAt: '2026-08-27',
+      checkedAt,
     })),
     sourceArticleId: definition.sourceArticleId,
     updatedAt: article.updatedAt,

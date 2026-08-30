@@ -153,7 +153,12 @@ export const COUNTRY_PURPOSE_GUIDES: PurposeGuideDefinition[] = [
     countrySlug: 'united-states', purpose: 'study-abroad', sourceArticleId: 'wh-usa-study-guide',
     mergedArticleIds: ['wh-usa-study-guide'],
     coverageAreas: STUDY_COVERAGE,
-    officialSources: [{ label: 'EducationUSA', url: 'https://educationusa.state.gov/', supports: '学校選び・出願・資金計画' }],
+    officialSources: [
+      { label: 'EducationUSA', url: 'https://educationusa.state.gov/', supports: '学校選び・出願・資金計画' },
+      { label: 'U.S. Department of State — Student Visa', url: 'https://travel.state.gov/content/travel/en/us-visas/study/student-visa.html', supports: '学生ビザ・申請手順' },
+      { label: 'DHS — Study in the States', url: 'https://studyinthestates.dhs.gov/students', supports: 'F-1学生の学校・滞在・就労条件' },
+      { label: 'ICE — I-901 SEVIS Fee', url: 'https://www.ice.gov/sevis/i901', supports: 'SEVIS費用と支払い' },
+    ],
   },
   {
     countrySlug: 'canada', purpose: 'study-abroad', sourceArticleId: 'study-canada-complete-guide',
@@ -165,6 +170,53 @@ export const COUNTRY_PURPOSE_GUIDES: PurposeGuideDefinition[] = [
       { label: 'IRCC — Work off campus', url: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html', supports: '在学中の学外就労' },
       { label: 'IRCC — PGWP eligibility', url: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html', supports: '卒業後就労許可の条件' },
       { label: 'EduCanada — Study costs', url: 'https://www.educanada.ca/programs-programmes/education_cost-cout_education.aspx/articles/student-guide-what-is-the-cost-of-living-in-canada/?lang=eng', supports: '学費・生活費・奨学金' },
+    ],
+  },
+  {
+    countrySlug: 'united-kingdom', purpose: 'study-abroad', sourceArticleId: 'study-uk-complete-guide',
+    mergedArticleIds: ['study-uk-complete-guide'],
+    redirectFromPaths: ['/uk-language-school'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'GOV.UK — Student visa', url: 'https://www.gov.uk/student-visa', supports: '学生ビザ・申請・費用・滞在条件' },
+      { label: 'GOV.UK — Short-term study visa', url: 'https://www.gov.uk/study-visit-visa', supports: '6〜11か月の英語留学・申請条件' },
+      { label: 'GOV.UK — Student visa money', url: 'https://www.gov.uk/student-visa/money', supports: '授業料・生活費の資金要件' },
+      { label: 'GOV.UK — Graduate visa', url: 'https://www.gov.uk/graduate-visa', supports: '卒業後の滞在・就労条件' },
+    ],
+  },
+  {
+    countrySlug: 'australia', purpose: 'study-abroad', sourceArticleId: 'study-australia-complete-guide',
+    mergedArticleIds: ['study-australia-complete-guide'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'Australian Department of Home Affairs — Student visa', url: 'https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500', supports: '学生ビザ・英語・資金・就労条件' },
+      { label: 'CRICOS — Course Search', url: 'https://cricos.education.gov.au/Course/CourseSearch.aspx', supports: '留学生を受け入れる学校・コースの登録' },
+      { label: 'Study Australia — Plan your studies', url: 'https://www.studyaustralia.gov.au/en/plan-your-studies', supports: '留学種別・学校選び・費用・奨学金' },
+      { label: 'Fair Work Ombudsman — International students', url: 'https://www.fairwork.gov.au/tools-and-resources/fact-sheets/rights-and-obligations/international-students', supports: '留学生の就労権利・賃金' },
+    ],
+  },
+  {
+    countrySlug: 'new-zealand', purpose: 'study-abroad', sourceArticleId: 'study-new-zealand-complete-guide',
+    mergedArticleIds: ['study-new-zealand-complete-guide'],
+    redirectFromPaths: ['/nz-language-school'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'Immigration New Zealand — Fee Paying Student Visa', url: 'https://www.immigration.govt.nz/visas/fee-paying-student-visa/', supports: '学生ビザ・資金・保険・申請条件' },
+      { label: 'Immigration New Zealand — Working on a student visa', url: 'https://www.immigration.govt.nz/study/once-you-have-a-student-visa/working-on-a-student-visa/', supports: '留学生の就労条件' },
+      { label: 'NZQA — Education providers', url: 'https://www.nzqa.govt.nz/providers/index.do', supports: '学校・教育機関の登録確認' },
+      { label: 'Study with New Zealand — Study options', url: 'https://www.studywithnewzealand.govt.nz/en/study-options/study-options', supports: '留学種別・学校選び' },
+    ],
+  },
+  {
+    countrySlug: 'south-korea', purpose: 'study-abroad', sourceArticleId: 'study-korea-complete-guide',
+    mergedArticleIds: ['study-korea-complete-guide'],
+    redirectFromPaths: ['/korea-study'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'Study in Korea — 学生ビザと在留資格', url: 'https://studyinkorea.go.kr/ko/plan/visaAndStay.do', supports: 'D-2・D-4査証と在留手続' },
+      { label: 'Study in Korea — 時間制就業', url: 'https://www.studyinkorea.go.kr/ko/life/residenceAndStayInfo.do?tab=part-time-job', supports: '留学生のアルバイト許可・条件' },
+      { label: 'Study in Korea — 留学経費', url: 'https://studyinkorea.go.kr/ko/plan/abroadExpenses.do', supports: '学費・教育課程別費用' },
+      { label: 'Study in Korea — 学校・課程検索', url: 'https://studyinkorea.go.kr/ko/search_v1.do', supports: '学校・大学・課程選び' },
     ],
   },
 ];

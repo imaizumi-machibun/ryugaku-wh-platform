@@ -160,7 +160,7 @@ export default async function CountryDetailPage({ params }: Props) {
                   </Link>
                 ) : (
                   <p className="mt-5 rounded-xl bg-gray-50 px-5 py-3 text-center text-sm text-gray-600">
-                    公式情報・体験談・国固有データが公開基準に達し次第公開します
+                    公式情報と十分な国固有コンテンツが公開基準に達し次第公開します
                   </p>
                 )}
               </article>

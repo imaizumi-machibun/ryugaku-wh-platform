@@ -39,6 +39,44 @@ export const ASIA_SOUTH_AMERICA_COUNTRY_PURPOSE_VISUALS = {
     ],
   },
 
+  'south-korea:study-abroad': {
+    hero: {
+      src: 'https://images.unsplash.com/photo-1777823627849-8fc134d3a826?auto=format&fit=crop&w=2400&q=82',
+      alt: 'ソウルの中央大学キャンパスにある時計塔付きの図書館',
+      width: 5184,
+      height: 3456,
+      location: 'Chung-Ang University, Seoul, South Korea',
+      caption: 'ソウルの中央大学キャンパスにある図書館。学校選びでは、授業だけでなく学習設備や通学環境も比べたいポイントです。',
+      photographerName: 'TAO GARY',
+      photographerProfileUrl: 'https://unsplash.com/@gary_t',
+      sourceUrl: 'https://unsplash.com/photos/a-modern-building-with-a-clock-tower-and-trees-97tcm3wlbNY',
+    },
+    inline: [
+      {
+        src: 'https://images.unsplash.com/photo-1768578987465-ed41517c93e3?auto=format&fit=crop&w=1800&q=82',
+        alt: '韓国・水原の大学街を歩く学生たちとキャンパスの門',
+        width: 2423,
+        height: 3240,
+        location: 'Suwon-si, Gyeonggi-do, South Korea',
+        caption: '水原の大学街を歩く学生たち。キャンパス内だけでなく、住居や交通を含む周辺環境も留学生活の一部です。',
+        photographerName: 'YMA',
+        photographerProfileUrl: 'https://unsplash.com/@anhsy',
+        sourceUrl: 'https://unsplash.com/photos/people-walking-on-a-city-street-under-an-archway-PIZMiShfwOE',
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=1800&q=82',
+        alt: 'ソウル市立大学の階段状に机が並ぶ大学講義室',
+        width: 4240,
+        height: 2832,
+        location: 'University of Seoul, Seoul, South Korea',
+        caption: 'ソウル市立大学の講義室。授業形式、クラス規模、学習支援まで確認すると、入学後の学び方を具体的に想像できます。',
+        photographerName: 'Changbok Ko',
+        photographerProfileUrl: 'https://unsplash.com/@kochangbok',
+        sourceUrl: 'https://unsplash.com/photos/empty-university-lecture-hall-desks-F8t2VGnI47I',
+      },
+    ],
+  },
+
   'taiwan:working-holiday': {
     hero: {
       src: 'https://images.unsplash.com/photo-1572715381359-002b1eabd56b?auto=format&fit=crop&w=2400&q=82',

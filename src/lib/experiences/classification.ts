@@ -4,6 +4,7 @@ import type {
   ExperiencePrimaryPurpose,
   ExperienceStudyType,
 } from '@/lib/microcms/types';
+import { getPurposeGuideDefinition } from '@/lib/country-purpose/registry';
 
 export type ReviewedExperienceClassification = {
   primaryPurpose: ExperiencePrimaryPurpose;
@@ -171,6 +172,9 @@ export function getPurposePath(experience: Experience): string | null {
     (normalized.primaryPurpose !== 'working-holiday' && normalized.primaryPurpose !== 'study-abroad') ||
     !normalized.country?.id
   ) {
+    return null;
+  }
+  if (!getPurposeGuideDefinition(normalized.country.id, normalized.primaryPurpose)) {
     return null;
   }
   return `/countries/${normalized.country.id}/${normalized.primaryPurpose}`;

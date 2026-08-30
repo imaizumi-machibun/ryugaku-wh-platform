@@ -13,8 +13,8 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   if (!country || !getPurposeGuideDefinition(params.slug, 'study-abroad')) return {};
   const filtered = Object.values(searchParams).some(Boolean);
   return generatePageMetadata({
-    title: `${country.nameJp}留学完全ガイド｜体験談・学校・費用・ビザ`,
-    description: `${country.nameJp}の語学・大学・専門・Co-op・交換留学を、学校選び、入学条件、学費、ビザ、住居、卒業後と本人確認済み体験談から解説します。`,
+    title: `${country.nameJp}留学完全ガイド｜学校・費用・ビザ・生活`,
+    description: `${country.nameJp}留学の種類、学校選び、入学条件、学費、ビザ、住居、現地生活、卒業後まで詳しく解説。掲載校も学校名と都市から絞り込めます。`,
     path: `/countries/${params.slug}/study-abroad`,
     ogImage: country.heroImage?.url,
     noindex: filtered,

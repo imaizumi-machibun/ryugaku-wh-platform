@@ -49,6 +49,25 @@ export async function getSchoolSlugs(): Promise<string[]> {
 }
 
 /**
+ * 国別ハブで件数・都市フィルターを正確に出すため、
+ * microCMSの1リクエスト100件上限を超えて全件取得する。
+ */
+export async function getAllSchoolsByCountry(countryId: string): Promise<School[]> {
+  const contents: School[] = [];
+  const limit = 100;
+  for (let offset = 0; ; offset += limit) {
+    const data = await getSchools({
+      filters: `country[equals]${countryId}`,
+      limit,
+      offset,
+      depth: 2,
+    });
+    contents.push(...data.contents);
+    if (data.contents.length === 0 || contents.length >= data.totalCount) return contents;
+  }
+}
+
+/**
  * 同都市の学校を比較用に取得（費用相場・比較ミニ表で使用）
  * fields を絞って軽量に取る。都市あたり最大は30校未満のため limit 50 で全件になる
  */

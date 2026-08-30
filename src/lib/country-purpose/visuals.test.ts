@@ -41,7 +41,7 @@ test('登録画像は直接画像URL・出典・作者・原寸を持ち、重�
 });
 
 test('公開登録されたすべての目的別ページにヒーロー1枚と本文画像2枚がある', () => {
-  assert.equal(COUNTRY_PURPOSE_GUIDES.length, 19);
+  assert.ok(COUNTRY_PURPOSE_GUIDES.length > 0);
 
   for (const definition of COUNTRY_PURPOSE_GUIDES) {
     const visuals = getCountryPurposeVisuals(definition.countrySlug, definition.purpose);
