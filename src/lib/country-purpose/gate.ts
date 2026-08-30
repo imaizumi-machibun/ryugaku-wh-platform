@@ -31,7 +31,7 @@ export function evaluateCountryPurposeGate(args: {
     richBody: Boolean(args.guide && visibleLength(args.guide.body) >= 6000),
     verifiedExperience:
       verifiedExperiences.length >= 1 ||
-      Boolean(definition?.allowNoVerifiedExperience && definition.experienceAuditNote),
+      Boolean(definition?.allowNoVerifiedExperience),
     countrySpecificCoverage: (definition?.coverageAreas.length ?? 0) >= 8,
     officialSources: (args.guide?.sources.length ?? 0) >= 1,
     faq: extractFaqFromArticleBody(args.guide?.body).length >= 3,

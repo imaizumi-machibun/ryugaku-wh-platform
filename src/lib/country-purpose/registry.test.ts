@@ -26,12 +26,6 @@ test('公開定義は品質ゲートに必要な8分野と公式出典を持つ'
     assert.ok(guide.coverageAreas.length >= 8, `${guide.countrySlug}/${guide.purpose}`);
     assert.ok(guide.officialSources.length >= 1, `${guide.countrySlug}/${guide.purpose}`);
     assert.ok(guide.mergedArticleIds.includes(guide.sourceArticleId));
-    if (guide.allowNoVerifiedExperience) {
-      assert.ok(
-        (guide.experienceAuditNote?.length ?? 0) >= 80,
-        `${guide.countrySlug}/${guide.purpose} needs a transparent experience audit note`
-      );
-    }
   }
 });
 

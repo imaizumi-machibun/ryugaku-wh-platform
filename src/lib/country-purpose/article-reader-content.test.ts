@@ -148,6 +148,98 @@ test('0件監査だけの節は前後の見出しを残して削除する', () =
   );
 });
 
+test('削除した監査節を指す本文内目次も除去する', () => {
+  const body = [
+    '<h2>仕事探し</h2>',
+    '<p>求人と契約を確認します。</p>',
+    '<ul><li><a href="#contract">契約を確認する</a></li><li><a href="#own-data">公開体験談94件の一致は0件</a></li></ul>',
+    '<h3 id="contract">契約を確認する</h3>',
+    '<p>書面契約を受け取ります。</p>',
+    '<h3 id="own-data">公開体験談94件の一致は0件</h3>',
+    '<p>Study Work Hub編集部は公開体験談94件をAPIで確認しました。結果は0件です。</p>',
+  ].join('\n');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.match(cleaned, /href="#contract"/);
+  assert.doesNotMatch(cleaned, /own-data|94件|Study Work Hub/);
+});
+
+test('確認済み事例があっても旧94件母集団の抽出ログは節ごと除く', () => {
+  const body = [
+    '<h2>費用</h2>',
+    '<p>公式情報で予算を作ります。</p>',
+    '<h3>韓国の体験談4件は相場ではなく個別例として見る</h3>',
+    '<p>自社データは個別例を知るために使います。公開体験談94件から国名欄が「韓国」の4件を抽出しました。本人の記述で分けると、ワーホリは1件、留学は2件、目的不明は1件でした。</p>',
+    '<table><tr><th>回答項目</th><th>中央値</th><th>範囲</th></tr><tr><td>生活費</td><td>11万円</td><td>留学・WH・目的不明が混在</td></tr></table>',
+    '<h3>住居探しの実例</h3>',
+    '<p>本人の体験談から、契約前に保証金を確認します。</p>',
+  ].join('\n');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.doesNotMatch(cleaned, /94件|国名欄|中央値|11万円/);
+  assert.match(cleaned, /<h3>住居探しの実例<\/h3>/);
+  assert.match(cleaned, /契約前に保証金/);
+});
+
+test('自社件数の説明だけを落とし、同じ段落の具体的な体験は残す', () => {
+  const body = [
+    '<h3>ソウルの住居探しを1名の体験談から考える</h3>',
+    '<p>自社の韓国体験談4件のうち、本人の回答にワーホリと書かれていたのは1件でした。その1名はソウルで11か月を過ごし、住居探しの負担を振り返っています。</p>',
+    '<blockquote>住む場所を探すのが大変だった。</blockquote>',
+  ].join('\n');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.doesNotMatch(cleaned, /自社|4件のうち|その1名/);
+  assert.match(cleaned, /本人の回答でワーホリを確認できた体験者はソウルで11か月/);
+  assert.match(cleaned, /<blockquote>/);
+});
+
+test('有用な行動説明は残し、編集部が独自に置いた日程の説明だけを除く', () => {
+  const body = [
+    '<h2>到着後30日の仕事・住居</h2>',
+    '<p>到着後は、就労権を確かめて住居と仕事探しを進めます。30日は法定期限ではなく、生活の基盤を作るためにStudy Work Hub編集部が設けた整理枠です。</p>',
+  ].join('\n');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.match(cleaned, /就労権を確かめて住居と仕事探し/);
+  assert.doesNotMatch(cleaned, /Study Work Hub編集部|設けた整理枠/);
+});
+
+test('英国の94件抽出工程を除き、確認済み2事例の比較表は残す', () => {
+  const body = [
+    '<h3>ロンドンと地方を4軸で選ぶ</h3>',
+    '<p>都市は求人と住居費で選びます。この基準はStudy Work Hubが確認した就労体験2件を対照して作った判断補助です。</p>',
+    '<p>Study Work Hub編集部は公開中の体験談94件を読み取り専用APIから取得しました。国データがイギリスと一致する6件を抽出し、人手で確認しています。その結果、短期留学4件とワーキングホリデー2件でした。</p>',
+    '<table><tr><th>判断軸</th><th>確認すること</th></tr><tr><td>住居費</td><td>候補物件を比べる</td></tr></table>',
+  ].join('\n');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.doesNotMatch(cleaned, /Study Work Hub|94件|国データ|短期留学4件/);
+  assert.match(cleaned, /都市は求人と住居費で選びます/);
+  assert.match(cleaned, /<table>/);
+});
+
+test('イタリアの短期留学引用は残し、API照合とWH0件の説明は除く', () => {
+  const body = [
+    '<h3>イタリア語は生活場面から準備</h3>',
+    '<p>出発前は生活で使うイタリア語から準備します。</p>',
+    '<p>Study Work Hub編集部は公開体験談94件を読み取り専用APIから全件取得しました。国名がイタリアと完全一致する投稿は1件です。ただし短期留学で、確認できたワーホリ体験談は0件でした。このため費用平均や成功率には使いません。</p>',
+    '<p>その短期留学者の声は、ワーホリ体験ではないと明示して言葉の準備を考える補助例に限ります。公開ページとAPIの原文を照合した引用です。</p>',
+    '<blockquote>細かい気持ちを伝えるのが難しかった。</blockquote>',
+  ].join('\n');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.doesNotMatch(cleaned, /Study Work Hub編集部|94件|完全一致|0件|APIの原文/);
+  assert.match(cleaned, /言葉の準備を考える補助例/);
+  assert.match(cleaned, /<blockquote>/);
+});
+
 test('確認済み体験がある通常の集計節は変更しない', () => {
   const body = [
     '<h3>自社31件では生活費と収入の幅が大きい</h3>',

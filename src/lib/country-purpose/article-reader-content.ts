@@ -59,10 +59,10 @@ function findHeadingSections(html: string): HeadingSection[] {
 }
 
 /**
- * 「該当体験が0件だった」という編集部内の照合記録だけを対象にする。
- * 実例がある集計・中央値・個別体験の節は、この条件を満たさないため残る。
+ * 読者向けの体験談そのものではなく、編集部内の抽出・分類手順を説明する節を対象にする。
+ * 通常の確認済み集計（例: 31件の中央値）は残し、旧94件母集団の監査ログだけを除く。
  */
-function isZeroExperienceAuditSection(heading: string, body: string): boolean {
+function isEditorialAuditSection(heading: string, body: string): boolean {
   const sectionText = `${textContent(heading)} ${textContent(body)}`;
   const mentionsExperienceData =
     /(?:Study Work Hub|当サイト|自社|公開(?:中|している)?(?:の)?体験談|国(?:フィールド|項目)|読み取り専用API|APIで全取得)/i.test(
@@ -72,44 +72,50 @@ function isZeroExperienceAuditSection(heading: string, body: string): boolean {
     /(?:0件|例はありませんでした|回答はありませんでした|掲載していません|対象事例がない|確認できる(?:記録|投稿|体験談|事例)[^。]*(?:ありません|ない)|引用できる[^。]*(?:ありません|ない))/i.test(
       sectionText
     );
+  const describesLegacyCorpusMethod =
+    /94件/.test(sectionText) &&
+    /(?:抽出|分類|照合|確認|完全一致|国名欄|国フィールド|国項目|API|本人の記述で分け)/.test(
+      sectionText
+    );
 
-  return mentionsExperienceData && saysNoVerifiedExample;
+  return mentionsExperienceData && (saysNoVerifiedExample || describesLegacyCorpusMethod);
 }
 
 function isEditorialAuditParagraph(paragraphHtml: string): boolean {
   const paragraph = textContent(paragraphHtml);
+  if (/公開体験談(?!94件)\d+件/.test(paragraph) && !/0件/.test(paragraph)) {
+    return false;
+  }
   const hasAuditVocabulary =
-    /(?:Study Work Hub|当サイト|自社|公開(?:中|している)?(?:の)?体験談|国(?:フィールド|項目)|API|全件(?:取得|確認)|完全一致|本文(?:でも|と)?(?:照合|確認)|確認は|この0件|本人原文|原文照合)/i.test(
+    /(?:Study Work Hub|当編集部|当サイト|自社|公開(?:中|している)?(?:の)?体験談|国(?:フィールド|項目|データ)|API|全件(?:取得|確認)|完全一致|本文(?:でも|と)?(?:照合|確認)|確認は|この0件|本人原文|原文照合)/i.test(
       paragraph
     );
   const describesEditorialHandling =
-    /(?:確認|照合|集計|抽出|一致|0件|記録|投稿|回答|データ|引用|一般化|転用|流用|掲載|自社平均|当事者事例)/i.test(
+    /(?:確認|照合|取得|集計|抽出|一致|0件|記録|投稿|回答|データ|引用|一般化|転用|流用|掲載|設け|置いた|作った|整理枠|目安|自社平均|当事者事例)/i.test(
       paragraph
     );
   const editorialPolicyOnly =
-    /(?:他国|別国|旅行|交換留学)[^。]*(?:体験|経験|滞在の記録)[^。]*(?:転用|流用|根拠には使いません|体験談としては引用していません)|本文で[^。]*(?:記録|体験談)[^。]*引用していません|この記事[^。]*(?:引用|一般化)|本人経験[^。]*原文照合|当事者事例[^。]*一般化/i.test(
+    /(?:他国|別国|旅行|交換留学)[^。]*(?:体験|経験|滞在の記録)[^。]*(?:転用|流用|置き換え|根拠には使いません|体験談としては引用していません)|本文で[^。]*(?:記録|体験談)[^。]*引用していません|この記事[^。]*(?:引用|一般化)|本人経験[^。]*原文照合|当事者事例[^。]*一般化/i.test(
+      paragraph
+    );
+  const methodOnly =
+    /(?:結果は0件|集計方法と回答の内訳|国名欄[^。]*抽出|国フィールド[^。]*一致|国項目[^。]*一致|回答者の記述だけで分け|年齢[^。]*ビザ[^。]*推定せず|その結果[^。]*(?:短期留学|目的不明|ビザ不明)[^。]*件|確認できた[^。]*(?:ワーホリ|体験談)[^。]*0件|(?:費用平均|仕事実績|成功率)[^。]*使いません)/i.test(
       paragraph
     );
 
-  return (hasAuditVocabulary && describesEditorialHandling) || editorialPolicyOnly;
+  return (hasAuditVocabulary && describesEditorialHandling) || editorialPolicyOnly || methodOnly;
 }
 
-function removeLeadingAuditParagraphs(body: string): string {
-  let cursor = 0;
-
-  while (cursor < body.length) {
-    const remaining = body.slice(cursor);
-    const leadingWhitespace = remaining.match(/^\s*/)?.[0] ?? '';
-    const paragraphStart = cursor + leadingWhitespace.length;
-    const paragraphMatch = body
-      .slice(paragraphStart)
-      .match(/^<p\b[^>]*>([\s\S]*?)<\/p>/i);
-
-    if (!paragraphMatch || !isEditorialAuditParagraph(paragraphMatch[1])) break;
-    cursor = paragraphStart + paragraphMatch[0].length;
-  }
-
-  return body.slice(cursor).replace(/^\s+/, '');
+function isMixedPurposeLegacyCorpusSection(heading: string, body: string): boolean {
+  const sectionText = `${textContent(heading)} ${textContent(body)}`;
+  const tableText = Array.from(body.matchAll(/<table\b[^>]*>([\s\S]*?)<\/table>/gi))
+    .map((match) => textContent(match[1]))
+    .join(' ');
+  return (
+    /94件/.test(sectionText) &&
+    /(?:抽出|分類|国名欄|本人の記述で分け)/.test(sectionText) &&
+    /(?:(?:留学|目的不明|ビザ不明|査証不明)[^。]*(?:混在|中央値|平均)|(?:WH|ワーホリ)[^。]*(?:留学|目的不明|ビザ不明|査証不明))/.test(tableText)
+  );
 }
 
 function replacementHeading(
@@ -134,28 +140,28 @@ function readerFacingAuditHeading(innerHtml: string): string {
   return innerHtml
     .replace(/自社体験談94件/g, '現地生活')
     .replace(/自社94件/g, '現地生活')
-    .replace(/自社データ/g, '現地生活');
+    .replace(/自社データ/g, '現地生活')
+    .replace(/公開体験談94件/g, '体験談');
 }
 
 function removeEditorialProcessSentences(html: string): string {
   return html.replace(/<p\b([^>]*)>([\s\S]*?)<\/p>/gi, (paragraph, attributes: string, innerHtml: string) => {
-    const paragraphText = textContent(innerHtml);
-    if (
-      !/^(?:Study Work Hub編集部|当編集部)/.test(paragraphText) ||
-      !/(?:確認|照合|調査)/.test(paragraphText)
-    ) {
-      return paragraph;
-    }
+    if (!isEditorialAuditParagraph(innerHtml)) return paragraph;
 
-    const firstSentenceEnd = innerHtml.indexOf('。');
-    if (firstSentenceEnd === -1) return '';
+    const readerSentences = innerHtml
+      .split(/(?<=。)/u)
+      .map((sentence) => sentence.trim())
+      .filter((sentence) => sentence && !isEditorialAuditParagraph(sentence));
 
-    const remainder = innerHtml.slice(firstSentenceEnd + 1).trim();
-    return remainder ? `<p${attributes}>${remainder}</p>` : '';
+    if (readerSentences.length === 0) return '';
+    const remainder = readerSentences
+      .join('')
+      .replace(/^その1名は/, '本人の回答でワーホリを確認できた体験者は');
+    return `<p${attributes}>${remainder}</p>`;
   });
 }
 
-function hasZeroExperienceAuditSubsection(
+function hasEditorialAuditSubsection(
   html: string,
   headings: HeadingSection[],
   headingIndex: number
@@ -170,10 +176,23 @@ function hasZeroExperienceAuditSubsection(
     if (child.level === 2) break;
     const sectionEnd = headings[index + 1]?.start ?? html.length;
     const body = html.slice(child.headingEnd, sectionEnd);
-    if (isZeroExperienceAuditSection(child.innerHtml, body)) return true;
+    if (isEditorialAuditSection(child.innerHtml, body)) return true;
   }
 
   return false;
+}
+
+function removeDanglingFragmentListItems(html: string): string {
+  const ids = new Set(
+    Array.from(html.matchAll(/\sid=(['"])([^'"]+)\1/gi), (match) => match[2])
+  );
+
+  return html
+    .replace(/<li\b[^>]*>[\s\S]*?<\/li>/gi, (listItem) => {
+      const fragment = listItem.match(/\shref=(['"])#([^'"]+)\1/i)?.[2];
+      return fragment && !ids.has(fragment) ? '' : listItem;
+    })
+    .replace(/<ul\b[^>]*>\s*<\/ul>/gi, '');
 }
 
 /**
@@ -191,27 +210,37 @@ export function cleanPurposeArticleReaderContent(
   if (!html) return html;
 
   const headings = findHeadingSections(html);
-  if (headings.length === 0) return removeEditorialProcessSentences(html);
+  if (headings.length === 0) {
+    return removeDanglingFragmentListItems(removeEditorialProcessSentences(html));
+  }
 
   let result = html.slice(0, headings[0].start);
 
   headings.forEach((heading, index) => {
     const sectionEnd = headings[index + 1]?.start ?? html.length;
-    const headingInnerHtml = hasZeroExperienceAuditSubsection(html, headings, index)
+    const headingInnerHtml = hasEditorialAuditSubsection(html, headings, index) ||
+      /(?:自社体験談94件|自社94件|公開体験談94件)/.test(textContent(heading.innerHtml))
       ? readerFacingAuditHeading(heading.innerHtml)
       : heading.innerHtml;
     const originalHeading = `<h${heading.level}${heading.attributes}>${headingInnerHtml}</h${heading.level}>`;
     const body = html.slice(heading.headingEnd, sectionEnd);
 
     if (
+      heading.level === 3 &&
+      isMixedPurposeLegacyCorpusSection(heading.innerHtml, body)
+    ) {
+      return;
+    }
+
+    if (
       heading.level !== 3 ||
-      !isZeroExperienceAuditSection(heading.innerHtml, body)
+      !isEditorialAuditSection(heading.innerHtml, body)
     ) {
       result += originalHeading + body;
       return;
     }
 
-    const remainingBody = removeLeadingAuditParagraphs(body);
+    const remainingBody = removeEditorialProcessSentences(body).replace(/^\s+/, '');
     if (!textContent(remainingBody)) return;
 
     const headingText = replacementHeading(
@@ -222,5 +251,5 @@ export function cleanPurposeArticleReaderContent(
     result += `<h3${heading.attributes}>${escapeHtml(headingText)}</h3>\n${remainingBody}`;
   });
 
-  return removeEditorialProcessSentences(result);
+  return removeDanglingFragmentListItems(removeEditorialProcessSentences(result));
 }
