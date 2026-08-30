@@ -125,7 +125,9 @@ export default async function CountryDetailPage({ params }: Props) {
                     className="rounded-xl bg-white px-5 py-3 text-sm font-bold text-primary-800 shadow-sm transition hover:bg-primary-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                   >
                     {card.label}完全ガイドへ
-                    <span className="ml-2 font-normal text-primary-600">体験談{card.count}件</span>
+                    <span className="ml-2 font-normal text-primary-600">
+                      {card.count > 0 ? `体験談${card.count}件` : '制度・費用・生活を詳しく解説'}
+                    </span>
                   </Link>
                 ))}
               </nav>
@@ -149,7 +151,9 @@ export default async function CountryDetailPage({ params }: Props) {
                   </span>
                 </div>
                 <p className="mt-4 flex-1 text-sm leading-7 text-gray-600">{card.description}</p>
-                <p className="mt-4 text-sm font-semibold text-gray-800">検証済み体験談：{card.count}件</p>
+                <p className="mt-4 text-sm font-semibold text-gray-800">
+                  {card.count > 0 ? `体験談 ${card.count}件を掲載` : '制度・申請・現地生活を公的一次情報から解説'}
+                </p>
                 {card.published ? (
                   <Link href={`/countries/${params.slug}/${card.purpose}`} className="mt-5 rounded-xl bg-primary-700 px-5 py-3 text-center font-semibold text-white hover:bg-primary-800">
                     {card.label}の詳細と体験談を見る
