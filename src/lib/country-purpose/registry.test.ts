@@ -38,6 +38,7 @@ test('公開定義は品質ゲートに必要な8分野と公式出典を持つ'
 test('旧purposeは検証済みの吸収先だけ301対象にする', () => {
   assert.equal(resolveLegacyPurposePath('canada', 'working-holiday'), '/countries/canada/working-holiday');
   assert.equal(resolveLegacyPurposePath('united-states', 'language'), '/countries/united-states/study-abroad');
-  assert.equal(resolveLegacyPurposePath('canada', 'language'), null);
+  assert.equal(resolveLegacyPurposePath('canada', 'language'), '/countries/canada/study-abroad');
+  assert.equal(resolveLegacyPurposePath('australia', 'language'), null);
   assert.equal(resolveLegacyPurposePath('australia', 'internship'), null);
 });

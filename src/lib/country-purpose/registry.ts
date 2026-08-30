@@ -21,6 +21,11 @@ const WH_COVERAGE = [
   '住居・都市', '就学', '医療・安全', '渡航後手続', '延長・帰国後',
 ];
 
+const STUDY_COVERAGE = [
+  '留学種別', '入学条件', '出願', 'ビザ・滞在許可', '学費・生活費',
+  '学校・都市選び', '住居・保険', '奨学金', '学校生活', '卒業後',
+];
+
 export const COUNTRY_PURPOSE_GUIDES: PurposeGuideDefinition[] = [
   {
     countrySlug: 'australia', purpose: 'working-holiday', sourceArticleId: 'wh-australia-complete-guide',
@@ -90,8 +95,20 @@ export const COUNTRY_PURPOSE_GUIDES: PurposeGuideDefinition[] = [
   {
     countrySlug: 'united-states', purpose: 'study-abroad', sourceArticleId: 'wh-usa-study-guide',
     mergedArticleIds: ['wh-usa-study-guide'],
-    coverageAreas: ['留学種別', '入学条件', '出願', 'ビザ', '学費', '生活費・住居', '学校・都市選び', '奨学金', '学校生活', '卒業後'],
+    coverageAreas: STUDY_COVERAGE,
     officialSources: [{ label: 'EducationUSA', url: 'https://educationusa.state.gov/', supports: '学校選び・出願・資金計画' }],
+  },
+  {
+    countrySlug: 'canada', purpose: 'study-abroad', sourceArticleId: 'study-canada-complete-guide',
+    mergedArticleIds: ['study-canada-complete-guide'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'IRCC — Study permit', url: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html', supports: '就学許可・申請料金' },
+      { label: 'IRCC — Designated learning institutions', url: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit/prepare/designated-learning-institutions-list.html', supports: 'DLI・PGWP対象プログラム' },
+      { label: 'IRCC — Work off campus', url: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/work-off-campus.html', supports: '在学中の学外就労' },
+      { label: 'IRCC — PGWP eligibility', url: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/work/after-graduation/eligibility.html', supports: '卒業後就労許可の条件' },
+      { label: 'EduCanada — Study costs', url: 'https://www.educanada.ca/programs-programmes/education_cost-cout_education.aspx/articles/student-guide-what-is-the-cost-of-living-in-canada/?lang=eng', supports: '学費・生活費・奨学金' },
+    ],
   },
 ];
 
