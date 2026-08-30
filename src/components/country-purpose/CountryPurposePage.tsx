@@ -1,18 +1,24 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Fragment } from 'react';
 import type { CountryPurposeGuidePurpose, Experience, School } from '@/lib/microcms/types';
 import { getCountryBySlug } from '@/lib/microcms/countries';
 import { getExperiencesByCountry } from '@/lib/microcms/experiences';
 import { getSchools } from '@/lib/microcms/schools';
 import { resolveCountryPurposeGuide } from '@/lib/microcms/countryPurposeGuides';
 import { evaluateCountryPurposeGate } from '@/lib/country-purpose/gate';
-import { getPurposeGuideDefinition } from '@/lib/country-purpose/registry';
 import {
   isVerifiedForPurpose,
   STUDY_TYPE_LABELS,
 } from '@/lib/experiences/classification';
 import { extractFaqFromArticleBody } from '@/lib/utils/article-faq';
+import { ARTICLE_IMAGE_SLUGS } from '@/lib/utils/article-images';
+import {
+  getCountryPurposeVisuals,
+  type CountryPurposeVisual,
+} from '@/lib/country-purpose/visuals';
+import { cleanPurposeArticleReaderContent } from '@/lib/country-purpose/article-reader-content';
 import { SITE_URL } from '@/lib/utils/constants';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import ExperienceCard from '@/components/experience/ExperienceCard';
@@ -149,6 +155,34 @@ function GuideSources({
   );
 }
 
+function PurposeVisualFigure({ visual }: { visual: CountryPurposeVisual }) {
+  return (
+    <figure className="not-prose my-10 overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 shadow-soft">
+      <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
+        <Image
+          src={visual.src}
+          alt={visual.alt}
+          fill
+          sizes="(max-width: 768px) 100vw, 896px"
+          className="object-cover"
+        />
+      </div>
+      <figcaption className="px-4 py-3 text-xs leading-6 text-gray-600 md:px-5">
+        <span>{visual.caption}</span>
+        <span className="ml-1 whitespace-nowrap">
+          Photo: <a className="font-medium text-primary-700 hover:underline" href={`${visual.photographerProfileUrl}?utm_source=study_work_hub&utm_medium=referral`} target="_blank" rel="noopener noreferrer">{visual.photographerName}</a>
+          {' / '}
+          <a className="text-primary-700 hover:underline" href={`${visual.sourceUrl}?utm_source=study_work_hub&utm_medium=referral`} target="_blank" rel="noopener noreferrer">Unsplash</a>
+        </span>
+      </figcaption>
+    </figure>
+  );
+}
+
+function splitGuideBody(body: string): string[] {
+  return body.split(/(?=<h2(?:\s|>))/i).filter((section) => section.trim().length > 0);
+}
+
 export default async function CountryPurposePage({
   countrySlug,
   purpose,
@@ -168,7 +202,6 @@ export default async function CountryPurposePage({
   ]);
   const allExperiences = experiencesData.contents;
   const schools = schoolsData.contents;
-  const definition = getPurposeGuideDefinition(countrySlug, purpose);
   const gate = evaluateCountryPurposeGate({ country, purpose, guide, experiences: allExperiences, schools });
   if (!guide || !gate.pass) notFound();
 
@@ -181,7 +214,7 @@ export default async function CountryPurposePage({
   const copy = PURPOSE_COPY[purpose];
   const pageSummary = verifiedExperiences.length > 0
     ? copy.summary
-    : `${copy.label}の制度・申請・費用・仕事・住居などを公的一次情報で確認し、公開体験談の検証状況も透明に掲載しています。`;
+    : `${copy.label}の制度・申請・費用・仕事・住居・安全・渡航後手続を、公的一次情報に基づいて具体的に解説します。`;
   const basePath = `/countries/${countrySlug}/${purpose}`;
   const cities = Array.from(
     new Set(verifiedExperiences.map((experience) => experience.cityPrimary).filter(Boolean))
@@ -189,7 +222,20 @@ export default async function CountryPurposePage({
   const usedSchools = schools.filter((school) => verifiedExperiences.some((experience) => experience.school?.id === school.id));
   const durationMedian = median(verifiedExperiences.flatMap((experience) => experience.durationMonths ? [experience.durationMonths] : []));
   const ages = verifiedExperiences.flatMap((experience) => experience.ageAtDeparture ? [experience.ageAtDeparture] : []);
-  const faqs = extractFaqFromArticleBody(guide.body);
+  const readerGuideBody = cleanPurposeArticleReaderContent(guide.body, {
+    adviceHeading: `${country.nameJp}${copy.label}が向いている人`,
+    safetyHeading: `${country.nameJp}で安全に暮らすための対策`,
+  });
+  const faqs = extractFaqFromArticleBody(readerGuideBody);
+  const purposeVisuals = getCountryPurposeVisuals(countrySlug, purpose);
+  const heroVisual = purposeVisuals?.hero;
+  const heroImageUrl = heroVisual?.src
+    ?? guide.heroImage?.url
+    ?? country.heroImage?.url
+    ?? (ARTICLE_IMAGE_SLUGS.has(guide.sourceArticleId)
+      ? `/articles/article-${guide.sourceArticleId}.jpg`
+      : null);
+  const guideBodySections = splitGuideBody(readerGuideBody);
   const breadcrumb = [
     { name: 'ホーム', url: '/' },
     { name: '国一覧', url: '/countries' },
@@ -227,63 +273,77 @@ export default async function CountryPurposePage({
           { label: `${country.nameJp}${copy.label}` },
         ]} />
 
-        <header className="relative mt-4 overflow-hidden rounded-3xl bg-primary-950 text-white">
-          {guide.heroImage && (
-            <Image src={guide.heroImage.url} alt={`${country.nameJp}${copy.label}`} fill priority className="object-cover opacity-35" />
+        <header className="relative mt-4 min-h-[390px] overflow-hidden rounded-3xl bg-primary-900 text-white md:min-h-[430px]">
+          {heroImageUrl && (
+            <Image src={heroImageUrl} alt={heroVisual?.alt ?? `${country.nameJp}${copy.label}の現地風景`} fill priority sizes="(max-width: 1280px) 100vw, 1200px" className="object-cover" />
           )}
-          <div className="relative z-10 px-6 py-12 md:px-12 md:py-16">
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/75 to-primary-800/30" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+          <div className="relative z-10 flex min-h-[390px] flex-col justify-end px-6 py-10 md:min-h-[430px] md:px-12 md:py-14">
             <p className="text-sm font-semibold text-accent-300">{country.flagEmoji} {country.nameEn}</p>
             <h1 className="mt-2 max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
               {country.nameJp}{copy.titleSuffix}
             </h1>
             <p className="mt-5 max-w-3xl text-base leading-8 text-white/85">{pageSummary}</p>
             <div className="mt-7 flex flex-wrap gap-3 text-sm">
-              <span className="rounded-full bg-white/15 px-4 py-2">
-                検証済み体験談 {verifiedExperiences.length}件{verifiedExperiences.length === 0 ? '（募集中）' : ''}
-              </span>
+              {verifiedExperiences.length > 0 && <span className="rounded-full bg-white/15 px-4 py-2">体験談 {verifiedExperiences.length}件</span>}
               <span className="rounded-full bg-white/15 px-4 py-2">公式情報確認 {guide.checkedAt.slice(0, 10)}</span>
-              <span className="rounded-full bg-white/15 px-4 py-2">未確認体験談は集計外</span>
+              <span className="rounded-full bg-white/15 px-4 py-2">制度・費用・仕事・生活を網羅</span>
             </div>
           </div>
+          {heroVisual && (
+            <p className="absolute bottom-3 right-4 z-20 rounded-full bg-black/45 px-3 py-1 text-[11px] text-white/90 backdrop-blur-sm">
+              Photo: <a className="hover:underline" href={`${heroVisual.photographerProfileUrl}?utm_source=study_work_hub&utm_medium=referral`} target="_blank" rel="noopener noreferrer">{heroVisual.photographerName}</a>
+              {' / '}
+              <a className="hover:underline" href={`${heroVisual.sourceUrl}?utm_source=study_work_hub&utm_medium=referral`} target="_blank" rel="noopener noreferrer">Unsplash</a>
+            </p>
+          )}
         </header>
 
         <nav className="mt-6 flex flex-wrap gap-2" aria-label="このページの目次">
           <a href="#complete-guide" className="rounded-full bg-gray-100 px-4 py-2 text-sm hover:bg-gray-200">詳細ガイド</a>
-          <a href="#experience-data" className="rounded-full bg-gray-100 px-4 py-2 text-sm hover:bg-gray-200">体験者データ</a>
+          {verifiedExperiences.length > 0 && <a href="#experience-data" className="rounded-full bg-gray-100 px-4 py-2 text-sm hover:bg-gray-200">体験者データ</a>}
           <a href="#experience-list" className="rounded-full bg-gray-100 px-4 py-2 text-sm hover:bg-gray-200">体験談一覧</a>
           <a href="#official-sources" className="rounded-full bg-gray-100 px-4 py-2 text-sm hover:bg-gray-200">公式出典</a>
         </nav>
 
-        <article id="complete-guide" className="prose-custom mx-auto mt-12 max-w-4xl" dangerouslySetInnerHTML={{ __html: guide.body }} />
+        <article id="complete-guide" className="prose-custom mx-auto mt-12 max-w-4xl">
+          {guideBodySections.map((section, index) => {
+            const inlineVisual = index === 1
+              ? purposeVisuals?.inline[0]
+              : index === 3
+                ? purposeVisuals?.inline[1]
+                : undefined;
+            return (
+              <Fragment key={`${guide.sourceArticleId}-${index}`}>
+                <div dangerouslySetInnerHTML={{ __html: section }} />
+                {inlineVisual && <PurposeVisualFigure visual={inlineVisual} />}
+              </Fragment>
+            );
+          })}
+        </article>
 
-        <section id="experience-data" className="mt-14 rounded-2xl border border-primary-100 bg-primary-50 p-6 md:p-8">
+        {verifiedExperiences.length > 0 && <section id="experience-data" className="mt-14 rounded-2xl border border-primary-100 bg-primary-50 p-6 md:p-8">
           <h2 className="text-2xl font-bold">
-            {verifiedExperiences.length > 0 ? `${copy.experienceHeading}から分かること` : `${copy.experienceHeading}の検証状況`}
+            {copy.experienceHeading}から分かること
           </h2>
-          {verifiedExperiences.length > 0 ? (
-            <p className="mt-3 max-w-4xl text-sm leading-7 text-gray-700">
-              公開体験談のうち、本人の記述から主目的を確認できた{verifiedExperiences.length}件だけを集計しています。
-              回答者の自己選択データであり、国全体の平均や成功率を示すものではありません。
-            </p>
-          ) : (
-            <div className="mt-3 max-w-4xl text-sm leading-7 text-gray-700">
-              <p>{definition?.experienceAuditNote}</p>
-              <p className="mt-2">体験談がない部分を推測や他国の事例で補わず、制度・費用・生活情報は公的一次情報を中心に掲載しています。</p>
-            </div>
-          )}
+          <p className="mt-3 max-w-4xl text-sm leading-7 text-gray-700">
+            本人の記述から渡航目的を確認できた{verifiedExperiences.length}件を集計しています。
+            回答者の自己選択データであり、国全体の平均や成功率を示すものではありません。
+          </p>
           <dl className="mt-6 grid gap-4 sm:grid-cols-3">
             <div className="rounded-xl bg-white p-4"><dt className="text-sm text-gray-500">検証済み件数</dt><dd className="mt-1 text-2xl font-bold">{verifiedExperiences.length}件</dd></div>
             <div className="rounded-xl bg-white p-4"><dt className="text-sm text-gray-500">登場する都市</dt><dd className="mt-1 text-2xl font-bold">{verifiedExperiences.length > 0 ? `${cities.length}都市` : '集計対象なし'}</dd></div>
             <div className="rounded-xl bg-white p-4"><dt className="text-sm text-gray-500">滞在期間の中央値</dt><dd className="mt-1 text-2xl font-bold">{durationMedian ? `${durationMedian}か月` : '集計対象なし'}</dd></div>
           </dl>
           {ages.length > 0 && <p className="mt-4 text-xs text-gray-600">回答者の出発年齢範囲：{Math.min(...ages)}〜{Math.max(...ages)}歳（確認できた回答のみ）</p>}
-        </section>
+        </section>}
 
         <section id="experience-list" className="mt-14">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <div>
               <h2 className="text-2xl font-bold">{country.nameJp}の{copy.experienceHeading}</h2>
-              <p className="mt-2 text-sm text-gray-600">条件に合う体験談：{filtered.length}件</p>
+              {verifiedExperiences.length > 0 && <p className="mt-2 text-sm text-gray-600">条件に合う体験談：{filtered.length}件</p>}
             </div>
             {Object.values(searchParams).some(Boolean) && <Link href={basePath} className="text-sm text-primary-700 hover:underline">絞り込みを解除</Link>}
           </div>
@@ -333,7 +393,7 @@ export default async function CountryPurposePage({
             <div className="mt-7 rounded-xl border border-dashed border-primary-300 bg-primary-50 p-8 text-center">
               <p className="font-semibold text-gray-900">{country.nameJp}の{copy.experienceHeading}を募集しています</p>
               <p className="mx-auto mt-2 max-w-2xl text-sm leading-7 text-gray-600">
-                本人が記載した渡航目的とビザ・許可を確認後、このページに掲載します。年齢や滞在期間だけで目的を推測することはありません。
+                現地で働いた経験、住まい探し、日々の暮らしなど、これから渡航する人の参考になる体験をお寄せください。
               </p>
               <Link href="/submit/experience" className="mt-5 inline-flex rounded-xl bg-primary-700 px-5 py-3 text-sm font-semibold text-white hover:bg-primary-800">
                 体験談を投稿する

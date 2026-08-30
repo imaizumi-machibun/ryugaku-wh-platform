@@ -16,7 +16,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
   return generatePageMetadata({
     title: `${country.nameJp}ワーホリ完全ガイド｜体験談・費用・仕事・ビザ`,
     description: definition.allowNoVerifiedExperience
-      ? `${country.nameJp}ワーホリの制度、申請、費用、仕事、税、住居、安全を公的一次情報で解説。公開体験談94件の監査結果と、確認済み体験談の募集状況も掲載します。`
+      ? `${country.nameJp}ワーホリの制度、申請、費用、仕事、税、住居、安全、渡航後手続を公的一次情報に基づいて詳しく解説します。`
       : `${country.nameJp}ワーホリの制度、申請、費用、仕事、税、住居、安全、渡航後手続と、本人確認済みの体験談をまとめた総合ガイドです。`,
     path: `/countries/${params.slug}/working-holiday`,
     ogImage: country.heroImage?.url,
