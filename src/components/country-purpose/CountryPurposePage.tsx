@@ -277,8 +277,8 @@ export default async function CountryPurposePage({
           {heroImageUrl && (
             <Image src={heroImageUrl} alt={heroVisual?.alt ?? `${country.nameJp}${copy.label}の現地風景`} fill priority sizes="(max-width: 1280px) 100vw, 1200px" className="object-cover" />
           )}
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-primary-900/95 via-primary-900/75 to-primary-800/30" />
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-primary-950/85 via-primary-900/50 to-transparent" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
           <div className="relative z-10 flex min-h-[390px] flex-col justify-end px-6 py-10 md:min-h-[430px] md:px-12 md:py-14">
             <p className="text-sm font-semibold text-accent-300">{country.flagEmoji} {country.nameEn}</p>
             <h1 className="mt-2 max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
