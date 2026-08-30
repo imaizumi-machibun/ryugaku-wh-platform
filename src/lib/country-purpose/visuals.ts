@@ -1,4 +1,7 @@
 import type { CountryPurposeGuidePurpose } from '@/lib/microcms/types';
+import { ASIA_SOUTH_AMERICA_COUNTRY_PURPOSE_VISUALS } from './visuals-asia-southamerica';
+import { ENGLISH_MARKET_PURPOSE_VISUALS } from './visuals-english';
+import { COUNTRY_PURPOSE_VISUALS_EUROPE } from './visuals-europe';
 
 export type CountryPurposeVisual = Readonly<{
   src: `https://images.unsplash.com/${string}`;
@@ -24,6 +27,9 @@ type CountryPurposeVisualKey = `${string}:${CountryPurposeGuidePurpose}`;
  * width / height は各写真ページのレスポンシブ画像メタデータに記載された原寸。
  */
 export const COUNTRY_PURPOSE_VISUALS = {
+  ...ENGLISH_MARKET_PURPOSE_VISUALS,
+  ...COUNTRY_PURPOSE_VISUALS_EUROPE,
+  ...ASIA_SOUTH_AMERICA_COUNTRY_PURPOSE_VISUALS,
   'argentina:working-holiday': {
     hero: {
       src: 'https://images.unsplash.com/photo-1578453223871-970d2d15b57a?auto=format&fit=crop&w=2400&q=82',
