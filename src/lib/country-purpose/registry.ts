@@ -289,6 +289,21 @@ export const COUNTRY_PURPOSE_GUIDES: PurposeGuideDefinition[] = [
     ],
   },
   {
+    countrySlug: 'cuba', purpose: 'study-abroad', sourceArticleId: 'study-cuba-complete-guide',
+    mergedArticleIds: ['study-cuba-complete-guide'],
+    coverageAreas: STUDY_COVERAGE,
+    allowNoVerifiedExperience: true,
+    officialSources: [
+      { label: 'Universidad de La Habana — Estudiar en la UH', url: 'https://www.uh.cu/internacionalizacion/estudiar-uh-extranjeros/', supports: '外国人学生の受入経路・自費・協定留学' },
+      { label: 'Universidad de La Habana — Trámites migratorios', url: 'https://www.uh.cu/internacionalizacion/tramites-migratorios/', supports: '学術査証・学校を通じた移民手続' },
+      { label: 'Cuba Travel — Regulaciones y trámites', url: 'https://www.cuba.travel/informacion-util/regulaciones-y-tramites/1000', supports: '観光eVisa・入国・保険・D’Viajeros' },
+      { label: 'Gaceta Oficial de la República de Cuba — 2026年移民・外国人制度', url: 'https://www.gacetaoficial.gob.cu/sites/default/files/goc-2026-o39.pdf', supports: '学生区分・施行日・就労許可' },
+      { label: '外務省 — キューバ危険・スポット・広域情報', url: 'https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_245.html', supports: '停電・燃料・治安・渡航安全' },
+      { label: '外務省 — 世界の医療事情 キューバ', url: 'https://www.mofa.go.jp/mofaj/toko/medi/cs_ame/cuba.html', supports: '医療体制・保険・搬送' },
+      { label: 'ETECSA — CubacelTur', url: 'https://www.etecsa.cu/es/visitantes/cubaceltur', supports: '旅行者向け通信・利用期間・受取方法' },
+    ],
+  },
+  {
     countrySlug: 'ireland', purpose: 'study-abroad', sourceArticleId: 'study-ireland-complete-guide',
     mergedArticleIds: ['study-ireland-complete-guide'],
     coverageAreas: STUDY_COVERAGE,
