@@ -304,20 +304,20 @@ export default async function CountryPurposePage({
 
         <header className="relative mt-4 min-h-[390px] overflow-hidden rounded-3xl bg-primary-900 text-white md:min-h-[430px]">
           {heroImageUrl && (
-            <Image src={heroImageUrl} alt={heroVisual?.alt ?? `${country.nameJp}${copy.label}の現地風景`} fill priority sizes="(max-width: 1280px) 100vw, 1200px" className="object-cover" />
+            <Image src={heroImageUrl} alt={heroVisual?.alt ?? `${country.nameJp}${copy.label}の現地風景`} fill priority sizes="(max-width: 1280px) 100vw, 1200px" className="object-cover brightness-[0.78] contrast-[0.96]" />
           )}
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-primary-950/85 via-primary-900/50 to-transparent" />
-          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/5" />
-          <div className="relative z-10 flex min-h-[390px] flex-col justify-end px-6 py-10 md:min-h-[430px] md:px-12 md:py-14">
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/20" />
+          <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-black/15" />
+          <div className="relative z-10 flex min-h-[390px] flex-col justify-end px-6 py-10 [text-shadow:0_2px_12px_rgba(0,0,0,0.78)] md:min-h-[430px] md:px-12 md:py-14">
             <p className="text-sm font-semibold text-accent-300">{country.flagEmoji} {country.nameEn}</p>
             <h1 className="mt-2 max-w-4xl text-3xl font-bold leading-tight md:text-5xl">
               {country.nameJp}{copy.titleSuffix}
             </h1>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-white/85">{pageSummary}</p>
+            <p className="mt-5 max-w-3xl text-base leading-8 text-white/95">{pageSummary}</p>
             <div className="mt-7 flex flex-wrap gap-3 text-sm">
-              {verifiedExperiences.length > 0 && <span className="rounded-full bg-white/15 px-4 py-2">体験談 {verifiedExperiences.length}件</span>}
-              <span className="rounded-full bg-white/15 px-4 py-2">公式情報確認 {guide.checkedAt.slice(0, 10)}</span>
-              <span className="rounded-full bg-white/15 px-4 py-2">
+              {verifiedExperiences.length > 0 && <span className="rounded-full bg-black/35 px-4 py-2 ring-1 ring-white/20 backdrop-blur-sm">体験談 {verifiedExperiences.length}件</span>}
+              <span className="rounded-full bg-black/35 px-4 py-2 ring-1 ring-white/20 backdrop-blur-sm">公式情報確認 {guide.checkedAt.slice(0, 10)}</span>
+              <span className="rounded-full bg-black/35 px-4 py-2 ring-1 ring-white/20 backdrop-blur-sm">
                 {purpose === 'study-abroad' ? '学校・費用・ビザ・生活を網羅' : '制度・費用・仕事・生活を網羅'}
               </span>
             </div>
