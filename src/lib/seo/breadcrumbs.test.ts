@@ -32,7 +32,7 @@ test('検証済み留学体験談は、公開済みの国別留学ページ階�
 test('留学ページが未公開の国はグローバル体験談階層に残す', () => {
   const entries = buildExperienceBreadcrumb({
     ...base,
-    country: { ...base.country, id: 'philippines', nameJp: 'フィリピン' },
+    country: { ...base.country, id: 'china', nameJp: '中国' },
     primaryPurpose: 'study-abroad',
     classificationStatus: 'verified',
   });

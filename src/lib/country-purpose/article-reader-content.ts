@@ -189,10 +189,51 @@ function removeDanglingFragmentListItems(html: string): string {
 
   return html
     .replace(/<li\b[^>]*>[\s\S]*?<\/li>/gi, (listItem) => {
+      if (/(?:自社(?:体験談)?(?:94件|データ)|公開体験談94件|Study Work Hub|当編集部|読み取り専用API|国フィールド)/i.test(textContent(listItem))) {
+        return '';
+      }
       const fragment = listItem.match(/\shref=(['"])#([^'"]+)\1/i)?.[2];
       return fragment && !ids.has(fragment) ? '' : listItem;
     })
     .replace(/<ul\b[^>]*>\s*<\/ul>/gi, '');
+}
+
+/**
+ * microCMSのリッチエディタは保存時にh2/h3のidを自動採番する。
+ * 入稿HTMLの目次hrefは保持されるため、同名見出しが本文内で一意な場合だけ
+ * 目次側のfragmentを見出しへ戻し、ページ内リンクを利用可能にする。
+ */
+function restoreReferencedHeadingIds(html: string): string {
+  const fragmentsByText = new Map<string, Set<string>>();
+
+  for (const match of html.matchAll(/<a\b[^>]*\shref=(['"])#([^'"\s]+)\1[^>]*>([\s\S]*?)<\/a>/gi)) {
+    const [, , fragment, labelHtml] = match;
+    if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(fragment)) continue;
+    const label = textContent(labelHtml);
+    if (!label) continue;
+    const fragments = fragmentsByText.get(label) ?? new Set<string>();
+    fragments.add(fragment);
+    fragmentsByText.set(label, fragments);
+  }
+
+  const headingCounts = new Map<string, number>();
+  for (const match of html.matchAll(/<h[23]\b[^>]*>([\s\S]*?)<\/h[23]>/gi)) {
+    const label = textContent(match[1]);
+    headingCounts.set(label, (headingCounts.get(label) ?? 0) + 1);
+  }
+
+  return html.replace(
+    /<h([23])\b([^>]*)>([\s\S]*?)<\/h\1>/gi,
+    (heading, level: string, attributes: string, innerHtml: string) => {
+      const label = textContent(innerHtml);
+      const fragments = fragmentsByText.get(label);
+      if (!fragments || fragments.size !== 1 || headingCounts.get(label) !== 1) return heading;
+
+      const fragment = Array.from(fragments)[0];
+      const attributesWithoutId = attributes.replace(/\s+id=(['"])[^'"]*\1/gi, '');
+      return `<h${level}${attributesWithoutId} id="${fragment}">${innerHtml}</h${level}>`;
+    }
+  );
 }
 
 /**
@@ -209,21 +250,23 @@ export function cleanPurposeArticleReaderContent(
 ): string {
   if (!html) return html;
 
-  const headings = findHeadingSections(html);
+  const anchoredHtml = restoreReferencedHeadingIds(html);
+
+  const headings = findHeadingSections(anchoredHtml);
   if (headings.length === 0) {
-    return removeDanglingFragmentListItems(removeEditorialProcessSentences(html));
+    return removeDanglingFragmentListItems(removeEditorialProcessSentences(anchoredHtml));
   }
 
-  let result = html.slice(0, headings[0].start);
+  let result = anchoredHtml.slice(0, headings[0].start);
 
   headings.forEach((heading, index) => {
-    const sectionEnd = headings[index + 1]?.start ?? html.length;
-    const headingInnerHtml = hasEditorialAuditSubsection(html, headings, index) ||
+    const sectionEnd = headings[index + 1]?.start ?? anchoredHtml.length;
+    const headingInnerHtml = hasEditorialAuditSubsection(anchoredHtml, headings, index) ||
       /(?:自社体験談94件|自社94件|公開体験談94件)/.test(textContent(heading.innerHtml))
       ? readerFacingAuditHeading(heading.innerHtml)
       : heading.innerHtml;
     const originalHeading = `<h${heading.level}${heading.attributes}>${headingInnerHtml}</h${heading.level}>`;
-    const body = html.slice(heading.headingEnd, sectionEnd);
+    const body = anchoredHtml.slice(heading.headingEnd, sectionEnd);
 
     if (
       heading.level === 3 &&

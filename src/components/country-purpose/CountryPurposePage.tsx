@@ -225,10 +225,10 @@ export default async function CountryPurposePage({
   if (currentPage > totalPages && filtered.length > 0) notFound();
   const displayed = filtered.slice((currentPage - 1) * PAGE_SIZE, currentPage * PAGE_SIZE);
   const copy = PURPOSE_COPY[purpose];
-  const pageSummary = verifiedExperiences.length > 0
-    ? copy.summary
-    : purpose === 'study-abroad'
-      ? `${country.nameJp}留学の種類、学校選び、入学条件、学費、ビザ、住居、現地生活、卒業後まで、公的情報と掲載校データに基づいて詳しく解説します。`
+  const pageSummary = purpose === 'study-abroad' && guide.introduction
+    ? guide.introduction
+    : verifiedExperiences.length > 0
+      ? copy.summary
       : `${copy.label}の制度・申請・費用・仕事・住居・安全・渡航後手続を、公的一次情報に基づいて具体的に解説します。`;
   const basePath = `/countries/${countrySlug}/${purpose}`;
   const cities = Array.from(

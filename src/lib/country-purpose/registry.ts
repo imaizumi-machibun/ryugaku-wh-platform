@@ -219,6 +219,40 @@ export const COUNTRY_PURPOSE_GUIDES: PurposeGuideDefinition[] = [
       { label: 'Study in Korea — 学校・課程検索', url: 'https://studyinkorea.go.kr/ko/search_v1.do', supports: '学校・大学・課程選び' },
     ],
   },
+  {
+    countrySlug: 'ireland', purpose: 'study-abroad', sourceArticleId: 'study-ireland-complete-guide',
+    mergedArticleIds: ['study-ireland-complete-guide'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'Irish Immigration — Planning to study in Ireland', url: 'https://www.irishimmigration.ie/coming-to-study-in-ireland/what-are-my-study-options/planning-to-study-in-ireland/', supports: '留学種別・学生許可・申請準備' },
+      { label: 'Irish Immigration — Immigration permission stamps', url: 'https://www.irishimmigration.ie/registering-your-immigration-permission/information-on-registering/immigration-permission-stamps/', supports: 'Stamp 2・在学中の就労条件' },
+      { label: 'TrustEd Ireland — Eligible programmes', url: 'https://www.trustedireland.ie/check-eligible-courses-for-study-visas', supports: '学生査証対象プログラムの確認' },
+      { label: 'Education in Ireland — Where can I study?', url: 'https://www.educationinireland.com/en/where-can-i-study-in-ireland', supports: '学校・課程・都市選び' },
+    ],
+  },
+  {
+    countrySlug: 'malta', purpose: 'study-abroad', sourceArticleId: 'study-malta-complete-guide',
+    mergedArticleIds: ['study-malta-complete-guide'],
+    redirectFromPaths: ['/malta-study'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'Identità — National long-stay visa', url: 'https://identita.gov.mt/central-visa-unit-national-visa-long-stay-visa/', supports: '長期留学の査証・申請' },
+      { label: 'Identità — Student visa employment', url: 'https://identita.gov.mt/central-visa-unit-student-visa-employment/', supports: '学生の就労条件・許可' },
+      { label: 'MFHEA — Licensed providers and programmes', url: 'https://mfhea.mt/list-of-licensed-providers-and-accredited-programmes/', supports: '高等教育機関・認定課程の確認' },
+      { label: 'ELT Council — Licensed ELT schools', url: 'https://eltcouncil.gov.mt/list-of-licensed-elt-schools-in-malta/', supports: '認可語学学校の確認' },
+    ],
+  },
+  {
+    countrySlug: 'philippines', purpose: 'study-abroad', sourceArticleId: 'study-philippines-complete-guide',
+    mergedArticleIds: ['study-philippines-complete-guide'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'Philippine Bureau of Immigration — Special Study Permit', url: 'https://immigration.gov.ph/services/special-study-permit/', supports: 'SSPの対象・申請・必要書類' },
+      { label: 'Philippine Bureau of Immigration — Student visa 9(f)', url: 'https://immigration.gov.ph/student-visa-9f/', supports: '9(f)学生査証・申請条件' },
+      { label: 'Philippine Bureau of Immigration — Accredited entities', url: 'https://immigration.gov.ph/resources/accredited-entities/', supports: 'BI認定教育機関の確認' },
+      { label: 'CHED — Higher Education Institution Directory', url: 'https://heida.ched.gov.ph/hei-directory', supports: '大学・高等教育機関の確認' },
+    ],
+  },
 ];
 
 export function getPurposeGuideDefinition(

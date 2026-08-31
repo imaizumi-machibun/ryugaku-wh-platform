@@ -165,6 +165,56 @@ test('削除した監査節を指す本文内目次も除去する', () => {
   assert.doesNotMatch(cleaned, /own-data|94件|Study Work Hub/);
 });
 
+test('microCMSが自動採番した見出しIDを本文内目次のfragmentへ戻す', () => {
+  const body = [
+    '<h2 id="h-auto-1">学校選び</h2>',
+    '<p>目的に合う学校を比較します。</p>',
+    '<ul><li><a href="#language-course">語学コースを比較する</a></li><li><a href="#degree-course">学位課程を比較する</a></li></ul>',
+    '<h3 id="h-auto-2">語学コースを比較する</h3>',
+    '<p>授業時間と支援を確認します。</p>',
+    '<h3 id="h-auto-3">学位課程を比較する</h3>',
+    '<p>入学条件と卒業資格を確認します。</p>',
+  ].join('');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.match(cleaned, /<h3 id="language-course">語学コースを比較する<\/h3>/);
+  assert.match(cleaned, /<h3 id="degree-course">学位課程を比較する<\/h3>/);
+  assert.match(cleaned, /href="#language-course"/);
+  assert.doesNotMatch(cleaned, /h-auto-2|h-auto-3/);
+});
+
+test('ID復元後も編集部の監査語を含む目次項目は表示しない', () => {
+  const body = [
+    '<ul><li><a href="#fit">自社体験談94件の確認結果と向く人</a></li><li><a href="#safety">安全対策</a></li></ul>',
+    '<h3 id="h-auto-1">自社体験談94件の確認結果と向く人</h3>',
+    '<p>Study Work Hub編集部が公開体験談94件を確認したところ対象は0件でした。</p>',
+    '<p>予備資金を持ち、現地語で手続できる人に向きます。</p>',
+    '<h3 id="h-auto-2">安全対策</h3><p>緊急連絡先を控えます。</p>',
+  ].join('');
+
+  const cleaned = cleanPurposeArticleReaderContent(body, { adviceHeading: '向いている人' });
+
+  assert.doesNotMatch(cleaned, /94件|Study Work Hub|href="#fit"/);
+  assert.match(cleaned, /<h3 id="fit">向いている人<\/h3>/);
+  assert.match(cleaned, /href="#safety"/);
+  assert.match(cleaned, /<h3 id="safety">安全対策<\/h3>/);
+});
+
+test('同名見出しが複数ある場合はmicroCMSのIDを推測で置換しない', () => {
+  const body = [
+    '<ul><li><a href="#first-faq">費用はいくらですか</a></li></ul>',
+    '<h3 id="h-auto-1">費用はいくらですか</h3><p>回答1です。</p>',
+    '<h3 id="h-auto-2">費用はいくらですか</h3><p>回答2です。</p>',
+  ].join('');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.doesNotMatch(cleaned, /href="#first-faq"/);
+  assert.match(cleaned, /id="h-auto-1"/);
+  assert.match(cleaned, /id="h-auto-2"/);
+});
+
 test('確認済み事例があっても旧94件母集団の抽出ログは節ごと除く', () => {
   const body = [
     '<h2>費用</h2>',

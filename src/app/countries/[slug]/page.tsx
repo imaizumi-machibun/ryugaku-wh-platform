@@ -25,6 +25,10 @@ export async function generateStaticParams() {
 
 type Props = { params: { slug: string } };
 
+function countryHubDescription(country: Awaited<ReturnType<typeof getCountryBySlug>>): string {
+  return `${country.nameJp}（${country.nameEn}）の基本情報、気候、通貨、時差、主要都市、生活環境を案内する国別ハブです。ワーホリと留学の制度・費用・学校・仕事・体験談は目的別ガイドで詳しく解説します。`;
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const country = await getCountryBySlug(params.slug).catch(() => null);
   return country ? generateCountryMetadata(country, `/countries/${params.slug}`) : {};
@@ -48,6 +52,37 @@ function OverviewFacts({ country }: { country: Awaited<ReturnType<typeof getCoun
         </div>
       ))}
     </dl>
+  );
+}
+
+function CountryOverview({
+  country,
+  cityNames,
+}: {
+  country: Awaited<ReturnType<typeof getCountryBySlug>>;
+  cityNames: string[];
+}) {
+  const profile = [
+    country.capital ? `首都は${country.capital}` : null,
+    country.officialLanguage ? `公用語・主要言語は${country.officialLanguage}` : null,
+    country.currency ? `通貨は${country.currency}${country.currencyCode ? `（${country.currencyCode}）` : ''}` : null,
+  ].filter(Boolean).join('、');
+  const cityText = cityNames.length > 0
+    ? `${cityNames.slice(0, 3).join('、')}など、都市によって気候や交通、住まい、生活費の特徴が異なります。`
+    : '地域によって気候や交通、住まい、生活費の特徴が異なります。';
+
+  return (
+    <section className="mx-auto my-10 max-w-4xl" aria-labelledby="country-overview">
+      <h2 id="country-overview" className="text-2xl font-bold">{country.nameJp}の概要</h2>
+      <p className="mt-4 leading-8 text-gray-700">
+        {country.nameJp}（{country.nameEn}）は{country.region ? `${country.region}に位置します。` : '渡航前に位置と周辺地域を確認しておきたい国です。'}
+        {profile ? `${profile}です。` : '渡航前に言語・通貨・時差を確認しておきましょう。'}
+        {cityText}
+      </p>
+      <p className="mt-3 leading-8 text-gray-700">
+        このページでは国全体の基本情報と都市を確認できます。ビザ、申請、学校、仕事、学費、体験談など目的によって判断が変わる情報は、下のワーホリ・留学ガイドで分けて詳しく解説しています。
+      </p>
+    </section>
   );
 }
 
@@ -91,7 +126,7 @@ export default async function CountryDetailPage({ params }: Props) {
       <JsonLd data={generatePlaceJsonLd({
         name: country.nameJp,
         countryName: country.nameEn,
-        description: country.description?.replace(/<[^>]+>/g, '').slice(0, 200),
+        description: countryHubDescription(country),
       })} />
       <JsonLd data={generateBreadcrumbJsonLd([
         { name: 'ホーム', url: '/' },
@@ -135,7 +170,7 @@ export default async function CountryDetailPage({ params }: Props) {
           </div>
         </header>
 
-        {country.description && <div className="prose-custom mx-auto my-10 max-w-4xl" dangerouslySetInnerHTML={{ __html: country.description }} />}
+        <CountryOverview country={country} cityNames={cities.map((city) => city.nameJp)} />
         <OverviewFacts country={country} />
 
         <section className="mt-14">
