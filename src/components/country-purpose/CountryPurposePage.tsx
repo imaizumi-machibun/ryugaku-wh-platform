@@ -270,11 +270,11 @@ export default async function CountryPurposePage({
       image: school.heroImage?.url,
     })),
   });
-  const primaryItemList = purpose === 'study-abroad' && displayedSchools.length > 0
+  // 目的別ページは一覧が0件でもCollectionPage配下のItemListを保つ。
+  // numberOfItems: 0 と空のitemListElementにより、表示中の空状態とJSON-LDを一致させる。
+  const primaryItemList = purpose === 'study-abroad'
     ? schoolItemList
-    : displayed.length > 0
-      ? experienceItemList
-      : undefined;
+    : experienceItemList;
 
   const sources = [...guide.sources];
   for (const source of country.sourceUrls ?? []) {
