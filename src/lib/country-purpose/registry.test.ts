@@ -42,11 +42,16 @@ test('旧purposeは検証済みの吸収先だけ301対象にする', () => {
   assert.equal(resolveLegacyPurposePath('south-korea', 'language'), '/countries/south-korea/study-abroad');
   assert.equal(resolveLegacyPurposePath('france', 'language'), '/countries/france/study-abroad');
   assert.equal(resolveLegacyPurposePath('south-africa', 'language'), '/countries/south-africa/study-abroad');
+  assert.equal(resolveLegacyPurposePath('costa-rica', 'language'), '/countries/costa-rica/study-abroad');
+  assert.equal(resolveLegacyPurposePath('fiji', 'language'), '/countries/fiji/study-abroad');
+  assert.equal(resolveLegacyPurposePath('hong-kong', 'language'), '/countries/hong-kong/study-abroad');
   assert.equal(resolveLegacyPurposePath('ireland', 'language'), '/countries/ireland/study-abroad');
   assert.equal(resolveLegacyPurposePath('malta', 'language'), '/countries/malta/study-abroad');
   assert.equal(resolveLegacyPurposePath('philippines', 'language'), '/countries/philippines/study-abroad');
   assert.equal(STATIC_PURPOSE_REDIRECTS['/nz-language-school'], '/countries/new-zealand/study-abroad');
   assert.equal(STATIC_PURPOSE_REDIRECTS['/korea-study'], '/countries/south-korea/study-abroad');
   assert.equal(STATIC_PURPOSE_REDIRECTS['/malta-study'], '/countries/malta/study-abroad');
+  assert.equal(STATIC_PURPOSE_REDIRECTS['/countries/costa-rica/cost'], '/countries/costa-rica/study-abroad');
+  assert.equal(STATIC_PURPOSE_REDIRECTS['/countries/fiji/cost'], '/countries/fiji/study-abroad');
   assert.equal(resolveLegacyPurposePath('australia', 'internship'), null);
 });
