@@ -237,6 +237,57 @@ function restoreReferencedHeadingIds(html: string): string {
 }
 
 /**
+ * 各H2直後の小目次は、そのH2配下のH3と同じ順序で執筆される。
+ * microCMSが見出しIDだけを自動採番し、目次ラベルが見出しを短く要約している場合も、
+ * 「小目次の項目数 === 配下H3数」の節だけ順序対応で安全にIDを戻す。
+ */
+function restoreSectionTocHeadingIds(html: string): string {
+  const h2Matches = Array.from(html.matchAll(/<h2\b[^>]*>[\s\S]*?<\/h2>/gi));
+  const replacements: { start: number; end: number; html: string }[] = [];
+
+  h2Matches.forEach((h2, h2Index) => {
+    const sectionStart = h2.index ?? 0;
+    const sectionEnd = h2Matches[h2Index + 1]?.index ?? html.length;
+    const section = html.slice(sectionStart, sectionEnd);
+    const firstH3Index = section.search(/<h3\b/i);
+    if (firstH3Index < 0) return;
+
+    const sectionIntro = section.slice(0, firstH3Index);
+    const h3Matches = Array.from(section.matchAll(/<h3\b([^>]*)>([\s\S]*?)<\/h3>/gi));
+    if (h3Matches.length === 0) return;
+
+    const tocCandidates = Array.from(sectionIntro.matchAll(/<ul\b[^>]*>([\s\S]*?)<\/ul>/gi));
+    const fragments = tocCandidates
+      .map((candidate) => Array.from(
+        candidate[1].matchAll(/<li\b[^>]*>\s*<a\b[^>]*\shref=(['"])#([^'"\s]+)\1[^>]*>[\s\S]*?<\/a>\s*<\/li>/gi),
+        (match) => match[2]
+      ))
+      .find((candidateFragments) =>
+        candidateFragments.length === h3Matches.length &&
+        new Set(candidateFragments).size === candidateFragments.length &&
+        candidateFragments.every((fragment) => /^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(fragment))
+      );
+    if (!fragments) return;
+
+    h3Matches.forEach((heading, index) => {
+      const relativeStart = heading.index ?? 0;
+      const attributesWithoutId = heading[1].replace(/\s+id=(['"])[^'"]*\1/gi, '');
+      replacements.push({
+        start: sectionStart + relativeStart,
+        end: sectionStart + relativeStart + heading[0].length,
+        html: `<h3${attributesWithoutId} id="${fragments[index]}">${heading[2]}</h3>`,
+      });
+    });
+  });
+
+  let result = html;
+  for (const replacement of replacements.sort((a, b) => b.start - a.start)) {
+    result = result.slice(0, replacement.start) + replacement.html + result.slice(replacement.end);
+  }
+  return result;
+}
+
+/**
  * 国別目的ページへ統合した記事本文から、読者には不要な編集部の照合ログを除く。
  *
  * - 「確認済み体験談0件」の監査節だけが対象
@@ -250,7 +301,7 @@ export function cleanPurposeArticleReaderContent(
 ): string {
   if (!html) return html;
 
-  const anchoredHtml = restoreReferencedHeadingIds(html);
+  const anchoredHtml = restoreReferencedHeadingIds(restoreSectionTocHeadingIds(html));
 
   const headings = findHeadingSections(anchoredHtml);
   if (headings.length === 0) {

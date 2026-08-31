@@ -40,6 +40,7 @@ test('旧purposeは検証済みの吸収先だけ301対象にする', () => {
   assert.equal(resolveLegacyPurposePath('united-kingdom', 'language'), '/countries/united-kingdom/study-abroad');
   assert.equal(resolveLegacyPurposePath('new-zealand', 'language'), '/countries/new-zealand/study-abroad');
   assert.equal(resolveLegacyPurposePath('south-korea', 'language'), '/countries/south-korea/study-abroad');
+  assert.equal(resolveLegacyPurposePath('france', 'language'), '/countries/france/study-abroad');
   assert.equal(resolveLegacyPurposePath('ireland', 'language'), '/countries/ireland/study-abroad');
   assert.equal(resolveLegacyPurposePath('malta', 'language'), '/countries/malta/study-abroad');
   assert.equal(resolveLegacyPurposePath('philippines', 'language'), '/countries/philippines/study-abroad');

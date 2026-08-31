@@ -184,6 +184,28 @@ test('microCMSが自動採番した見出しIDを本文内目次のfragmentへ�
   assert.doesNotMatch(cleaned, /h-auto-2|h-auto-3/);
 });
 
+test('見出しを短く要約したH2直後の小目次も順序対応でIDを戻す', () => {
+  const body = [
+    '<h2 id="h-auto-1">在学中の仕事・卒業後の進路</h2>',
+    '<p>条件を分けて確認します。</p>',
+    '<ul><li><a href="#work-hours">就労時間と最低賃金</a></li><li><a href="#internship">課程内インターンシップ</a></li><li><a href="#graduate-route">卒業後の進路</a></li></ul>',
+    '<h3 id="h-auto-2">Stamp 2の就労時間と最低賃金</h3>',
+    '<p>学期中と休暇期を分けます。</p>',
+    '<p>詳しくは<a href="#internship">課程内インターンシップの条件</a>を確認します。</p>',
+    '<h3 id="h-auto-3">インターンシップは課程の一部かを確認する</h3>',
+    '<p>対象課程を確認します。</p>',
+    '<h3 id="h-auto-4">卒業後は資格水準で選択肢が変わる</h3>',
+    '<p>卒業後制度を確認します。</p>',
+  ].join('');
+
+  const cleaned = cleanPurposeArticleReaderContent(body);
+
+  assert.match(cleaned, /<h3 id="work-hours">Stamp 2の就労時間と最低賃金<\/h3>/);
+  assert.match(cleaned, /<h3 id="internship">インターンシップは課程の一部かを確認する<\/h3>/);
+  assert.match(cleaned, /<h3 id="graduate-route">卒業後は資格水準で選択肢が変わる<\/h3>/);
+  assert.equal((cleaned.match(/href="#internship"/g) ?? []).length, 2);
+});
+
 test('ID復元後も編集部の監査語を含む目次項目は表示しない', () => {
   const body = [
     '<ul><li><a href="#fit">自社体験談94件の確認結果と向く人</a></li><li><a href="#safety">安全対策</a></li></ul>',

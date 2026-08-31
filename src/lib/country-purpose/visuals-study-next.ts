@@ -1,6 +1,43 @@
 import type { CountryPurposeVisualSet } from './visuals';
 
 export const NEXT_STUDY_PURPOSE_VISUALS = {
+  'france:study-abroad': {
+    hero: {
+      src: 'https://images.unsplash.com/photo-1531686669028-c55493110d74?auto=format&fit=crop&w=2400&q=82',
+      alt: 'パリのソルボンヌ地区にある大学建物の正面入口',
+      width: 5724,
+      height: 3816,
+      location: 'Sorbonne, Paris, France',
+      caption: 'パリのソルボンヌ地区にある大学建物。校舎の立地や街との距離まで確認すると、フランス留学後の毎日を具体的に描けます。',
+      photographerName: 'Robin Benzrihem',
+      photographerProfileUrl: 'https://unsplash.com/@robinoode',
+      sourceUrl: 'https://unsplash.com/photos/universites-de-paris-building-nsHO6mtOsc4',
+    },
+    inline: [
+      {
+        src: 'https://images.unsplash.com/photo-1650211233795-922f366885f9?auto=format&fit=crop&w=1800&q=82',
+        alt: 'フランス国旗が掲げられたパリのソルボンヌ大学建物',
+        width: 3927,
+        height: 5891,
+        location: "Sorbonne Université, Rue de l'École de Médecine, Paris, France",
+        caption: 'パリのソルボンヌ大学。志望校を比べるときは、大学名だけでなく、課程・授業言語・キャンパスの場所も確認しましょう。',
+        photographerName: 'Guillaume Didelet',
+        photographerProfileUrl: 'https://unsplash.com/@mejlivg',
+        sourceUrl: 'https://unsplash.com/photos/a-large-building-with-a-flag-on-top-of-it-AXvpNiPw7qY',
+      },
+      {
+        src: 'https://images.unsplash.com/photo-1766847733864-9c93419a7cca?auto=format&fit=crop&w=1800&q=82',
+        alt: 'パリ・モンマルトルのカフェや店が並ぶ通りを歩く人々',
+        width: 3072,
+        height: 5472,
+        location: 'Montmartre, Paris, France',
+        caption: 'モンマルトルの街角。授業外の買い物や食事、移動も含めたパリでの生活をイメージできる一場面です。',
+        photographerName: 'Estera',
+        photographerProfileUrl: 'https://unsplash.com/@esteranicoi',
+        sourceUrl: 'https://unsplash.com/photos/people-walking-down-a-street-lined-with-cafes-and-shops-LENXVIT-gcE',
+      },
+    ],
+  },
   'ireland:study-abroad': {
     hero: {
       src: 'https://images.unsplash.com/photo-1669380624544-4767be2c5928?auto=format&fit=crop&w=2400&q=82',

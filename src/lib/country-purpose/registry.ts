@@ -220,6 +220,18 @@ export const COUNTRY_PURPOSE_GUIDES: PurposeGuideDefinition[] = [
     ],
   },
   {
+    countrySlug: 'france', purpose: 'study-abroad', sourceArticleId: 'study-france-complete-guide',
+    mergedArticleIds: ['study-france-complete-guide'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: 'France-Visas — Student', url: 'https://france-visas.gouv.fr/en/etudiant', supports: '学生査証・資金・滞在条件' },
+      { label: 'Campus France Japon — Études en France', url: 'https://www.japon.campusfrance.org/fr/qu-est-ce-que-la-procedure-etudes-en-france', supports: '日本からの出願・EEF手続' },
+      { label: 'Campus France — Finding a programme', url: 'https://www.campusfrance.org/en/finding-a-university-programme-France', supports: '大学・課程・学位の選び方' },
+      { label: 'Campus France — Tuition fees', url: 'https://www.campusfrance.org/en/tuition-fees-France', supports: '公立高等教育の登録料・免除' },
+      { label: 'Service-Public — Student work', url: 'https://www.service-public.gouv.fr/particuliers/vosdroits/F2713', supports: '学生資格での就労条件' },
+    ],
+  },
+  {
     countrySlug: 'ireland', purpose: 'study-abroad', sourceArticleId: 'study-ireland-complete-guide',
     mergedArticleIds: ['study-ireland-complete-guide'],
     coverageAreas: STUDY_COVERAGE,
