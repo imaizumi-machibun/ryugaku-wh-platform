@@ -52,6 +52,28 @@ export function formatRating(rating: number | undefined | null): string {
 }
 
 /**
+ * 通貨名とISOコードを重複させずに表示する。
+ * microCMSの通貨名にすでに「（EUR）」等が含まれる国にも対応する。
+ */
+export function formatCurrencyLabel(
+  currency: string | undefined | null,
+  currencyCode: string | undefined | null,
+): string | undefined {
+  const name = currency?.trim();
+  if (!name) return undefined;
+
+  const code = currencyCode?.trim();
+  if (!code) return name;
+
+  const normalizedName = name.normalize('NFKC').toUpperCase();
+  const normalizedCode = code.normalize('NFKC').toUpperCase();
+  const escapedCode = normalizedCode.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const alreadyContainsCode = new RegExp(`(^|[^A-Z0-9])${escapedCode}([^A-Z0-9]|$)`).test(normalizedName);
+
+  return alreadyContainsCode ? name : `${name}（${code}）`;
+}
+
+/**
  * 数値の平均を計算
  */
 export function average(values: (number | undefined | null)[]): number {

@@ -15,6 +15,7 @@ import SchoolCard from '@/components/school/SchoolCard';
 import { generateCountryMetadata } from '@/lib/seo/metadata';
 import { generateBreadcrumbJsonLd, generatePlaceJsonLd } from '@/lib/seo/jsonld';
 import { getCitiesByCountry } from '@/lib/data/cities';
+import { formatCurrencyLabel } from '@/lib/utils/format';
 
 export const revalidate = 1800;
 
@@ -38,7 +39,7 @@ function OverviewFacts({ country }: { country: Awaited<ReturnType<typeof getCoun
   const facts = [
     ['首都', country.capital],
     ['公用語・主要言語', country.officialLanguage],
-    ['通貨', country.currency ? `${country.currency}${country.currencyCode ? `（${country.currencyCode}）` : ''}` : undefined],
+    ['通貨', formatCurrencyLabel(country.currency, country.currencyCode)],
     ['日本との時差', country.timeDifferenceJapan],
     ['フライト時間', country.flightTimeHours ? `約${country.flightTimeHours}時間` : undefined],
     ['過ごしやすい時期', country.bestSeason],
@@ -65,7 +66,7 @@ function CountryOverview({
   const profile = [
     country.capital ? `首都は${country.capital}` : null,
     country.officialLanguage ? `公用語・主要言語は${country.officialLanguage}` : null,
-    country.currency ? `通貨は${country.currency}${country.currencyCode ? `（${country.currencyCode}）` : ''}` : null,
+    country.currency ? `通貨は${formatCurrencyLabel(country.currency, country.currencyCode)}` : null,
   ].filter(Boolean).join('、');
   const cityText = cityNames.length > 0
     ? `${cityNames.slice(0, 3).join('、')}など、都市によって気候や交通、住まい、生活費の特徴が異なります。`

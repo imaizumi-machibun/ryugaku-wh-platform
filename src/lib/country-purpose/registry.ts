@@ -232,6 +232,19 @@ export const COUNTRY_PURPOSE_GUIDES: PurposeGuideDefinition[] = [
     ],
   },
   {
+    countrySlug: 'south-africa', purpose: 'study-abroad', sourceArticleId: 'study-south-africa-complete-guide',
+    mergedArticleIds: ['study-south-africa-complete-guide'],
+    coverageAreas: STUDY_COVERAGE,
+    officialSources: [
+      { label: '在日南アフリカ大使館 — 査証・移民案内', url: 'https://dirco.gov.za/japan/immigration-visa-info/', supports: '学生査証・申請書類・料金・審査目安' },
+      { label: 'Department of Home Affairs — Immigration Regulations', url: 'https://www.dha.gov.za/images/PDFs/ImmigrationRegulations2014-Updated2018-compressed.pdf', supports: '学生査証・就労・更新条件' },
+      { label: 'DHET — Public Universities', url: 'https://www.dhet.gov.za/SitePages/InstUniversities.aspx', supports: '公立大学の確認' },
+      { label: 'Council on Higher Education — Programme Accreditation', url: 'https://www.che.ac.za/focus-areas/programme-accreditation', supports: '高等教育課程の認定確認' },
+      { label: 'SAQA — National Qualifications Register', url: 'https://regqs.saqa.org.za/', supports: '資格水準・登録課程の確認' },
+      { label: '外務省 — 南アフリカ危険・スポット・広域情報', url: 'https://www.anzen.mofa.go.jp/info/pcinfectionspothazardinfo_122.html', supports: '都市選び・安全対策' },
+    ],
+  },
+  {
     countrySlug: 'ireland', purpose: 'study-abroad', sourceArticleId: 'study-ireland-complete-guide',
     mergedArticleIds: ['study-ireland-complete-guide'],
     coverageAreas: STUDY_COVERAGE,
