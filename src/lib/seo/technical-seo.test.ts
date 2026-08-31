@@ -35,8 +35,9 @@ test('robots.txt exposes comparison pages and the production sitemap', () => {
 test('phase付きガイドの旧articles URLは正規guide URLへ恒久転送する', () => {
   const articleRoute = readFileSync('src/app/articles/[slug]/page.tsx', 'utf8');
 
-  assert.match(articleRoute, /if \(article\.phase\)/);
-  assert.match(articleRoute, /permanentRedirect\(`\/guide\/\$\{article\.phase\}\/\$\{params\.slug\}`\)/);
+  assert.match(articleRoute, /normalizeGuidePhase\(article\.phase\)/);
+  assert.match(articleRoute, /if \(guidePhase\)/);
+  assert.match(articleRoute, /permanentRedirect\(`\/guide\/\$\{guidePhase\}\/\$\{params\.slug\}`\)/);
 });
 
 test('国別費用ページはBreadcrumbListをJSON-LDバンドルから一度だけ出力する', () => {

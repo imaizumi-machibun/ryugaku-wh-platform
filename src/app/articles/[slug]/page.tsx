@@ -12,6 +12,7 @@ import { extractFaqFromArticleBody } from '@/lib/utils/article-faq';
 import { ARTICLE_CATEGORIES } from '@/lib/utils/constants';
 import { formatDate } from '@/lib/utils/format';
 import { getArticleImage } from '@/lib/utils/article-images';
+import { normalizeGuidePhase } from '@/lib/guides/phase';
 import ShareButtons from '@/components/ui/ShareButtons';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { buildArticleRelatedSections } from '@/lib/seo/relations';
@@ -63,9 +64,11 @@ export default async function ArticleDetailPage({ params }: Props) {
     notFound();
   }
 
-  // phase付きコンテンツの正規URLは /guide。旧 /articles URLを重複公開しない。
-  if (article.phase) {
-    permanentRedirect(`/guide/${article.phase}/${params.slug}`);
+  // phase付きコンテンツの正規URLは /guide。microCMSの未選択値は空配列で
+  // 返ることがあるため、有効なphaseだけを転送対象にする。
+  const guidePhase = normalizeGuidePhase(article.phase);
+  if (guidePhase) {
+    permanentRedirect(`/guide/${guidePhase}/${params.slug}`);
   }
 
   const catLabel = ARTICLE_CATEGORIES.find((c) => c.value === article.category)?.label;
