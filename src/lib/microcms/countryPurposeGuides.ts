@@ -7,6 +7,7 @@ import type {
   CountryPurposeGuidePurpose,
 } from './types';
 import { getPurposeGuideDefinition } from '@/lib/country-purpose/registry';
+import { mergePurposeGuideFaq } from '@/lib/country-purpose/purpose-faq';
 
 export type ResolvedCountryPurposeGuide = {
   title: string;
@@ -55,23 +56,28 @@ export async function resolveCountryPurposeGuide(
 
   const cmsGuide = await getGuideFromCms(country.id, purpose).catch(() => null);
   if (cmsGuide?.status === 'publishable') {
-    return {
-      title: cmsGuide.title,
-      introduction: cmsGuide.introduction,
-      body: cmsGuide.body,
-      heroImage: cmsGuide.heroImage,
-      checkedAt: cmsGuide.checkedAt,
-      nextCheckAt: cmsGuide.nextCheckAt,
-      status: 'publishable',
-      sources: (cmsGuide.sources ?? []).map((source) => ({
-        label: source.label,
-        url: source.url,
-        supports: source.supports,
-        checkedAt: source.checkedAt,
-      })),
-      sourceArticleId: definition.sourceArticleId,
-      updatedAt: cmsGuide.updatedAt,
-    };
+    try {
+      return {
+        title: cmsGuide.title,
+        introduction: cmsGuide.introduction,
+        body: mergePurposeGuideFaq(cmsGuide.body, cmsGuide.faq),
+        heroImage: cmsGuide.heroImage,
+        checkedAt: cmsGuide.checkedAt,
+        nextCheckAt: cmsGuide.nextCheckAt,
+        status: 'publishable',
+        sources: (cmsGuide.sources ?? []).map((source) => ({
+          label: source.label,
+          url: source.url,
+          supports: source.supports,
+          checkedAt: source.checkedAt,
+        })),
+        sourceArticleId: definition.sourceArticleId,
+        updatedAt: cmsGuide.updatedAt,
+      };
+    } catch (error) {
+      console.error(`Invalid FAQ contract for ${country.id}:${purpose}`, error);
+      // 不正なCMS稿は公開せず、検証済みの統合元記事へフォールバックする。
+    }
   }
 
   const article = await getArticleBySlug(definition.sourceArticleId).catch(() => null);

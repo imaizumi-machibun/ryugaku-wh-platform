@@ -9,7 +9,7 @@ import CostBreakdown from '@/components/experience/CostBreakdown';
 import RadarChart from '@/components/country/RadarChart';
 import JsonLd from '@/components/seo/JsonLd';
 import { generateExperienceMetadata } from '@/lib/seo/metadata';
-import { generateExperienceJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
+import { generateExperienceJsonLd, generateBreadcrumbJsonLd, generateFAQJsonLd } from '@/lib/seo/jsonld';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { buildExperienceRelatedSections } from '@/lib/seo/relations';
 import { formatDuration, formatDate } from '@/lib/utils/format';
@@ -21,6 +21,7 @@ import {
   STUDY_TYPE_LABELS,
 } from '@/lib/experiences/classification';
 import { buildExperienceBreadcrumb, toVisibleBreadcrumbItems } from '@/lib/seo/breadcrumbs';
+import { extractFaqFromArticleBody } from '@/lib/utils/article-faq';
 
 export const revalidate = 3600;
 
@@ -79,6 +80,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
   const genderLabel = GENDERS.find((g) => g.value === experience.gender)?.label;
   const langBeforeLabel = LANGUAGE_LEVELS.find((l) => l.value === experience.languageBefore)?.label;
   const langAfterLabel = LANGUAGE_LEVELS.find((l) => l.value === experience.languageAfter)?.label;
+  const faqs = extractFaqFromArticleBody(experience.content);
 
   return (
     <>
@@ -86,6 +88,7 @@ export default async function ExperienceDetailPage({ params }: Props) {
       <JsonLd
         data={generateBreadcrumbJsonLd(purposeBreadcrumb)}
       />
+      {faqs.length > 0 && <JsonLd data={generateFAQJsonLd(faqs)} />}
 
       <div className="container-custom py-8">
         <Breadcrumb

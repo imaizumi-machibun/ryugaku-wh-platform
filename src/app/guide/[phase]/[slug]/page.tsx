@@ -12,10 +12,11 @@ import GuideTipBox from '@/components/guide/GuideTipBox';
 import GuideProgressBar from '@/components/guide/GuideProgressBar';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import JsonLd from '@/components/seo/JsonLd';
-import { generateGuideJsonLd, generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
+import { generateGuideJsonLd, generateBreadcrumbJsonLd, generateFAQJsonLd } from '@/lib/seo/jsonld';
 import { generateArticleMetadata } from '@/lib/seo/metadata';
 import { GUIDE_PHASES } from '@/lib/utils/constants';
 import { formatDate } from '@/lib/utils/format';
+import { extractFaqFromArticleBody } from '@/lib/utils/article-faq';
 import type { GuidePhase } from '@/lib/microcms/types';
 
 export const revalidate = 3600;
@@ -65,6 +66,7 @@ export default async function GuideArticlePage({ params }: Props) {
     getGuidesByPhase(params.phase as GuidePhase),
     getGuides({ limit: 100 }),
   ]);
+  const faqs = extractFaqFromArticleBody(guide.body);
 
   return (
     <>
@@ -77,6 +79,7 @@ export default async function GuideArticlePage({ params }: Props) {
           { name: guide.title, url: `/guide/${params.phase}/${params.slug}` },
         ])}
       />
+      {faqs.length > 0 && <JsonLd data={generateFAQJsonLd(faqs)} />}
 
       <div className="container-custom py-8">
         <Breadcrumb

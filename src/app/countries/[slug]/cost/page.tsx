@@ -23,7 +23,6 @@ import SegmentRelatedLinks from '@/components/segment/SegmentRelatedLinks';
 import SegmentStickyCTA from '@/components/segment/SegmentStickyCTA';
 import SegmentAuthorBox from '@/components/segment/SegmentAuthorBox';
 import { generateCostMetadata } from '@/lib/seo/metadata';
-import { generateBreadcrumbJsonLd } from '@/lib/seo/jsonld';
 import { buildSegmentJsonLdBundle } from '@/lib/segments/jsonld-bundle';
 import { filterExperiencesBySegment, filterSchoolsBySegment } from '@/lib/segments/filter';
 import { formatJpyShort, estimateExperienceTotalJpy } from '@/lib/segments/cost-estimator';
@@ -305,15 +304,6 @@ export default async function CostPage({ params }: Props) {
       {jsonLdBundle.map((data, i) => (
         <JsonLd key={i} data={data} />
       ))}
-      {/* 旧 BreadcrumbList は jsonLdBundle に含まれるが、SEO 強化のため冗長に別途も発行 */}
-      <JsonLd
-        data={generateBreadcrumbJsonLd([
-          { name: 'ホーム', url: '/' },
-          { name: '国から探す', url: '/countries' },
-          { name: country.nameJp, url: `/countries/${params.slug}` },
-          { name: '費用', url: path },
-        ])}
-      />
 
       <div className="container-custom py-8 pb-24 md:pb-8">
         <Breadcrumb

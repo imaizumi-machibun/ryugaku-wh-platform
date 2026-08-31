@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { getArticleBySlug, getArticleSlugs } from '@/lib/microcms/articles';
 import Badge from '@/components/ui/Badge';
 import Breadcrumb from '@/components/layout/Breadcrumb';
@@ -61,6 +61,11 @@ export default async function ArticleDetailPage({ params }: Props) {
     article = await getArticleBySlug(params.slug);
   } catch {
     notFound();
+  }
+
+  // phase付きコンテンツの正規URLは /guide。旧 /articles URLを重複公開しない。
+  if (article.phase) {
+    permanentRedirect(`/guide/${article.phase}/${params.slug}`);
   }
 
   const catLabel = ARTICLE_CATEGORIES.find((c) => c.value === article.category)?.label;

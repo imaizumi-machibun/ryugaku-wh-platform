@@ -69,10 +69,6 @@ export function buildSegmentJsonLdBundle(input: SegmentJsonLdBundleInput): Recor
     );
   }
 
-  if (schoolItemList) {
-    bundle.push(schoolItemList);
-  }
-
   if (schools) {
     for (const school of schools.slice(0, 10)) {
       const courseLabels = school.courseTypes && school.courseTypes.length > 0

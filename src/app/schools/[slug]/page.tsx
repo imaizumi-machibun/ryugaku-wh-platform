@@ -18,6 +18,7 @@ import {
   generateBreadcrumbJsonLd,
   generateCourseJsonLd,
   generateReviewJsonLd,
+  generateFAQJsonLd,
 } from '@/lib/seo/jsonld';
 import RelatedLinks from '@/components/seo/RelatedLinks';
 import { buildSchoolRelatedSections } from '@/lib/seo/relations';
@@ -25,6 +26,7 @@ import { aggregateReviewRatings } from '@/lib/utils/aggregation';
 import { COST_RANGES, COURSE_TYPES, SCHOOL_FEATURES, SCHOOL_LANGUAGES, ACCREDITATIONS, FACILITIES, ACCOMMODATION_TYPES } from '@/lib/utils/constants';
 import { formatJPY } from '@/lib/utils/format';
 import ShareButtons from '@/components/ui/ShareButtons';
+import { extractFaqFromArticleBody } from '@/lib/utils/article-faq';
 
 export const revalidate = 1800;
 
@@ -88,6 +90,7 @@ export default async function SchoolDetailPage({ params }: Props) {
   );
   const agg = aggregateReviewRatings(reviews);
   const costLabel = COST_RANGES.find((c) => c.value === school.costRange)?.label;
+  const faqs = extractFaqFromArticleBody(school.description);
 
   return (
     <>
@@ -105,6 +108,7 @@ export default async function SchoolDetailPage({ params }: Props) {
           { name: school.name, url: `/schools/${params.slug}` },
         ])}
       />
+      {faqs.length > 0 && <JsonLd data={generateFAQJsonLd(faqs)} />}
 
       {/* コース情報の構造化データ */}
       {school.courseTypes?.map((ct) => {
