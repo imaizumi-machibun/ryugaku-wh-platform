@@ -19,6 +19,7 @@ export default function A8TextAd({
 }: Props) {
   const affiliateMeasurement = useAffiliateMeasurement<HTMLElement>({
     measurementId: GA_MEASUREMENT_ID,
+    affiliateNetwork: 'a8net',
     siteId: '025',
     programId,
     placementId,

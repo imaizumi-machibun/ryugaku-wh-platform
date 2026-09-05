@@ -23,10 +23,12 @@ export default function MoshimoAffiliateCard() {
   const sourceHtml = useMemo(() => decodeSource(), []);
   const affiliateMeasurement = useAffiliateMeasurement<HTMLElement>({
     measurementId: GA_MEASUREMENT_ID,
+    affiliateNetwork: 'moshimo',
     siteId: '686751',
     programId: 'moshimo-easy-link',
     placementId: 'article_inline_1',
     materialType: 'product_card',
+    trackStore: true,
   });
 
   useEffect(() => {

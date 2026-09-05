@@ -12,6 +12,7 @@ import {
   AFFILIATE_IMPRESSION_THRESHOLD,
   buildAffiliateEventParams,
   createAffiliateImpressionKey,
+  detectAffiliateStore,
   sendAffiliateEvent,
   type AffiliateMaterialType,
 } from '@/lib/affiliate-measurement';
@@ -21,19 +22,23 @@ const sentImpressions = new Set<string>();
 interface UseAffiliateMeasurementOptions {
   enabled?: boolean;
   measurementId: string;
+  affiliateNetwork: string;
   siteId: string;
   programId: string;
   placementId: string;
   materialType: AffiliateMaterialType;
+  trackStore?: boolean;
 }
 
 export function useAffiliateMeasurement<TElement extends HTMLElement>({
   enabled = true,
   measurementId,
+  affiliateNetwork,
   siteId,
   programId,
   placementId,
   materialType,
+  trackStore = false,
 }: UseAffiliateMeasurementOptions) {
   const elementRef = useRef<TElement | null>(null);
 
@@ -42,7 +47,14 @@ export function useAffiliateMeasurement<TElement extends HTMLElement>({
     if (!enabled || !element || typeof IntersectionObserver === 'undefined') return;
 
     const pagePath = window.location.pathname;
-    const input = { siteId, programId, pagePath, placementId, materialType };
+    const input = {
+      affiliateNetwork,
+      siteId,
+      programId,
+      pagePath,
+      placementId,
+      materialType,
+    };
     const impressionKey = createAffiliateImpressionKey(
       buildAffiliateEventParams(input)
     );
@@ -85,7 +97,7 @@ export function useAffiliateMeasurement<TElement extends HTMLElement>({
       clearDwellTimer();
       observer.disconnect();
     };
-  }, [enabled, materialType, measurementId, placementId, programId, siteId]);
+  }, [affiliateNetwork, enabled, materialType, measurementId, placementId, programId, siteId]);
 
   const onClickCapture = useCallback(
     (event: ReactMouseEvent<TElement>) => {
@@ -93,22 +105,24 @@ export function useAffiliateMeasurement<TElement extends HTMLElement>({
       const target = event.target;
       if (!(target instanceof Element)) return;
 
-      const anchor = target.closest('a');
+      const anchor = target.closest<HTMLAnchorElement>('a');
       if (!anchor || !event.currentTarget.contains(anchor)) return;
 
       sendAffiliateEvent(
         AFFILIATE_EVENT_NAMES.click,
         {
+          affiliateNetwork,
           siteId,
           programId,
           pagePath: window.location.pathname,
           placementId,
           materialType,
+          ...(trackStore ? { store: detectAffiliateStore(anchor) } : {}),
         },
         measurementId
       );
     },
-    [enabled, materialType, measurementId, placementId, programId, siteId]
+    [affiliateNetwork, enabled, materialType, measurementId, placementId, programId, siteId, trackStore]
   );
 
   return { elementRef, onClickCapture };

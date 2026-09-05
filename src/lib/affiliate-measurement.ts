@@ -10,21 +10,26 @@ export type AffiliateEventName =
   (typeof AFFILIATE_EVENT_NAMES)[keyof typeof AFFILIATE_EVENT_NAMES];
 
 export type AffiliateMaterialType = 'banner' | 'text' | 'product_card';
+export type AffiliateStore = 'amazon' | 'rakuten' | 'yahoo' | 'unknown';
 
 export interface AffiliateEventInput {
+  affiliateNetwork: string;
   siteId: string;
   programId: string;
   pagePath: string;
   placementId: string;
   materialType: AffiliateMaterialType;
+  store?: AffiliateStore;
 }
 
 export interface AffiliateEventParams extends Record<string, unknown> {
+  affiliate_network: string;
   site_id: string;
   program_id: string;
   page_path: string;
   placement_id: string;
   material_type: AffiliateMaterialType;
+  store?: AffiliateStore;
 }
 
 declare global {
@@ -44,22 +49,60 @@ export function buildAffiliateEventParams(
   input: AffiliateEventInput
 ): AffiliateEventParams {
   return {
+    affiliate_network: input.affiliateNetwork,
     site_id: input.siteId,
     program_id: input.programId,
     page_path: normalizePagePath(input.pagePath),
     placement_id: input.placementId,
     material_type: input.materialType,
+    ...(input.store ? { store: input.store } : {}),
   };
+}
+
+export function detectAffiliateStoreFromSignals(
+  signals: readonly (string | null | undefined)[]
+): AffiliateStore {
+  const normalized = signals
+    .filter((signal): signal is string => Boolean(signal))
+    .join(' ')
+    .normalize('NFKC')
+    .toLowerCase();
+
+  if (/amazon|amzn|アマゾン|[?&](?:p_id|pc_id)=170(?:&|$)/.test(normalized)) {
+    return 'amazon';
+  }
+  if (/rakuten|楽天|[?&](?:p_id|pc_id)=54(?:&|$)/.test(normalized)) {
+    return 'rakuten';
+  }
+  if (/yahoo!?|ヤフー|[?&](?:p_id|pc_id)=1225(?:&|$)/.test(normalized)) {
+    return 'yahoo';
+  }
+  return 'unknown';
+}
+
+export function detectAffiliateStore(anchor: HTMLAnchorElement): AffiliateStore {
+  return detectAffiliateStoreFromSignals([
+    anchor.dataset.store,
+    anchor.dataset.shop,
+    anchor.dataset.shopName,
+    anchor.getAttribute('aria-label'),
+    anchor.getAttribute('title'),
+    anchor.textContent,
+    anchor.querySelector('img')?.getAttribute('alt'),
+    anchor.getAttribute('href'),
+  ]);
 }
 
 export function createAffiliateImpressionKey(
   params: AffiliateEventParams
 ): string {
   return [
+    params.affiliate_network,
     params.site_id,
     params.program_id,
     params.page_path,
     params.placement_id,
+    params.material_type,
   ].join('|');
 }
 
