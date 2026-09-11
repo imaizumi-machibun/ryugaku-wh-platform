@@ -107,6 +107,20 @@ export function useAffiliateMeasurement<TElement extends HTMLElement>({
 
       const anchor = target.closest<HTMLAnchorElement>('a');
       if (!anchor || !event.currentTarget.contains(anchor)) return;
+      if (affiliateNetwork === 'moshimo') {
+        let destination: URL;
+        try {
+          destination = new URL(anchor.getAttribute('href') ?? '', window.location.origin);
+        } catch {
+          return;
+        }
+        if (
+          destination.protocol !== 'https:'
+          || destination.hostname !== 'af.moshimo.com'
+          || destination.pathname !== '/af/c/click'
+          || !destination.searchParams.get('a_id')
+        ) return;
+      }
 
       sendAffiliateEvent(
         AFFILIATE_EVENT_NAMES.click,
