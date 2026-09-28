@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import A8TextAd from '@/components/affiliate/A8TextAd';
+import RentracksTextAd from '@/components/affiliate/RentracksTextAd';
 import Breadcrumb from '@/components/layout/Breadcrumb';
 import { AFFILIATE_INTENTS, getProgramsByIntent } from '@/lib/affiliate-programs';
 import { generatePageMetadata } from '@/lib/seo/metadata';
@@ -41,6 +42,7 @@ export default function ServicesPage() {
         </header>
 
         <nav aria-label="サービスカテゴリ" className="mb-10 flex flex-wrap gap-2">
+          <Link href="#study-counseling" className="rounded-full border border-primary-200 bg-primary-50 px-4 py-2 text-sm font-semibold text-primary-800 hover:bg-primary-100">留学カウンセリング</Link>
           {AFFILIATE_INTENTS.map((intent) => (
             <Link
               key={intent.id}
@@ -53,6 +55,14 @@ export default function ServicesPage() {
         </nav>
 
         <div className="space-y-12">
+          <section id="study-counseling" className="scroll-mt-24">
+            <h2 className="mb-2 text-2xl font-bold text-gray-900">留学カウンセリング</h2>
+            <p className="mb-5 text-sm leading-6 text-gray-600">留学先や学校選びを相談したい方向けの広告です。対応国、サポート範囲、費用と契約条件は申込み前にご確認ください。</p>
+            <article className="rounded-2xl border border-gray-200 bg-gray-50 p-4">
+              <h3 className="mb-3 text-lg font-bold text-gray-900">留学情報館</h3>
+              <RentracksTextAd />
+            </article>
+          </section>
           {AFFILIATE_INTENTS.map((intent) => {
             const programs = getProgramsByIntent(intent.id);
             return (
